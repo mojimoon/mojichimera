@@ -3,20 +3,20 @@
 
     <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
-    <groupId>defaultmod</groupId>
-    <artifactId>DefaultMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
-    <name>Default Mod</name>
+    <groupId>mojimoon</groupId>
+    <artifactId>MojiMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
+    <name>MojiMod</name>
     <version>0.0.1</version>
-    <description>A default base to start your own mod from.</description>
+    <description>Mojimoon Mod. Currently under development.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
-        <ModTheSpire.version>3.8.0</ModTheSpire.version>
+        <SlayTheSpire.version>03-07-2022</SlayTheSpire.version>
+        <ModTheSpire.version>3.29.0</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
-        <Steam.path>E:\Games\Steam\steamapps</Steam.path>
+        <Steam.path>D:\game\steamapps\</Steam.path>
     </properties>
 
     <dependencies>
@@ -51,6 +51,13 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>autumn</groupId>
+            <artifactId>ChimeraCards</artifactId>
+            <version>0.5.2</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/2970981743/CardAugments.jar</systemPath>
         </dependency>
     </dependencies>
 
