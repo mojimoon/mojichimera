@@ -1,0 +1,14 @@
+{
+  "MojiMod:ExampleAugment": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"],
+    "EXTRA_TEXT": ["Tooltip"]
+  },
+  "MojiMod:Rented": {
+    "TEXT": ["Rented", "", "Reduces cost by #b1. Loses #b2 #yGold when played."],
+    "EXTRA_TEXT": ["Loses %d Gold."]
+  },
+  "MojiMod:AimedMod": {
+    "TEXT": ["Aimed ", "", " NL Deals 33% more damage to enemies with Lock-On."],
+    "EXTRA_TEXT": ["Deals #b33% more damage to enemies with #yLock-On."]
+  }
+}

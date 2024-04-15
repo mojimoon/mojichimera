@@ -11,7 +11,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -21,21 +23,24 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import MojiMod.cards.*;
-import MojiMod.characters.TheDefault;
-import MojiMod.events.IdentityCrisisEvent;
-import MojiMod.potions.PlaceholderPotion;
-import MojiMod.relics.BottledPlaceholderRelic;
-import MojiMod.relics.DefaultClickableRelic;
-import MojiMod.relics.PlaceholderRelic;
-import MojiMod.relics.PlaceholderRelic2;
+//import MojiMod.characters.TheDefault;
+//import MojiMod.events.IdentityCrisisEvent;
+//import MojiMod.potions.PlaceholderPotion;
+//import MojiMod.relics.BottledPlaceholderRelic;
+//import MojiMod.relics.DefaultClickableRelic;
+//import MojiMod.relics.PlaceholderRelic;
+//import MojiMod.relics.PlaceholderRelic2;
 import MojiMod.util.IDCheckDontTouchPls;
 import MojiMod.util.TextureLoader;
-import MojiMod.variables.DefaultCustomVariable;
-import MojiMod.variables.DefaultSecondMagicNumber;
+//import MojiMod.variables.DefaultCustomVariable;
+//import MojiMod.variables.DefaultSecondMagicNumber;
+import MojiMod.augments.AugmentHelper;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -86,9 +91,13 @@ public class MojiMod implements
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "Default Mod";
+    private static final String MODNAME = "MojiMod";
     private static final String AUTHOR = "Mojimoon";
     private static final String DESCRIPTION = "Mojimoon Mod. Currently under development.";
+
+    public static UIStrings uiStrings;
+    public static String[] TEXT;
+    public static String[] EXTRA_TEXT;
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -202,15 +211,15 @@ public class MojiMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
-        
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
-        
-        logger.info("Done creating the color");
+//        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
+//
+//        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+//                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+//                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
+//                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
+//                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
+//
+//        logger.info("Done creating the color");
         
         
         logger.info("Adding mod settings");
@@ -218,7 +227,7 @@ public class MojiMod implements
         // The actual mod Button is added below in receivePostInitialize()
         theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
         try {
-            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
+            SpireConfig config = new SpireConfig("MojiMod", "MojiModConfig", theDefaultDefaultSettings); // ...right here
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
@@ -302,38 +311,59 @@ public class MojiMod implements
     
     @Override
     public void receivePostInitialize() {
+
+        if (Loader.isModLoaded("CardAugments")) {
+            AugmentHelper.register();
+        }
+
         logger.info("Loading badge image and mod options");
-        
-        // Load the Mod Badge
-        Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
-        
+        //Grab the strings
+        uiStrings = CardCrawlGame.languagePack.getUIString(makeID("ModConfigs"));
+        EXTRA_TEXT = uiStrings.EXTRA_TEXT;
+        TEXT = uiStrings.TEXT;
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
-        
-        // Create the on/off button:
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
-                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enablePlaceholder, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-            
-            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        
-        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
-        
-        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-        
+        // Load the Mod Badge
+        Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
+        BaseMod.registerModBadge(badgeTexture, EXTRA_TEXT[0], AUTHOR, EXTRA_TEXT[1], settingsPanel);
+
+        //Get the longest slider text for positioning
+        ArrayList<String> labelStrings = new ArrayList<>(Arrays.asList(TEXT));
+        float sliderOffset = getSliderPosition(labelStrings);
+        labelStrings.clear();
+        float currentYposition = 740f;
+        float spacingY = 55f;
+
+//        // Load the Mod Badge
+//        Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
+
+        // Create the Mod Menu
+//        ModPanel settingsPanel = new ModPanel();
+//
+//        // Create the on/off button:
+//        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
+//                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+//                enablePlaceholder, // Boolean it uses
+//                settingsPanel, // The mod panel in which this button will be in
+//                (label) -> {}, // thing??????? idk
+//                (button) -> { // The actual button:
+//
+//            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+//            try {
+//                // And based on that boolean, set the settings and save them
+//                SpireConfig config = new SpireConfig("MojiMod", "MojiModConfig", theDefaultDefaultSettings);
+//                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+//                config.save();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+//
+//        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+//
+//        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+
         // =============== EVENTS =================
         // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
 
@@ -348,16 +378,24 @@ public class MojiMod implements
 
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
-            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheDefault.Enums.THE_DEFAULT) // Character specific event
-            .create();
+//        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
+//            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+//            .playerClass(TheDefault.Enums.THE_DEFAULT) // Character specific event
+//            .create();
 
         // Add the event
-        BaseMod.addEvent(eventParams);
+//        BaseMod.addEvent(eventParams);
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
+    }
+
+    private float getSliderPosition (ArrayList<String> stringsToCompare) {
+        float longest = 0;
+        for (String s : stringsToCompare) {
+            longest = Math.max(longest, FontHelper.getWidth(FontHelper.charDescFont, s, 1 / Settings.scale));
+        }
+        return longest + 60f;
     }
     
     // =============== / POST-INITIALIZE/ =================
@@ -449,42 +487,63 @@ public class MojiMod implements
 //    }
     
     // ================ /ADD CARDS/ ===================
-    
+
+    // ================ LOAD THE LOCALIZATION ===================
+
+    private String loadLocalizationIfAvailable(String fileName) {
+        if (!Gdx.files.internal(getModID() + "Resources/localization/" + Settings.language.toString().toLowerCase()+ "/" + fileName).exists()) {
+            logger.info("Language: " + Settings.language.toString().toLowerCase() + ", not currently supported for " +fileName+".");
+            return "eng" + "/" + fileName;
+        } else {
+            logger.info("Loaded Language: "+ Settings.language.toString().toLowerCase() + ", for "+fileName+".");
+            return Settings.language.toString().toLowerCase() + "/" + fileName;
+        }
+    }
+
+    // ================ /LOAD THE LOCALIZATION/ ===================
     
     // ================ LOAD THE TEXT ===================
     
     @Override
     public void receiveEditStrings() {
-        logger.info("You seeing this?");
+//        logger.info("You seeing this?");
         logger.info("Beginning to edit strings for mod with ID: " + getModID());
         
-        // CardStrings
-        BaseMod.loadCustomStringsFile(CardStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Card-Strings.json");
-        
-        // PowerStrings
-        BaseMod.loadCustomStringsFile(PowerStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Power-Strings.json");
-        
-        // RelicStrings
-        BaseMod.loadCustomStringsFile(RelicStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Relic-Strings.json");
-        
-        // Event Strings
-        BaseMod.loadCustomStringsFile(EventStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Event-Strings.json");
-        
-        // PotionStrings
-        BaseMod.loadCustomStringsFile(PotionStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Potion-Strings.json");
-        
-        // CharacterStrings
-        BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Character-Strings.json");
-        
-        // OrbStrings
-        BaseMod.loadCustomStringsFile(OrbStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+//        // CardStrings
+//        BaseMod.loadCustomStringsFile(CardStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Card-Strings.json");
+//
+//        // PowerStrings
+//        BaseMod.loadCustomStringsFile(PowerStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Power-Strings.json");
+//
+//        // RelicStrings
+//        BaseMod.loadCustomStringsFile(RelicStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Relic-Strings.json");
+//
+//        // Event Strings
+//        BaseMod.loadCustomStringsFile(EventStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Event-Strings.json");
+//
+//        // PotionStrings
+//        BaseMod.loadCustomStringsFile(PotionStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Potion-Strings.json");
+//
+//        // CharacterStrings
+//        BaseMod.loadCustomStringsFile(CharacterStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Character-Strings.json");
+//
+//        // OrbStrings
+//        BaseMod.loadCustomStringsFile(OrbStrings.class,
+//                getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+
+        // Augment Strings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("MojiMod-Augment-Strings.json"));
+
+        // UI Strings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("MojiMod-UI-Strings.json"));
         
         logger.info("Done edittting strings");
     }

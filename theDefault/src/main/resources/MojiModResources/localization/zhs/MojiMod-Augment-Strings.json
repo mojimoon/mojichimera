@@ -1,0 +1,14 @@
+{
+  "MojiMod:ExampleAugment": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"],
+    "EXTRA_TEXT": ["Tooltip"]
+  },
+  "MojiMod:Rented": {
+    "TEXT": ["租赁", "", "本牌耗能减少 #b1。打出时失去 #b2 #y金币 。"],
+    "EXTRA_TEXT": ["失去 %d 金币。"]
+  },
+  "MojiMod:AimedMod": {
+    "TEXT": ["Aimed ", "", " NL Deals 33% more damage to enemies with Lock-On."],
+    "EXTRA_TEXT": ["Deals #b33% more damage to enemies with #yLock-On."]
+  }
+}
