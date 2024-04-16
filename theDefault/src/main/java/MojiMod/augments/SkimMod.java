@@ -1,29 +1,33 @@
 package MojiMod.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.patches.CantUpgradeFieldPatches;
 import MojiMod.MojiMod;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 
-public class KnockoffMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(KnockoffMod.class.getSimpleName());
+public class SkimMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(SkimMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
+    private static final int DRAW = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(card, Boolean.valueOf(true));
-        card.cost--;
-        if (card.cost < 0)
-            card.cost = 0;
-        card.costForTurn = card.cost;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (!card.upgraded && card.canUpgrade() && doesntOverride(card, "canUpgrade", new Class[0]) && card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return (card.cost != -2);
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        addToBot((AbstractGameAction)new DrawCardAction(DRAW));
     }
 
     @Override
@@ -37,16 +41,14 @@ public class KnockoffMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DRAW));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.UNCOMMON;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new KnockoffMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SkimMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

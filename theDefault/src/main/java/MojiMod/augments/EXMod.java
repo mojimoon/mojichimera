@@ -8,43 +8,43 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class EternalMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(EternalMod.class.getSimpleName());
+public class EXMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(EXMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.3333334F;
+    private static final float DELTA = 1F;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 3)))
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
     }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * MULTIPLIER;
+            return damage + DELTA;
         return damage;
     }
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.baseBlock > 0)
-            return block * MULTIPLIER;
+            return block + DELTA;
         return block;
     }
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (this.modMagic)
-            return magic * MULTIPLIER;
+            return magic + DELTA;
         return magic;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return ((card.baseDamage >= 3 || card.baseBlock >= 3 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 3))));
+        return ((card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))));
     }
 
     @Override
@@ -57,17 +57,10 @@ public class EternalMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.UNCOMMON;
-    }
-
-    @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new EternalMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new EXMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

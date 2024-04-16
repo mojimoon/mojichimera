@@ -13,7 +13,7 @@ public class RentalMod extends AbstractAugment {
     public static final String ID = MojiMod.makeID(RentalMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int LOSS = 2;
+    private static final int GOLD = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -30,7 +30,7 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractDungeon.player.loseGold(LOSS);
+        AbstractDungeon.player.loseGold(GOLD);
     }
 
     @Override
@@ -44,21 +44,15 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], LOSS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], GOLD));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.RARE;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() {
-        return (AbstractCardModifier)new RentalMod();
-    }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RentalMod(); }
 
     @Override
-    public String identifier(AbstractCard card) {
-        return ID;
-    }
+    public String identifier(AbstractCard card) { return ID; }
 }

@@ -8,17 +8,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class EternalMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(EternalMod.class.getSimpleName());
+public class OverpoweredMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(OverpoweredMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.3333334F;
+    private static final float MULTIPLIER = 2.5F;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 3)))
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
+        card.costForTurn = ++card.cost;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class EternalMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return ((card.baseDamage >= 3 || card.baseBlock >= 3 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 3))));
+        return ((card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))) && card.cost >= 0 && cardCheck(card, c -> doesntUpgradeCost()));
     }
 
     @Override
@@ -57,17 +58,12 @@ public class EternalMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
-    }
-
-    @Override
     public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.UNCOMMON;
+        return AbstractAugment.AugmentRarity.RARE;
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new EternalMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new OverpoweredMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
