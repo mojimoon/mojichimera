@@ -3,8 +3,16 @@
     "TEXT": ["Prefix", "Suffix", "Description stuff"],
     "EXTRA_TEXT": ["Tooltip"]
   },
-  "MojiMod:RentedMod": {
+  "MojiMod:RentalMod": {
     "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b2 #y金币 。"],
     "EXTRA_TEXT": [" NL 失去 %d 金币。"]
+  },
+  "MojiMod:EternalMod": {
+    "TEXT": ["永恒", "", "所有数值增加 #b33% 。 NL 无法从牌组中移除。"],
+    "EXTRA_TEXT": [" NL 无法从牌组中移除。"]
+  },
+  "MojiMod:KnockoffMod": {
+    "TEXT": ["山寨", "", "本牌耗能减少 #b1。 NL 无法被升级。"],
+    "EXTRA_TEXT": [" NL 无法被升级。"]
   }
 }

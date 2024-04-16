@@ -9,11 +9,13 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class RentedMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(RentedMod.class.getSimpleName());
+public class RentalMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(RentalMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int LOSS = 2;
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         card.cost--;
         if (card.cost < 0)
@@ -21,12 +23,13 @@ public class RentedMod extends AbstractAugment {
         card.costForTurn = card.cost;
     }
 
+    @Override
     public boolean validCard(AbstractCard card) {
         return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
     }
 
+    @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-//        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new RunicPower((AbstractCreature)AbstractDungeon.player, 2), 2));
         AbstractDungeon.player.loseGold(LOSS);
     }
 
@@ -51,7 +54,7 @@ public class RentedMod extends AbstractAugment {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return (AbstractCardModifier)new RentedMod();
+        return (AbstractCardModifier)new RentalMod();
     }
 
     @Override
