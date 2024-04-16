@@ -41,6 +41,7 @@
   },
   "MojiMod:SchrodingerMod": {
     "TEXT": ["薛定谔的", "", "本牌耗能变为 #b0 。 NL 打出时有 #b50% 概率 #y消耗 。"],
-    "EXTRA_TEXT": [" NL 有 %d%% 概率 消耗 。"]
+    "EXTRA_TEXT": [" NL 有 %d%% 概率 消耗 。"],
+    "NOTE": ["DEPRECATED"]
   }
 }

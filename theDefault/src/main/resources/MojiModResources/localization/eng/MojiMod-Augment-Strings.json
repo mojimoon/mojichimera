@@ -41,6 +41,7 @@
   },
   "MojiMod:SchrodingerMod": {
     "TEXT": ["Schrodinger's", "", "Reduces cost to #b0. NL Has a #b50% chance to #yExhaust when played."],
-    "EXTRA_TEXT": [" NL Has a %d%% chance to Exhaust."]
+    "EXTRA_TEXT": [" NL Has a %d%% chance to Exhaust."],
+    "NOTE": ["DEPRECATED"]
   }
 }
