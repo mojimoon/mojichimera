@@ -3,24 +3,24 @@ package MojiMod.augments;
 import CardAugments.cardmods.AbstractAugment;
 import MojiMod.MojiMod;
 import basemod.abstracts.AbstractCardModifier;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class OverpoweredMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(OverpoweredMod.class.getSimpleName());
+public class BuriedMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(BuriedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.5F;
+    private static final float MULTIPLIER = 1.5F;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+        GraveField.grave.set(card, Boolean.TRUE);
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 2)))
             this.modMagic = true;
-        card.costForTurn = ++card.cost;
     }
 
     @Override
@@ -46,10 +46,8 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && card.cost >= 0
-                && cardCheck(card, c -> doesntUpgradeCost())
-                && cardCheck(card, c -> (notRetain(c) && notEthereal(c)));
+        return ((card.baseDamage >= 2 || card.baseBlock >= 2 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 2)))
+                && !(Boolean) GraveField.grave.get(card));
     }
 
     @Override
@@ -61,17 +59,18 @@ public class OverpoweredMod extends AbstractAugment {
     @Override
     public String getAugmentDescription() { return TEXT[2]; }
 
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return insertBeforeText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.RARE;
+        return AbstractAugment.AugmentRarity.UNCOMMON;
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new OverpoweredMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BuriedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

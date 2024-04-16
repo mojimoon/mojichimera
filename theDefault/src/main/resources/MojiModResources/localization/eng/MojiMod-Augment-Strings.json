@@ -28,7 +28,7 @@
     "EXTRA_TEXT": [" NL Draw %d cards."]
   },
   "MojiMod:OverpoweredMod": {
-    "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b167%."],
+    "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b150%."],
     "EXTRA_TEXT": ["Ethereal. NL "]
 },
   "MojiMod:PeacefulMod": {
@@ -43,5 +43,17 @@
     "TEXT": ["Schrodinger's", "", "Reduces cost to #b0. NL Has a #b50% chance to #yExhaust when played."],
     "EXTRA_TEXT": [" NL Has a %d%% chance to Exhaust."],
     "NOTE": ["DEPRECATED"]
+  },
+  "MojiMod:BuriedMod": {
+    "TEXT": ["Buried", "", "#yGrave. NL Increases card values by #b50%."],
+    "EXTRA_TEXT": ["Grave. NL "]
+  },
+  "MojiMod:InfusedMod": {
+    "TEXT": ["Infused", "", "Increases damage and #yBlock gained when upgraded by #b200%."],
+    "EXTRA_TEXT": []
+  },
+  "MojiMod:InspiredMod": {
+    "TEXT": ["Inspired", "", "Increases magic numbers gained when upgraded by #b100%."],
+    "EXTRA_TEXT": []
   }
 }
