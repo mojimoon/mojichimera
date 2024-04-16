@@ -4,7 +4,7 @@
     "EXTRA_TEXT": ["Tooltip"]
   },
   "MojiMod:RentalMod": {
-    "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b2 #y金币 。"],
+    "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b5 #y金币 。"],
     "EXTRA_TEXT": [" NL 失去 %d 金币。"]
   },
   "MojiMod:EternalMod": {
@@ -28,7 +28,19 @@
     "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
   },
   "MojiMod:OverpoweredMod": {
-    "TEXT": ["强力", "", "本牌耗能增加 #b1 。 NL 所有数值增加 #b150% 。"],
+    "TEXT": ["强力", "", "本牌耗能增加 #b1 。 NL #y虚无。 NL 所有数值增加 #b167% 。"],
+    "EXTRA_TEXT": [" 虚无 。 NL "]
+  },
+  "MojiMod:PeacefulMod": {
+    "TEXT": ["和平", "", "本牌耗能变为 #b0 。 NL 造成的伤害减少 #b100% 。"],
     "EXTRA_TEXT": []
+  },
+  "MojiMod:PeaceMod": {
+    "TEXT": ["宁静", "", "进入 #y平静 。"],
+    "EXTRA_TEXT": [" NL 进入 平静 。"]
+  },
+  "MojiMod:SchrodingerMod": {
+    "TEXT": ["薛定谔的", "", "本牌耗能变为 #b0 。 NL 打出时有 #b50% 概率 #y消耗 。"],
+    "EXTRA_TEXT": [" NL 有 %d%% 概率 消耗 。"]
   }
 }

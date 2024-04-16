@@ -4,7 +4,7 @@
     "EXTRA_TEXT": ["Tooltip"]
   },
   "MojiMod:RentalMod": {
-    "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b2 #yGold when played."],
+    "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b5 #yGold when played."],
     "EXTRA_TEXT": [" NL Loses %d Gold."]
   },
   "MojiMod:EternalMod": {
@@ -28,7 +28,19 @@
     "EXTRA_TEXT": [" NL Draw %d cards."]
   },
   "MojiMod:OverpoweredMod": {
-    "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Increases card values by #b100%."],
+    "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b167%."],
+    "EXTRA_TEXT": ["Ethereal. NL "]
+},
+  "MojiMod:PeacefulMod": {
+    "TEXT": ["Peaceful", "", "Reduces cost to #b0. NL Reduces damage by #b100%."],
     "EXTRA_TEXT": []
+  },
+  "MojiMod:PeaceMod": {
+    "TEXT": ["", "Peace", "Enters #yCalm."],
+    "EXTRA_TEXT": [" NL Enter Calm."]
+  },
+  "MojiMod:SchrodingerMod": {
+    "TEXT": ["Schrodinger's", "", "Reduces cost to #b0. NL Has a #b50% chance to #yExhaust when played."],
+    "EXTRA_TEXT": [" NL Has a %d%% chance to Exhaust."]
   }
 }

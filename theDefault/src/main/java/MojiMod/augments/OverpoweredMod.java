@@ -12,11 +12,12 @@ public class OverpoweredMod extends AbstractAugment {
     public static final String ID = MojiMod.makeID(OverpoweredMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.5F;
+    private static final float MULTIPLIER = 2.6666667F;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        card.isEthereal = true;
         if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
         card.costForTurn = ++card.cost;
@@ -45,7 +46,10 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return ((card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))) && card.cost >= 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+                && card.cost >= 0
+                && cardCheck(card, c -> doesntUpgradeCost())
+                && cardCheck(card, c -> (notRetain(c) && notEthereal(c)));
     }
 
     @Override
@@ -56,6 +60,10 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public String getAugmentDescription() { return TEXT[2]; }
+
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+    }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() {

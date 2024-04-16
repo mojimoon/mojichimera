@@ -1,33 +1,37 @@
 package MojiMod.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.patches.CantUpgradeFieldPatches;
 import MojiMod.MojiMod;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 
-public class KnockoffMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(KnockoffMod.class.getSimpleName());
+public class PeaceMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(PeaceMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(card, Boolean.valueOf(true));
-        card.cost--;
-        if (card.cost < 0)
-            card.cost = 0;
-        card.costForTurn = card.cost;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return !card.upgraded
-                && card.canUpgrade()
-                && doesntOverride(card, "canUpgrade", new Class[0])
-                && card.cost > 0
-                && cardCheck(card, c -> doesntUpgradeCost());
+        return card.color == AbstractCard.CardColor.PURPLE
+                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)
+                && card.cost > -2
+                && !usesAction(card, ChangeStanceAction.class)
+                && !usesClass(card, MantraPower.class);
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        addToBot((AbstractGameAction)new ChangeStanceAction("Calm"));
     }
 
     @Override
@@ -50,7 +54,7 @@ public class KnockoffMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new KnockoffMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PeaceMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
