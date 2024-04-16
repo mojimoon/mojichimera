@@ -4,20 +4,17 @@ import CardAugments.cardmods.AbstractAugment;
 import MojiMod.MojiMod;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 
-public class PeaceMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(PeaceMod.class.getSimpleName());
+public class TranquilMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(TranquilMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final int DRAW = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -34,11 +31,7 @@ public class PeaceMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (AbstractDungeon.player.stance.ID.equals("Calm")) {
-            addToBot((AbstractGameAction)new DrawCardAction(DRAW));
-        } else {
-            addToBot(new ChangeStanceAction("Calm"));
-        }
+        addToBot((AbstractGameAction)new ChangeStanceAction("Calm"));
     }
 
     @Override
@@ -52,7 +45,7 @@ public class PeaceMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DRAW));
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
@@ -61,7 +54,7 @@ public class PeaceMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PeaceMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TranquilMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

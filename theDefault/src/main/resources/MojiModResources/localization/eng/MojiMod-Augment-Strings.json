@@ -17,14 +17,15 @@
   },
   "MojiMod:EXMod": {
     "TEXT": ["EX", "", "Increases card values by #b1."],
-    "EXTRA_TEXT": []
+    "EXTRA_TEXT": [],
+    "NOTE": ["DEPRECATED"]
   },
   "MojiMod:SkimMod": {
     "TEXT": ["", "Skim", "Draw #b1 card."],
     "EXTRA_TEXT": [" NL Draw %d card."]
   },
   "MojiMod:StrategyMod": {
-    "TEXT": ["", "Strategy", "Draw #b2 cards."],
+    "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b20%. NL Draw #b2 cards."],
     "EXTRA_TEXT": [" NL Draw %d cards."]
   },
   "MojiMod:OverpoweredMod": {
@@ -35,8 +36,8 @@
     "TEXT": ["Peaceful", "", "Reduces cost to #b0. NL Reduces damage by #b100%."],
     "EXTRA_TEXT": []
   },
-  "MojiMod:PeaceMod": {
-    "TEXT": ["", "Peace", "Enters #yCalm."],
+  "MojiMod:TranquilMod": {
+    "TEXT": ["Tranquil", "", "Enters #yCalm."],
     "EXTRA_TEXT": [" NL Enter Calm."]
   },
   "MojiMod:SchrodingerMod": {
@@ -48,12 +49,24 @@
     "TEXT": ["Buried", "", "#yGrave. NL Increases card values by #b50%."],
     "EXTRA_TEXT": ["Grave. NL "]
   },
-  "MojiMod:InfusedMod": {
-    "TEXT": ["Infused", "", "Increases damage and #yBlock gained when upgraded by #b200%."],
+  "MojiMod:InspiredMod": {
+    "TEXT": ["Inspired", "", "Increases magic number by an additional #b1 when upgraded."],
     "EXTRA_TEXT": []
   },
-  "MojiMod:InspiredMod": {
-    "TEXT": ["Inspired", "", "Increases magic numbers gained when upgraded by #b100%."],
+  "MojiMod:InfusedMod": {
+    "TEXT": ["Infused", "", "Increases damage by an additional #b4 when upgraded."],
     "EXTRA_TEXT": []
+  },
+  "MojiMod:ReinforcedMod": {
+    "TEXT": ["Reinforced", "", "Increases #yBlock by an additional #b4 when upgraded."],
+    "EXTRA_TEXT": []
+  },
+  "MojiMod:PeaceMod": {
+    "TEXT": ["", "Peace", "#yCalm: Draw #b2 cards. NL Otherwise enter #yCalm."],
+    "EXTRA_TEXT": [" NL Calm: Draw %d cards. NL Otherwise enter Calm."]
+  },
+  "MojiMod:HeatsinksMod": {
+    "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
+    "EXTRA_TEXT": [" NL Draw %d cards."]
   }
 }

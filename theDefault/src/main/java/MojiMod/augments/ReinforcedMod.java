@@ -5,29 +5,27 @@ import MojiMod.MojiMod;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class InfusedMod extends AbstractAugment {
-    public static final String ID = MojiMod.makeID(InfusedMod.class.getSimpleName());
+public class ReinforcedMod extends AbstractAugment {
+    public static final String ID = MojiMod.makeID(ReinforcedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int UPGRADE_BLOCK = 4;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
     }
 
     @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+    public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.upgraded)
-            return damage + UPGRADE_DAMAGE;
-        return damage;
+            return block + UPGRADE_BLOCK;
+        return block;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return cardCheck(card, c -> upgradesDamage());
+        return cardCheck(card, c -> upgradesBlock());
     }
 
     @Override
@@ -45,7 +43,7 @@ public class InfusedMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new InfusedMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ReinforcedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
