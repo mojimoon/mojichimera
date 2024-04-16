@@ -1,0 +1,62 @@
+{
+    "mojichimera:AugmentTemplate": {
+        "TEXT": ["Prefix", "Suffix", "Description stuff"],
+        "EXTRA_TEXT": ["Tooltip"]
+    },
+    "mojichimera:RentalMod": {
+        "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b5 #y金币 。"],
+        "EXTRA_TEXT": [" NL 失去 %d 金币。"]
+    },
+    "mojichimera:EternalMod": {
+        "TEXT": ["永恒", "", "卡牌数值增加 #b33% 。 NL 无法从牌组中移除。"],
+        "EXTRA_TEXT": [" NL 无法从牌组中移除。"]
+    },
+    "mojichimera:KnockoffMod": {
+        "TEXT": ["山寨", "", "本牌耗能减少 #b1。 NL 无法被升级。"],
+        "EXTRA_TEXT": [" NL 无法被升级。"]
+    },
+    "mojichimera:SkimMod": {
+        "TEXT": ["", "检索", "抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+    },
+    "mojichimera:StrategyMod": {
+        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b20% 。 NL 抽 #b2 张牌。"],
+        "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+    },
+    "mojichimera:OverpoweredMod": {
+        "TEXT": ["强力", "", "本牌耗能增加 #b1 。 NL #y虚无。 NL 卡牌数值增加 #b150% 。"],
+        "EXTRA_TEXT": [" 虚无 。 NL "]
+    },
+    "mojichimera:PeacefulMod": {
+        "TEXT": ["和平", "", "本牌耗能变为 #b0 。 NL 造成的伤害减少 #b100% 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:TranquilMod": {
+        "TEXT": ["安宁", "", "进入 #y平静 。"],
+        "EXTRA_TEXT": [" NL 进入 平静 。"]
+    },
+    "mojichimera:BuriedMod": {
+        "TEXT": ["埋藏", "", "#y墓地。 NL 卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [" 墓地 。 NL "]
+    },
+    "mojichimera:InspiredMod": {
+        "TEXT": ["灵感", "", "升级时魔法数字额外增加 #b1 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:InfusedMod": {
+        "TEXT": ["注能", "", "升级时造成的伤害额外增加 #b4 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:ReinforcedMod": {
+        "TEXT": ["硬化", "", "升级时获得的 #y格档 额外增加 #b4 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:PeaceMod": {
+        "TEXT": ["", "宁静", "#y平静 ：抽 #b2 张牌。 NL 否则，进入 #y平静 。"],
+        "EXTRA_TEXT": [" NL 平静 ：抽 %d 张牌。 NL 否则，进入 平静 。"]
+    },
+    "mojichimera:HeatsinksMod": {
+        "TEXT": ["散热", "", "抽 #b2 张牌。"],
+        "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+    }
+}

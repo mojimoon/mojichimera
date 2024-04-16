@@ -1,0 +1,62 @@
+{
+    "mojichimera:AugmentTemplate": {
+        "TEXT": ["Prefix", "Suffix", "Description stuff"],
+        "EXTRA_TEXT": ["Tooltip"]
+    },
+    "mojichimera:RentalMod": {
+        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b5 #yGold when played."],
+        "EXTRA_TEXT": [" NL Loses %d Gold."]
+    },
+    "mojichimera:EternalMod": {
+        "TEXT": ["Eternal", "", "Increases card values by #b33%. NL Cannot be removed from your deck."],
+        "EXTRA_TEXT": [" NL Cannot be removed from your deck."]
+    },
+    "mojichimera:KnockoffMod": {
+        "TEXT": ["Knockoff", "", "Reduces cost by #b1. NL Cannot be upgraded."],
+        "EXTRA_TEXT": [" NL Cannot be upgraded."]
+    },
+    "mojichimera:SkimMod": {
+        "TEXT": ["", "Skim", "Draw #b1 card."],
+        "EXTRA_TEXT": [" NL Draw %d card."]
+    },
+    "mojichimera:StrategyMod": {
+        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b20%. NL Draw #b2 cards."],
+        "EXTRA_TEXT": [" NL Draw %d cards."]
+    },
+    "mojichimera:OverpoweredMod": {
+        "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b150%."],
+        "EXTRA_TEXT": ["Ethereal. NL "]
+    },
+    "mojichimera:PeacefulMod": {
+        "TEXT": ["Peaceful", "", "Reduces cost to #b0. NL Reduces damage by #b100%."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:TranquilMod": {
+        "TEXT": ["Tranquil", "", "Enters #yCalm."],
+        "EXTRA_TEXT": [" NL Enter Calm."]
+    },
+    "mojichimera:BuriedMod": {
+        "TEXT": ["Buried", "", "#yGrave. NL Increases card values by #b50%."],
+        "EXTRA_TEXT": ["Grave. NL "]
+    },
+    "mojichimera:InspiredMod": {
+        "TEXT": ["Inspired", "", "Increases magic number by an additional #b1 when upgraded."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:InfusedMod": {
+        "TEXT": ["Infused", "", "Increases damage by an additional #b4 when upgraded."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:ReinforcedMod": {
+        "TEXT": ["Reinforced", "", "Increases #yBlock by an additional #b4 when upgraded."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:PeaceMod": {
+        "TEXT": ["", "Peace", "#yCalm: Draw #b2 cards. NL Otherwise enter #yCalm."],
+        "EXTRA_TEXT": [" NL Calm: Draw %d cards. NL Otherwise enter Calm."]
+    },
+    "mojichimera:HeatsinksMod": {
+        "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
+        "EXTRA_TEXT": [" NL Draw %d cards."]
+    }
+}
