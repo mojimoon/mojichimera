@@ -7,10 +7,6 @@
         "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b5 #y金币 。"],
         "EXTRA_TEXT": [" NL 失去 %d 金币。"]
     },
-    "mojichimera:EternalMod": {
-        "TEXT": ["永恒", "", "卡牌数值增加 #b33% 。 NL 无法从牌组中移除。"],
-        "EXTRA_TEXT": [" NL 无法从牌组中移除。"]
-    },
     "mojichimera:KnockoffMod": {
         "TEXT": ["山寨", "", "本牌耗能减少 #b1。 NL 无法被升级。"],
         "EXTRA_TEXT": [" NL 无法被升级。"]

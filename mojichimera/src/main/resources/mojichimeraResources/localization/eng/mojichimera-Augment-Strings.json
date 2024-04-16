@@ -7,10 +7,6 @@
         "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b5 #yGold when played."],
         "EXTRA_TEXT": [" NL Loses %d Gold."]
     },
-    "mojichimera:EternalMod": {
-        "TEXT": ["Eternal", "", "Increases card values by #b33%. NL Cannot be removed from your deck."],
-        "EXTRA_TEXT": [" NL Cannot be removed from your deck."]
-    },
     "mojichimera:KnockoffMod": {
         "TEXT": ["Knockoff", "", "Reduces cost by #b1. NL Cannot be upgraded."],
         "EXTRA_TEXT": [" NL Cannot be upgraded."]
