@@ -65,9 +65,7 @@ public class BuriedMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.UNCOMMON;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BuriedMod(); }

@@ -40,7 +40,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:InfusedMod": {
-        "TEXT": ["注能", "", "升级时造成的伤害额外增加 #b4 。"],
+        "TEXT": ["注能", "", "升级时造成的伤害额外增加 #b5 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:ReinforcedMod": {
@@ -54,5 +54,9 @@
     "mojichimera:HeatsinksMod": {
         "TEXT": ["散热", "", "抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+    },
+    "mojichimera:TransfiniteMod": {
+        "TEXT": ["超限", "", "能被多次 #y升级 。"],
+        "EXTRA_TEXT": [" NL 能被多次 升级 。"]
     }
 }

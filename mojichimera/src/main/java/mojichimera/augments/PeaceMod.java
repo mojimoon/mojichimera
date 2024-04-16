@@ -56,9 +56,7 @@ public class PeaceMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.RARE;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PeaceMod(); }

@@ -61,14 +61,13 @@ public class OverpoweredMod extends AbstractAugment {
     @Override
     public String getAugmentDescription() { return TEXT[2]; }
 
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return insertBeforeText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.RARE;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new OverpoweredMod(); }

@@ -19,7 +19,7 @@ public class ReinforcedMod extends AbstractAugment {
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.upgraded)
-            return block + UPGRADE_BLOCK;
+            return block + getEffectiveUpgrades(card) * UPGRADE_BLOCK;
         return block;
     }
 
@@ -38,9 +38,7 @@ public class ReinforcedMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.COMMON;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ReinforcedMod(); }

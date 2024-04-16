@@ -1,37 +1,18 @@
 package mojichimera;
 
 import basemod.*;
-import basemod.eventUtil.AddEventParams;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.evacipated.cardcrawl.modthespire.Loader;
-import com.google.gson.Gson;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.TheCity;
-import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mojichimera.util.TextureLoader;
 import mojichimera.augments.AugmentHelper;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Properties;
 
 @SpireInitializer
 public class mojichimera implements 
@@ -43,10 +24,6 @@ public class mojichimera implements
     private static final String MODNAME = "Mojimoon Chimera";
     private static final String AUTHOR = "Mojimoon";
     private static final String DESCRIPTION = "Chimera expansion by Mojimoon.";
-
-    public static UIStrings uiStrings;
-    public static String[] TEXT;
-    public static String[] EXTRA_TEXT;
 
     // Mod Badge
     public static final String BADGE_IMAGE = "mojichimeraResources/images/Badge.png";

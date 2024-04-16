@@ -1,33 +1,30 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.patches.CantUpgradeFieldPatches;
+import CardAugments.patches.InfiniteUpgradesPatches;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class KnockoffMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(KnockoffMod.class.getSimpleName());
+public class TransfiniteMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(TransfiniteMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(card, Boolean.valueOf(true));
-        card.cost--;
-        if (card.cost < 0)
-            card.cost = 0;
-        card.costForTurn = card.cost;
+        InfiniteUpgradesPatches.InfUpgradeField.inf.set(card, true);
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return !card.upgraded
+        return card.type == AbstractCard.CardType.POWER
                 && card.canUpgrade()
+                && cardCheck(card, c -> upgradesAVariable())
                 && doesntOverride(card, "canUpgrade", new Class[0])
-                && card.cost > 0
-                && cardCheck(card, c -> doesntUpgradeCost());
+                && !(card instanceof com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard)
+                && !(card instanceof com.evacipated.cardcrawl.mod.stslib.cards.interfaces.MultiUpgradeCard);
     }
 
     @Override
@@ -45,12 +42,11 @@ public class KnockoffMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new KnockoffMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TransfiniteMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
 }
-

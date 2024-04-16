@@ -12,7 +12,7 @@ public class InfusedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(InfusedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int UPGRADE_DAMAGE = 5;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -21,7 +21,7 @@ public class InfusedMod extends AbstractAugment {
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.upgraded)
-            return damage + UPGRADE_DAMAGE;
+            return damage + getEffectiveUpgrades(card) * UPGRADE_DAMAGE;
         return damage;
     }
 
@@ -40,9 +40,7 @@ public class InfusedMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() {
-        return AbstractAugment.AugmentRarity.COMMON;
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new InfusedMod(); }

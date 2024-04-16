@@ -40,7 +40,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:InfusedMod": {
-        "TEXT": ["Infused", "", "Increases damage by an additional #b4 when upgraded."],
+        "TEXT": ["Infused", "", "Increases damage by an additional #b5 when upgraded."],
         "EXTRA_TEXT": []
     },
     "mojichimera:ReinforcedMod": {
@@ -54,5 +54,9 @@
     "mojichimera:HeatsinksMod": {
         "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
         "EXTRA_TEXT": [" NL Draw %d cards."]
+    },
+    "mojichimera:TransfiniteMod": {
+        "TEXT": ["Transfinite", "", "Allows #yUpgrading any number of times."],
+        "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
     }
 }
