@@ -4,7 +4,7 @@
         "EXTRA_TEXT": ["Tooltip"]
     },
     "mojichimera:RentalMod": {
-        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b10 #yGold when played."],
+        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b6 #yGold when played."],
         "EXTRA_TEXT": [" NL Loses %d Gold."]
     },
     "mojichimera:KnockoffMod": {
@@ -48,8 +48,8 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:PeaceMod": {
-        "TEXT": ["", "Peace", "#yCalm: Draw #b2 cards. NL Otherwise enter #yCalm."],
-        "EXTRA_TEXT": [" NL Calm: Draw %d cards. NL Otherwise enter Calm."]
+        "TEXT": ["", "Peace", "#yCalm: Draw #b2 cards."],
+        "EXTRA_TEXT": [" NL Calm: Draw %d cards."]
     },
     "mojichimera:HeatsinksMod": {
         "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
@@ -60,7 +60,7 @@
         "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
     },
     "mojichimera:ChaoticMod": {
-        "TEXT": ["Chaotic", "", "Upon pickup, card values are randomized between #b50% and #b200%."],
+        "TEXT": ["Chaotic", "", "Card values are randomized between #b50% and #b200% of their original values."],
         "EXTRA_TEXT": []
     }
 }

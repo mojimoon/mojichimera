@@ -36,8 +36,6 @@ public class PeaceMod extends AbstractAugment {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (AbstractDungeon.player.stance.ID.equals("Calm")) {
             addToBot((AbstractGameAction)new DrawCardAction(DRAW));
-        } else {
-            addToBot(new ChangeStanceAction("Calm"));
         }
     }
 
