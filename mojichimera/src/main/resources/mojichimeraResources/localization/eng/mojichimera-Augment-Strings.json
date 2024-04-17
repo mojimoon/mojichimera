@@ -62,5 +62,9 @@
     "mojichimera:ChaoticMod": {
         "TEXT": ["Chaotic", "", "At the start of each combat, card values are randomized between #b50% (rounded up) and #b200% of their base values."],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:BluntMod": {
+        "TEXT": ["Blunt", "", "Reduces cost to #b0. NL Reduces #yBlock by #b100%."],
+        "EXTRA_TEXT": []
     }
 }

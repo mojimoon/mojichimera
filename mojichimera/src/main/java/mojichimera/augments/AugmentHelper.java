@@ -2,6 +2,7 @@ package mojichimera.augments;
 
 import CardAugments.CardAugmentsMod;
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.cards.blue.Stack;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.blue.Hyperbeam;
@@ -48,5 +49,11 @@ public class AugmentHelper {
 
         // Inspired
         CardAugmentsMod.registerCustomBan(InspiredMod.ID, c -> c instanceof Hemokinesis); // 御血术
+
+        // ReinforcedMod
+        CardAugmentsMod.registerCustomBan(ReinforcedMod.ID, c -> c instanceof Stack); // 堆栈
+
+        // BluntMod
+        CardAugmentsMod.registerCustomBan(BluntMod.ID, c -> c instanceof Wish); // 许愿
     }
 }

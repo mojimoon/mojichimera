@@ -48,7 +48,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:PeaceMod": {
-        "TEXT": ["", "宁静", "#y平静 ：抽 #b2 张牌。"],
+        "TEXT": ["宁静", "", "#y平静 ：抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 平静 ：抽 %d 张牌。"]
     },
     "mojichimera:HeatsinksMod": {
@@ -61,6 +61,10 @@
     },
     "mojichimera:ChaoticMod": {
         "TEXT": ["混沌", "", "每场战斗开始时，卡牌数值在基础值的 #b50% （向上取整） 和 #b200% 之间随机。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:BluntMod": {
+        "TEXT": ["直率", "", "本牌耗能变为 #b0 。 NL 获得的 #y格档 减少 #b100% 。"],
         "EXTRA_TEXT": []
     }
 }
