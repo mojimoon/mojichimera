@@ -13,7 +13,7 @@ public class RentalMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(RentalMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int GOLD = 8;
+    private static final int GOLD = 10;
 
     @Override
     public void onInitialApplication(AbstractCard card) {

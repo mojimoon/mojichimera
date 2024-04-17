@@ -4,7 +4,7 @@
         "EXTRA_TEXT": ["Tooltip"]
     },
     "mojichimera:RentalMod": {
-        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b8 #yGold when played."],
+        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b10 #yGold when played."],
         "EXTRA_TEXT": [" NL Loses %d Gold."]
     },
     "mojichimera:KnockoffMod": {
@@ -58,5 +58,9 @@
     "mojichimera:TransfiniteMod": {
         "TEXT": ["Transfinite", "", "Allows #yUpgrading any number of times."],
         "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
+    },
+    "mojichimera:ChaoticMod": {
+        "TEXT": ["Chaotic", "", "Upon pickup, card values are randomized between #b50% and #b200%."],
+        "EXTRA_TEXT": []
     }
 }

@@ -4,7 +4,7 @@
         "EXTRA_TEXT": ["Tooltip"]
     },
     "mojichimera:RentalMod": {
-        "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b8 #y金币 。"],
+        "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b10 #y金币 。"],
         "EXTRA_TEXT": [" NL 失去 %d 金币。"]
     },
     "mojichimera:KnockoffMod": {
@@ -58,5 +58,9 @@
     "mojichimera:TransfiniteMod": {
         "TEXT": ["超限", "", "能被多次 #y升级 。"],
         "EXTRA_TEXT": [" NL 能被多次 升级 。"]
+    },
+    "mojichimera:ChaoticMod": {
+        "TEXT": ["混沌", "", "拾起时，卡牌数值会在 #b50% 到 #b200% 之间随机变化。"],
+        "EXTRA_TEXT": []
     }
 }
