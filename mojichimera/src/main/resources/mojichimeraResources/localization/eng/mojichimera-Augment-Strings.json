@@ -60,7 +60,7 @@
         "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
     },
     "mojichimera:ChaoticMod": {
-        "TEXT": ["Chaotic", "", "Card values are randomized between #b50% and #b200% of their original values."],
+        "TEXT": ["Chaotic", "", "Upon pickup, card values are randomized between #b50% and #b200%."],
         "EXTRA_TEXT": []
     }
 }
