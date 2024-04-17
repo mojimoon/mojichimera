@@ -4,7 +4,7 @@
         "EXTRA_TEXT": ["Tooltip"]
     },
     "mojichimera:RentalMod": {
-        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b5 #yGold when played."],
+        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b8 #yGold when played."],
         "EXTRA_TEXT": [" NL Loses %d Gold."]
     },
     "mojichimera:KnockoffMod": {
@@ -16,7 +16,7 @@
         "EXTRA_TEXT": [" NL Draw %d card."]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b20%. NL Draw #b2 cards."],
+        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b25%. NL Draw #b2 cards."],
         "EXTRA_TEXT": [" NL Draw %d cards."]
     },
     "mojichimera:OverpoweredMod": {

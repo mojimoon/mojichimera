@@ -4,7 +4,7 @@
         "EXTRA_TEXT": ["Tooltip"]
     },
     "mojichimera:RentalMod": {
-        "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b5 #y金币 。"],
+        "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b8 #y金币 。"],
         "EXTRA_TEXT": [" NL 失去 %d 金币。"]
     },
     "mojichimera:KnockoffMod": {
@@ -16,7 +16,7 @@
         "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b20% 。 NL 抽 #b2 张牌。"],
+        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b25% 。 NL 抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
     },
     "mojichimera:OverpoweredMod": {

@@ -16,7 +16,7 @@ public class StrategyMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(StrategyMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.8F;
+    private static final float MULTIPLIER = 0.75F;
     private static final int DRAW = 2;
 
     @Override
