@@ -24,7 +24,7 @@
         "EXTRA_TEXT": ["Ethereal. NL "]
     },
     "mojichimera:PeacefulMod": {
-        "TEXT": ["Peaceful", "", "Reduces cost to #b0. NL Reduces damage by #b100%."],
+        "TEXT": ["Peaceful", "", "Sets cost to #b0. NL Reduces damage by #b100%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:TranquilMod": {
@@ -64,7 +64,19 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:BluntMod": {
-        "TEXT": ["Blunt", "", "Reduces cost to #b0. NL Reduces #yBlock by #b100%."],
+        "TEXT": ["Blunt", "", "Sets cost to #b0. NL Reduces #yBlock by #b100%."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:XXMod": {
+        "TEXT": ["", "XX", "This card is performed X times."],
+        "EXTRA_TEXT": ["Perform X times: NL "]
+    },
+    "mojichimera:ReplenishMod": {
+        "TEXT": ["Replenish", "", "Draw #b1 card when drawn."],
+        "EXTRA_TEXT": [" NL Draw %d card when drawn."]
+    },
+    "mojichimera:PocketMod": {
+        "TEXT": ["Pocket", "", "Sets cost to #b1. NL Proportionally reduces card values (rounded up)."],
         "EXTRA_TEXT": []
     }
 }

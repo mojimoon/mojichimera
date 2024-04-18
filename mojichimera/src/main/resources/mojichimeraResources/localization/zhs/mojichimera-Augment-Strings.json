@@ -66,5 +66,17 @@
     "mojichimera:BluntMod": {
         "TEXT": ["直率", "", "本牌耗能变为 #b0 。 NL 获得的 #y格档 减少 #b100% 。"],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:XXMod": {
+        "TEXT": ["", " XX", "本牌生效X次。"],
+        "EXTRA_TEXT": ["生效X次： NL "]
+    },
+    "mojichimera:ReplenishMod": {
+        "TEXT": ["装填", "", "抽到本牌时抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 抽到本牌时抽 %d 张牌。"]
+    },
+    "mojichimera:PocketMod": {
+        "TEXT": ["袖珍", "", "本牌耗能变为 #b1 。 NL 卡牌数值按比例减少（向上取整）。"],
+        "EXTRA_TEXT": []
     }
 }

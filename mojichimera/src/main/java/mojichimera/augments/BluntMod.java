@@ -40,6 +40,7 @@ public class BluntMod extends AbstractAugment {
             || card instanceof ConserveBattery // 充电
             || card instanceof Hologram // 全息影像
             || card instanceof Evaluate // 评估
+            || card instanceof EmptyBody // 化体为空
             || card instanceof Swivel // 旋身
             || card instanceof DeceiveReality; // 欺骗现实
     }

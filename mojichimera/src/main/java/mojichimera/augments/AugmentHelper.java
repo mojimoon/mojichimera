@@ -55,5 +55,8 @@ public class AugmentHelper {
 
         // BluntMod
         CardAugmentsMod.registerCustomBan(BluntMod.ID, c -> c instanceof Wish); // 许愿
+
+        // PocketMod
+        CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof Wish); // 许愿
     }
 }
