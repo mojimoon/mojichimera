@@ -82,17 +82,21 @@
     },
     "mojichimera:BloodDebtMod": {
         "TEXT": ["血债", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b1 点生命。"],
-        "EXTRA_TEXT": [" NL 失去 %d 点生命。"]
+        "EXTRA_TEXT": [" 失去 %d 点生命。 NL "]
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["奇怪", "", "不再 #y消耗 。 "],
-        "EXTRA_TEXT": ["不再 消耗 。", "消耗 。", ""],
-        "NOTES": ["EXTRA_TEXT[1] is the string to be replaced", "EXTRA_TEXT[2] is the string to replace with"]
+        "EXTRA_TEXT": ["不再 消耗 。",
+            "消耗 。",
+            "",
+            "消耗 。 NL 消耗 。",
+            "消耗 。"
+            ],
+        "NOTES": ["[2] is to replace [1] in original text", "[4] is a special case for Purity and Omniscience"]
     },
     "mojichimera:VirtueMod": {
-        "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。"],
-        "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"],
-        "NOTES": ["FROM Downfall Hermit:Virtue"]
+        "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。 NL 灵感源于 #b 崩坠 #y亡命之徒 的同名卡牌。"],
+        "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"]
     },
     "mojichimera:DodgeMod": {
         "TEXT": ["闪躲", "", "获得 #b3 点临时 #y敏捷 。"],
@@ -101,5 +105,13 @@
     "mojichimera:FocusedMod": {
         "TEXT": ["专注", "", "获得 #b2 点临时 #y集中 。"],
         "EXTRA_TEXT": [" NL 获得 %d 点临时 集中 。"]
+    },
+    "mojichimera:TwinMod": {
+        "TEXT": ["双重", "", "本牌耗能增加 #b1 。 NL 再打出一次。 NL 灵感源于 #b奇美拉 的同名废弃词条。"],
+        "EXTRA_TEXT": [" NL 再打出一次。"]
+    },
+    "mojichimera:AfterlifeMod": {
+        "TEXT": ["阴世", "", "#y虚无 。 NL 因 #y虚无 被 #y消耗 时也能触发效果。 NL 灵感源于 #b崩坠 #y六火亡魂 的同名关键词。"],
+        "EXTRA_TEXT": [" 虚无 。 NL 打出或因 虚无 被 消耗 时： NL "]
     }
 }

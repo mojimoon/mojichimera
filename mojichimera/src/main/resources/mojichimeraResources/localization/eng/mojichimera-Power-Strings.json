@@ -1,0 +1,10 @@
+{
+  "mojichimera:LoseFocusPower": {
+    "NAME": "Focus Down",
+    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
+  },
+  "mojchimera:LosePowerPower": {
+    "NAME": "Lose ",
+    "DESCRIPTIONS": ["At the end of your turn, lose #b"," ","."]
+  }
+}

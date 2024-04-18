@@ -50,13 +50,19 @@ public class AugmentHelper {
         // Inspired
         CardAugmentsMod.registerCustomBan(InspiredMod.ID, c -> c instanceof Hemokinesis); // 御血术
 
-        // ReinforcedMod
+        // Reinforced
         CardAugmentsMod.registerCustomBan(ReinforcedMod.ID, c -> c instanceof Stack); // 堆栈
 
-        // BluntMod
+        // Blunt
         CardAugmentsMod.registerCustomBan(BluntMod.ID, c -> c instanceof Wish); // 许愿
 
-        // PocketMod
+        // Pocket
         CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof Wish); // 许愿
+
+        // Strange
+        CardAugmentsMod.registerCustomBan(StrangeMod.ID, c -> c instanceof DeusExMachina); // 机械降神
+
+        // Pocket
+        CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof Ragnarok); // 诸神之黄昏
     }
 }

@@ -1,0 +1,10 @@
+{
+  "mojichimera:LoseFocusPower": {
+    "NAME": "集中下降",
+    "DESCRIPTIONS": ["在你的回合结束时，失去 #b", " 点 #y集中 。"]
+  },
+  "mojichimera:LosePowerPower": {
+    "NAME": "下降",
+    "DESCRIPTIONS": ["回合结束时失去 #b ", " ", ""]
+  }
+}

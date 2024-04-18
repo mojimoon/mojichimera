@@ -33,6 +33,9 @@ public class StrangeMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
+        if (rawDescription.contains(CARD_TEXT[3])) {
+            return rawDescription.replace(CARD_TEXT[3], CARD_TEXT[4]);
+        }
         if (rawDescription.contains(CARD_TEXT[1])) {
             return rawDescription.replace(CARD_TEXT[1], CARD_TEXT[2]);
         }

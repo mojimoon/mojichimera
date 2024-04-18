@@ -82,12 +82,12 @@
     },
     "mojichimera:BloodDebtMod": {
         "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b1 HP when played."],
-        "EXTRA_TEXT": [" NL Lose %d HP."]
+        "EXTRA_TEXT": ["Lose %d HP. NL "]
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["Strange", "", "No longer #yExhausts."],
         "EXTRA_TEXT": ["No longer exhausts.", "Exhausts.", ""],
-        "NOTES": ["EXTRA_TEXT[1] is the string to be replaced", "EXTRA_TEXT[2] is the string to replace with"]
+        "NOTES": ["[2] is to replace [1] in original text", "[4] is a special case for Purity and Omniscience"]
     },
     "mojichimera:VirtueMod": {
         "TEXT": ["Virtuous", "", "Reduces each of your debuffs by #b1."],
@@ -101,5 +101,13 @@
     "mojichimera:FocusedMod": {
         "TEXT": ["Focused", "", "Gains #b2 #yFocus this turn."],
         "EXTRA_TEXT": [" NL Gain %d Focus. NL At the end of this turn, lose %d Focus."]
+    },
+    "mojichimera:TwinMod": {
+        "TEXT": ["Twin", "", "Increases cost by #b1. NL Plays twice."],
+        "EXTRA_TEXT": [" NL Plays twice."]
+    },
+    "mojichimera:AfterlifeMod": {
+        "TEXT": ["Afterlife", "", "#yEthereal. NL When #yExhausted due to #yethereal, trigger all effects."],
+        "EXTRA_TEXT": ["Ethereal. NL When played or exhausted due to ethereal: NL "]
     }
 }

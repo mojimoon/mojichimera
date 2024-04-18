@@ -1,10 +1,8 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.red.Hemokinesis;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import CardAugments.patches.EchoFieldPatches;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -13,22 +11,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class BloodDebtMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(BloodDebtMod.class.getSimpleName());
+public class TwinMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(TwinMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int HP = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.cost--;
-        if (card.cost < 0)
-            card.cost = 0;
-        card.costForTurn = card.cost;
-        if (card instanceof Hemokinesis) {
-            card.baseMagicNumber += HP;
-            card.magicNumber = card.baseMagicNumber;
-        }
+        card.costForTurn = ++card.cost;
+        EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) + 1);
     }
 
     @Override
@@ -38,10 +29,6 @@ public class BloodDebtMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (card instanceof Hemokinesis)
-            return;
-        addToTop((AbstractGameAction)new LoseHPAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, HP));
-        addToTop((AbstractGameAction)new SFXAction("BLOOD_SPLAT", 0.8F));
     }
 
     @Override
@@ -55,16 +42,14 @@ public class BloodDebtMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (card instanceof Hemokinesis)
-            return rawDescription;
-        return insertBeforeText(rawDescription, String.format(CARD_TEXT[0], HP));
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BloodDebtMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TwinMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

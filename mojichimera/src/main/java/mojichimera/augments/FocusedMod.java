@@ -10,15 +10,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
+import com.megacrit.cardcrawl.powers.FocusPower;
 import mojichimera.mojichimera;
+import mojichimera.powers.LoseFocusPower;
 
-public class DodgeMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(DodgeMod.class.getSimpleName());
+public class FocusedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(FocusedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 3;
+    private static final int EFFECT = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -26,14 +26,13 @@ public class DodgeMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return (card.cost != -2) && allowOrbMods();
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-
-        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new DexterityPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
-        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new LoseDexterityPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
+        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new FocusPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
+        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new LoseFocusPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
     }
 
     @Override
@@ -54,7 +53,7 @@ public class DodgeMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new DodgeMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new FocusedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

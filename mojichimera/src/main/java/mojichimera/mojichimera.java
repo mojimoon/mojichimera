@@ -25,8 +25,12 @@ public class mojichimera implements
     private static final String AUTHOR = "Mojimoon";
     private static final String DESCRIPTION = "Chimera expansion by Mojimoon.";
 
-    // Mod Badge
+    // Assets
     public static final String BADGE_IMAGE = "mojichimeraResources/images/Badge.png";
+
+    public static String makePowerPath(String resourcePath) {
+        return getModID() + "Resources/images/powers/" + resourcePath;
+    }
 
     // initialize
     public mojichimera() {
@@ -75,6 +79,10 @@ public class mojichimera implements
         // Augment Strings
         BaseMod.loadCustomStringsFile(UIStrings.class,
             getModID() + "Resources/localization/"+loadLocalizationIfAvailable("mojichimera-Augment-Strings.json"));
+
+        // Power Strings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+            getModID() + "Resources/localization/"+loadLocalizationIfAvailable("mojichimera-Power-Strings.json"));
     }
 
     // Utility
