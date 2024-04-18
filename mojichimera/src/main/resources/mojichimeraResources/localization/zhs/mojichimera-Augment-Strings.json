@@ -93,5 +93,13 @@
         "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。"],
         "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"],
         "NOTES": ["FROM Downfall Hermit:Virtue"]
+    },
+    "mojichimera:DodgeMod": {
+        "TEXT": ["闪躲", "", "获得 #b3 点临时 #y敏捷 。"],
+        "EXTRA_TEXT": [" NL 获得 %d 点临时 敏捷 。"]
+    },
+    "mojichimera:FocusedMod": {
+        "TEXT": ["专注", "", "获得 #b2 点临时 #y集中 。"],
+        "EXTRA_TEXT": [" NL 获得 %d 点临时 集中 。"]
     }
 }
