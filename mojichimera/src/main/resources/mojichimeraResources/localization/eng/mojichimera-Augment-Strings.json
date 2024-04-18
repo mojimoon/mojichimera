@@ -86,8 +86,13 @@
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["Strange", "", "No longer #yExhausts."],
-        "EXTRA_TEXT": ["No longer exhausts.", "Exhausts.", ""],
-        "NOTES": ["[2] is to replace [1] in original text", "[4] is a special case for Purity and Omniscience"]
+        "EXTRA_TEXT": ["No longer Exhausts.",
+            "Exhausts.",
+            "",
+            "Exhausts. NL Exhausts.",
+            "Exhausts."
+            ],
+        "NOTES": ["[2] is to replace [1] in original text", "[3][4] is a special case for Purity and Omniscience"]
     },
     "mojichimera:VirtueMod": {
         "TEXT": ["Virtuous", "", "Reduces each of your debuffs by #b1."],
@@ -108,6 +113,23 @@
     },
     "mojichimera:AfterlifeMod": {
         "TEXT": ["Afterlife", "", "#yEthereal. NL When #yExhausted due to #yethereal, trigger all effects."],
-        "EXTRA_TEXT": ["Ethereal. NL When played or exhausted due to ethereal: NL "]
+        "EXTRA_TEXT": ["Ethereal. NL When played or exhausted due to ethereal: NL "],
+        "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:EstablishedMod": {
+        "TEXT": ["Established", "", "#yRetain. NL When #yRetained, reduces cost by #b1."],
+        "EXTRA_TEXT": ["Retain. NL ", " NL When retained, reduce cost by %d."]
+    },
+    "mojichimera:ReactiveMod": {
+        "TEXT": ["Reactive", "", "#yRetain. NL When #yRetained, increases magic number by #b1."],
+        "EXTRA_TEXT": ["Retain. NL ", " NL When retained, increase magic number by %d."]
+    },
+    "mojichimera:IndignantMod": {
+        "TEXT": ["Indignant", "", "#yWrath: Deals #b50% more damage."],
+        "EXTRA_TEXT": [" NL Wrath: Deals %d%% more damage."]
+    },
+    "mojichimera:RecyclableMod": {
+        "TEXT": ["Recyclable", "", "#yEthereal. NL When #yExhausted, gives [E] next turn."],
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain [E] next turn."]
     }
 }
