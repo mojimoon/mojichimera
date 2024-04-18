@@ -65,7 +65,7 @@ public class PocketMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PocketMod(); }

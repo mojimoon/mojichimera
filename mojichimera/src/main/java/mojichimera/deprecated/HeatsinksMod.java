@@ -1,51 +1,34 @@
-package mojichimera.augments;
+package mojichimera.deprecated;
 
 import CardAugments.cardmods.AbstractAugment;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class StrategyMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(StrategyMod.class.getSimpleName());
+public class HeatsinksMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(HeatsinksMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.66666667F;
     private static final int DRAW = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
     }
 
-    @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (card.baseDamage > 0)
-            return damage * MULTIPLIER;
-        return damage;
-    }
-
-    @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
-        if (card.baseBlock > 0)
-            return block * MULTIPLIER;
-        return block;
-    }
-
-    @Override
-    public boolean validCard(AbstractCard card) {
-        return card.cost != -2
-                && (card.baseDamage >= 2 || card.baseBlock >= 2);
-    }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         addToBot((AbstractGameAction)new DrawCardAction(DRAW));
+    }
+
+    @Override
+    public boolean validCard(AbstractCard card) {
+        return card.type == AbstractCard.CardType.POWER;
     }
 
     @Override
@@ -66,7 +49,7 @@ public class StrategyMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StrategyMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HeatsinksMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

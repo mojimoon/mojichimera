@@ -5,18 +5,18 @@
     },
     "mojichimera:RentalMod": {
         "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b6 #yGold when played."],
-        "EXTRA_TEXT": [" NL Loses %d Gold."]
+        "EXTRA_TEXT": [" NL Lose %d Gold."]
     },
     "mojichimera:KnockoffMod": {
         "TEXT": ["Knockoff", "", "Reduces cost by #b1. NL Cannot be upgraded."],
         "EXTRA_TEXT": [" NL Cannot be upgraded."]
     },
     "mojichimera:SkimMod": {
-        "TEXT": ["", "Skim", "Draw #b1 card."],
-        "EXTRA_TEXT": [" NL Draw %d card."]
+        "TEXT": ["", "Skim", "Draw #b1(+1) cards."],
+        "EXTRA_TEXT": [" NL Draw %s card.", " NL Draw %s cards."]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b25%. NL Draw #b2 cards."],
+        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b33%. NL Draw #b2 cards."],
         "EXTRA_TEXT": [" NL Draw %d cards."]
     },
     "mojichimera:OverpoweredMod": {
@@ -53,7 +53,8 @@
     },
     "mojichimera:HeatsinksMod": {
         "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
-        "EXTRA_TEXT": [" NL Draw %d cards."]
+        "EXTRA_TEXT": [" NL Draw %d cards."],
+        "NOTES": ["DEPRECATED"]
     },
     "mojichimera:TransfiniteMod": {
         "TEXT": ["Transfinite", "", "Allows #yUpgrading any number of times."],
@@ -78,5 +79,19 @@
     "mojichimera:PocketMod": {
         "TEXT": ["Pocket", "", "Sets cost to #b1. NL Proportionally reduces card values (rounded up)."],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:BloodDebtMod": {
+        "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b1 HP when played."],
+        "EXTRA_TEXT": [" NL Lose %d HP."]
+    },
+    "mojichimera:StrangeMod": {
+        "TEXT": ["Strange", "", "No longer #yExhausts."],
+        "EXTRA_TEXT": ["No longer exhausts.", "Exhausts.", ""],
+        "NOTES": ["EXTRA_TEXT[1] is the string to be replaced", "EXTRA_TEXT[2] is the string to replace with"]
+    },
+    "mojichimera:VirtueMod": {
+        "TEXT": ["Virtue", "", "Reduces each of your debuffs by #b1."],
+        "EXTRA_TEXT": [" NL Reduce each of your debuffs by %d."],
+        "NOTES": ["FROM Downfall Hermit:Virtue"]
     }
 }

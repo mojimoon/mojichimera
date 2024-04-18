@@ -12,11 +12,11 @@
         "EXTRA_TEXT": [" NL 无法被升级。"]
     },
     "mojichimera:SkimMod": {
-        "TEXT": ["", "检索", "抽 #b1 张牌。"],
-        "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+        "TEXT": ["", "检索", "抽 #b1(+1) 张牌。"],
+        "EXTRA_TEXT": [" NL 抽 %s 张牌。", " NL 抽 %s 张牌。"]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b25% 。 NL 抽 #b2 张牌。"],
+        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b33% 。 NL 抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
     },
     "mojichimera:OverpoweredMod": {
@@ -53,7 +53,8 @@
     },
     "mojichimera:HeatsinksMod": {
         "TEXT": ["散热", "", "抽 #b2 张牌。"],
-        "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
+        "EXTRA_TEXT": [" NL 抽 %d 张牌。"],
+        "NOTES": ["DEPRECATED"]
     },
     "mojichimera:TransfiniteMod": {
         "TEXT": ["超限", "", "能被多次 #y升级 。"],
@@ -78,5 +79,19 @@
     "mojichimera:PocketMod": {
         "TEXT": ["袖珍", "", "本牌耗能变为 #b1 。 NL 卡牌数值按比例减少（向上取整）。"],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:BloodDebtMod": {
+        "TEXT": ["血债", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b1 点生命。"],
+        "EXTRA_TEXT": [" NL 失去 %d 点生命。"]
+    },
+    "mojichimera:StrangeMod": {
+        "TEXT": ["奇怪", "", "不再 #y消耗 。 "],
+        "EXTRA_TEXT": ["不再 消耗 。", "消耗 。", ""],
+        "NOTES": ["EXTRA_TEXT[1] is the string to be replaced", "EXTRA_TEXT[2] is the string to replace with"]
+    },
+    "mojichimera:VirtueMod": {
+        "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。"],
+        "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"],
+        "NOTES": ["FROM Downfall Hermit:Virtue"]
     }
 }

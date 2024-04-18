@@ -1,34 +1,25 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.mojichimera;
 
-public class HeatsinksMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(HeatsinksMod.class.getSimpleName());
+public class StrangeMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(StrangeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int DRAW = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-    }
-
-
-    @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot((AbstractGameAction)new DrawCardAction(DRAW));
+        card.exhaust = false;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.POWER;
+        return (card.exhaust)
+                && cardCheck(card, c -> doesntUpgradeExhaust());
     }
 
     @Override
@@ -42,14 +33,17 @@ public class HeatsinksMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DRAW));
+        if (rawDescription.contains(CARD_TEXT[1])) {
+            return rawDescription.replace(CARD_TEXT[1], CARD_TEXT[2]);
+        }
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HeatsinksMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StrangeMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

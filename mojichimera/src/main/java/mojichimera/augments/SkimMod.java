@@ -1,6 +1,7 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.cardmods.DynvarCarrier;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -10,12 +11,21 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 
-public class SkimMod extends AbstractAugment {
+public class SkimMod extends AbstractAugment implements DynvarCarrier {
     public static final String ID = mojichimera.makeID(SkimMod.class.getSimpleName());
+    public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int DRAW = 1;
+    private static final int UPGRADE_DRAW = 1;
+    public boolean modified;
+    public boolean upgraded;
 
+    public int getBaseVal(AbstractCard card) {
+        return DRAW + getEffectiveUpgrades(card) * UPGRADE_DRAW;
+    }
+
+    /* AbstractAugment */
     @Override
     public void onInitialApplication(AbstractCard card) {
     }
@@ -27,7 +37,12 @@ public class SkimMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot((AbstractGameAction)new DrawCardAction(DRAW));
+        addToBot((AbstractGameAction)new DrawCardAction(getBaseVal(card)));
+    }
+
+    @Override
+    public void onUpgradeCheck(AbstractCard card) {
+        card.initializeDescription();
     }
 
     @Override
@@ -41,15 +56,35 @@ public class SkimMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DRAW));
+        return insertAfterText(rawDescription, String.format(card.upgraded ? CARD_TEXT[1] : CARD_TEXT[0], new Object[] { DESCRIPTION_KEY }));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SkimMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
+
+    /* DynvarCarrier */
+    @Override
+    public String key() { return ID; }
+
+    @Override
+    public int val(AbstractCard card) { return getBaseVal(card); }
+
+    @Override
+    public int baseVal(AbstractCard card) { return getBaseVal(card); }
+
+    @Override
+    public boolean modified(AbstractCard card) { return this.modified; }
+
+    @Override
+    public boolean upgraded(AbstractCard card) {
+        this.modified = (card.timesUpgraded != 0 || card.upgraded);
+        this.upgraded = (card.timesUpgraded != 0 || card.upgraded);
+        return this.upgraded;
+    }
 }
