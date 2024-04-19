@@ -81,7 +81,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:BloodDebtMod": {
-        "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b1 HP when played."],
+        "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b2 HP when played."],
         "EXTRA_TEXT": ["Lose %d HP. NL "]
     },
     "mojichimera:StrangeMod": {
@@ -151,5 +151,13 @@
     "mojichimera:BiasedMod": {
         "TEXT": ["Biased", "", "Increases card values by #b200%. Loses #b33% of effect at the start of next #b3 turns."],
         "EXTRA_TEXT": [" NL At the start of next %d turns, lose %d%% of effect."]
+    },
+    "mojichimera:GoldenMod": {
+        "TEXT": ["Golden", "", "Gains #b3(+1) #yGold when played."],
+        "EXTRA_TEXT": [" NL Gain %s Gold."]
+    },
+    "mojichimera:ChimericMod": {
+        "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
+        "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust."]
     }
 }

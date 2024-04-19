@@ -17,7 +17,7 @@ public class BloodDebtMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BloodDebtMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int HP = 1;
+    private static final int HP = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {

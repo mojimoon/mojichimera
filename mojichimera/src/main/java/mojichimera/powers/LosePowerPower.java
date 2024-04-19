@@ -45,8 +45,8 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
         this.owner = owner;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
-        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LoseFocusPower84.png")), 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LoseFocusPower32.png")), 0, 0, 32, 32);
+        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower84.png")), 0, 0, 84, 84);
+        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower32.png")), 0, 0, 32, 32);
         this.basePowerName = powerToLose.name;
         this.basePowerID = powerToLose.ID;
         this.thisTurn = turn;
