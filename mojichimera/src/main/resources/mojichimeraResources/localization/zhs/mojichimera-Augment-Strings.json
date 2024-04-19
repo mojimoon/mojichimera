@@ -153,5 +153,9 @@
     "mojichimera:KyrieMod": {
         "TEXT": ["垂怜", "", "目标生命百分比越高，造成的伤害越高，最高 #b200% 。 NL 源于 #b蔚蓝档案 #y未花 的EX技能。"],
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
+    },
+    "mojichimera:BiasedMod": {
+        "TEXT": ["偏差", "", "本牌数值增加 #b200% 。 NL 下 #b3 回合每回合开始时失去 #b33% 的效果。"],
+        "EXTRA_TEXT": [" NL 下 %d 回合每回合开始时失去 %d%% 的效果。"]
     }
 }

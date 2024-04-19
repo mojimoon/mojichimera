@@ -147,5 +147,9 @@
     "mojichimera:KyrieMod": {
         "TEXT": ["Kyrie", "", "Increases damage by up to #b100% based on target's remaining HP percentage."],
         "EXTRA_TEXT": [" NL Increases damage based on target's remaining HP percentage."]
+    },
+    "mojichimera:BiasedMod": {
+        "TEXT": ["Biased", "", "Increases card values by #b200%. Loses #b33% of effect at the start of next #b3 turns."],
+        "EXTRA_TEXT": [" NL At the start of next %d turns, lose %d%% of effect."]
     }
 }

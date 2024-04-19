@@ -16,6 +16,7 @@ import mojichimera.util.TextureLoader;
 
 import static mojichimera.mojichimera.makePowerPath;
 
+@Deprecated
 public class LosePowerPower extends AbstractEasyPower {
     public static String TEXT_ID = mojichimera.makeID(LosePowerPower.class.getSimpleName());
 
