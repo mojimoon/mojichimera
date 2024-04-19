@@ -48,7 +48,11 @@ public class ChimericMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        if (card.type == AbstractCard.CardType.POWER) {
+            return insertAfterText(rawDescription, CARD_TEXT[1]);
+        } else {
+            return insertAfterText(rawDescription, CARD_TEXT[0]);
+        }
     }
 
     @Override

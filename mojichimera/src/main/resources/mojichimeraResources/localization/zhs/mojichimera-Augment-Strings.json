@@ -159,11 +159,11 @@
         "EXTRA_TEXT": [" NL 下 %d 回合每回合开始时失去 %d%% 的效果。"]
     },
     "mojichimera:GoldenMod": {
-        "TEXT": ["黄金", "", "打出时获得 #b3(+1) #y金币 。"],
+        "TEXT": ["黄金", "", "打出时获得 #b3(+2) #y金币 。"],
         "EXTRA_TEXT": [" NL 获得 %s 金币 。"]
     },
     "mojichimera:ChimericMod": {
         "TEXT": ["奇美拉", "", "打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
-        "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。"]
+        "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"]
     }
 }

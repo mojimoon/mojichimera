@@ -16,7 +16,7 @@ public class GoldenMod extends AbstractAugment implements DynvarCarrier {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int GOLD = 3;
-    private static final int UPGRADE_GOLD = 1;
+    private static final int UPGRADE_GOLD = 2;
     public boolean modified;
     public boolean upgraded;
 
@@ -31,7 +31,8 @@ public class GoldenMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return (card.cost != -2)
+                && (card.type == AbstractCard.CardType.POWER || (cardCheck(card, c -> c.exhaust && doesntUpgradeExhaust())));
     }
 
     @Override
