@@ -19,7 +19,8 @@ public class StrangeMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return (card.exhaust)
-                && cardCheck(card, c -> doesntUpgradeExhaust());
+                && cardCheck(card, c -> doesntUpgradeExhaust())
+                && card.rarity != AbstractCard.CardRarity.CURSE;
     }
 
     @Override

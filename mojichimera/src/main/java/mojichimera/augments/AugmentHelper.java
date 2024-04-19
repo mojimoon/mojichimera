@@ -2,12 +2,9 @@ package mojichimera.augments;
 
 import CardAugments.CardAugmentsMod;
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.cards.blue.Stack;
+import com.megacrit.cardcrawl.cards.blue.*;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.cards.blue.Hyperbeam;
-import com.megacrit.cardcrawl.cards.blue.RipAndTear;
-import com.megacrit.cardcrawl.cards.blue.Streamline;
 import com.megacrit.cardcrawl.cards.colorless.HandOfGreed;
 import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.cards.purple.*;
@@ -64,5 +61,6 @@ public class AugmentHelper {
 
         // Pocket
         CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof Ragnarok); // 诸神之黄昏
+        CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof ForceField); // 力场
     }
 }

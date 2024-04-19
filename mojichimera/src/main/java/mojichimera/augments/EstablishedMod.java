@@ -19,7 +19,9 @@ public class EstablishedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost > 0;
+        return card.cost > 0
+                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()))
+                && (!card.selfRetain && cardCheck(card, c -> doesntUpgradeRetain()));
     }
 
     @Override
