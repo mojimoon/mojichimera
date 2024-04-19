@@ -40,6 +40,9 @@ public class RandomExhaustCardTypeAction extends AbstractGameAction {
                     addToTop(new ExhaustSpecificCardAction(card, _group));
                 }
             }
+            if (valid.isEmpty()) {
+                break;
+            }
         }
         this.isDone = true;
     }
