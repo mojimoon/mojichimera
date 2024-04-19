@@ -95,7 +95,7 @@
         "NOTES": ["[2] is to replace [1] in original text", "[3][4] is a special case for Purity and Omniscience"]
     },
     "mojichimera:VirtueMod": {
-        "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。 NL 源于 #b 崩坠 #y亡命之徒 的同名卡牌。"],
+        "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。 NL 源于 #b崩坠 #y亡命之徒 的同名卡牌。"],
         "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"]
     },
     "mojichimera:DodgeMod": {
@@ -130,5 +130,9 @@
     "mojichimera:RecyclableMod": {
         "TEXT": ["可回收", "", "#y虚无 。 NL 若被 #y消耗 ，下一回合获得 [E] 。"],
         "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗 ，下一回合获得 [E] 。"]
+    },
+    "mojichimera:ForesightMod": {
+        "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌在本场战斗中耗能减少 #b1 。"],
+        "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
     }
 }

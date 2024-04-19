@@ -131,5 +131,9 @@
     "mojichimera:RecyclableMod": {
         "TEXT": ["Recyclable", "", "#yEthereal. NL When #yExhausted, gives [E] next turn."],
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain [E] next turn."]
+    },
+    "mojichimera:ForesightMod": {
+        "TEXT": ["Foresight", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1."],
+        "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d."]
     }
 }

@@ -2,14 +2,13 @@ package mojichimera.augments;
 
 import CardAugments.CardAugmentsMod;
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.cards.blue.*;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
-import com.megacrit.cardcrawl.cards.colorless.HandOfGreed;
-import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
+import com.megacrit.cardcrawl.cards.blue.*;
+import com.megacrit.cardcrawl.cards.green.*;
+import com.megacrit.cardcrawl.cards.red.*;
 import com.megacrit.cardcrawl.cards.purple.*;
-import com.megacrit.cardcrawl.cards.red.Feed;
-import com.megacrit.cardcrawl.cards.red.Hemokinesis;
+import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 import static mojichimera.mojichimera.makeID;
@@ -62,5 +61,13 @@ public class AugmentHelper {
         // Pocket
         CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof Ragnarok); // 诸神之黄昏
         CardAugmentsMod.registerCustomBan(PocketMod.ID, c -> c instanceof ForceField); // 力场
+
+        // Reactive
+        CardAugmentsMod.registerCustomBan(ReactiveMod.ID, c -> c instanceof Hemokinesis); // 御血术
+
+        // Foresight
+        CardAugmentsMod.registerCustomBan(ForesightMod.ID, c -> c instanceof FTL); // 超光速
+        CardAugmentsMod.registerCustomBan(ForesightMod.ID, c -> c instanceof Scrape); // 刮削
+        CardAugmentsMod.registerCustomBan(ForesightMod.ID, c -> c instanceof CutThroughFate); // 斩破命运
     }
 }

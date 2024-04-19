@@ -22,8 +22,7 @@ public class ReactiveMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))
-                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()))
-                && (!card.selfRetain && cardCheck(card, c -> doesntUpgradeRetain()));
+                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()));
     }
 
     @Override

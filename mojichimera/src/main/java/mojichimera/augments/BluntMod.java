@@ -1,13 +1,10 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.cards.blue.ConserveBattery;
-import com.megacrit.cardcrawl.cards.blue.Hologram;
-import com.megacrit.cardcrawl.cards.green.Backflip;
-import com.megacrit.cardcrawl.cards.green.Blur;
+import com.megacrit.cardcrawl.cards.red.*;
+import com.megacrit.cardcrawl.cards.green.*;
+import com.megacrit.cardcrawl.cards.blue.*;
 import com.megacrit.cardcrawl.cards.purple.*;
-import com.megacrit.cardcrawl.cards.red.Armaments;
-import com.megacrit.cardcrawl.cards.red.SecondWind;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;

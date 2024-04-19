@@ -1,6 +1,7 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.cards.purple.Meditate;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -20,8 +21,7 @@ public class EstablishedMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost > 0
-                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()))
-                && (!card.selfRetain && cardCheck(card, c -> doesntUpgradeRetain()));
+                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class EstablishedMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
+        if (rawDescription.contains(CARD_TEXT[0]) && !(card instanceof Meditate)) {
             return insertAfterText(rawDescription, String.format(CARD_TEXT[1], EFFECT));
         }
         return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));

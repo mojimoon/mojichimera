@@ -40,7 +40,7 @@ public class StrategyMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost != -2
-                && (card.baseDamage >= 2 || card.baseBlock >= 2);
+                && (card.baseDamage > 1 || card.baseBlock > 1);
     }
 
     @Override
