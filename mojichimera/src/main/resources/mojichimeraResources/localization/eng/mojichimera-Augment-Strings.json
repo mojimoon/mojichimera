@@ -135,5 +135,17 @@
     "mojichimera:ForesightMod": {
         "TEXT": ["Foresight", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1."],
         "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d."]
+    },
+    "mojichimera:CleansingMod": {
+        "TEXT": ["Cleansing", "", "#yExhausts #b1 random #yStatus or #yCurse card in your draw pile. NL Upgraded: #b2 in your draw pile, discard pile, and hand instead."],
+        "EXTRA_TEXT": [" NL Exhaust %d random Status or Curse card in your draw pile.", " NL Exhaust %d random Status or Curse cards you own."]
+    },
+    "mojichimera:HeavyThrowMod": {
+        "TEXT": ["", "Heavy Throw", "Plays twice. NL Gains #b2 #yFrail."],
+        "EXTRA_TEXT": [" NL Plays twice. NL Gain %d Frail."]
+    },
+    "mojichimera:KyrieMod": {
+        "TEXT": ["Kyrie", "", "Increases damage by up to #b100% based on target's remaining HP percentage."],
+        "EXTRA_TEXT": [" NL Increases damage based on target's remaining HP percentage."]
     }
 }

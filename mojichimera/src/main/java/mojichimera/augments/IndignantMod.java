@@ -1,17 +1,13 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 
 public class IndignantMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(IndignantMod.class.getSimpleName());

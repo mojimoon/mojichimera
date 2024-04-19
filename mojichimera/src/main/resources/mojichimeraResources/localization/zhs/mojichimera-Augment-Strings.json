@@ -134,5 +134,24 @@
     "mojichimera:ForesightMod": {
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌在本场战斗中耗能减少 #b1 。"],
         "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
+    },
+    "mojichimera:ConvergentMod": {
+        "TEXT": ["收敛", "", "打出时将本牌耗能增加 #b1 的 #y虚无复制 加入手牌。"],
+        "EXTRA_TEXT": [" NL 将耗能增加 %d 的虚无复制加入手牌。", "虚无 。 NL "],
+        "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:CleansingMod": {
+        "TEXT": ["清理", "", "随机 #y消耗 抽牌堆中 #b1 张 #y诅咒 或 #y状态牌 。 NL 升级后改为随机 #y消耗 抽牌堆、弃牌堆和手牌中的 #b2 张。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
+        "EXTRA_TEXT": [" NL 随机 消耗 抽牌堆中 %d 张 诅咒 或 状态牌 。", " NL 随机 消耗 拥有的 %d 张 诅咒 或 状态牌 。"],
+        "NOTES": ["bronze:WildBeam"]
+    },
+    "mojichimera:HeavyThrowMod": {
+        "TEXT": ["", "猛掷", "再打出一次 。 NL 获得 #b2 层 #y脆弱 。 NL 源于 #b崩坠 #y第一勇士 的卡牌 #b护甲猛掷。"],
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 脆弱 。 "],
+        "NOTES": ["champ:ShieldThrow"]
+    },
+    "mojichimera:KyrieMod": {
+        "TEXT": ["垂怜", "", "目标生命百分比越高，造成的伤害越高，最高 #b200% 。 NL 源于 #b蔚蓝档案 #y未花 的EX技能。"],
+        "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     }
 }

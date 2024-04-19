@@ -6,7 +6,7 @@
     <groupId>mojimoon</groupId>
     <artifactId>mojichimera</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>Mojimoon Chimera</name>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <description>Chimera expansion by Mojimoon.</description>
 
     <properties>

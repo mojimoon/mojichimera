@@ -1,27 +1,35 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.mojichimera;
 
-public class StrangeMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(StrangeMod.class.getSimpleName());
+public class KyrieMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(KyrieMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
+    public static final float MULTIPLIER = 1.0F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.exhaust = false;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.exhaust)
-                && cardCheck(card, c -> doesntUpgradeExhaust())
-                && card.type != AbstractCard.CardType.CURSE
-                && card.type != AbstractCard.CardType.STATUS;
+        return card.type == AbstractCard.CardType.ATTACK
+                && card.cost > -2;
+    }
+
+    @Override
+    public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        if (target != null) {
+            return damage * (1.0F + (float)target.currentHealth / (float)target.maxHealth);
+        }
+        return damage;
     }
 
     @Override
@@ -35,12 +43,6 @@ public class StrangeMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[3])) {
-            return rawDescription.replace(CARD_TEXT[3], CARD_TEXT[4]);
-        }
-        if (rawDescription.contains(CARD_TEXT[1])) {
-            return rawDescription.replace(CARD_TEXT[1], CARD_TEXT[2]);
-        }
         return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
@@ -48,7 +50,7 @@ public class StrangeMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StrangeMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new KyrieMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
