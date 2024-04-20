@@ -1,6 +1,7 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -30,7 +31,12 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractDungeon.player.loseGold(GOLD);
+        addToBot(new AbstractGameAction() {
+            public void update() {
+                isDone = true;
+                AbstractDungeon.player.loseGold(GOLD);
+            }
+        });
     }
 
     @Override

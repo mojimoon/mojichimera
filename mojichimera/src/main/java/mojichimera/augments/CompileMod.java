@@ -1,46 +1,38 @@
 package mojichimera.augments;
 
-import CardAugments.CardAugmentsMod;
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.defect.CompileDriverAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FocusPower;
+import mojichimera.mojichimera;
+import mojichimera.powers.LoseFocusPower;
 
-import static CardAugments.CardAugmentsMod.applyWeightedCardMod;
-import static CardAugments.CardAugmentsMod.rollRarity;
-
-public class ChimericMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(ChimericMod.class.getSimpleName());
+public class CompileMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(CompileMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
+    private static final int EFFECT = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.exhaust = true;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2) && cardCheck(card, c -> doesntExhaust(c));
+        return (card.cost != -2) && allowOrbMods();
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new AbstractGameAction() {
-            public void update() {
-                isDone = true;
-                for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {
-                    if (otherCard != card) {
-                        applyWeightedCardMod(otherCard, rollRarity(otherCard.rarity), 0);
-                    }
-                }
-            }
-        });
+        addToBot(new CompileDriverAction(AbstractDungeon.player, EFFECT));
     }
 
     @Override
@@ -54,18 +46,18 @@ public class ChimericMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (card.type == AbstractCard.CardType.POWER) {
-            return insertAfterText(rawDescription, CARD_TEXT[1]);
+        if (rawDescription.contains(CARD_TEXT[2])) {
+            return rawDescription.replace(CARD_TEXT[2], String.format(CARD_TEXT[1], EFFECT + 1));
         } else {
-            return insertAfterText(rawDescription, CARD_TEXT[0]);
+            return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
         }
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ChimericMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new CompileMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

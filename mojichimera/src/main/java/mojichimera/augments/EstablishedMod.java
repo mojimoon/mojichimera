@@ -1,6 +1,7 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.purple.Meditate;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -26,7 +27,7 @@ public class EstablishedMod extends AbstractAugment {
 
     @Override
     public void onRetained(AbstractCard card) {
-        card.modifyCostForCombat(-EFFECT);
+        addToBot(new ReduceCostAction(card));
     }
 
     @Override
@@ -41,6 +42,9 @@ public class EstablishedMod extends AbstractAugment {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (rawDescription.contains(CARD_TEXT[0]) && !(card instanceof Meditate)) {
+            if (rawDescription.contains(CARD_TEXT[2])) {
+                return rawDescription.replace(CARD_TEXT[2], String.format(CARD_TEXT[3], EFFECT + 1));
+            }
             return insertAfterText(rawDescription, String.format(CARD_TEXT[1], EFFECT));
         }
         return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));

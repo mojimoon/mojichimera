@@ -91,8 +91,7 @@
             "",
             "消耗 。 NL 消耗 。",
             "消耗 。"
-            ],
-        "NOTES": ["[2] is to replace [1] in original text", "[3][4] is a special case for Purity and Omniscience"]
+            ]
     },
     "mojichimera:VirtueMod": {
         "TEXT": ["高尚", "", "失去所有负面效果 #b1 层。 NL 源于 #b崩坠 #y亡命之徒 的同名卡牌。"],
@@ -116,12 +115,20 @@
         "NOTES": ["DEPRECATED"]
     },
     "mojichimera:EstablishedMod": {
-        "TEXT": ["确立", "", "#y保留 。 NL 被 #y保留 时在本场战斗中的耗能减少 #b1 。"],
-        "EXTRA_TEXT": [" 保留 。 NL ", " NL 被 保留 时耗能减少 %d 。"]
+        "TEXT": ["确立", "", "#y保留 。 NL 每当这张牌被 #y保留 时，将其在本场战斗的耗能减少 #b1 。"],
+        "EXTRA_TEXT": [" 保留 。 NL ",
+            " NL 被 保留 时耗能减少 %d 。",
+            " NL 每当这张牌被 保留 时，将其在本场战斗的耗能减少1。",
+            " NL 每当这张牌被 保留 时，将其在本场战斗的耗能减少 %d 。"
+            ]
     },
     "mojichimera:ReactiveMod": {
-        "TEXT": ["活性", "", "#y保留 。 NL 被 #y保留 时魔法数字增加 #b1 。"],
-        "EXTRA_TEXT": [" 保留 。 NL ", " NL 被 保留 时特殊值增加 %d 。"]
+        "TEXT": ["活性", "", "#y保留 。 NL 每当这张牌被 #y保留 时，将其在本场战斗的魔法数字增加 #b1 。"],
+        "EXTRA_TEXT": [
+            " 保留 。 NL ",
+            " NL 被 保留 时特殊值增加 %d 。",
+            " NL 每当这张牌被 保留 时，将其在本场战斗的特殊值增加 %d 。"
+        ]
     },
     "mojichimera:IndignantMod": {
         "TEXT": ["义愤", "", "#y愤怒 ： 造成的伤害增加 #b50% 。"],
@@ -151,7 +158,7 @@
         "NOTES": ["champ:ShieldThrow"]
     },
     "mojichimera:KyrieMod": {
-        "TEXT": ["垂怜", "", "目标生命百分比越高，造成的伤害越高，最高 #b200% 。 NL 源于 #b蔚蓝档案 #y未花 的EX技能。"],
+        "TEXT": ["垂怜", "", "目标生命百分比越高，造成的伤害越高，最高 #b200% 。"],
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:BiasedMod": {
@@ -159,11 +166,35 @@
         "EXTRA_TEXT": [" NL 下 %d 回合每回合开始时失去 %d%% 的效果。"]
     },
     "mojichimera:GoldenMod": {
-        "TEXT": ["黄金", "", "打出时获得 #b3(+2) #y金币 。"],
-        "EXTRA_TEXT": [" NL 获得 %s 金币 。"]
+        "TEXT": ["黄金", "", "打出时获得 #b3 #y金币 。"],
+        "EXTRA_TEXT": [" NL 获得 %d 金币 。"]
     },
     "mojichimera:ChimericMod": {
         "TEXT": ["奇美拉", "", "打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
         "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"]
+    },
+    "mojichimera:FuelFlameMod": {
+        "TEXT": ["浇油", "", "如果敌人有 #y易伤 状态 ， NL 获得 [E] 并且抽 #b1 张牌。"],
+        "EXTRA_TEXT": [
+            " NL 如果敌人有 易伤 状态 ， NL 获得 [E] 并且抽 %d 张牌。",
+            " NL 如果敌人有 易伤 状态 ， NL 获得 [E] [E] 并且抽 %d 张牌。",
+            " NL 如果敌人有 易伤 状态 ， NL 获得 [R] 并且 NL 抽1张牌。"
+            ]
+    },
+    "mojichimera:PourSaltMod": {
+        "TEXT": ["撒盐", "", "如果敌人有 #y虚弱 状态 ， NL 获得 [E] 并且抽 #b1 张牌。"],
+        "EXTRA_TEXT": [
+            " NL 如果敌人有 虚弱 状态 ， NL 获得 [E] 并且抽 %d 张牌。",
+            " NL 如果敌人有 虚弱 状态 ， NL 获得 [E] [E] 并且抽 %d 张牌。",
+            " NL 如果敌人有 虚弱 状态 ， NL 获得 [G] 并且 NL 抽1张牌。"
+            ]
+    },
+    "mojichimera:CompileMod": {
+        "TEXT": ["编译", "", "你每有一种不同的 #y充能球 ，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [
+            " NL 你每有一种不同的 充能球 ，抽 %d 张牌。",
+            " NL 你每有一种不同的 充能球 ，抽 %d 张牌。",
+            " NL 你每有一种不同的 充能球 ，抽 !M! 张牌。"
+            ]
     }
 }

@@ -31,10 +31,10 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
     static {
         if (Settings.language.toString().toLowerCase().equals("zhs")) {
             TEXT.NAME = "下降";
-            TEXT.DESCRIPTIONS = new String[] {"在你的回合结束时，失去 #b", " 点 #y", " 。剩余 #b", " 回合。"};
+            TEXT.DESCRIPTIONS = new String[] {"在你的回合开始时，失去 #b", " 点 #y", " 。剩余 #b", " 回合。"};
         } else {
             TEXT.NAME = "Down";
-            TEXT.DESCRIPTIONS = new String[] {"At the end of this turn, lose #b", " #y", ". Expires in #b", " turns."};
+            TEXT.DESCRIPTIONS = new String[] {"At the start of each turn, lose #b", " #y", ". Expires in #b", " turns."};
         }
     }
 

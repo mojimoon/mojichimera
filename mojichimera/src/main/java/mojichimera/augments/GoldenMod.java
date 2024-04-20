@@ -1,48 +1,38 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.cardmods.DynvarCarrier;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 
-public class GoldenMod extends AbstractAugment implements DynvarCarrier {
+public class GoldenMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(GoldenMod.class.getSimpleName());
-    public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int GOLD = 3;
-    private static final int UPGRADE_GOLD = 2;
-    public boolean modified;
-    public boolean upgraded;
 
-    public int getBaseVal(AbstractCard card) {
-        return GOLD + getEffectiveUpgrades(card) * UPGRADE_GOLD;
-    }
-
-    /* AbstractAugment */
     @Override
     public void onInitialApplication(AbstractCard card) {
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2)
-                && (card.type == AbstractCard.CardType.POWER || (cardCheck(card, c -> c.exhaust && doesntUpgradeExhaust())));
+        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractDungeon.player.gainGold(getBaseVal(card));
-    }
-
-    @Override
-    public void onUpgradeCheck(AbstractCard card) {
-        card.initializeDescription();
+        addToBot(new AbstractGameAction() {
+            public void update() {
+                isDone = true;
+                AbstractDungeon.player.gainGold(GOLD);
+            }
+        });
     }
 
     @Override
@@ -56,7 +46,7 @@ public class GoldenMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], new Object[] { DESCRIPTION_KEY }));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], GOLD));
     }
 
     @Override
@@ -67,24 +57,4 @@ public class GoldenMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-
-    /* DynvarCarrier */
-    @Override
-    public String key() { return ID; }
-
-    @Override
-    public int val(AbstractCard card) { return getBaseVal(card); }
-
-    @Override
-    public int baseVal(AbstractCard card) { return getBaseVal(card); }
-
-    @Override
-    public boolean modified(AbstractCard card) { return this.modified; }
-
-    @Override
-    public boolean upgraded(AbstractCard card) {
-        this.modified = (card.timesUpgraded != 0 || card.upgraded);
-        this.upgraded = (card.timesUpgraded != 0 || card.upgraded);
-        return this.upgraded;
-    }
 }

@@ -28,10 +28,6 @@ public class TwinMod extends AbstractAugment {
     }
 
     @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-    }
-
-    @Override
     public String getPrefix() { return TEXT[0]; }
 
     @Override

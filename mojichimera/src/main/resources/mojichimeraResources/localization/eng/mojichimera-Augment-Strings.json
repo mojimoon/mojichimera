@@ -91,8 +91,7 @@
             "",
             "Exhausts. NL Exhausts.",
             "Exhausts."
-            ],
-        "NOTES": ["[2] is to replace [1] in original text", "[3][4] is a special case for Purity and Omniscience"]
+            ]
     },
     "mojichimera:VirtueMod": {
         "TEXT": ["Virtuous", "", "Reduces each of your debuffs by #b1."],
@@ -117,12 +116,20 @@
         "NOTES": ["DEPRECATED"]
     },
     "mojichimera:EstablishedMod": {
-        "TEXT": ["Established", "", "#yRetain. NL When #yRetained, reduces cost by #b1."],
-        "EXTRA_TEXT": ["Retain. NL ", " NL When retained, reduce cost by %d."]
+        "TEXT": ["Established", "", "#yRetain. NL When #yRetained, lowers its cost by #b1 this combat."],
+        "EXTRA_TEXT": ["Retain. NL ",
+            " NL when Retained, lower its cost by %d.",
+            " NL When Retained, lower its cost by 1 this combat.",
+            " NL When Retained, lower its cost by %d this combat."
+            ]
     },
     "mojichimera:ReactiveMod": {
-        "TEXT": ["Reactive", "", "#yRetain. NL When #yRetained, increases magic number by #b1."],
-        "EXTRA_TEXT": ["Retain. NL ", " NL When retained, increase magic number by %d."]
+        "TEXT": ["Reactive", "", "#yRetain. NL When #yRetained, increases magic number by #b1 this combat."],
+        "EXTRA_TEXT": [
+            "Retain. NL ",
+            " NL When Retained, increase magic number by %d.",
+            " NL When Retained, increase magic number by %d this combat."
+        ]
     },
     "mojichimera:IndignantMod": {
         "TEXT": ["Indignant", "", "#yWrath: Deals #b50% more damage."],
@@ -133,8 +140,8 @@
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain [E] next turn."]
     },
     "mojichimera:ForesightMod": {
-        "TEXT": ["Foresight", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1."],
-        "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d."]
+        "TEXT": ["Foresight", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1 this combat."],
+        "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d this combat."]
     },
     "mojichimera:CleansingMod": {
         "TEXT": ["Cleansing", "", "#yExhausts #b1 random #yStatus or #yCurse card in your draw pile. NL Upgraded: #b2 in your draw pile, discard pile, and hand instead."],
@@ -153,11 +160,35 @@
         "EXTRA_TEXT": [" NL At the start of next %d turns, lose %d%% of effect."]
     },
     "mojichimera:GoldenMod": {
-        "TEXT": ["Golden", "", "Gains #b3(+2) #yGold when played."],
-        "EXTRA_TEXT": [" NL Gain %s Gold."]
+        "TEXT": ["Golden", "", "Gains #b3 #yGold when played."],
+        "EXTRA_TEXT": [" NL Gain %d Gold."]
     },
     "mojichimera:ChimericMod": {
         "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
         "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
+    },
+    "mojichimera:FuelFlameMod": {
+        "TEXT": ["Fuel Flame", "", "If the enemy has #yVulnerable, NL gain [E] and draw #b1 card."],
+        "EXTRA_TEXT": [
+            " NL If the enemy has Vulnerable, NL gain [E] and draw %d card.",
+            " NL If the enemy has Vulnerable, NL gain [E] [E] and draw %d cards.",
+            " NL If the enemy has Vulnerable, NL gain [R] and NL draw 1 card."
+        ]
+    },
+    "mojichimera:PourSaltMod": {
+        "TEXT": ["Pour Salt", "", "If the enemy has #yWeak, NL gain [E] and draw #b1 card."],
+        "EXTRA_TEXT": [
+            " NL If the enemy has Weak, NL gain [E] and draw %d card.",
+            " NL If the enemy has Weak, NL gain [E] [E] and draw %d cards.",
+            " NL If the enemy has Weak, NL gain [G] and NL draw 1 card."
+        ]
+    },
+    "mojichimera:CompileMod": {
+        "TEXT": ["Compile", "", "Draw #b1 card for each unique Orb you have."],
+        "EXTRA_TEXT": [
+            " NL Draw %d card for each unique Orb you have.",
+            " NL Draw %d cards for each unique Orb you have.",
+            " NL Draw !M! card for each unique Orb you have."
+        ]
     }
 }

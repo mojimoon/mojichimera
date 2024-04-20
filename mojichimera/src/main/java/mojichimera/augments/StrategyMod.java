@@ -63,7 +63,7 @@ public class StrategyMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StrategyMod(); }
