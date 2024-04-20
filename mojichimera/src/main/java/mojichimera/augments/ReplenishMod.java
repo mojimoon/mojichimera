@@ -15,10 +15,6 @@ public class ReplenishMod extends AbstractAugment {
     private static final int DRAW = 1;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return true;
     }

@@ -13,10 +13,6 @@ public class InspiredMod extends AbstractAugment {
     private static final int UPGRADE_MAGIC = 1;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (card.upgraded)
             return magic + getEffectiveUpgrades(card) * UPGRADE_MAGIC;

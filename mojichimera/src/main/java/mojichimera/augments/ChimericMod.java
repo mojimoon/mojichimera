@@ -21,7 +21,9 @@ public class ChimericMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.exhaust = true;
+        if (card.type != AbstractCard.CardType.POWER) {
+            card.exhaust = true;
+        }
     }
 
     @Override

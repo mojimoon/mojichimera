@@ -17,10 +17,6 @@ public class TranquilMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
                 && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)

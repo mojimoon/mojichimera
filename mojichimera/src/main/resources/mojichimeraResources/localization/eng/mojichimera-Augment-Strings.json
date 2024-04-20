@@ -16,7 +16,7 @@
         "EXTRA_TEXT": [" NL Draw %s card.", " NL Draw %s cards."]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "Strategy", "Decreases damage and #yBlock by #b33%. NL Draw #b2 cards."],
+        "TEXT": ["", "Strategy", "Reduces damage and #yBlock by #b33%. NL Draw #b2 cards."],
         "EXTRA_TEXT": [" NL Draw %d cards."]
     },
     "mojichimera:OverpoweredMod": {
@@ -99,8 +99,8 @@
         "NOTES": ["FROM Downfall Hermit:Virtue"]
     },
     "mojichimera:DodgeMod": {
-        "TEXT": ["Dodging", "", "Gains #b3 #yAgility this turn."],
-        "EXTRA_TEXT": [" NL Gain %d Agility. NL At the end of this turn, lose %d Agility."]
+        "TEXT": ["Dodging", "", "Gains #b3 #yDexterity this turn."],
+        "EXTRA_TEXT": [" NL Gain %d Dexterity. NL At the end of this turn, lose %d Dexterity."]
     },
     "mojichimera:FocusedMod": {
         "TEXT": ["Focused", "", "Gains #b2 #yFocus this turn."],
@@ -168,7 +168,7 @@
         "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
     },
     "mojichimera:FuelFlameMod": {
-        "TEXT": ["Fuel Flame", "", "If the enemy has #yVulnerable, NL gain [E] and draw #b1 card."],
+        "TEXT": ["Fuel Flame", "", "Reduces damage and #yBlock by #b20%. If the enemy has #yVulnerable, NL gain [E] and draw #b1 card."],
         "EXTRA_TEXT": [
             " NL If the enemy has Vulnerable, NL gain [E] and draw %d card.",
             " NL If the enemy has Vulnerable, NL gain [E] [E] and draw %d cards.",
@@ -176,7 +176,7 @@
         ]
     },
     "mojichimera:PourSaltMod": {
-        "TEXT": ["Pour Salt", "", "If the enemy has #yWeak, NL gain [E] and draw #b1 card."],
+        "TEXT": ["Pour Salt", "", "Reduces damage and #yBlock by #b20%. If the enemy has #yWeak, NL gain [E] and draw #b1 card."],
         "EXTRA_TEXT": [
             " NL If the enemy has Weak, NL gain [E] and draw %d card.",
             " NL If the enemy has Weak, NL gain [E] [E] and draw %d cards.",
@@ -190,5 +190,17 @@
             " NL Draw %d cards for each unique Orb you have.",
             " NL Draw !M! card for each unique Orb you have."
         ]
+    },
+    "mojichimera:RefundMod": {
+        "TEXT": ["Refund", "", "Returns energy spent on this card, up to #b1."],
+        "EXTRA_TEXT": [" NL stslib:Refund %d."]
+    },
+    "mojichimera:RebateMod": {
+        "TEXT": ["Rebate", "", "#yEthereal. NL When #yExhausted, gives #b5(+3) #yGold."],
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %s Gold."]
+    },
+    "mojichimera:ImminentMod": {
+        "TEXT": ["Imminent", "", "#yEthereal. NL When #yExhausted, gives #b1 #yStrength and #yDexterity."],
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %d Strength and Dexterity."]
     }
 }

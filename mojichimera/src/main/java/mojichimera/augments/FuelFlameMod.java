@@ -24,15 +24,27 @@ public class FuelFlameMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final int EFFECT = 1;
+    private static final float MULTIPLIER = 0.8F;
     private static final Class<?> VULNERABLE_POWER = com.megacrit.cardcrawl.powers.VulnerablePower.class;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        if (card.baseDamage > 0)
+            return damage * MULTIPLIER;
+        return damage;
+    }
+
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        if (card.baseBlock > 0)
+            return block * MULTIPLIER;
+        return block;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.target == AbstractCard.CardTarget.ENEMY && card.cost != -2;
+        return card.target == AbstractCard.CardTarget.ENEMY && card.cost != -2
+                && (card.baseDamage > 1 || card.baseBlock > 1);
     }
 
     @Override
@@ -59,7 +71,7 @@ public class FuelFlameMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FuelFlameMod(); }

@@ -20,10 +20,6 @@ public class StrategyMod extends AbstractAugment {
     private static final int DRAW = 2;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
             return damage * MULTIPLIER;

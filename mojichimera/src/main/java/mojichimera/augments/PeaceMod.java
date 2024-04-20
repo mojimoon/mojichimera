@@ -22,10 +22,6 @@ public class PeaceMod extends AbstractAugment {
     public static final int DRAW = 2;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
                 && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)

@@ -21,10 +21,6 @@ public class DodgeMod extends AbstractAugment {
     private static final int EFFECT = 3;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return (card.cost != -2);
     }

@@ -19,10 +19,6 @@ public class IndignantMod extends AbstractAugment {
     private static final float MULTIPLIER = 1.5F;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
                 && card.type == AbstractCard.CardType.ATTACK

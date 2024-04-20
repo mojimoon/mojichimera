@@ -15,10 +15,6 @@ public class KyrieMod extends AbstractAugment {
     public static final float MULTIPLIER = 1.0F;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return card.type == AbstractCard.CardType.ATTACK
                 && card.cost > -2;

@@ -17,10 +17,6 @@ public class GoldenMod extends AbstractAugment {
     private static final int GOLD = 3;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
     }

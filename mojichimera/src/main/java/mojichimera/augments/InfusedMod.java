@@ -15,10 +15,6 @@ public class InfusedMod extends AbstractAugment {
     private static final int UPGRADE_DAMAGE = 5;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.upgraded)
             return damage + getEffectiveUpgrades(card) * UPGRADE_DAMAGE;

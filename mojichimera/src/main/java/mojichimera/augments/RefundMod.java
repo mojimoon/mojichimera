@@ -1,31 +1,32 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.util.Wiz;
-import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.RefundAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mojichimera.actions.ReduceAllDebuffsAction;
 import mojichimera.mojichimera;
+import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class VirtueMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(VirtueMod.class.getSimpleName());
+public class RefundMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(RefundMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
+    private static int EFFECT = 1;
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+    }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return card.cost == -1;
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        Wiz.atb((AbstractGameAction)new ReduceAllDebuffsAction((AbstractCreature)AbstractDungeon.player, EFFECT));
+        addToBot(new RefundAction(card, EFFECT));
     }
 
     @Override
@@ -46,7 +47,7 @@ public class VirtueMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new VirtueMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RefundMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

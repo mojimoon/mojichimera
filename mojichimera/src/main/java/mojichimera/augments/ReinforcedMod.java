@@ -13,10 +13,6 @@ public class ReinforcedMod extends AbstractAugment {
     private static final int UPGRADE_BLOCK = 4;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
-
-    @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.upgraded)
             return block + getEffectiveUpgrades(card) * UPGRADE_BLOCK;
