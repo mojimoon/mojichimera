@@ -203,11 +203,11 @@
     },
     "mojichimera:RebateMod": {
         "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b6(+3) #y金币 。"],
-        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗，获得 %s 金币 。"]
+        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗 ，获得 %s 金币 。"]
     },
     "mojichimera:ImminentMod": {
         "TEXT": ["急迫", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b1 点 #y力量 和 #y敏捷 。 NL 源于 #b崩坠 #y六火亡魂 的卡牌 #b迫在眉睫。"],
-        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗，获得 %d 点 力量 和 敏捷 。"],
+        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗 ，获得 %d 点 力量 和 敏捷 。"],
         "NOTES": ["hexamod:BurningQuestion"]
     },
     "mojichimera:SociableMod": {

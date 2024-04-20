@@ -19,11 +19,6 @@ public class CleansingMod extends AbstractAugment {
     private static final int UPGRADE_EFFECT = 2;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-        card.exhaust = false;
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return card.cost != -2;
     }

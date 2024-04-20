@@ -39,13 +39,13 @@ public class UnsociableMod extends AbstractAugment {
         if (!AbstractDungeon.isPlayerInDungeon() || !AbstractDungeon.player.hand.contains(card)) {
             return MULTIPLIER;
         }
-        float multiplier = 1.0F;
+        float multiplier = MULTIPLIER;
         for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {
             if (otherCard != card && otherCard.type == card.type) {
                 multiplier -= EXTRA_MULTIPLIER;
             }
         }
-        return Math.max(multiplier, 0.0F) * MULTIPLIER;
+        return Math.max(multiplier, 0.0F);
     }
 
     @Override
