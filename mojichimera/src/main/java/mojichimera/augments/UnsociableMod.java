@@ -15,7 +15,7 @@ public class UnsociableMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 20;
     private static final float MULTIPLIER = 2.0F;
-    private static final float EXTRA_MULTIPLIER = 0.25F;
+    private static final float EXTRA_MULTIPLIER = 0.2F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -39,13 +39,13 @@ public class UnsociableMod extends AbstractAugment {
         if (!AbstractDungeon.isPlayerInDungeon() || !AbstractDungeon.player.hand.contains(card)) {
             return MULTIPLIER;
         }
-        float multiplier = MULTIPLIER;
+        float multiplier = 1.0F;
         for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {
             if (otherCard != card && otherCard.type == card.type) {
                 multiplier -= EXTRA_MULTIPLIER;
             }
         }
-        return Math.max(multiplier, 0.0F);
+        return Math.max(multiplier, 0.0F) * MULTIPLIER;
     }
 
     @Override

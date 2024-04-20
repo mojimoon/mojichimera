@@ -208,7 +208,7 @@
         "EXTRA_TEXT": [" NL Increases damage and Block by %d%% for each card of the same type in your hand."]
     },
     "mojichimera:UnsociableMod": {
-        "TEXT": ["Unsociable", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b20% for each card of the same type in your hand."],
+        "TEXT": ["Unsociable", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b15% for each card of the same type in your hand."],
         "EXTRA_TEXT": [" NL Decreases damage and Block by %d%% for each card of the same type in your hand."]
     }
 }
