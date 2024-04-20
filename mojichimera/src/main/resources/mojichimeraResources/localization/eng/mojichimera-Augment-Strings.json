@@ -196,11 +196,19 @@
         "EXTRA_TEXT": [" NL stslib:Refund %d."]
     },
     "mojichimera:RebateMod": {
-        "TEXT": ["Rebate", "", "#yEthereal. NL When #yExhausted, gives #b5(+3) #yGold."],
+        "TEXT": ["Rebate", "", "#yEthereal. NL When #yExhausted, gives #b6(+3) #yGold."],
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %s Gold."]
     },
     "mojichimera:ImminentMod": {
         "TEXT": ["Imminent", "", "#yEthereal. NL When #yExhausted, gives #b1 #yStrength and #yDexterity."],
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %d Strength and Dexterity."]
+    },
+    "mojichimera:SociableMod": {
+        "TEXT": ["Sociable", "", "Increases damage and #yBlock by #b20% for each card of the same type in your hand."],
+        "EXTRA_TEXT": [" NL Increases damage and Block by %d%% for each card of the same type in your hand."]
+    },
+    "mojichimera:UnsociableMod": {
+        "TEXT": ["Unsociable", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b20% for each card of the same type in your hand."],
+        "EXTRA_TEXT": [" NL Decreases damage and Block by %d%% for each card of the same type in your hand."]
     }
 }

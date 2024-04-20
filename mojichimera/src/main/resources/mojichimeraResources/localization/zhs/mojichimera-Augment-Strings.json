@@ -16,7 +16,7 @@
         "EXTRA_TEXT": [" NL 抽 %s 张牌。", " NL 抽 %s 张牌。"]
     },
     "mojichimera:StrategyMod": {
-        "TEXT": ["", "战略", "造成的伤害与获得的 #y格档 减少 #b33% 。 NL 抽 #b2 张牌。"],
+        "TEXT": ["", "战略", "造成的伤害与获得的 #y格挡 减少 #b33% 。 NL 抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 抽 %d 张牌。"]
     },
     "mojichimera:OverpoweredMod": {
@@ -44,7 +44,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:ReinforcedMod": {
-        "TEXT": ["硬化", "", "升级时获得的 #y格档 额外增加 #b4 。"],
+        "TEXT": ["硬化", "", "升级时获得的 #y格挡 额外增加 #b4 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:PeaceMod": {
@@ -65,7 +65,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:BluntMod": {
-        "TEXT": ["直率", "", "本牌耗能变为 #b0 。 NL 获得的 #y格档 减少 #b100% 。"],
+        "TEXT": ["直率", "", "本牌耗能变为 #b0 。 NL 获得的 #y格挡 减少 #b100% 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:XXMod": {
@@ -174,7 +174,7 @@
         "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"]
     },
     "mojichimera:FuelFlameMod": {
-        "TEXT": ["浇油", "", "造成的伤害和获得的 #y格档 减少 #b20% 。 NL 如果敌人有 #y易伤 状态，获得 [E] 并且抽 #b1 张牌。"],
+        "TEXT": ["浇油", "", "造成的伤害和获得的 #y格挡 减少 #b20% 。 NL 如果敌人有 #y易伤 状态，获得 [E] 并且抽 #b1 张牌。"],
         "EXTRA_TEXT": [
             " NL 如果敌人有 易伤 状态 ， NL 获得 [E] 并且抽 %d 张牌。",
             " NL 如果敌人有 易伤 状态 ， NL 获得 [E] [E] 并且抽 %d 张牌。",
@@ -182,7 +182,7 @@
             ]
     },
     "mojichimera:PourSaltMod": {
-        "TEXT": ["撒盐", "", "造成的伤害和获得的 #y格档 减少 #b20% 。 NL 如果敌人有 #y虚弱 状态，获得 [E] 并且抽 #b1 张牌。"],
+        "TEXT": ["撒盐", "", "造成的伤害和获得的 #y格挡 减少 #b20% 。 NL 如果敌人有 #y虚弱 状态，获得 [E] 并且抽 #b1 张牌。"],
         "EXTRA_TEXT": [
             " NL 如果敌人有 虚弱 状态 ， NL 获得 [E] 并且抽 %d 张牌。",
             " NL 如果敌人有 虚弱 状态 ， NL 获得 [E] [E] 并且抽 %d 张牌。",
@@ -202,12 +202,20 @@
         "EXTRA_TEXT": [" NL stslib:回馈 %d 。"]
     },
     "mojichimera:RebateMod": {
-        "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b5(+3) #y金币 。"],
+        "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b6(+3) #y金币 。"],
         "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗，获得 %s 金币 。"]
     },
     "mojichimera:ImminentMod": {
         "TEXT": ["急迫", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b1 点 #y力量 和 #y敏捷 。 NL 源于 #b崩坠 #y六火亡魂 的卡牌 #b迫在眉睫。"],
         "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗，获得 %d 点 力量 和 敏捷 。"],
         "NOTES": ["hexamod:BurningQuestion"]
+    },
+    "mojichimera:SociableMod": {
+        "TEXT": ["合群", "", "手牌中每有一种同类型牌，伤害和 #y格挡 增加 #b20% 。"],
+        "EXTRA_TEXT": [" NL 手牌中每有一种同类型牌，伤害和 格挡 增加 %d%% 。"]
+    },
+    "mojichimera:UnsociableMod": {
+        "TEXT": ["孤僻", "", "本牌的伤害和 #y格挡 增加 #b100% 。 NL 手牌中每有一种同类型牌，减少 #b25% 。"],
+        "EXTRA_TEXT": [" NL 手牌中每有一种同类型牌，伤害和 格挡 减少 %d%% 。"]
     }
 }
