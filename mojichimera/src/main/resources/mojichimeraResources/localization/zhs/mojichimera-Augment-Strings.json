@@ -217,5 +217,13 @@
     "mojichimera:UnsociableMod": {
         "TEXT": ["孤僻", "", "本牌的伤害和 #y格挡 增加 #b100% 。 NL 手牌中每有一张同类型牌，减少当前值的 #b20% 。"],
         "EXTRA_TEXT": [" NL 手牌中每有一张同类型牌，伤害和 格挡 减少 %d%% 。"]
+    },
+    "mojichimera:BondMod": {
+        "TEXT": ["羁绊", "", "每有 #b3(2) 种 #y正面效果 ，魔法数字增加 #b1 （向上取整）。"],
+        "EXTRA_TEXT": [" NL 每有 %d 种正面效果，特殊值增加 %d 。"]
+    },
+    "mojichimera:VirusMod": {
+        "TEXT": ["", "病毒", "#y虚无 。 NL 打出时将所有手牌变为本牌的复制。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
+        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 将所有手牌变为本牌的复制。"]
     }
 }

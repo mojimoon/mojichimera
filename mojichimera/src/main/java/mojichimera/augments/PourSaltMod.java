@@ -79,7 +79,7 @@ public class PourSaltMod extends AbstractAugment {
     @Override
     public String identifier(AbstractCard card) { return ID; }
 
-    public boolean shouldGlow(AbstractCard card) {
+    private boolean shouldGlow(AbstractCard card) {
 
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while(var1.hasNext()) {

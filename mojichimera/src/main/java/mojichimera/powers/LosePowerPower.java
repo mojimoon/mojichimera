@@ -21,35 +21,35 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
 //    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
     private static final PowerStrings TEXT = new PowerStrings();
-    private String basePowerName;
-    private String basePowerID;
-    private int thisId;
+    private final String basePowerName;
+    private final String basePowerID;
     private int thisTurn;
     private static int idCounter = 0;
 
     // something has gone wrong with the localization so this is a temporary fix
     static {
         if (Settings.language.toString().toLowerCase().equals("zhs")) {
-            TEXT.NAME = "下降";
+            TEXT.NAME = "偏差";
             TEXT.DESCRIPTIONS = new String[] {"在你的回合开始时，失去 #b", " 点 #y", " 。剩余 #b", " 回合。"};
         } else {
-            TEXT.NAME = "Down";
+            TEXT.NAME = "Biased";
             TEXT.DESCRIPTIONS = new String[] {"At the start of each turn, lose #b", " #y", ". Expires in #b", " turns."};
         }
     }
 
     public LosePowerPower(AbstractCreature owner, AbstractPower powerToLose, int amount, int turn) { // amount is negative
-        this.name = TEXT.NAME;
-        this.thisId = idCounter++;
-        this.ID = "LosePowerPower" + this.thisId;
+        this.name = TEXT.NAME + powerToLose.name;
+        idCounter++;
+        this.ID = "LosePowerPower" + idCounter;
         this.owner = owner;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
-        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower84.png")), 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower32.png")), 0, 0, 32, 32);
+        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower128.png")), 0, 0, 128, 128);
+        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower48.png")), 0, 0, 48, 48);
         this.basePowerName = powerToLose.name;
         this.basePowerID = powerToLose.ID;
         this.thisTurn = turn;
+        this.isTurnBased = true;
         updateDescription();
     }
 
@@ -85,7 +85,7 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
     }
 
     public AbstractPower makeCopy() {
-        return new LoseFocusPower(this.owner, this.amount);
+        return new LosePowerPower(this.owner, this.owner.getPower(this.basePowerID), this.amount, this.thisTurn);
     }
 }
 

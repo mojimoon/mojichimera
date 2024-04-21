@@ -55,24 +55,4 @@ public class IndignantMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-
-    public boolean shouldGlow(AbstractCard card) {
-        return AbstractDungeon.player.stance.ID.equals("Wrath");
-    }
-
-    public CardBorderGlowManager.GlowInfo getGlowInfo() {
-        return new CardBorderGlowManager.GlowInfo() {
-            public boolean test(AbstractCard card) {
-                return IndignantMod.this.hasThisMod(card) && IndignantMod.this.shouldGlow(card);
-            }
-
-            public Color getColor(AbstractCard card) {
-                return Color.RED.cpy();
-            }
-
-            public String glowID() {
-                return IndignantMod.ID + "Glow";
-            }
-        };
-    }
 }

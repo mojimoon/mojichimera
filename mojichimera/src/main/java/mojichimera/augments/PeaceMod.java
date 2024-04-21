@@ -60,7 +60,7 @@ public class PeaceMod extends AbstractAugment {
     @Override
     public String identifier(AbstractCard card) { return ID; }
 
-    public boolean shouldGlow(AbstractCard card) {
+    private boolean shouldGlow(AbstractCard card) {
         return AbstractDungeon.player.stance.ID.equals("Calm");
     }
 

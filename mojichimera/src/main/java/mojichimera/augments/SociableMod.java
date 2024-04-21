@@ -35,7 +35,7 @@ public class SociableMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AbstractDungeon.isPlayerInDungeon() || !AbstractDungeon.player.hand.contains(card)) {
+        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
             return 1.0F;
         }
         float multiplier = 1.0F;

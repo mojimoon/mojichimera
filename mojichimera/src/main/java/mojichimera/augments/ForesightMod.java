@@ -32,7 +32,8 @@ public class ForesightMod extends AbstractAugment {
         return card instanceof CalculatedGamble // 计算下注
             || card instanceof Violence; // 暴力
     }
-        @Override
+
+    @Override
     public boolean validCard(AbstractCard card) {
         return (card.cost >= 0 && cardCheck(card, c -> doesntUpgradeCost() && reachesMagic(3))
                 && drawsCards(card)

@@ -210,5 +210,13 @@
     "mojichimera:UnsociableMod": {
         "TEXT": ["Unsociable", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b15% for each card of the same type in your hand."],
         "EXTRA_TEXT": [" NL Decreases damage and Block by %d%% for each card of the same type in your hand."]
+    },
+    "mojichimera:BondMod": {
+        "TEXT": ["Bond", "", "Increases magic number by #b1 for every #b3(2) unique #ybuffs you have (rounded up)."],
+        "EXTRA_TEXT": [" NL For every %d unique buffs you have, increase magic number by %d."]
+    },
+    "mojichimera:VirusMod": {
+        "TEXT": ["", "Virus", "#yEthereal. NL #yTransforms all cards in your hand into copies of this card."],
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL Transform all cards in your hand into copies of this card."]
     }
 }

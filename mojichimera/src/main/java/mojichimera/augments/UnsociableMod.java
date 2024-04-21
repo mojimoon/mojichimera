@@ -36,7 +36,7 @@ public class UnsociableMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AbstractDungeon.isPlayerInDungeon() || !AbstractDungeon.player.hand.contains(card)) {
+        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
             return MULTIPLIER;
         }
         float multiplier = MULTIPLIER;
