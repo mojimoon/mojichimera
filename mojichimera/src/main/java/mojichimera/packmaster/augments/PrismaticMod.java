@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import thePackmaster.cards.prismaticpack.PrismaticUtil;
 
 import java.util.Iterator;
 import java.util.List;
@@ -29,15 +28,22 @@ public class PrismaticMod extends AbstractAugment {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         this.addToBot(new AbstractGameAction() {
             public void update() {
-                List<AbstractCard> cards = PrismaticUtil.getRandomDifferentColorCardInCombat((AbstractCard.CardType)null, (AbstractCard.CardRarity)null, EFFECT);
-                Iterator<?> var2 = ((List<?>) cards).iterator();
+                try {
+                    // List<AbstractCard> cards = thePackmaster.cards.prismaticpack.PrismaticUtil.getRandomDifferentColorCardInCombat((AbstractCard.CardType)null, (AbstractCard.CardRarity)null, EFFECT);
+                    Class<?> prismaticUtil = Class.forName("thePackmaster.cards.prismaticpack.PrismaticUtil");
+                    List<?> cards = (List<?>)prismaticUtil.getMethod("getRandomDifferentColorCardInCombat", AbstractCard.CardType.class, AbstractCard.CardRarity.class, int.class).invoke(null, null, null, EFFECT);
+                    Iterator<?> var2 = ((List<?>) cards).iterator();
 
-                while(var2.hasNext()) {
-                    AbstractCard c = (AbstractCard)var2.next();
-                    this.addToTop(new MakeTempCardInHandAction(c));
+                    while(var2.hasNext()) {
+                        AbstractCard c = (AbstractCard)var2.next();
+                        this.addToTop(new MakeTempCardInHandAction(c));
+                    }
+
+                    this.isDone = true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    this.isDone = true;
                 }
-
-                this.isDone = true;
             }
         });
     }

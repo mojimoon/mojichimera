@@ -1,13 +1,17 @@
 package mojichimera.packmaster.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-
-import javax.smartcardio.Card;
 
 public class EchoMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(EchoMod.class.getSimpleName());
@@ -17,7 +21,36 @@ public class EchoMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CardModifierManager.addModifier(card, new thePackmaster.cardmodifiers.energyandechopack.EchoMod());
+        // CardModifierManager.addModifier(card, new thePackmaster.cardmodifiers.energyandechopack.EchoMod());
+//        try {
+//            Class<?> clazz = Class.forName("thePackmaster.cardmodifiers.energyandechopack.EchoMod");
+//            CardModifierManager.addModifier(card, (AbstractCardModifier)clazz.newInstance());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        AbstractCard selfCopy = card.makeStatEquivalentCopy();
+        if (!CardModifierManager.hasModifier(selfCopy, ExhaustMod.ID)) {
+            CardModifierManager.addModifier(selfCopy, new ExhaustMod());
+        }
+        try {
+            // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod());
+            // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod());
+            Class<?> echoedEtherealMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod");
+            Class<?> glowEchoMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod");
+            if (!CardModifierManager.hasModifier(selfCopy, echoedEtherealMod.getField("ID").get(null).toString())) {
+                CardModifierManager.addModifier(selfCopy, (AbstractCardModifier)echoedEtherealMod.newInstance());
+            }
+            if (!CardModifierManager.hasModifier(selfCopy, glowEchoMod.getField("ID").get(null).toString())) {
+                CardModifierManager.addModifier(selfCopy, (AbstractCardModifier)glowEchoMod.newInstance());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        addToBot(new MakeTempCardInHandAction(selfCopy));
     }
 
     @Override

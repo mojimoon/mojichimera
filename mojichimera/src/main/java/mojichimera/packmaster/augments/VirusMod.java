@@ -12,8 +12,6 @@ import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod;
-import thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod;
 
 public class VirusMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(VirusMod.class.getSimpleName());
@@ -42,8 +40,16 @@ public class VirusMod extends AbstractAugment {
         if (count > 0) {
             AbstractCard selfCopy = card.makeStatEquivalentCopy();
             CardModifierManager.addModifier(selfCopy, new ExhaustMod());
-            CardModifierManager.addModifier(selfCopy, new EchoedEtherealMod());
-            CardModifierManager.addModifier(selfCopy, new GlowEchoMod());
+            try {
+                // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod());
+                // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod());
+                Class<?> echoedEtherealMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod");
+                Class<?> glowEchoMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod");
+                CardModifierManager.addModifier(selfCopy, (AbstractCardModifier)echoedEtherealMod.newInstance());
+                CardModifierManager.addModifier(selfCopy, (AbstractCardModifier)glowEchoMod.newInstance());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             addToBot(new MakeTempCardInHandAction(selfCopy, count));
         }
     }

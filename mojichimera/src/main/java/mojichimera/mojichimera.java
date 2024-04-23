@@ -29,6 +29,8 @@ public class mojichimera implements
     private static final String AUTHOR = "Mojimoon";
     private static final String DESCRIPTION = "Chimera expansion by Mojimoon.";
 
+    public static final boolean isPackmasterLoaded = Loader.isModLoaded("anniv5");
+
     // Assets
     public static final String BADGE_IMAGE = "mojichimeraResources/images/Badge.png";
 
