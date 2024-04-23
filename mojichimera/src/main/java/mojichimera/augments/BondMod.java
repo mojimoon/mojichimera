@@ -2,14 +2,11 @@ package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import mojichimera.actions.RandomExhaustCardTypeAction;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.mojichimera;
 
 public class BondMod extends AbstractAugment {
@@ -26,7 +23,7 @@ public class BondMod extends AbstractAugment {
     }
 
     private int countPowerByType(AbstractPower.PowerType type) {
-        if (AbstractDungeon.player == null) {
+        if (AbstractDungeon.player == null || AbstractDungeon.getCurrRoom() == null || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
             return 0;
         }
         int count = 0;

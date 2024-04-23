@@ -1,18 +1,22 @@
 package mojichimera;
 
+import CardAugments.CardAugmentsMod;
 import basemod.*;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
+import mojichimera.packmaster.augments.PackmasterAugmentHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mojichimera.util.TextureLoader;
 import mojichimera.augments.AugmentHelper;
+import thePackmaster.ThePackmaster;
 
 @SpireInitializer
 public class mojichimera implements 
@@ -54,6 +58,11 @@ public class mojichimera implements
 
         if (Loader.isModLoaded("CardAugments")) {
             AugmentHelper.register();
+
+            if (Loader.isModLoaded("anniv5")) {
+                CardAugmentsMod.registerOrbCharacter(ThePackmaster.Enums.THE_PACKMASTER);
+                PackmasterAugmentHelper.register();
+            }
         }
     }
 
@@ -92,5 +101,9 @@ public class mojichimera implements
 
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    public static String makePackmasterID(String idText) {
+        return getModID() + ":packmaster_" + idText;
     }
 }

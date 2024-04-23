@@ -1,28 +1,25 @@
-package mojichimera.augments;
+package mojichimera.packmaster.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardBorderGlowManager;
-import com.badlogic.gdx.graphics.Color;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
+import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod;
+import thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod;
 
 public class VirusMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(VirusMod.class.getSimpleName());
+    public static final String ID = mojichimera.makePackmasterID(VirusMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
-    }
-
+    private static final String REF_MOD_ID = "anniv5:EchoedEtherealMod";
 
     @Override
     public boolean validCard(AbstractCard card) {
@@ -31,6 +28,10 @@ public class VirusMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        if (CardModifierManager.hasModifier(card, REF_MOD_ID)) {
+            return;
+        }
+
         int count = 0;
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c != card) {
@@ -40,6 +41,9 @@ public class VirusMod extends AbstractAugment {
         }
         if (count > 0) {
             AbstractCard selfCopy = card.makeStatEquivalentCopy();
+            CardModifierManager.addModifier(selfCopy, new ExhaustMod());
+            CardModifierManager.addModifier(selfCopy, new EchoedEtherealMod());
+            CardModifierManager.addModifier(selfCopy, new GlowEchoMod());
             addToBot(new MakeTempCardInHandAction(selfCopy, count));
         }
     }
@@ -55,10 +59,10 @@ public class VirusMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
-            return insertAfterText(rawDescription, CARD_TEXT[1]);
+        if (CardModifierManager.hasModifier(card, REF_MOD_ID)) {
+            return rawDescription;
         }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), CARD_TEXT[1]);
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override

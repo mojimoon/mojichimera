@@ -217,6 +217,11 @@
     },
     "mojichimera:VirusMod": {
         "TEXT": ["", "Virus", "#yEthereal. NL #yTransforms all cards in your hand into copies of this card."],
-        "EXTRA_TEXT": ["Ethereal. NL ", " NL Transform all cards in your hand into copies of this card."]
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL Transform all cards in your hand into copies of this card."],
+        "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:SkillizedMod": {
+        "TEXT": ["Skillized", "", "Becomes a #ySkill."],
+        "EXTRA_TEXT": []
     }
 }

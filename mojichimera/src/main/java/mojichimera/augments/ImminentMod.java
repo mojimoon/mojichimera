@@ -24,7 +24,7 @@ public class ImminentMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2 && card.type == AbstractCard.CardType.POWER;
+        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c)));
     }
 
     @Override

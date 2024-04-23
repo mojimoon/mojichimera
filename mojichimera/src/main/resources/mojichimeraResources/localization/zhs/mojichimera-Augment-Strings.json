@@ -198,7 +198,7 @@
             ]
     },
     "mojichimera:RefundMod": {
-        "TEXT": ["回馈", "", "打出后返还能量，至多 #b1 。"],
+        "TEXT": ["回馈", "", "打出后返还能量，最多 #b1 。"],
         "EXTRA_TEXT": [" NL stslib:回馈 %d 。"]
     },
     "mojichimera:RebateMod": {
@@ -224,6 +224,31 @@
     },
     "mojichimera:VirusMod": {
         "TEXT": ["", "病毒", "#y虚无 。 NL 打出时将所有手牌变为本牌的复制。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
-        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 将所有手牌变为本牌的复制。"]
+        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 将所有手牌变为本牌的复制。"],
+        "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:SkillizedMod": {
+        "TEXT": ["技能化", "", "本牌变为 #y技能 牌。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:HorrorMod": {
+        "TEXT": ["", "恐怖", "再打出一次 。 NL 获得 #b1 层 #y易伤 。"],
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 易伤 。 "]
+    },
+    "mojichimera:packmaster_VirusMod": {
+        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 复制牌不再触发此效果。"],
+        "EXTRA_TEXT": [" NL 将所有手牌变为本牌的 anniv5:回响 。"]
+    },
+    "mojichimera:packmaster_InscribedMod": {
+        "TEXT": ["铭印", "", "打出时触发最右侧充能球的被动效果。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:packmaster_EchoMod": {
+        "TEXT": ["回响", "", "打出时获得本牌的 #y消耗 #y虚无 复制。"],
+        "EXTRA_TEXT": [" NL anniv5:回响 。"]
+    },
+    "mojichimera:packmaster_PrismaticMod": {
+        "TEXT": ["", "棱镜", "随机获得 #b1 张 #y异色 牌。"],
+        "EXTRA_TEXT": [" NL 随机获得 %d 张 anniv5:异色 牌。"]
     }
 }
