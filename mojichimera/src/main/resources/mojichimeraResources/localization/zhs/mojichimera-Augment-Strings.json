@@ -240,7 +240,7 @@
         "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 虚弱 。 "]
     },
     "mojichimera:FailureMod": {
-        "TEXT": ["失败作", "", "再打出 #b8 次 。 NL 失去 #b2 点生命和 #b10 #y金币 。 NL 获得 #b1 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],
+        "TEXT": ["失败作", "", "再打出 #b7 次 。 NL 失去 #b2 点生命和 #b10 #y金币 。 NL 获得 #b1 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 失去 %d 点生命和 %d 金币 。 NL 获得 %d 层 易伤 、 虚弱 和 脆弱 。 NL 将 %d 张 *虚空 洗入抽牌堆。"]
     },
     "mojichimera:packmaster_VirusMod": {

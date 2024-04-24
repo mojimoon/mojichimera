@@ -24,7 +24,7 @@ public class FailureMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(FailureMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int ECHOES = 8;
+    private static final int ECHOES = 7;
     private static final int HP = 2;
     private static final int GOLD = 10;
     private static final int EFFECT = 1;
@@ -46,9 +46,9 @@ public class FailureMod extends AbstractAugment {
             addToBot(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, HP));
             addToBot(new SFXAction("BLOOD_SPLAT", 0.8F));
             AbstractDungeon.player.loseGold(GOLD);
-            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new VulnerablePower(target, EFFECT, false), EFFECT));
-            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new WeakPower(target, EFFECT, false), EFFECT));
-            addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new FrailPower(target, EFFECT, false), EFFECT));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VulnerablePower(AbstractDungeon.player, EFFECT, false), EFFECT));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WeakPower(AbstractDungeon.player, EFFECT, false), EFFECT));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FrailPower(AbstractDungeon.player, EFFECT, false), EFFECT));
             addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, true, true));
         }
     }
