@@ -30,7 +30,7 @@ public class ReduceDrawnCardsCostAction extends AbstractGameAction {
             if (TYPE != null && AbstractDungeon.player.hand.getNCardFromTop(i).type != TYPE) {
                 break;
             }
-            AbstractDungeon.player.hand.getNCardFromTop(i).modifyCostForCombat(-EFFECT);
+            AbstractDungeon.player.hand.getNCardFromTop(i).updateCost(-EFFECT);
         }
         this.isDone = true;
     }

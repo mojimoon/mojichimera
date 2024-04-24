@@ -2,18 +2,21 @@ package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
-import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mojichimera.actions.RandomExhaustCardTypeAction;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 
-public class CleansingMod extends AbstractAugment implements DynvarCarrier {
-    public static final String ID = mojichimera.makeID(CleansingMod.class.getSimpleName());
+import java.util.ArrayList;
+
+public class PelletMod extends AbstractAugment implements DynvarCarrier {
+    public static final String ID = mojichimera.makeID(PelletMod.class.getSimpleName());
     public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
@@ -33,13 +36,27 @@ public class CleansingMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2)
-                && (card.type != AbstractCard.CardType.CURSE && card.type != AbstractCard.CardType.STATUS);
+        return (card.cost != -2);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new RandomExhaustCardTypeAction(new AbstractCard.CardType[]{AbstractCard.CardType.CURSE, AbstractCard.CardType.STATUS}, new CardGroup[]{AbstractDungeon.player.drawPile, AbstractDungeon.player.hand, AbstractDungeon.player.discardPile}, getBaseVal(card)));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                isDone = true;
+                ArrayList<AbstractPower> debuffs = new ArrayList<>();
+                for (AbstractPower p : AbstractDungeon.player.powers) {
+                    if (p.type == AbstractPower.PowerType.DEBUFF) {
+                        debuffs.add(p);
+                    }
+                }
+                for (int i = 0; i < getBaseVal(card); i++) {
+                    if (!debuffs.isEmpty())
+                        addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, debuffs.get(AbstractDungeon.cardRandomRng.random(debuffs.size() - 1))));
+                }
+            }
+        });
     }
 
     @Override
@@ -65,7 +82,7 @@ public class CleansingMod extends AbstractAugment implements DynvarCarrier {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new CleansingMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PelletMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

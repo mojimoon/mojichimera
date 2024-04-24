@@ -43,16 +43,17 @@ public class ForesightMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        if (AbstractDungeon.player.hasPower("No Draw")) {
+            return;
+        }
         if (card instanceof Expertise) {
             addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber + 1 - AbstractDungeon.player.hand.size(), AbstractDungeon.player.hand.size(), EFFECT));
         } else if (card instanceof CalculatedGamble) {
             addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(AbstractDungeon.player.hand.size() - 1, AbstractDungeon.player.hand.size(), EFFECT));
-        } else if (InnerPeaceCheck(card) && ImpatienceCheck(card) && !AbstractDungeon.player.hasPower("No Draw")) {
-            if (card instanceof Violence) {
-                addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
-            } else {
-                addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT));
-            }
+        } else if (card instanceof Violence) {
+            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
+        } else if (InnerPeaceCheck(card) && ImpatienceCheck(card)) {
+            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT));
         }
     }
 
@@ -71,7 +72,7 @@ public class ForesightMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ForesightMod(); }

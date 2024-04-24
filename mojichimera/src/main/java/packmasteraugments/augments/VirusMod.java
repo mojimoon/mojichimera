@@ -26,10 +26,6 @@ public class VirusMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (CardModifierManager.hasModifier(card, REF_MOD_ID)) {
-            return;
-        }
-
         int count = 0;
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c != card) {
@@ -40,6 +36,7 @@ public class VirusMod extends AbstractAugment {
         if (count > 0) {
             AbstractCard selfCopy = card.makeStatEquivalentCopy();
             CardModifierManager.addModifier(selfCopy, new ExhaustMod());
+            CardModifierManager.removeModifiersById(selfCopy, ID, true);
             try {
 //                 CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod());
 //                 CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod());
@@ -65,9 +62,6 @@ public class VirusMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (CardModifierManager.hasModifier(card, REF_MOD_ID)) {
-            return rawDescription;
-        }
         return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 

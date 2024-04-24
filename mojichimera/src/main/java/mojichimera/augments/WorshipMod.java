@@ -14,8 +14,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class PursuitMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(PursuitMod.class.getSimpleName());
+public class WorshipMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(WorshipMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int EFFECT = 1;
@@ -55,7 +55,7 @@ public class PursuitMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PursuitMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new WorshipMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

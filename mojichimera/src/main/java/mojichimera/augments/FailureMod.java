@@ -25,9 +25,9 @@ public class FailureMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int ECHOES = 7;
-    private static final int HP = 2;
-    private static final int GOLD = 10;
-    private static final int EFFECT = 1;
+    private static final int HP = 3;
+    private static final int GOLD = 15;
+    private static final int EFFECT = 2;
     private static final int VOIDS = 1;
 
     @Override

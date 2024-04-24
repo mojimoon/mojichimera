@@ -51,11 +51,6 @@
         "TEXT": ["", "Peace", "#yCalm: Draw #b2 cards."],
         "EXTRA_TEXT": [" NL Calm: Draw %d cards."]
     },
-    "mojichimera:HeatsinksMod": {
-        "TEXT": ["", "Heatsinks", "Draw #b2 cards."],
-        "EXTRA_TEXT": [" NL Draw %d cards."],
-        "NOTES": ["DEPRECATED"]
-    },
     "mojichimera:TransfiniteMod": {
         "TEXT": ["Transfinite", "", "Allows #yUpgrading any number of times."],
         "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
@@ -110,11 +105,6 @@
         "TEXT": ["Twin", "", "Increases cost by #b1. NL Plays twice."],
         "EXTRA_TEXT": [" NL Plays twice."]
     },
-    "mojichimera:AfterlifeMod": {
-        "TEXT": ["Afterlife", "", "#yEthereal. NL When #yExhausted due to #yethereal, trigger all effects."],
-        "EXTRA_TEXT": ["Ethereal. NL When played or exhausted due to ethereal: NL "],
-        "NOTES": ["DEPRECATED"]
-    },
     "mojichimera:EstablishedMod": {
         "TEXT": ["Established", "", "#yRetain. NL When #yRetained, lowers its cost by #b1 this combat."],
         "EXTRA_TEXT": ["Retain. NL ",
@@ -144,8 +134,8 @@
         "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d this combat."]
     },
     "mojichimera:CleansingMod": {
-        "TEXT": ["Cleansing", "", "#yExhausts #b1 random #yStatus or #yCurse card in your draw pile. NL Upgraded: #b2 in your draw pile, discard pile, and hand instead."],
-        "EXTRA_TEXT": [" NL Exhaust %d random Status or Curse card in your draw pile.", " NL Exhaust %d random Status or Curse cards you own."]
+        "TEXT": ["Cleansing", "", "#yExhausts #b1(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
+        "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card you own.", " NL Exhaust %s random Status or Curse cards you own."]
     },
     "mojichimera:HeavyThrowMod": {
         "TEXT": ["", "Heavy Throw", "Plays twice. NL Gains #b2 #yFrail."],
@@ -214,11 +204,6 @@
     "mojichimera:BondMod": {
         "TEXT": ["Bond", "", "Increases magic number by #b1 for every #b3(2) unique #ybuffs you have (rounded up)."],
         "EXTRA_TEXT": [" NL For every %d unique buffs you have, increase magic number by %d."]
-    },
-    "mojichimera:VirusMod": {
-        "TEXT": ["", "Virus", "#yEthereal. NL #yTransforms all cards in your hand into copies of this card."],
-        "EXTRA_TEXT": ["Ethereal. NL ", " NL Transform all cards in your hand into copies of this card."],
-        "NOTES": ["DEPRECATED"]
     },
     "mojichimera:SkillizedMod": {
         "TEXT": ["Skillized", "", "Becomes a #ySkill."],

@@ -1,33 +1,36 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import mojichimera.mojichimera;
-import mojichimera.actions.ModifyMagicAction;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class ReactiveMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(ReactiveMod.class.getSimpleName());
+public class PortableMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(PortableMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
+    private static final int ENERGY = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.selfRetain = true;
+        card.cost--;
+        if (card.cost < 0)
+            card.cost = 0;
+        card.costForTurn = card.cost;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))
-                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()));
+        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
     }
 
     @Override
-    public void onRetained(AbstractCard card) {
-        addToBot((AbstractGameAction) new ModifyMagicAction(card.uuid, EFFECT));
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        addToBot(new LoseEnergyAction(ENERGY));
     }
 
     @Override
@@ -41,17 +44,14 @@ public class ReactiveMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
-            return insertAfterText(rawDescription, String.format(CARD_TEXT[1], EFFECT));
-        }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ReactiveMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PortableMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
