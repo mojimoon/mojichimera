@@ -1,4 +1,4 @@
-package mojichimera.packmaster.augments;
+package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.ExhaustMod;
@@ -41,8 +41,8 @@ public class VirusMod extends AbstractAugment {
             AbstractCard selfCopy = card.makeStatEquivalentCopy();
             CardModifierManager.addModifier(selfCopy, new ExhaustMod());
             try {
-                // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod());
-                // CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod());
+//                 CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod());
+//                 CardModifierManager.addModifier(selfCopy, new thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod());
                 Class<?> echoedEtherealMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.EchoedEtherealMod");
                 Class<?> glowEchoMod = Class.forName("thePackmaster.cardmodifiers.energyandechopack.GlowEchoMod");
                 CardModifierManager.addModifier(selfCopy, (AbstractCardModifier)echoedEtherealMod.newInstance());

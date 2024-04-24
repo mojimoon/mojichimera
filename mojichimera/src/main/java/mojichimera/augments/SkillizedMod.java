@@ -1,7 +1,12 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -48,15 +53,26 @@ public class SkillizedMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractCard preview = null;
-        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
-            if (CardModifierManager.hasModifier(c, PreviewedMod.ID))
-                preview = c;
-        }
-        if (preview != null) {
-            AbstractCard copy = preview.makeStatEquivalentCopy();
-            addToTop(new QueueCardAction(copy, target));
-        }
+        addToTop(new AbstractGameAction() {
+            @Override
+            public void update() {
+                AbstractCard preview = null;
+                for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
+                    if (CardModifierManager.hasModifier(c, PreviewedMod.ID))
+                        preview = c;
+                }
+                if (preview != null) {
+                    AbstractCard copy = preview.makeStatEquivalentCopy();
+//                    CardModifierManager.copyModifiers(card, copy, false, true, true);
+                    if (copy.magicNumber != card.magicNumber)
+                        copy.magicNumber = card.magicNumber;
+                    if (copy.baseMagicNumber != card.baseMagicNumber)
+                        copy.baseMagicNumber = card.baseMagicNumber;
+                    copy.use(AbstractDungeon.player, (AbstractMonster) target);
+                }
+                this.isDone = true;
+            }
+        });
     }
 
     @Override

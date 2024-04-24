@@ -1,4 +1,4 @@
-package mojichimera.packmaster.augments;
+package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardModifierManager;
@@ -15,7 +15,7 @@ public class InscribedMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        // CardModifierManager.addModifier(card, new thePackmaster.cardmodifiers.InscribedMod(true, true));
+//         CardModifierManager.addModifier(card, new thePackmaster.cardmodifiers.InscribedMod(true, true));
         try {
             Class<?> clazz = Class.forName("thePackmaster.cardmodifiers.InscribedMod");
             CardModifierManager.addModifier(card, (AbstractCardModifier)clazz.getConstructor(boolean.class, boolean.class).newInstance(true, true));

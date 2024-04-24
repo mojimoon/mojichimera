@@ -1,4 +1,4 @@
-package mojichimera.packmaster.augments;
+package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -29,10 +29,10 @@ public class PrismaticMod extends AbstractAugment {
         this.addToBot(new AbstractGameAction() {
             public void update() {
                 try {
-                    // List<AbstractCard> cards = thePackmaster.cards.prismaticpack.PrismaticUtil.getRandomDifferentColorCardInCombat((AbstractCard.CardType)null, (AbstractCard.CardRarity)null, EFFECT);
+//                    List<?> cards = thePackmaster.cards.prismaticpack.PrismaticUtil.getRandomDifferentColorCardInCombat((AbstractCard.CardType)null, (AbstractCard.CardRarity)null, EFFECT);
                     Class<?> prismaticUtil = Class.forName("thePackmaster.cards.prismaticpack.PrismaticUtil");
                     List<?> cards = (List<?>)prismaticUtil.getMethod("getRandomDifferentColorCardInCombat", AbstractCard.CardType.class, AbstractCard.CardRarity.class, int.class).invoke(null, null, null, EFFECT);
-                    Iterator<?> var2 = ((List<?>) cards).iterator();
+                    Iterator<?> var2 = (cards).iterator();
 
                     while(var2.hasNext()) {
                         AbstractCard c = (AbstractCard)var2.next();
