@@ -27,7 +27,7 @@ public class HorrorMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.POWER && card.baseMagicNumber > 0;
+        return card.type == AbstractCard.CardType.POWER && card.baseMagicNumber > 0 && (card.cost != -2);
     }
 
     @Override

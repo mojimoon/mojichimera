@@ -27,7 +27,7 @@ public class WorshipMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.SKILL;
+        return card.type == AbstractCard.CardType.SKILL && (card.cost != -2);
     }
 
     @Override

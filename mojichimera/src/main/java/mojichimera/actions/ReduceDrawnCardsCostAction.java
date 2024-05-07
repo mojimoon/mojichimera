@@ -7,14 +7,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 public class ReduceDrawnCardsCostAction extends AbstractGameAction {
     private final int CARDS;
     private final int EFFECT;
-    private final AbstractCard.CardType TYPE;
+//    private final AbstractCard.CardType TYPE;
     private static final int MAX_HAND_SIZE = 10;
 
     public ReduceDrawnCardsCostAction(int MagicNumber, int currentHandSize, int effect, AbstractCard.CardType... types) {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         CARDS = Math.min(MagicNumber, MAX_HAND_SIZE + 1 - currentHandSize);
         EFFECT = effect;
-        TYPE = types.length > 0 ? types[0] : null;
+//        TYPE = types.length > 0 ? types[0] : null;
     }
 
     public void update() {
@@ -27,9 +27,9 @@ public class ReduceDrawnCardsCostAction extends AbstractGameAction {
             if (idx < 0) {
                 break;
             }
-            if (TYPE != null && AbstractDungeon.player.hand.getNCardFromTop(i).type != TYPE) {
-                break;
-            }
+//            if (TYPE != null && AbstractDungeon.player.hand.getNCardFromTop(i).type != TYPE) {
+//                break;
+//            }
             AbstractDungeon.player.hand.getNCardFromTop(i).updateCost(-EFFECT);
         }
         this.isDone = true;

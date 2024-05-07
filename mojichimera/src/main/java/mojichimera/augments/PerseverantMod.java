@@ -2,30 +2,30 @@ package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class KyrieMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(KyrieMod.class.getSimpleName());
+public class PerseverantMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(PerseverantMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final float MULTIPLIER = 1.0F;
+    public static final float MULTIPLIER = 2.0F;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.ATTACK
-                && card.cost > -2;
+        return card.baseBlock > 0 && card.cost > -2;
     }
 
     @Override
-    public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (target != null && target.maxHealth > 0) {
-            return damage * (1.0F + (float)target.currentHealth / (float)target.maxHealth);
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+            return block;
         }
-        return damage;
+        return block * (MULTIPLIER - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth);
     }
 
     @Override
@@ -43,10 +43,10 @@ public class KyrieMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new KyrieMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PerseverantMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

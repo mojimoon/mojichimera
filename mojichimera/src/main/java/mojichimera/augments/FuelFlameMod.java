@@ -1,7 +1,9 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.cardmods.rare.BundledMod;
 import basemod.helpers.CardBorderGlowManager;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.unique.DropkickAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -41,7 +43,8 @@ public class FuelFlameMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.target == AbstractCard.CardTarget.ENEMY && card.cost != -2
-                && (card.baseDamage > 1 || card.baseBlock > 1);
+                && (card.baseDamage > 1 || card.baseBlock > 1)
+                && !CardModifierManager.hasModifier(card, BundledMod.ID);
     }
 
     @Override

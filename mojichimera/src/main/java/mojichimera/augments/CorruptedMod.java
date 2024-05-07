@@ -2,13 +2,9 @@ package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.patches.EchoFieldPatches;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.status.VoidCard;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.cards.status.*;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -20,15 +16,13 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class FailureMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(FailureMod.class.getSimpleName());
+public class CorruptedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(CorruptedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int ECHOES = 7;
-    private static final int HP = 3;
-    private static final int GOLD = 15;
+    private static final int ECHOES = 5;
     private static final int EFFECT = 2;
-    private static final int VOIDS = 1;
+    private static final int STATUS = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -37,19 +31,21 @@ public class FailureMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0);
+        return (card.baseMagicNumber > 0 && (card.baseDamage > 0 || card.baseBlock > 0 || card.type == AbstractCard.CardType.POWER))
+                && card.cost != -2;
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (!card.purgeOnUse) {
-            addToBot(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, HP));
-            addToBot(new SFXAction("BLOOD_SPLAT", 0.8F));
-            AbstractDungeon.player.loseGold(GOLD);
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VulnerablePower(AbstractDungeon.player, EFFECT, false), EFFECT));
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new WeakPower(AbstractDungeon.player, EFFECT, false), EFFECT));
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FrailPower(AbstractDungeon.player, EFFECT, false), EFFECT));
-            addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Dazed(), STATUS, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Slimed(), STATUS, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Wound(), STATUS, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Burn(), STATUS, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), STATUS, true, true));
         }
     }
 
@@ -64,14 +60,14 @@ public class FailureMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], ECHOES, HP, GOLD, EFFECT, VOIDS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], ECHOES));
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FailureMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new CorruptedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

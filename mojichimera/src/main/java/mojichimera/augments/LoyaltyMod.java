@@ -33,7 +33,8 @@ public class LoyaltyMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0)
                 && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)
-                && cardCheck(card, c -> doesntExhaust(c));
+                && cardCheck(card, c -> doesntExhaust(c))
+                && card.cost != -2;
     }
 
     @Override
@@ -73,7 +74,7 @@ public class LoyaltyMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new LoyaltyMod(); }

@@ -29,8 +29,8 @@ public class ForesightMod extends AbstractAugment {
     }
 
     private boolean isInWhitelist(AbstractCard card) {
-        return card instanceof CalculatedGamble // 计算下注
-            || card instanceof Violence; // 暴力
+        return card instanceof CalculatedGamble; // 计算下注
+//            || card instanceof Violence; // 暴力
     }
 
     @Override
@@ -50,8 +50,8 @@ public class ForesightMod extends AbstractAugment {
             addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber + 1 - AbstractDungeon.player.hand.size(), AbstractDungeon.player.hand.size(), EFFECT));
         } else if (card instanceof CalculatedGamble) {
             addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(AbstractDungeon.player.hand.size() - 1, AbstractDungeon.player.hand.size(), EFFECT));
-        } else if (card instanceof Violence) {
-            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
+//        } else if (card instanceof Violence) {
+//            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
         } else if (InnerPeaceCheck(card) && ImpatienceCheck(card)) {
             addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT));
         }

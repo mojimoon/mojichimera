@@ -1,40 +1,45 @@
 package mojichimera.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.patches.EchoFieldPatches;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mojichimera.mojichimera;
 
-public class HeavyThrowMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(HeavyThrowMod.class.getSimpleName());
+public class ConcentratedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ConcentratedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 2;
+    private static final int CARDS = 3;
+    private static final int UPGRADE_CARDS = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) + 1);
+        card.cost -= 2;
+        if (card.cost < 0)
+            card.cost = 0;
+        card.costForTurn = card.cost;
+    }
+
+    @Override
+    public void onUpgradeCheck(AbstractCard card) {
+        card.initializeDescription();
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0) && (card.cost != -2);
+        return card.cost > 1 && cardCheck(card, c -> doesntUpgradeCost());
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (!card.purgeOnUse) {
-            addToBot((AbstractGameAction) new ApplyPowerAction((AbstractCreature) AbstractDungeon.player, (AbstractCreature) AbstractDungeon.player, (AbstractPower) new FrailPower((AbstractCreature) AbstractDungeon.player, EFFECT, false)));
-        }
+        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, card.upgraded ? UPGRADE_CARDS : CARDS, false));
     }
 
     @Override
@@ -48,15 +53,16 @@ public class HeavyThrowMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], card.upgraded ? UPGRADE_CARDS : CARDS));
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HeavyThrowMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ConcentratedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
 }
+
