@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -44,7 +45,7 @@ public class PourSaltMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return card.target == AbstractCard.CardTarget.ENEMY && card.cost != -2
                 && (card.baseDamage > 1 || card.baseBlock > 1)
-                && !CardModifierManager.hasModifier(card, BundledMod.ID);
+                && !AugmentHelper.hasChangeTypeMod(card);
     }
 
     @Override

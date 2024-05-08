@@ -5,6 +5,7 @@ import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.rare.BundledMod;
 import CardAugments.cardmods.rare.ExplosiveMod;
 import CardAugments.cardmods.rare.InfiniteMod;
+import CardAugments.cardmods.rare.InvertedMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import mojichimera.augments.common.*;
@@ -99,6 +100,23 @@ public class AugmentHelper {
                 }
             }
         }
+
+        for (String id : mods) {
+            if (CardModifierManager.hasModifier(card, id))
+                return true;
+        }
+
+        return false;
+    }
+
+    public static boolean hasChangeTypeMod(AbstractCard card) {
+        String[] mods = new String[] {
+                InvertedMod.ID,
+                BundledMod.ID,
+                ExplosiveMod.ID,
+                InfiniteMod.ID,
+                SkillizedMod.ID
+        };
 
         for (String id : mods) {
             if (CardModifierManager.hasModifier(card, id))

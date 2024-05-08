@@ -14,7 +14,7 @@ import mojichimera.util.TextureLoader;
 import static mojichimera.mojichimera.makePowerPath;
 
 public class BiasedPower extends AbstractPower implements CloneablePowerInterface {
-    public static final String POWER_ID = mojichimera.makeID(LoseFocusPower.class.getSimpleName());
+    public static final String POWER_ID = mojichimera.makeID(BiasedPower.class.getSimpleName());
 
 //    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -38,12 +38,13 @@ public class BiasedPower extends AbstractPower implements CloneablePowerInterfac
     public BiasedPower(AbstractCreature owner, AbstractPower powerToLose, int amount, int turn) {
         this.name = TEXT.NAME + powerToLose.name;
         idCounter++;
-        this.ID = "BiasedPower" + idCounter;
+        this.ID = POWER_ID + idCounter;
         this.owner = owner;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
-        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("BiasedPower128.png")), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("BiasedPower48.png")), 0, 0, 48, 48);
+//        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("BiasedPower128.png")), 0, 0, 128, 128);
+//        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("BiasedPower48.png")), 0, 0, 48, 48);
+        this.loadRegion("bias");
         this.basePowerName = powerToLose.name;
         this.basePowerID = powerToLose.ID;
         this.turn = turn;

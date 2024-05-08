@@ -1,19 +1,15 @@
-package mojichimera.augments.common;
+package mojichimera.deprecated;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.powers.BombPower;
 import CardAugments.util.Wiz;
 import basemod.cardmods.ExhaustMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.special.PastHelperMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
-import CardAugments.util.PortraitHelper;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
@@ -21,15 +17,13 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.powers.FreePower;
 
-public class PastMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(PastMod.class.getSimpleName());
+public class ReleaseMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ReleaseMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
-    private boolean modMagic;
-    private static final float MULTIPLIER = 1.50F;
-    private static final int TURN = 1;
     private static final int COPY = 1;
 
     @Override
@@ -37,20 +31,14 @@ public class PastMod extends AbstractAugment {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new PastHelperMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
-        card.target = AbstractCard.CardTarget.SELF;
-        if (preview.type == AbstractCard.CardType.POWER) {
-            CardModifierManager.addModifier(card, new ExhaustMod());
-        }
+        card.costForTurn = ++card.cost;
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
-        if (card.type != AbstractCard.CardType.SKILL) {
-            card.type = AbstractCard.CardType.SKILL;
-            PortraitHelper.setMaskedPortrait(card);
+
+        if (!card.exhaust) {
+            CardModifierManager.addModifier(card, (AbstractCardModifier)new ExhaustMod());
         }
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-            this.modMagic = true;
     }
 
     @Override
@@ -76,8 +64,9 @@ public class PastMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
+                    copy.use(AbstractDungeon.player, target instanceof AbstractMonster ? (AbstractMonster)target : null);
 //                    Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, copy, TURN, COPY));
-                    Wiz.applyToSelf(new BombPower(AbstractDungeon.player, TURN, COPY, copy));
+                    Wiz.applyToSelf(new FreePower(AbstractDungeon.player, copy, COPY));
                 }
                 this.isDone = true;
             }
@@ -85,31 +74,10 @@ public class PastMod extends AbstractAugment {
     }
 
     @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (card.baseDamage > 0)
-            return damage * MULTIPLIER;
-        return damage;
-    }
-
-    @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
-        if (card.baseBlock > 0)
-            return block * MULTIPLIER;
-        return block;
-    }
-
-    @Override
-    public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (this.modMagic)
-            return magic * MULTIPLIER;
-        return magic;
-    }
-
-    @Override
     public boolean validCard(AbstractCard card) {
         return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
                 && card.cost != -2 && noShenanigans(card)
-                && !AugmentHelper.hasInherentHackModsExcept(card, PastMod.ID);
+                && !AugmentHelper.hasInherentHackModsExcept(card, ReleaseMod.ID);
     }
 
     @Override
@@ -123,14 +91,14 @@ public class PastMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PastMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ReleaseMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

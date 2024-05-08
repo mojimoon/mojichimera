@@ -21,7 +21,6 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
     private static final PowerStrings TEXT = new PowerStrings();
     private final String basePowerName;
     private final String basePowerID;
-    private int thisTurn;
 
     // something has gone wrong with the localization so this is a temporary fix
     static {
@@ -36,12 +35,13 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
 
     public LosePowerPower(AbstractCreature owner, AbstractPower powerToLose, int amount) {
         this.name = powerToLose.name + TEXT.NAME;
-        this.ID = "LosePowerPower_" + powerToLose.ID;
+        this.ID = POWER_ID + powerToLose.ID;
         this.owner = owner;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
-        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower84.png")), 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower32.png")), 0, 0, 32, 32);
+//        this.region128 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower84.png")), 0, 0, 84, 84);
+//        this.region48 = new TextureAtlas.AtlasRegion(TextureLoader.getTexture(makePowerPath("LosePowerPower32.png")), 0, 0, 32, 32);
+        this.loadRegion("flex");
         this.basePowerName = powerToLose.name;
         this.basePowerID = powerToLose.ID;
         this.isTurnBased = false;

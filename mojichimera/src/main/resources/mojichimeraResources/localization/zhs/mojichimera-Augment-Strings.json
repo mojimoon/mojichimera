@@ -335,18 +335,6 @@
         "TEXT": ["先发", "", "在手牌中未打出非 #y先发 牌时，卡牌数值增加 #b50% 。"],
         "EXTRA_TEXT": [" NL 在手牌中未打出非 先发 牌时，卡牌数值增加 %d%% 。"]
     },
-    "mojichimera:FutureMod": {
-        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
-        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺*言 加入弃牌堆。"]
-    },
-    "mojichimera:ReleaseMod": {
-        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。"],
-        "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
-    },
-    "mojichimera:CounterMod": {
-        "TEXT": ["反击", "", "造成的伤害减少 #b50% 。 本牌变为 #y能力 牌。 NL 受到攻击伤害的下回合，对伤害来源打出本牌。"],
-        "EXTRA_TEXT": [" NL 受到攻击伤害的下回合，对伤害来源打出本牌。"]
-    },
     "mojichimera:HumilityMod": {
         "TEXT": ["辱没", "", "造成的伤害减少 #b33% 。 NL 获得与所造成的未被格挡的伤害相等的 #y活力 。"],
         "EXTRA_TEXT": [" NL 获得与所造成的未被格挡的伤害相等的 活力 。"]
@@ -354,6 +342,26 @@
     "mojichimera:FlashOfMod": {
         "TEXT": ["亮剑", "", "造成的伤害减少 #b20% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
         "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，抽 %d 张牌。"]
+    },
+    "mojichimera:AdaptiveMod": {
+        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
+        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ； 否则，造成的伤害增加 %d%% 。"]
+    },
+    "mojichimera:SarcasticMod": {
+        "TEXT": ["讽刺", "", "敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 #b25% 。"],
+        "EXTRA_TEXT": [" NL 敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 %d%% 。"]
+    },
+    "mojichimera:AfterlifeMod": {
+        "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 的下回合，打出本牌的复制。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 被 消耗 的下回合，打出本牌的复制。"]
+    },
+    "mojichimera:UnawakenedMod": {
+        "TEXT": ["未觉醒", "", "#y虚无 。 NL 被 #y消耗 的 #b2 回合后，将一张 #y觉醒 的复制加入手牌。"],
+        "EXTRA_TEXT": [" NL 被 消耗 的 %d 回合后，将一张 觉醒 的复制加入手牌。"]
+    },
+    "mojichimera:AwakenedMod": {
+        "TEXT": ["觉醒", "", "#y虚无 。 NL 卡牌数值增加 #b200% 。"],
+        "EXTRA_TEXT": []
     },
     "mojichimera:packmaster_VirusMod": {
         "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],
@@ -375,16 +383,6 @@
         "TEXT": ["", "棱镜", "随机获得 #b1 张 #y虚无 #y异色 牌。"],
         "EXTRA_TEXT": [" NL 随机获得 %d 张 虚无 anniv5:异色 牌。"]
     },
-    "mojichimera:HeatsinksMod": {
-        "TEXT": ["散热", "", "抽 #b2 张牌。"],
-        "EXTRA_TEXT": [" NL 抽 %d 张牌。"],
-        "NOTES": ["DEPRECATED"]
-    },
-    "mojichimera:AfterlifeMod": {
-        "TEXT": ["阴世", "", "#y虚无 。 NL 因 #y虚无 被 #y消耗 时也能触发效果。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
-        "EXTRA_TEXT": [" 虚无 。 NL 打出或因 虚无 被 消耗 时： NL "],
-        "NOTES": ["DEPRECATED"]
-    },
     "mojichimera:ConvergentMod": {
         "TEXT": ["收敛", "", "打出时将本牌耗能增加 #b1 的 #y虚无复制 加入手牌。"],
         "EXTRA_TEXT": [" NL 将耗能增加 %d 的虚无复制加入手牌。", "虚无 。 NL "],
@@ -399,5 +397,25 @@
         "TEXT": ["失败作", "", "再打出 #b7 次 。 NL 失去 #b3 点生命和 #b15 #y金币 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 失去 %d 点生命和 %d 金币 。 NL 获得 %d 层 易伤 、 虚弱 和 脆弱 。 NL 将 %d 张 *虚空 洗入抽牌堆。"],
         "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:FutureMod": {
+        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
+        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺*言 加入弃牌堆。"]
+    },
+    "mojichimera:ReleaseMod": {
+        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。"],
+        "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
+    },
+    "mojichimera:CounterMod": {
+        "TEXT": ["反击", "", "造成的伤害减少 #b50% 。 NL 本牌变为 #y能力 牌。 NL 每受到一次攻击伤害，下回合对伤害来源打出本牌的复制。"],
+        "EXTRA_TEXT": [" NL 每受到一次攻击伤害，下回合对伤害来源打出本牌的复制。"]
+    },
+    "mojichimera:EmbraceMod": {
+        "TEXT": ["", "之拥", "造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 本牌变为 #y能力 牌。 NL 每消耗一张牌，打出本牌的复制。"],
+        "EXTRA_TEXT": [" NL 每消耗一张牌，打出本牌的复制。"]
+    },
+    "mojichimera:StormMod": {
+        "TEXT": ["雷暴", "", "本牌变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出本牌的复制。"],
+        "EXTRA_TEXT": [" NL 每打出一张 能力 牌，打出本牌的复制。"]
     }
 }

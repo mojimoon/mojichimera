@@ -1,44 +1,40 @@
-package mojichimera.deprecated;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
-import com.megacrit.cardcrawl.cards.CardGroup;
+import CardAugments.util.Wiz;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.powers.NextTurnStartPlayPower;
 
-@Deprecated
 public class AfterlifeMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(AfterlifeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
+    private static final int TURN = 1;
+    private static final int COPY = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
+        if (!card.isEthereal) {
+            CardModifierManager.addModifier(card, new EtherealMod());
+        }
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (cardCheck(card, c -> (notRetain(c) && notEthereal(c) && notExhaust(c)))) && card.cost >= 0 && card.cost <= 2;
+        return (card.cost >= 0 && card.cost <= 2 && cardCheck(card, c -> notExhaust(c)));
     }
 
     @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-    }
-
-//    @Override
-//    public void onExhausted(AbstractCard card) {
-//        addToBot((AbstractGameAction)new NewQueueCardAction(card, true, false, true));
-//    }
-
-    @Override
-    public void atEndOfTurn(AbstractCard card, CardGroup group) {
-        addToBot((AbstractGameAction)new NewQueueCardAction(card, true, false, true));
+    public void onExhausted(AbstractCard card) {
+        card.flash(Color.RED.cpy());
+        Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, card, TURN, COPY));
     }
 
     @Override
@@ -52,7 +48,7 @@ public class AfterlifeMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0]));
     }
 
     @Override
