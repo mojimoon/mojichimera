@@ -2,10 +2,14 @@ package mojichimera.augments;
 
 import CardAugments.CardAugmentsMod;
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.cardmods.rare.BundledMod;
+import CardAugments.cardmods.rare.ExplosiveMod;
+import CardAugments.cardmods.rare.InfiniteMod;
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.blue.*;
-import com.megacrit.cardcrawl.cards.green.*;
 import com.megacrit.cardcrawl.cards.red.*;
 import com.megacrit.cardcrawl.cards.purple.*;
 import com.megacrit.cardcrawl.cards.colorless.*;
@@ -72,5 +76,31 @@ public class AugmentHelper {
 
         // BondMod
         CardAugmentsMod.registerCustomBan(BondMod.ID, c -> c instanceof Hemokinesis); // 御血术
+    }
+
+    public static boolean hasInherentHackModsExcept(AbstractCard card, String ...modid) {
+        String[] mods = new String[] {
+                BundledMod.ID,
+                ExplosiveMod.ID,
+                InfiniteMod.ID,
+                PastMod.ID,
+                SkillizedMod.ID
+        };
+
+        for (String id : modid) {
+            for (int i = 0; i < mods.length; i++) {
+                if (mods[i] != null && mods[i].equals(id)) {
+                    mods[i] = null;
+                    break;
+                }
+            }
+        }
+
+        for (String id : mods) {
+            if (CardModifierManager.hasModifier(card, id))
+                return true;
+        }
+
+        return false;
     }
 }

@@ -18,7 +18,7 @@ public class WorshipMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(WorshipMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
+    private static final int EFFECT = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {

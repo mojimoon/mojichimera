@@ -46,7 +46,7 @@ public class DeadOnMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 1 || card.baseBlock > 1)
+        return (card.baseDamage > 0 || card.baseBlock > 0)
                 && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL);
     }
 

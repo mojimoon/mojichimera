@@ -20,7 +20,7 @@ public class OvershootMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int EFFECT = 2;
-    private static final float MULTIPLIER = 3.50F;
+    private static final float MULTIPLIER = 3.0F;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {

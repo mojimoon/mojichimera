@@ -1,27 +1,27 @@
 package mojichimera.augments;
 
+import CardAugments.actions.AutoplayOnRandomEnemyAction;
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 
-public class RegretfulMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(RegretfulMod.class.getSimpleName());
+public class RiichiMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(RiichiMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.0F;
+    private static final float MULTIPLIER = 1.5F;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 2)))
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
     }
 
@@ -47,16 +47,16 @@ public class RegretfulMod extends AbstractAugment {
     }
 
     @Override
-    public void atEndOfTurn(AbstractCard card, CardGroup group) {
-        if (AbstractDungeon.player.hand.contains(card)) {
-            this.addToTop(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.size(), AbstractGameAction.AttackEffect.FIRE));
-        }
+    public void onDrawn(AbstractCard card) {
+        addToBot(new AutoplayOnRandomEnemyAction(card));
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && card.cost != -2;
+        return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
+                && !AutoplayField.autoplay.get(card)
+                && card.cost >= 0
+                && cardCheck(card, c -> notRetain(c));
     }
 
     @Override
@@ -70,14 +70,14 @@ public class RegretfulMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertBeforeText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RegretfulMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RiichiMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

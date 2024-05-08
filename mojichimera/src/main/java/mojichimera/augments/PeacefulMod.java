@@ -12,7 +12,7 @@ public class PeacefulMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PeacefulMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float DAMAGE_MULTIPLIER = 0.0F;
+    private static final float MULTIPLIER = 0.0F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -23,7 +23,7 @@ public class PeacefulMod extends AbstractAugment {
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * DAMAGE_MULTIPLIER;
+            return damage * MULTIPLIER;
         return damage;
     }
 

@@ -12,11 +12,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 
-public class RegretfulMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(RegretfulMod.class.getSimpleName());
+public class PainfulMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(PainfulMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final float MULTIPLIER = 2.0F;
+    private static final int HP = 1;
     private boolean modMagic;
 
     @Override
@@ -47,10 +48,9 @@ public class RegretfulMod extends AbstractAugment {
     }
 
     @Override
-    public void atEndOfTurn(AbstractCard card, CardGroup group) {
-        if (AbstractDungeon.player.hand.contains(card)) {
-            this.addToTop(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.size(), AbstractGameAction.AttackEffect.FIRE));
-        }
+    public void onOtherCardPlayed(AbstractCard card, AbstractCard otherCard, CardGroup group) {
+        if (AbstractDungeon.player.hand.contains(card))
+            addToBot(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, HP, AbstractGameAction.AttackEffect.FIRE));
     }
 
     @Override
@@ -70,14 +70,14 @@ public class RegretfulMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], HP));
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RegretfulMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PainfulMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

@@ -94,11 +94,11 @@
     },
     "mojichimera:DodgeMod": {
         "TEXT": ["闪躲", "", "获得 #b3 点临时 #y敏捷 。"],
-        "EXTRA_TEXT": [" NL 获得 %d 点临时 敏捷 。"]
+        "EXTRA_TEXT": [" NL 获得 %d 点 临时 敏捷 。"]
     },
     "mojichimera:FocusedMod": {
         "TEXT": ["专注", "", "获得 #b2 点临时 #y集中 。"],
-        "EXTRA_TEXT": [" NL 获得 %d 点临时 集中 。"]
+        "EXTRA_TEXT": [" NL 获得 %d 点 临时 集中 。"]
     },
     "mojichimera:TwinMod": {
         "TEXT": ["双重", "", "本牌耗能增加 #b1 。 NL 再打出一次。 NL 源于 #b奇美拉 的同名弃用词条。"],
@@ -240,16 +240,16 @@
         "EXTRA_TEXT": [" NL 随机失去 %s 种负面效果。", " NL 随机失去 %s 种负面效果。"]
     },
     "mojichimera:RegretfulMod": {
-        "TEXT": ["悔恨", "", "卡牌数值增加 #b50% 。 NL 回合结束时，失去相当于手牌数量的生命。"],
-        "EXTRA_TEXT": [" NL 回合结束时，失去相当于手牌数量的生命。"]
+        "TEXT": ["悔恨", "", "卡牌数值增加 #b100% 。 NL 回合结束时，若在手牌中，失去相当于手牌数量的生命。"],
+        "EXTRA_TEXT": [" NL 回合结束时，若在手牌中，失去相当于手牌数量的生命。"]
     },
     "mojichimera:LanternMod": {
-        "TEXT": ["", "灯笼", "首次抽到本牌时，获得 [E] 。"],
-        "EXTRA_TEXT": [" NL 首次抽到本牌时，获得 [E] 。"]
+        "TEXT": ["", "灯笼", "首次抽到时，获得 [E] 。"],
+        "EXTRA_TEXT": [" NL 首次抽到时，获得 [E] 。"]
     },
     "mojichimera:HappyMod": {
-        "TEXT": ["开心", "", "每抽到本牌 #b3 次，耗能减少 [E] 。 NL 源于 #b奇美拉 的同名弃用词条。"],
-        "EXTRA_TEXT": [" NL 每抽到本牌 %d 次，本牌耗能减少 [E] 。"]
+        "TEXT": ["开心", "", "每抽到 #b3(2) 次，耗能减少 [E] 。 NL 源于 #b奇美拉 的同名弃用词条。"],
+        "EXTRA_TEXT": [" NL 每抽到 %d 次，耗能减少 [E] 。"]
     },
     "mojichimera:ForeDoomedMod": {
         "TEXT": ["灾厄", "", "随机获得 #b2 张 #y诅咒 。 NL 手牌中每有一张 #y诅咒 ， 再打出一次 。 NL 源于 #b奇美拉 的弃用词条 #y诅咒 。"],
@@ -288,7 +288,7 @@
         "EXTRA_TEXT": [" NL 本回合未打出过同名牌时才能打出。"]
     },
     "mojichimera:PastMod": {
-        "TEXT": ["过去：", "", "卡牌数值增加 #b50% 。 NL 下回合开始时打出。"],
+        "TEXT": ["过去：", "", "卡牌数值增加 #b50% 。 NL 下回合开始时打出。 NL 源于 #b时间行者 的同名关键词。"],
         "EXTRA_TEXT": ["下回合开始时： NL "]
     },
     "mojichimera:PastHelperMod": {
@@ -296,8 +296,48 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:OvershootMod": {
-        "TEXT": ["过冲", "", "卡牌数值增加 #b250% 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 源于 #b奇美拉 的弃用词条 #y用力过猛 。"],
+        "TEXT": ["过冲", "", "卡牌数值增加 #b200% 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 源于 #b奇美拉 的弃用词条 #y用力过猛 。"],
         "EXTRA_TEXT": [" NL 获得 %d 层 易伤 、 虚弱 和 脆弱 。"]
+    },
+    "mojichimera:PainfulMod": {
+        "TEXT": ["疼痛", "", "卡牌数值增加 #b100% 。 NL 在手牌中每打出一张其他牌时，失去 #b1 点生命。"],
+        "EXTRA_TEXT": [" NL 在手牌中每打出一张其他牌时，失去 %d 点生命。"]
+    },
+    "mojichimera:OverchargedMod": {
+        "TEXT": ["过载", "", "每次打出后，卡牌数值乘以 #b250% ，耗能增加 #b1 。"],
+        "EXTRA_TEXT": [" NL 卡牌数值乘以 %d%% ，耗能增加 %d 。"]
+    },
+    "mojichimera:ChargeMod": {
+        "TEXT": ["蓄力", "", "在手牌中每打出一张同类牌时，卡牌数值增加 #b50% 。 NL 打出后重置。"],
+        "EXTRA_TEXT": [" NL 在手牌中每打出一张同类牌时，卡牌数值增加 %d%% 。打出后重置。"]
+    },
+    "mojichimera:BiteMod": {
+        "TEXT": ["噬咬", "", "造成的伤害减少 #b33% 。 NL 回复 #b2(+1) 点生命。"],
+        "EXTRA_TEXT": [" NL 回复 %s 点生命。"]
+    },
+    "mojichimera:ShareMod": {
+        "TEXT": ["共享：", "", "造成的伤害和获得的 #y格挡 减少 #b33% 。 NL 打出时使其他手牌的伤害和 #y格挡 增加自身数值。 NL #y消耗 。"],
+        "EXTRA_TEXT": [" NL 使其他手牌的伤害和 格挡 增加自身数值。"]
+    },
+    "mojichimera:ShareHelperMod": {
+        "TEXT": ["分享", "", "感恩 #y共享 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:RiichiMod": {
+        "TEXT": ["", "立直", "卡牌数值增加 #b50% 。 NL #y自动打出 。"],
+        "EXTRA_TEXT": ["自动打出。 NL "]
+    },
+    "mojichimera:ConcludeMod": {
+        "TEXT": ["结末", "", "卡牌数值增加 #b75% 。 NL 结束你的回合。"],
+        "EXTRA_TEXT": [" NL 结束你的回合。"]
+    },
+    "mojichimera:PreemptiveMod": {
+        "TEXT": ["先发", "", "在手牌中未打出非 #y先发 牌时，卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 在手牌中未打出非 先发 牌时，卡牌数值增加 %d%% 。"]
+    },
+    "mojichimera:FutureMod": {
+        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
+        "EXTRA_TEXT": [" NL 将一张耗能为原耗能的 *诺*言 加入弃牌堆。"]
     },
     "mojichimera:packmaster_VirusMod": {
         "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 复制牌不继承 #y病毒 。"],
@@ -339,9 +379,5 @@
         "TEXT": ["失败作", "", "再打出 #b7 次 。 NL 失去 #b3 点生命和 #b15 #y金币 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 失去 %d 点生命和 %d 金币 。 NL 获得 %d 层 易伤 、 虚弱 和 脆弱 。 NL 将 %d 张 *虚空 洗入抽牌堆。"],
         "NOTES": ["DEPRECATED"]
-    },
-    "mojichimera:GluttonousMod": {
-        "TEXT": ["暴食", "", "每场战斗仅一次，抽到本牌时 #y消耗 右侧的牌，并将其效果加入本牌。"],
-        "EXTRA_TEXT": []
     }
 }

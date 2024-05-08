@@ -14,7 +14,7 @@ public class BluntMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BluntMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float BLOCK_MULTIPLIER = 0.0F;
+    private static final float MULTIPLIER = 0.0F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -25,7 +25,7 @@ public class BluntMod extends AbstractAugment {
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.baseBlock > 0)
-            return block * BLOCK_MULTIPLIER;
+            return block * MULTIPLIER;
         return block;
     }
 

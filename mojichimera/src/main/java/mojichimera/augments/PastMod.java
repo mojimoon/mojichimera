@@ -40,7 +40,7 @@ public class PastMod extends AbstractAugment {
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
         card.target = AbstractCard.CardTarget.NONE;
-        if (card.type == AbstractCard.CardType.POWER) {
+        if (preview.type == AbstractCard.CardType.POWER) {
             CardModifierManager.addModifier(card, new ExhaustMod());
         }
         if (card.type != AbstractCard.CardType.SKILL) {
@@ -105,7 +105,8 @@ public class PastMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
-                && card.cost != -2 && noShenanigans(card);
+                && card.cost != -2 && noShenanigans(card)
+                && !AugmentHelper.hasInherentHackModsExcept(card, PastMod.ID);
     }
 
     @Override
