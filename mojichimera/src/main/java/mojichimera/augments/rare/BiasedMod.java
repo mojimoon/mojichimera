@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.cards.blue.*;
 import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mojichimera.powers.LosePowerPower;
+import mojichimera.powers.BiasedPower;
 
 public class BiasedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BiasedMod.class.getSimpleName());
@@ -110,33 +110,33 @@ public class BiasedMod extends AbstractAugment {
         if (powerExists(card) && !isInBlacklist(card)) {
             try {
                 AbstractPower power = (AbstractPower) Class.forName("com.megacrit.cardcrawl.powers." + card.getClass().getSimpleName() + "Power").getConstructor(AbstractCreature.class, int.class).newInstance(AbstractDungeon.player, card.magicNumber);
-                addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, power, -getLoss(card), TURNS)));
+                addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, power, getLoss(card), TURNS)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (watcherPowerExists(card) && !isInWatcherBlacklist(card)) {
             try {
                 AbstractPower power = (AbstractPower) Class.forName("com.megacrit.cardcrawl.powers.watcher." + card.getClass().getSimpleName() + "Power").getConstructor(AbstractCreature.class, int.class).newInstance(AbstractDungeon.player, card.magicNumber);
-                addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, power, -getLoss(card), TURNS)));
+                addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, power, getLoss(card), TURNS)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (card instanceof Inflame) { // StrengthPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof Footwork) { // DexterityPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof Defragment) { // FocusPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new FocusPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new FocusPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof WellLaidPlans) { // RetainCardPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new RetainCardPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new RetainCardPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof Caltrops) { // ThronsPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new ThornsPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new ThornsPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof AThousandCuts) { // ThousandCutsPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new ThousandCutsPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new ThousandCutsPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof Heatsinks) { // HeatsinkPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new HeatsinkPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new HeatsinkPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof SadisticNature) { // SadisticPower
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new SadisticPower(AbstractDungeon.player, card.magicNumber), -getLoss(card), TURNS)));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new SadisticPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         }
     }
 

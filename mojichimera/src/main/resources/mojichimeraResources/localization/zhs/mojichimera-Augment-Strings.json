@@ -304,7 +304,7 @@
         "EXTRA_TEXT": [" NL 在手牌中每打出一张其他牌时，失去 %d 点生命。"]
     },
     "mojichimera:OverchargedMod": {
-        "TEXT": ["过载", "", "每次打出后，卡牌数值乘以 #b250% ，耗能增加 #b1 。"],
+        "TEXT": ["过载", "", "每次打出后，卡牌数值乘以 #b233% ，耗能增加 #b1 。"],
         "EXTRA_TEXT": [" NL 卡牌数值乘以 %d%% ，耗能增加 %d 。"]
     },
     "mojichimera:ChargeMod": {
@@ -337,11 +337,31 @@
     },
     "mojichimera:FutureMod": {
         "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
-        "EXTRA_TEXT": [" NL 将一张耗能为原耗能的 *诺*言 加入弃牌堆。"]
+        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺*言 加入弃牌堆。"]
+    },
+    "mojichimera:ReleaseMod": {
+        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。"],
+        "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
+    },
+    "mojichimera:CounterMod": {
+        "TEXT": ["反击", "", "造成的伤害减少 #b50% 。 本牌变为 #y能力 牌。 NL 受到攻击伤害的下回合，对伤害来源打出本牌。"],
+        "EXTRA_TEXT": [" NL 受到攻击伤害的下回合，对伤害来源打出本牌。"]
+    },
+    "mojichimera:HumilityMod": {
+        "TEXT": ["辱没", "", "造成的伤害减少 #b33% 。 NL 获得与所造成的未被格挡的伤害相等的 #y活力 。"],
+        "EXTRA_TEXT": [" NL 获得与所造成的未被格挡的伤害相等的 活力 。"]
+    },
+    "mojichimera:FlashOfMod": {
+        "TEXT": ["亮剑", "", "造成的伤害减少 #b20% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，抽 %d 张牌。"]
     },
     "mojichimera:packmaster_VirusMod": {
-        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 复制牌不继承 #y病毒 。"],
+        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],
         "EXTRA_TEXT": [" NL 将所有手牌变为本牌的 anniv5:回响 。"]
+    },
+    "mojichimera:packmaster_FractalMod": {
+        "TEXT": ["", "分形", "打出时获得本牌的 #b2 张 #y消耗 #y虚无 复制，其数值减少 #b33% ，耗能减少 [E] 。"],
+        "EXTRA_TEXT": [" NL 获得 %d 张 anniv5:回响 ，其数值减少 %d%%，耗能减少 [E] 。"]
     },
     "mojichimera:packmaster_InscribedMod": {
         "TEXT": ["铭印", "", "打出时触发最右侧充能球，与所有 #y新月 充能球的被动效果。"],

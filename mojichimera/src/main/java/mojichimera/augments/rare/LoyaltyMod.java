@@ -23,11 +23,6 @@ public class LoyaltyMod extends AbstractAugment {
     private static final int ECHOS = 1;
     public static final SpireField<Integer> playedTimes = new SpireField<>(() -> 0);
 
-//    @Override
-//    public void onInitialApplication(AbstractCard card) {
-//        EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) + 1);
-//    }
-
     @Override
     public boolean validCard(AbstractCard card) {
         return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0)

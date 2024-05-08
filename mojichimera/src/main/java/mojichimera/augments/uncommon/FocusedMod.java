@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import mojichimera.mojichimera;
-import mojichimera.powers.LoseFocusPower;
+import mojichimera.powers.LosePowerPower;
 
 public class FocusedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(FocusedMod.class.getSimpleName());
@@ -28,7 +28,8 @@ public class FocusedMod extends AbstractAugment {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new FocusPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
-        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new LoseFocusPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
+//        addToBot((AbstractGameAction)new ApplyPowerAction((AbstractCreature)AbstractDungeon.player, (AbstractCreature)AbstractDungeon.player, (AbstractPower)new LoseFocusPower((AbstractCreature)AbstractDungeon.player, EFFECT)));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new FocusPower(AbstractDungeon.player, EFFECT), EFFECT), EFFECT));
     }
 
     @Override

@@ -17,7 +17,6 @@ public class VirusMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(VirusMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final String REF_MOD_ID = "anniv5:EchoedEtherealMod";
 
     @Override
     public boolean validCard(AbstractCard card) {

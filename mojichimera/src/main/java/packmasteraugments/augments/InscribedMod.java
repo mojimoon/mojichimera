@@ -11,7 +11,7 @@ public class InscribedMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(InscribedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final String REF_MOD_ID = "anniv5:Inscribed";
+    private static final String INSCRIBED_MODID = "anniv5:Inscribed";
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -26,7 +26,7 @@ public class InscribedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return allowOrbMods() && !CardModifierManager.hasModifier(card, REF_MOD_ID);
+        return allowOrbMods() && !CardModifierManager.hasModifier(card, INSCRIBED_MODID);
     }
 
     @Override

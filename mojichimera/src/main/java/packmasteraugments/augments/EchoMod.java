@@ -15,7 +15,7 @@ public class EchoMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(EchoMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final String REF_MOD_ID = "anniv5:EchoMod";
+    private static final String ECHO_MODID = "anniv5:EchoMod";
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
@@ -46,7 +46,7 @@ public class EchoMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2 && !CardModifierManager.hasModifier(card, REF_MOD_ID);
+        return card.cost > 0 && !CardModifierManager.hasModifier(card, ECHO_MODID);
     }
 
     @Override

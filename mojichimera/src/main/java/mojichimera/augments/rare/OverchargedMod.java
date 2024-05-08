@@ -24,9 +24,9 @@ public class OverchargedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(OverchargedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.5F;
+    private static final float MULTIPLIER = 2.3333334F;
     private static final int COST = 1;
-    private static final int PERCENT = 250;
+    private static final int PERCENT = 233;
     public static final SpireField<Integer> playedTimes = new SpireField<>(() -> 0);
     private boolean modMagic;
 
