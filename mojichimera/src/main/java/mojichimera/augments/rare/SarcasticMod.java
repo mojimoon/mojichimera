@@ -23,7 +23,6 @@ public class SarcasticMod extends AbstractAugment {
     @Override
     public void onInitialApplication(AbstractCard card) {
         card.costForTurn = ++card.cost;
-        DamageModifierManager.addModifier(card, new WallopIntentDamage());
     }
 
 

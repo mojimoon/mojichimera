@@ -1,21 +1,22 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.cardmods.rare.SearingMod;
 import CardAugments.patches.InfiniteUpgradesPatches;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class TransfiniteMod extends AbstractAugment {
+public class TransfiniteMod extends SearingMod {
     public static final String ID = mojichimera.makeID(TransfiniteMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        InfiniteUpgradesPatches.InfUpgradeField.inf.set(card, true);
-    }
+//    @Override
+//    public void onInitialApplication(AbstractCard card) {
+//        InfiniteUpgradesPatches.InfUpgradeField.inf.set(card, true);
+//    }
 
     @Override
     public boolean validCard(AbstractCard card) {

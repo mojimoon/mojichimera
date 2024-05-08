@@ -2,6 +2,8 @@ package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
@@ -27,12 +29,13 @@ public class RebateMod extends AbstractAugment implements DynvarCarrier {
     /* AbstractAugment */
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
+        if (!card.isEthereal)
+            CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c)));
+        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
     }
 
     @Override
@@ -62,10 +65,10 @@ public class RebateMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
+//        if (rawDescription.contains(CARD_TEXT[0])) {
             return insertAfterText(rawDescription, String.format(CARD_TEXT[1], new Object[] { DESCRIPTION_KEY }));
-        }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], new Object[] { DESCRIPTION_KEY }));
+//        }
+//        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], new Object[] { DESCRIPTION_KEY }));
     }
 
     @Override

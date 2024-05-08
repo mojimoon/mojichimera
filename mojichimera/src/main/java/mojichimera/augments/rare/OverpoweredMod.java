@@ -1,6 +1,8 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,7 +19,8 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
+        if (!card.isEthereal)
+            CardModifierManager.addModifier(card, new EtherealMod());
         if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
         card.costForTurn = ++card.cost;
@@ -48,8 +51,7 @@ public class OverpoweredMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
                 && card.cost >= 0
-                && cardCheck(card, c -> doesntUpgradeCost())
-                && cardCheck(card, c -> (notRetain(c) && notEthereal(c)));
+                && cardCheck(card, c -> doesntUpgradeCost() && notRetain(c));
     }
 
     @Override
@@ -61,10 +63,10 @@ public class OverpoweredMod extends AbstractAugment {
     @Override
     public String getAugmentDescription() { return TEXT[2]; }
 
-    @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
-    }
+//    @Override
+//    public String modifyDescription(String rawDescription, AbstractCard card) {
+//        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+//    }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }

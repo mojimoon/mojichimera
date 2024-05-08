@@ -1,6 +1,8 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,12 +21,13 @@ public class ImminentMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
+        if (!card.isEthereal)
+            CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c)));
+        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
     }
 
     @Override
@@ -45,10 +48,10 @@ public class ImminentMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
+//        if (rawDescription.contains(CARD_TEXT[0])) {
             return insertAfterText(rawDescription, String.format(CARD_TEXT[1], EFFECT));
-        }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));
+//        }
+//        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));
     }
 
     @Override

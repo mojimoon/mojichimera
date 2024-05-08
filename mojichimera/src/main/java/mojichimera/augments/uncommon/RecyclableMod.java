@@ -1,6 +1,8 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -21,12 +23,13 @@ public class RecyclableMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.isEthereal = true;
+        if (!card.isEthereal)
+            CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c)));
+        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
     }
 
     @Override
@@ -46,10 +49,10 @@ public class RecyclableMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0])) {
+//        if (rawDescription.contains(CARD_TEXT[0])) {
             return insertAfterText(rawDescription, CARD_TEXT[1]);
-        }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), CARD_TEXT[1]);
+//        }
+//        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), CARD_TEXT[1]);
     }
 
     @Override

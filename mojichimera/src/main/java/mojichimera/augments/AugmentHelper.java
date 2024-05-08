@@ -81,6 +81,9 @@ public class AugmentHelper {
 
         // BondMod
         CardAugmentsMod.registerCustomBan(BondMod.ID, c -> c instanceof Hemokinesis); // 御血术
+
+        // ReactiveMod
+        CardAugmentsMod.registerCustomBan(ReactiveMod.ID, c -> c instanceof DeusExMachina); // 机械降神
     }
 
     public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {
