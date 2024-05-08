@@ -73,7 +73,7 @@ public class ChargeMod extends AbstractAugment {
 
     @Override
     public void onOtherCardPlayed(AbstractCard card, AbstractCard otherCard, CardGroup group) {
-        if (AbstractDungeon.player.hand.contains(card))
+        if (AbstractDungeon.player.hand.contains(card) && otherCard.type == card.type)
             otherCardsPlayed.set(card, otherCardsPlayed.get(card) + 1);
     }
 

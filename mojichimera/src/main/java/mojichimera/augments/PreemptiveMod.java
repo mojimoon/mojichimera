@@ -37,22 +37,29 @@ public class PreemptiveMod extends AbstractAugment {
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * (otherCardsPlayed.get(card) ? 1.0F : MULTIPLIER);
+            return damage * getMultiplier(card);
         return damage;
     }
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.baseBlock > 0)
-            return block * (otherCardsPlayed.get(card) ? 1.0F : MULTIPLIER);
+            return block * getMultiplier(card);
         return block;
     }
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (this.modMagic)
-            return magic * (otherCardsPlayed.get(card) ? 1.0F : MULTIPLIER);
+            return magic * getMultiplier(card);
         return magic;
+    }
+
+    private float getMultiplier(AbstractCard card) {
+        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+            return 1.0F;
+        }
+        return otherCardsPlayed.get(card) ? 1.0F : MULTIPLIER;
     }
 
     @Override

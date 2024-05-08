@@ -352,8 +352,8 @@
         "EXTRA_TEXT": [" NL anniv5:回响 。"]
     },
     "mojichimera:packmaster_PrismaticMod": {
-        "TEXT": ["", "棱镜", "随机获得 #b1 张 #y异色 牌。"],
-        "EXTRA_TEXT": [" NL 随机获得 %d 张 anniv5:异色 牌。"]
+        "TEXT": ["", "棱镜", "随机获得 #b1 张 #y虚无 #y异色 牌。"],
+        "EXTRA_TEXT": [" NL 随机获得 %d 张 虚无 anniv5:异色 牌。"]
     },
     "mojichimera:HeatsinksMod": {
         "TEXT": ["散热", "", "抽 #b2 张牌。"],

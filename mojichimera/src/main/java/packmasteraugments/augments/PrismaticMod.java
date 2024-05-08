@@ -1,6 +1,8 @@
 package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -36,6 +38,8 @@ public class PrismaticMod extends AbstractAugment {
 
                     while(var2.hasNext()) {
                         AbstractCard c = (AbstractCard)var2.next();
+                        if (!c.isEthereal)
+                            CardModifierManager.addModifier(c, new EtherealMod());
                         this.addToTop(new MakeTempCardInHandAction(c));
                     }
 
