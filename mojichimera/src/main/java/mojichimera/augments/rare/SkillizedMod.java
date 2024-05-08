@@ -76,7 +76,7 @@ public class SkillizedMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.type == AbstractCard.CardType.POWER && card.baseMagicNumber > 0
-                && !AugmentHelper.hasInherentHackModsExcept(card, SkillizedMod.ID);
+                && !AugmentHelper.hasMultiPreviewModsExcept(card, SkillizedMod.ID);
     }
 
     @Override

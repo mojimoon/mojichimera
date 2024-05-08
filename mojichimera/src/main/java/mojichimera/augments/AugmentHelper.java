@@ -83,13 +83,14 @@ public class AugmentHelper {
         CardAugmentsMod.registerCustomBan(BondMod.ID, c -> c instanceof Hemokinesis); // 御血术
     }
 
-    public static boolean hasInherentHackModsExcept(AbstractCard card, String ...modid) {
+    public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {
         String[] mods = new String[] {
                 BundledMod.ID,
                 ExplosiveMod.ID,
                 InfiniteMod.ID,
                 PastMod.ID,
-                SkillizedMod.ID
+                SkillizedMod.ID,
+                UnawakenedMod.ID
         };
 
         for (String id : modid) {

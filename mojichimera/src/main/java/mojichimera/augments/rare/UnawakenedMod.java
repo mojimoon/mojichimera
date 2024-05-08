@@ -1,11 +1,14 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.util.Wiz;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.special.AwakenedMod;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -19,9 +22,17 @@ public class UnawakenedMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int TURN = 2;
     private static final int COPY = 1;
+    private boolean inherentHack;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        this.inherentHack = true;
+        AbstractCard preview = card.makeStatEquivalentCopy();
+        this.inherentHack = false;
+        CardModifierManager.removeModifiersById(preview, ID, true);
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new AwakenedMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
+        MultiCardPreview.add(card, new AbstractCard[] { preview });
         if (!card.isEthereal) {
             CardModifierManager.addModifier(card, new EtherealMod());
         }
@@ -29,14 +40,23 @@ public class UnawakenedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (cardCheck(card, c -> notExhaust(c)));
+        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+                && (card.cost != -2 && cardCheck(card, c -> notExhaust(c)))
+                && !AugmentHelper.hasMultiPreviewModsExcept(card, ID);
     }
 
     @Override
     public void onExhausted(AbstractCard card) {
         card.flash(Color.RED.cpy());
-        AbstractCard copy = card.makeStatEquivalentCopy();
-        Wiz.applyToSelf(new NextTurnAddToHandPower(AbstractDungeon.player, card, TURN, COPY, true));
+        AbstractCard copy = null;
+        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
+            if (CardModifierManager.hasModifier(c, PreviewedMod.ID)) {
+                copy = c;
+                break;
+            }
+        }
+        if (copy != null)
+            Wiz.applyToSelf(new NextTurnAddToHandPower(AbstractDungeon.player, copy, TURN, COPY));
     }
 
     @Override
@@ -61,4 +81,8 @@ public class UnawakenedMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
+
+    public boolean isInherent(AbstractCard card) {
+        return this.inherentHack;
+    }
 }

@@ -33,7 +33,6 @@ public class NextTurnAddToHandPower extends AbstractPower implements NonStackabl
     private final int cards;
     private float flashTimer = -1.0F;
     private final ArrayList<AbstractGameEffect> array;
-    private boolean awaken;
 
     // something has gone wrong with the localization so this is a temporary fix
     static {
@@ -48,7 +47,7 @@ public class NextTurnAddToHandPower extends AbstractPower implements NonStackabl
         }
     }
 
-    public NextTurnAddToHandPower(AbstractCreature owner, AbstractCard card, int amount, int cards, boolean awaken) {
+    public NextTurnAddToHandPower(AbstractCreature owner, AbstractCard card, int amount, int cards) {
         this.name = TEXT.NAME + card.name;
         this.ID = POWER_ID;
         this.amount = amount;
@@ -60,7 +59,6 @@ public class NextTurnAddToHandPower extends AbstractPower implements NonStackabl
         this.loadRegion("book");
         this.updateDescription();
         this.array = (ArrayList)ReflectionHacks.getPrivateInherited(this, NextTurnStartPlayPower.class, "effect");
-        this.awaken = awaken;
     }
 
     public void update(int slot) {
@@ -93,10 +91,10 @@ public class NextTurnAddToHandPower extends AbstractPower implements NonStackabl
                 this.flash();
                 for (int i = 0; i < this.cards; ++i) {
                     AbstractCard copy = this.card.makeStatEquivalentCopy();
-                    if (this.awaken) {
-                        CardModifierManager.removeModifiersById(copy, UnawakenedMod.ID, true);
-                        CardModifierManager.addModifier(copy, new AwakenedMod());
-                    }
+//                    if (this.awaken) {
+//                        CardModifierManager.removeModifiersById(copy, UnawakenedMod.ID, true);
+//                        CardModifierManager.addModifier(copy, new AwakenedMod());
+//                    }
                     this.addToBot(new MakeTempCardInHandAction(copy));
                 }
             }

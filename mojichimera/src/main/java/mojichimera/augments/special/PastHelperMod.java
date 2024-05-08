@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.augments.common.PastMod;
 import mojichimera.mojichimera;
 
 public class PastHelperMod extends AbstractAugment {
@@ -45,7 +47,8 @@ public class PastHelperMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return true;
+        return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
+                && card.cost != -2 && noShenanigans(card);
     }
 
     @Override
