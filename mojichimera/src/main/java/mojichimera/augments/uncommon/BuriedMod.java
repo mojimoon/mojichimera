@@ -1,6 +1,7 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
@@ -46,8 +47,10 @@ public class BuriedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return ((card.baseDamage >= 2 || card.baseBlock >= 2 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 2)))
-                && !(Boolean) GraveField.grave.get(card));
+        return AugmentHelper.reachesVariable(card, 2)
+                && !(Boolean) GraveField.grave.get(card)
+                && cardCheck(card, c -> notInnate(c) && doesntUpgradeInnate())
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

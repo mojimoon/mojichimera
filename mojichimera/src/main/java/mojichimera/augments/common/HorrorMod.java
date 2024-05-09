@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -27,7 +28,8 @@ public class HorrorMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.POWER && card.baseMagicNumber > 0 && (card.cost != -2);
+        return AugmentHelper.isPower(card)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override

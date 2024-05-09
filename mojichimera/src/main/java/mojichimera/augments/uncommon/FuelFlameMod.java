@@ -43,8 +43,9 @@ public class FuelFlameMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.target == AbstractCard.CardTarget.ENEMY && card.cost != -2
-                && (card.baseDamage > 1 || card.baseBlock > 1)
+        return card.target == AbstractCard.CardTarget.ENEMY
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 2)
                 && !AugmentHelper.hasChangeTypeMod(card);
     }
 

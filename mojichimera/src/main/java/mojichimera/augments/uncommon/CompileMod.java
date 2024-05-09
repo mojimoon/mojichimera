@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class CompileMod extends AbstractAugment {
@@ -18,7 +19,9 @@ public class CompileMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2) && allowOrbMods();
+        return allowOrbMods()
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class CompileMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new CompileMod(); }

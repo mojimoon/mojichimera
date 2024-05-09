@@ -4,6 +4,7 @@ import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -27,7 +28,7 @@ public class SozuMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 1 && cardCheck(card, c -> doesntUpgradeCost()));
+        return AugmentHelper.hasStaticCost(card, 2);
     }
 
     @Override

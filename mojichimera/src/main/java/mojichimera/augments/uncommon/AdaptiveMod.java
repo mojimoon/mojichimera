@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.damagemods.WallopIntentDamage;
 import mojichimera.mojichimera;
 
@@ -26,9 +27,9 @@ public class AdaptiveMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.ATTACK
+        return AugmentHelper.isAttack(card)
                 && card.target == AbstractCard.CardTarget.ENEMY
-                && card.cost >= 0;
+                && AugmentHelper.hasStaticCost(card);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -19,8 +20,8 @@ public class TranquilMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
-                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)
-                && card.cost > -2
+                && AugmentHelper.isAttackOrSkill(card)
+                && AugmentHelper.isPlayable(card)
                 && !usesAction(card, ChangeStanceAction.class)
                 && !usesClass(card, MantraPower.class);
     }

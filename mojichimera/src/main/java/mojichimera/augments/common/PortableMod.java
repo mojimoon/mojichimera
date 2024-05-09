@@ -2,6 +2,7 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -25,7 +26,7 @@ public class PortableMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return AugmentHelper.hasStaticCost(card, 1);
     }
 
     @Override

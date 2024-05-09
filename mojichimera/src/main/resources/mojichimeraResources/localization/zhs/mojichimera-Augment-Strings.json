@@ -72,7 +72,7 @@
         "EXTRA_TEXT": [" NL 抽到本牌时抽 %d 张牌。"]
     },
     "mojichimera:PocketMod": {
-        "TEXT": ["袖珍", "", "本牌耗能变为 #b1 。 NL 卡牌数值按比例减少（向上取整）。"],
+        "TEXT": ["袖珍", "", "本牌耗能变为 #b0 。 NL 卡牌数值按比例减少（向上取整）。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:BloodDebtMod": {
@@ -121,8 +121,8 @@
         ]
     },
     "mojichimera:IndignantMod": {
-        "TEXT": ["义愤", "", "#y愤怒 ： 造成的伤害增加 #b50% 。"],
-        "EXTRA_TEXT": [" NL 愤怒 ： 造成的伤害增加 %d%% 。"]
+        "TEXT": ["义愤", "", "#y愤怒 ：造成的伤害增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 愤怒 ：造成的伤害增加 %d%% 。"]
     },
     "mojichimera:RecyclableMod": {
         "TEXT": ["可回收", "", "#y虚无 。 NL 若被 #y消耗 ，下一回合获得 [E] 。"],
@@ -147,11 +147,11 @@
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:BiasedMod": {
-        "TEXT": ["偏差", "", "本牌数值增加 #b200% 。 NL 下 #b3 回合每回合开始时失去 #b33% 的效果。"],
-        "EXTRA_TEXT": [" NL 下 %d 回合每回合开始时失去 %d%% 的效果。"]
+        "TEXT": ["偏差", "", "本牌数值增加 #b200% 。 NL 下 #b3 回合开始时，失去 #b33% 的效果。"],
+        "EXTRA_TEXT": [" NL 下 %d 回合开始时，失去 %d%% 的效果。"]
     },
     "mojichimera:GoldenMod": {
-        "TEXT": ["黄金", "", "打出时获得 #b3 #y金币 。"],
+        "TEXT": ["黄金", "", "打出时获得 #b4 #y金币 。"],
         "EXTRA_TEXT": [" NL 获得 %d 金币 。"]
     },
     "mojichimera:ChimericMod": {
@@ -187,7 +187,7 @@
         "EXTRA_TEXT": [" NL stslib:回馈 %d 。"]
     },
     "mojichimera:RebateMod": {
-        "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b6(+3) #y金币 。"],
+        "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b8(+4) #y金币 。"],
         "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗 ，获得 %s 金币 。"]
     },
     "mojichimera:ImminentMod": {
@@ -200,7 +200,7 @@
         "EXTRA_TEXT": [" NL 手牌中每有一张同类型牌，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:UnsociableMod": {
-        "TEXT": ["孤僻", "", "本牌的伤害和 #y格挡 增加 #b100% 。 NL 手牌中每有一张同类型牌，减少当前值的 #b20% 。"],
+        "TEXT": ["孤僻", "", "本牌的伤害和 #y格挡 增加 #b100% 。 NL 手牌中每有一张同类型牌，减少原始值的 #b20% 。"],
         "EXTRA_TEXT": [" NL 手牌中每有一张同类型牌，伤害和 格挡 减少 %d%% 。"]
     },
     "mojichimera:BondMod": {
@@ -229,7 +229,7 @@
     },
     "mojichimera:ConfrontingMod": {
         "TEXT": ["知难", "", "在首领与精英战中卡牌数值增加 #b100% 。"],
-        "EXTRA_TEXT": [" NL 在首领与精英战中卡牌数值增加 %d%% 。"]
+        "EXTRA_TEXT": [" NL 在首领与精英战中数值增加 %d%% 。"]
     },
     "mojichimera:LoyaltyMod": {
         "TEXT": ["", "积分卡", "每第 #b2 次手动打出本牌时，再打出 #b1 次。"],
@@ -260,8 +260,8 @@
         "EXTRA_TEXT": [" NL 每有一瓶 药水 ，失去 [E] 。"]
     },
     "mojichimera:AccursedMod": {
-        "TEXT": ["咒怨", "", "牌组里每有一张 #y诅咒 ，本牌耗能减少 [E] 。"],
-        "EXTRA_TEXT": [" NL 牌组里每有一张 诅咒 ，本牌耗能减少 [E] 。"]
+        "TEXT": ["咒怨", "", "牌组里每有一张 #y诅咒 ，耗能减少 [E] 。"],
+        "EXTRA_TEXT": [" NL 牌组里每有一张 诅咒 ，耗能减少 [E] 。"]
     },
     "mojichimera:VolatileMod": {
         "TEXT": ["不稳定", "", "打出次数在 #b0 至 #b3 之间随机。"],
@@ -284,8 +284,8 @@
         "EXTRA_TEXT": [" NL 自身生命百分比越低，获得的 格挡 越多 。"]
     },
     "mojichimera:FuritenMod": {
-        "TEXT": ["", "振听", "卡牌数值增加 #b75% 。 NL 本回合未打出过同名牌时才能打出。"],
-        "EXTRA_TEXT": [" NL 本回合未打出过同名牌时才能打出。"]
+        "TEXT": ["", "振听", "每回合首次打出时，伤害和 #y格挡 增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 每回合首次打出时，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:PastMod": {
         "TEXT": ["过去：", "", "卡牌数值增加 #b50% 。 NL 下回合开始时打出。 NL 源于 #b时间行者 的同名关键词。"],
@@ -309,7 +309,7 @@
     },
     "mojichimera:ChargeMod": {
         "TEXT": ["蓄力", "", "在手牌中每打出一张同类牌时，卡牌数值增加 #b50% 。 NL 打出后重置。"],
-        "EXTRA_TEXT": [" NL 在手牌中每打出一张同类牌时，卡牌数值增加 %d%% 。打出后重置。"]
+        "EXTRA_TEXT": [" NL 在手牌中每打出一张同类牌时，数值增加 %d%% 。打出后重置。"]
     },
     "mojichimera:BiteMod": {
         "TEXT": ["噬咬", "", "造成的伤害减少 #b33% 。 NL 回复 #b2(+1) 点生命。"],
@@ -328,7 +328,7 @@
         "EXTRA_TEXT": ["自动打出。 NL "]
     },
     "mojichimera:ConcludeMod": {
-        "TEXT": ["结末", "", "卡牌数值增加 #b75% 。 NL 结束你的回合。"],
+        "TEXT": ["结末", "", "造成的伤害和获得的 #y格挡 增加 #b75% 。 NL 结束你的回合。"],
         "EXTRA_TEXT": [" NL 结束你的回合。"]
     },
     "mojichimera:PreemptiveMod": {
@@ -345,10 +345,10 @@
     },
     "mojichimera:AdaptiveMod": {
         "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
-        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ； 否则，造成的伤害增加 %d%% 。"]
+        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
     "mojichimera:SarcasticMod": {
-        "TEXT": ["讽刺", "", "敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 #b25% 。"],
+        "TEXT": ["讽刺", "", "敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:AfterlifeMod": {
@@ -360,8 +360,20 @@
         "EXTRA_TEXT": [" NL 被 消耗 的 %d 回合后，将一张 觉醒 的复制加入手牌。"]
     },
     "mojichimera:AwakenedMod": {
-        "TEXT": ["觉醒", "", "#y虚无 。 NL 卡牌数值增加 #b200% 。"],
+        "TEXT": ["觉醒", "", "卡牌数值增加 #b200% 。"],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:HighCardMod": {
+        "TEXT": ["高牌", "", "若手牌中所有牌均不同名，卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 若手牌中所有牌均不同名，数值增加 %d%% 。"]
+    },
+    "mojichimera:PairMod": {
+        "TEXT": ["对子", "", "若手牌中有本牌的同名牌，卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 若手牌中有本牌的同名牌，数值增加 %d%% 。"]
+    },
+    "mojichimera:HalfMod": {
+        "TEXT": ["半张", "", "若本回合已出牌不超过 #b3 张，卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 若本回合已出牌不超过 %d 张，数值增加 %d%% 。"]
     },
     "mojichimera:packmaster_VirusMod": {
         "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],

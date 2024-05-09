@@ -1,22 +1,29 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.helpers.CardBorderGlowManager;
+import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
+import mojichimera.augments.common.PreemptiveMod;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class UnsociableMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(UnsociableMod.class.getSimpleName());
+public class FuritenMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(FuritenMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 20;
-    private static final float MULTIPLIER = 2.0F;
-    private static final float EXTRA_MULTIPLIER = 0.2F;
+    private static final float MULTIPLIER = 1.5F;
+    private static final int PERCENT = 50;
 //    private boolean modMagic;
 
 //    @Override
@@ -46,22 +53,26 @@ public class UnsociableMod extends AbstractAugment {
 //        return magic;
 //    }
 
-    private float getMultiplier(AbstractCard card) {
-        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
-            return MULTIPLIER;
-        }
-        float multiplier = MULTIPLIER;
-        for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {
-            if (otherCard != card && otherCard.type == card.type) {
-                multiplier -= EXTRA_MULTIPLIER;
+    private boolean hasPlayedThisTurn(AbstractCard card) {
+        for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
+            if (c.uuid.equals(card.uuid)) {
+                return false;
             }
         }
-        return Math.max(multiplier, 0.0F);
+        return true;
+    }
+
+    private float getMultiplier(AbstractCard card) {
+        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+            return 1.0F;
+        }
+        return hasPlayedThisTurn(card) ? 1.0F : MULTIPLIER;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasDamageOrBlock(card);
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 2);
     }
 
     @Override
@@ -79,12 +90,31 @@ public class UnsociableMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new UnsociableMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PreemptiveMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-}
 
+    private boolean shouldGlow(AbstractCard card) {
+        return !hasPlayedThisTurn(card);
+    }
+
+    public CardBorderGlowManager.GlowInfo getGlowInfo() {
+        return new CardBorderGlowManager.GlowInfo() {
+            public boolean test(AbstractCard card) {
+                return FuritenMod.this.hasThisMod(card) && FuritenMod.this.shouldGlow(card);
+            }
+
+            public Color getColor(AbstractCard card) {
+                return Color.GOLD.cpy();
+            }
+
+            public String glowID() {
+                return FuritenMod.ID + "Glow";
+            }
+        };
+    }
+}

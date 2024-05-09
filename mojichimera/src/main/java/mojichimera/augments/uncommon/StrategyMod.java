@@ -1,6 +1,7 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -35,8 +36,8 @@ public class StrategyMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2
-                && (card.baseDamage > 1 || card.baseBlock > 1);
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 2);
     }
 
     @Override

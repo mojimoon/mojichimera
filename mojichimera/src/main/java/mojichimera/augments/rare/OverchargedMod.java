@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.SweepingBeamEffect;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -59,9 +60,8 @@ public class OverchargedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0)
-                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)
-                && cardCheck(card, c -> doesntExhaust(c))
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isReplayable(card)
                 && card.cost >= 0;
     }
 

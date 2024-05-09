@@ -3,6 +3,7 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -55,7 +56,8 @@ public class ConfrontingMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)));
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

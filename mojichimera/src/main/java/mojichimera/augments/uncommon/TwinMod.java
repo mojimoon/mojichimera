@@ -2,6 +2,7 @@ package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.patches.EchoFieldPatches;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -20,7 +21,7 @@ public class TwinMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return AugmentHelper.hasStaticCost(card);
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -29,7 +30,8 @@ public class RecyclableMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
+        return AugmentHelper.isEtherealValid(card)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override

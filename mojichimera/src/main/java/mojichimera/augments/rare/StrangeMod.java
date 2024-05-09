@@ -4,6 +4,7 @@ import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class StrangeMod extends AbstractAugment {
@@ -20,8 +21,7 @@ public class StrangeMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return (card.exhaust)
                 && cardCheck(card, c -> doesntUpgradeExhaust())
-                && card.type != AbstractCard.CardType.CURSE
-                && card.type != AbstractCard.CardType.STATUS;
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

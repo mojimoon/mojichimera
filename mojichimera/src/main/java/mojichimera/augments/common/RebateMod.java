@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
@@ -6,6 +6,7 @@ import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -17,8 +18,8 @@ public class RebateMod extends AbstractAugment implements DynvarCarrier {
     public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int GOLD = 6;
-    private static final int UPGRADE_GOLD = 3;
+    private static final int GOLD = 8;
+    private static final int UPGRADE_GOLD = 4;
     public boolean modified;
     public boolean upgraded;
 
@@ -35,7 +36,8 @@ public class RebateMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
+        return AugmentHelper.isEtherealValid(card)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override
@@ -72,7 +74,7 @@ public class RebateMod extends AbstractAugment implements DynvarCarrier {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RebateMod(); }

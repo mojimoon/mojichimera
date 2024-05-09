@@ -10,7 +10,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
-import mojichimera.augments.uncommon.InspiredMod;
+import mojichimera.augments.common.InspiredMod;
 import mojichimera.augments.uncommon.TranquilMod;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.cards.purple.*;
 import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
+import static CardAugments.cardmods.AbstractAugment.*;
 import static mojichimera.mojichimera.makeID;
 
 public class AugmentHelper {
@@ -128,5 +129,88 @@ public class AugmentHelper {
         }
 
         return false;
+    }
+
+    public static boolean hasDamage(AbstractCard card) {
+        return card.baseDamage > 0;
+    }
+
+    public static boolean reachesDamage(AbstractCard card, int threshold) {
+        return card.baseDamage >= threshold;
+    }
+
+    public static boolean hasBlock(AbstractCard card) {
+        return card.baseBlock > 0;
+    }
+
+    public static boolean reachesBlock(AbstractCard card, int threshold) {
+        return card.baseBlock >= threshold;
+    }
+
+    public static boolean hasMagic(AbstractCard card) {
+        return cardCheck(card, c -> c.baseMagicNumber > 0 && doesntDowngradeMagic());
+    }
+
+    public static boolean reachesMagic(AbstractCard card, int threshold) {
+        return cardCheck(card, c -> c.baseMagicNumber >= threshold && doesntDowngradeMagic());
+    }
+
+    public static boolean hasDamageOrBlock(AbstractCard card) {
+        return card.baseDamage > 0 || card.baseBlock > 0;
+    }
+
+    public static boolean reachesDamageOrBlock(AbstractCard card, int threshold) {
+        return card.baseDamage >= threshold || card.baseBlock >= threshold;
+    }
+
+    public static boolean hasVariable(AbstractCard card, boolean ...doesntCareDowngrade) {
+        if (doesntCareDowngrade.length > 0 && doesntCareDowngrade[0])
+            return card.baseMagicNumber > 0 || card.baseDamage > 0 || card.baseBlock > 0;
+        return hasDamage(card) || hasBlock(card) || hasMagic(card);
+    }
+
+    public static boolean reachesVariable(AbstractCard card, int threshold) {
+        return reachesDamage(card, threshold) || reachesBlock(card, threshold) || reachesMagic(card, threshold);
+    }
+
+    public static boolean isPlayable(AbstractCard card) {
+        return card.cost != -2;
+    }
+
+    public static boolean hasStaticCost(AbstractCard card, int ...cost) {
+        if (cost.length > 0)
+            return cardCheck(card, c -> c.cost >= cost[0] && doesntUpgradeCost());
+        return cardCheck(card, c -> c.cost >= 0 && doesntUpgradeCost());
+    }
+    public static boolean isReplayable(AbstractCard card) {
+        return cardCheck(card, c -> isAttackOrSkill(c) && notExhaust(c) && isPlayable(c));
+    }
+
+    public static boolean isEtherealValid(AbstractCard card) {
+        return cardCheck(card, c -> notExhaust(c) && notRetain(c));
+    }
+
+    public static boolean isRetainValid(AbstractCard card) {
+        return cardCheck(card, c -> notEthereal(c));
+    }
+
+    public static boolean isAttack(AbstractCard card) {
+        return card.type == AbstractCard.CardType.ATTACK;
+    }
+
+    public static boolean isSkill(AbstractCard card) {
+        return card.type == AbstractCard.CardType.SKILL;
+    }
+
+    public static boolean isPower(AbstractCard card) {
+        return card.type == AbstractCard.CardType.POWER;
+    }
+
+    public static boolean isAttackOrSkill(AbstractCard card) {
+        return card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL;
+    }
+
+    public static boolean isNormal(AbstractCard card) {
+        return card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL || card.type == AbstractCard.CardType.POWER;
     }
 }

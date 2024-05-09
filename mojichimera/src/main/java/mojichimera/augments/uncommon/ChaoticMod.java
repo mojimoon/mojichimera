@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import com.megacrit.cardcrawl.random.Random;
 
@@ -69,7 +70,8 @@ public class ChaoticMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0);
+        return AugmentHelper.hasVariable(card, true)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

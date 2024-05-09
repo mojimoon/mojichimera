@@ -19,7 +19,7 @@ public class LanternMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost > 0;
+        return true;
     }
 
     @Override

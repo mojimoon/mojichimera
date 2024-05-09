@@ -3,6 +3,7 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.rare.SearingMod;
 import CardAugments.patches.InfiniteUpgradesPatches;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -20,7 +21,7 @@ public class TransfiniteMod extends SearingMod {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.POWER
+        return AugmentHelper.isPower(card)
                 && card.canUpgrade()
                 && cardCheck(card, c -> upgradesAVariable())
                 && doesntOverride(card, "canUpgrade", new Class[0])

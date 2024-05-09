@@ -1,16 +1,16 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
-public class IndignantMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(IndignantMod.class.getSimpleName());
+public class BelligerentMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(BelligerentMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 50;
@@ -18,14 +18,14 @@ public class IndignantMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.color == AbstractCard.CardColor.PURPLE
-                && card.type == AbstractCard.CardType.ATTACK
-                && card.cost > -2;
+        return AugmentHelper.reachesDamage(card, 3)
+                && card.target == AbstractCard.CardTarget.ENEMY
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (AbstractDungeon.player.stance.ID.equals("Wrath")) {
+        if (target != null && target.getIntentBaseDmg() >= 0) {
             return damage * MULTIPLIER;
         }
         return damage;
@@ -46,10 +46,10 @@ public class IndignantMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new IndignantMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BelligerentMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,13 +22,14 @@ public class ImminentMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (!card.isEthereal)
-            CardModifierManager.addModifier(card, new EtherealMod());
+        CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2 && cardCheck(card, c -> notExhaust(c) && notRetain(c)));
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.isEtherealValid(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

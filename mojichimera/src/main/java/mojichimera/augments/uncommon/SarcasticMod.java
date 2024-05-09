@@ -1,8 +1,7 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,27 +9,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import mojichimera.damagemods.WallopIntentDamage;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class SarcasticMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SarcasticMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 25;
-    private static final float EXTRA_MULTIPLIER = 0.25F;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        card.costForTurn = ++card.cost;
-    }
-
+    private static final int PERCENT = 20;
+    private static final float EXTRA_MULTIPLIER = 0.2F;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.ATTACK
-                && card.target == AbstractCard.CardTarget.ENEMY
-                && card.cost >= 0;
+        return AugmentHelper.isAttack(card)
+                && card.target == AbstractCard.CardTarget.ENEMY;
     }
 
     @Override
@@ -62,7 +54,7 @@ public class SarcasticMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SarcasticMod(); }

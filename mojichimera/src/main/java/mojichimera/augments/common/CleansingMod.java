@@ -5,6 +5,7 @@ import CardAugments.cardmods.DynvarCarrier;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.actions.RandomExhaustCardTypeAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -33,8 +34,8 @@ public class CleansingMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2)
-                && (card.type != AbstractCard.CardType.CURSE && card.type != AbstractCard.CardType.STATUS);
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

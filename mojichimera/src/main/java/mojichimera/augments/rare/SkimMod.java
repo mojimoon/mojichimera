@@ -2,6 +2,7 @@ package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -32,7 +33,7 @@ public class SkimMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return AugmentHelper.isPlayable(card);
     }
 
     @Override

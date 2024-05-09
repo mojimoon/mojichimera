@@ -47,8 +47,7 @@ public class PastHelperMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
-                && card.cost != -2 && noShenanigans(card);
+        return true;
     }
 
     @Override

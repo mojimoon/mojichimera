@@ -4,6 +4,7 @@ import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -44,8 +45,8 @@ public class DeadOnMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0)
-                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL);
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override

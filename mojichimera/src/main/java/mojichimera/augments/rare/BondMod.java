@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class BondMod extends AbstractAugment {
@@ -42,8 +43,8 @@ public class BondMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2
-                && cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0));
+        return AugmentHelper.hasMagic(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

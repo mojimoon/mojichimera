@@ -2,6 +2,7 @@ package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.patches.CantUpgradeFieldPatches;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,8 +27,7 @@ public class KnockoffMod extends AbstractAugment {
         return !card.upgraded
                 && card.canUpgrade()
                 && doesntOverride(card, "canUpgrade", new Class[0])
-                && card.cost > 0
-                && cardCheck(card, c -> doesntUpgradeCost());
+                && AugmentHelper.hasStaticCost(card, 1);
     }
 
     @Override

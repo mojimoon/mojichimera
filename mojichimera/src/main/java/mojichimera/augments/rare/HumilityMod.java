@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.damagemods.WallopVigorDamage;
 import mojichimera.mojichimera;
 
@@ -30,7 +31,7 @@ public class HumilityMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.baseDamage > 1 && card.cost != -2 && card.type == AbstractCard.CardType.ATTACK;
+        return AugmentHelper.reachesDamage(card, 2);
     }
 
     @Override

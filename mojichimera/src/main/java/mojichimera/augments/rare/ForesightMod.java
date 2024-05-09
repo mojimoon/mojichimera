@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.green.*;
 import com.megacrit.cardcrawl.cards.purple.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.actions.ReduceDrawnCardsCostAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -35,7 +36,8 @@ public class ForesightMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost >= 0 && cardCheck(card, c -> doesntUpgradeCost() && reachesMagic(3))
+        return (AugmentHelper.hasStaticCost(card)
+                && AugmentHelper.reachesMagic(card, 3)
                 && drawsCards(card)
                 && !usesAction(card, EmptyDeckShuffleAction.class))
                 || isInWhitelist(card);

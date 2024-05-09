@@ -1,7 +1,10 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.actions.ModifyMagicAction;
 import basemod.abstracts.AbstractCardModifier;
@@ -16,13 +19,15 @@ public class ReactiveMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.selfRetain = true;
+//        card.selfRetain = true;
+        CardModifierManager.addModifier(card, new RetainMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0))
-                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()));
+        return AugmentHelper.hasMagic(card)
+                && AugmentHelper.isRetainValid(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

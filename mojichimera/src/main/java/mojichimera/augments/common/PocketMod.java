@@ -1,6 +1,7 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,11 +15,12 @@ public class PocketMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private int baseCost;
     private boolean modMagic;
+    private final int COST = 0;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.baseCost = Math.max(2, card.cost);
-        card.cost = 1;
+        card.cost = COST;
         card.costForTurn = card.cost;
         if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
@@ -50,9 +52,8 @@ public class PocketMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && card.cost >= 2
-                && cardCheck(card, c -> doesntUpgradeCost());
+        return AugmentHelper.hasVariable(card)
+                && card.cost >= 2;
     }
 
     @Override

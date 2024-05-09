@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -25,10 +26,8 @@ public class LoyaltyMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0)
-                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)
-                && cardCheck(card, c -> doesntExhaust(c))
-                && card.cost != -2;
+        return AugmentHelper.hasVariable(card, true)
+                && AugmentHelper.isReplayable(card);
     }
 
     @Override

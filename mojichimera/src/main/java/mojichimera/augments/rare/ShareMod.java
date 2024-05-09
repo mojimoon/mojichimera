@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.special.ShareHelperMod;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -23,9 +24,7 @@ public class ShareMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (!card.exhaust) {
-            CardModifierManager.addModifier(card, new ExhaustMod());
-        }
+        CardModifierManager.addModifier(card, new ExhaustMod());
     }
 
     @Override
@@ -44,7 +43,8 @@ public class ShareMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0) && card.cost > 0;
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override

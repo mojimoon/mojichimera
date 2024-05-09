@@ -1,15 +1,17 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mojichimera.mojichimera;
 
-public class BelligerentMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(BelligerentMod.class.getSimpleName());
+public class IndignantMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(IndignantMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 50;
@@ -17,14 +19,13 @@ public class BelligerentMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.type == AbstractCard.CardType.ATTACK
-                && card.target == AbstractCard.CardTarget.ENEMY
-                && card.cost > -2;
+        return card.color == AbstractCard.CardColor.PURPLE
+                && AugmentHelper.reachesDamage(card, 2);
     }
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (target != null && target.getIntentBaseDmg() >= 0) {
+        if (AbstractDungeon.player.stance.ID.equals("Wrath")) {
             return damage * MULTIPLIER;
         }
         return damage;
@@ -45,10 +46,10 @@ public class BelligerentMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BelligerentMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new IndignantMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

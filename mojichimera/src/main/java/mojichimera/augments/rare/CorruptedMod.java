@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.status.*;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -32,7 +33,8 @@ public class CorruptedMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return (card.baseMagicNumber > 0 && (card.baseDamage > 0 || card.baseBlock > 0 || card.type == AbstractCard.CardType.POWER))
-                && card.cost != -2;
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

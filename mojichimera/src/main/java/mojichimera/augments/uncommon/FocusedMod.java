@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.powers.LosePowerPower;
 
@@ -22,7 +23,9 @@ public class FocusedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2) && allowOrbMods();
+        return allowOrbMods()
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

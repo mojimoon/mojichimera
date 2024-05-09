@@ -2,6 +2,7 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -26,7 +27,7 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return AugmentHelper.hasStaticCost(card, 1);
     }
 
     @Override

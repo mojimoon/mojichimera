@@ -1,9 +1,10 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -29,7 +30,7 @@ public class ChimericMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return AugmentHelper.isPlayable(card);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class ChimericMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ChimericMod(); }

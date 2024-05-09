@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,11 +14,11 @@ public class GoldenMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(GoldenMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int GOLD = 3;
+    private static final int GOLD = 4;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0 && cardCheck(card, c -> doesntUpgradeCost()));
+        return card.cost > 0;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class GoldenMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new GoldenMod(); }

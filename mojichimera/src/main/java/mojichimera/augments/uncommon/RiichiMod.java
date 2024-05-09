@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class RiichiMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(RiichiMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.5F;
+    private static final float MULTIPLIER = 1.75F;
     private boolean modMagic;
 
     @Override
@@ -51,10 +52,11 @@ public class RiichiMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
+        return AugmentHelper.reachesVariable(card, 2)
                 && !AutoplayField.autoplay.get(card)
                 && card.cost >= 0
-                && cardCheck(card, c -> notRetain(c));
+//                && cardCheck(card, c -> notRetain(c))
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

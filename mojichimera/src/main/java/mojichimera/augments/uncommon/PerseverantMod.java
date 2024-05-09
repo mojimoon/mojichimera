@@ -2,6 +2,7 @@ package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,7 +16,7 @@ public class PerseverantMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.baseBlock > 0 && card.cost > -2;
+        return AugmentHelper.hasBlock(card);
     }
 
     @Override

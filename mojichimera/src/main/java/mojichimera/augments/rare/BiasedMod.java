@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.optionCards.LiveForever;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,6 +19,7 @@ import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.powers.BiasedPower;
+import thePackmaster.cards.orbpack.Augment;
 
 public class BiasedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BiasedMod.class.getSimpleName());
@@ -100,8 +102,8 @@ public class BiasedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && card.type == AbstractCard.CardType.POWER
+        return AugmentHelper.hasMagic(card)
+                && AugmentHelper.isPower(card)
                 && ((powerExists(card) && !isInBlacklist(card)) || (watcherPowerExists(card) && !isInWatcherBlacklist(card)) || isInWhitelist(card));
     }
 
@@ -129,7 +131,7 @@ public class BiasedMod extends AbstractAugment {
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new FocusPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof WellLaidPlans) { // RetainCardPower
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new RetainCardPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
-        } else if (card instanceof Caltrops) { // ThronsPower
+        } else if (card instanceof Caltrops) { // ThornsPower
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new ThornsPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));
         } else if (card instanceof AThousandCuts) { // ThousandCutsPower
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BiasedPower(AbstractDungeon.player, new ThousandCutsPower(AbstractDungeon.player, card.magicNumber), getLoss(card), TURNS)));

@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -26,8 +27,9 @@ public class ForeDoomedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || card.baseMagicNumber > 0)
-                && card.cost != -2;
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.hasVariable(card, true)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

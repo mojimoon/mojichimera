@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -45,9 +46,9 @@ public class OvershootMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && (card.baseDamage > 0 || card.baseBlock > 0 || card.type == AbstractCard.CardType.POWER)
-                && card.cost != -2;
+        return (AugmentHelper.hasMagic(card) && (card.baseDamage > 0 || card.baseBlock > 0 || card.type == AbstractCard.CardType.POWER))
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

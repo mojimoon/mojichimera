@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.purple.Conclude;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class ConcludeMod extends AbstractAugment {
@@ -17,13 +18,13 @@ public class ConcludeMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final float MULTIPLIER = 1.75F;
-    private boolean modMagic;
+//    private boolean modMagic;
 
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-            this.modMagic = true;
-    }
+//    @Override
+//    public void onInitialApplication(AbstractCard card) {
+//        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+//            this.modMagic = true;
+//    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -39,12 +40,12 @@ public class ConcludeMod extends AbstractAugment {
         return block;
     }
 
-    @Override
-    public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (this.modMagic)
-            return magic * MULTIPLIER;
-        return magic;
-    }
+//    @Override
+//    public float modifyBaseMagic(float magic, AbstractCard card) {
+//        if (this.modMagic)
+//            return magic * MULTIPLIER;
+//        return magic;
+//    }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
@@ -55,8 +56,8 @@ public class ConcludeMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 1 || card.baseBlock > 1 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 1)))
-                && card.cost != -2;
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
+                && AugmentHelper.isPlayable(card);
     }
 
     @Override

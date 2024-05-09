@@ -28,7 +28,9 @@ public class HeavyThrowMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0) && (card.cost != -2) && !AugmentHelper.hasChangeTypeMod(card);
+        return AugmentHelper.isAttack(card)
+                && AugmentHelper.isPlayable(card)
+                && !AugmentHelper.hasChangeTypeMod(card);
     }
 
     @Override

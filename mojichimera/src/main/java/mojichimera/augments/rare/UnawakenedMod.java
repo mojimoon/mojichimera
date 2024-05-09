@@ -39,9 +39,22 @@ public class UnawakenedMod extends AbstractAugment {
     }
 
     @Override
+    public void onUpgradeCheck(AbstractCard card) {
+        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
+            if (CardModifierManager.hasModifier(c, PreviewedMod.ID)) {
+                c.upgrade();
+                c.initializeDescription();
+            }
+        }
+        card.initializeDescription();
+    }
+
+    @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && (card.cost != -2 && cardCheck(card, c -> notExhaust(c)))
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isEtherealValid(card)
+                && AugmentHelper.isNormal(card)
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, ID);
     }
 

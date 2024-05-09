@@ -3,6 +3,7 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,8 +20,7 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (!card.isEthereal)
-            CardModifierManager.addModifier(card, new EtherealMod());
+        CardModifierManager.addModifier(card, new EtherealMod());
         if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
         card.costForTurn = ++card.cost;
@@ -49,9 +49,10 @@ public class OverpoweredMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && card.cost >= 0
-                && cardCheck(card, c -> doesntUpgradeCost() && notRetain(c));
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.hasStaticCost(card)
+                && cardCheck(card, c -> notRetain(card))
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

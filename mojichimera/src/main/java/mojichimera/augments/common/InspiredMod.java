@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import mojichimera.mojichimera;
@@ -34,7 +34,7 @@ public class InspiredMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new InspiredMod(); }

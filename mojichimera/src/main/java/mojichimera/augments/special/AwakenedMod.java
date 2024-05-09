@@ -38,8 +38,7 @@ public class AwakenedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 0 || card.baseBlock > 0 || cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-                && (card.cost != -2 && cardCheck(card, c -> notExhaust(c)));
+        return true;
     }
 
     @Override

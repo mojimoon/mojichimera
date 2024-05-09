@@ -3,6 +3,7 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -53,7 +54,9 @@ public class AccursedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost > 0 && hasACurse() && cardCheck(card, c -> doesntUpgradeCost());
+        return hasACurse()
+                && card.cost > 0
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

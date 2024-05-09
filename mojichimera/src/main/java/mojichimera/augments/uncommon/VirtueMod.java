@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.actions.ReduceAllDebuffsAction;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class VirtueMod extends AbstractAugment {
@@ -20,7 +21,7 @@ public class VirtueMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost != -2);
+        return AugmentHelper.isPlayable(card);
     }
 
     @Override

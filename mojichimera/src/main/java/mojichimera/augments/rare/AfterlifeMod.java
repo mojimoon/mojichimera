@@ -6,6 +6,7 @@ import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,14 +22,14 @@ public class AfterlifeMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (!card.isEthereal) {
-            CardModifierManager.addModifier(card, new EtherealMod());
-        }
+        CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost >= 0 && card.cost <= 2 && cardCheck(card, c -> notExhaust(c)));
+        return (card.cost >= 0 && card.cost <= 2)
+                && AugmentHelper.isNormal(card)
+                && AugmentHelper.isEtherealValid(card);
     }
 
     @Override

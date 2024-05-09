@@ -1,8 +1,11 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.purple.Meditate;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,13 +19,14 @@ public class EstablishedMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.selfRetain = true;
+//        card.selfRetain = true;
+        CardModifierManager.addModifier(card, new RetainMod());
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost > 0
-                && (!card.isEthereal && cardCheck(card, c -> doesntUpgradeEthereal()));
+                && AugmentHelper.isRetainValid(card);
     }
 
     @Override
@@ -41,13 +45,13 @@ public class EstablishedMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[0]) && !(card instanceof Meditate)) {
+//        if (rawDescription.contains(CARD_TEXT[0]) && !(card instanceof Meditate)) {
             if (rawDescription.contains(CARD_TEXT[2])) {
                 return rawDescription.replace(CARD_TEXT[2], String.format(CARD_TEXT[3], EFFECT + 1));
             }
             return insertAfterText(rawDescription, String.format(CARD_TEXT[1], EFFECT));
-        }
-        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));
+//        }
+//        return insertAfterText(insertBeforeText(rawDescription, CARD_TEXT[0]), String.format(CARD_TEXT[1], EFFECT));
     }
 
     @Override

@@ -2,6 +2,7 @@ package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,10 +16,13 @@ public class SociableMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 20;
     private static final float EXTRA_MULTIPLIER = 0.2F;
+//    private boolean modMagic;
 
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-    }
+//    @Override
+//    public void onInitialApplication(AbstractCard card) {
+//        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+//            this.modMagic = true;
+//    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -33,6 +37,13 @@ public class SociableMod extends AbstractAugment {
             return block * getMultiplier(card);
         return block;
     }
+
+//    @Override
+//    public float modifyBaseMagic(float magic, AbstractCard card) {
+//        if (this.modMagic)
+//            return magic * getMultiplier(card);
+//        return magic;
+//    }
 
     private float getMultiplier(AbstractCard card) {
         if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
@@ -49,8 +60,7 @@ public class SociableMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseDamage > 1 || card.baseBlock > 1)
-                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL);
+        return AugmentHelper.hasDamageOrBlock(card);
     }
 
     @Override
