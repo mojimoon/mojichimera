@@ -2,6 +2,7 @@ package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardModifierManager;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,7 +27,9 @@ public class InscribedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return allowOrbMods() && !CardModifierManager.hasModifier(card, INSCRIBED_MODID);
+        return allowOrbMods()
+                && AugmentHelper.isPlayable(card)
+                && !CardModifierManager.hasModifier(card, INSCRIBED_MODID);
     }
 
     @Override
