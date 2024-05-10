@@ -1,6 +1,8 @@
-package mojichimera.augments.common;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
@@ -11,22 +13,31 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import mojichimera.powers.EveryTurnStartPlayPower;
 
-public class VigorMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(VigorMod.class.getSimpleName());
+public class ReleaseMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ReleaseMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 4;
+    private static final int EFFECT = 1;
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        CardModifierManager.addModifier(card, new ExhaustMod());
+        card.costForTurn = ++card.cost;
+    }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPlayable(card)
-                && AugmentHelper.isNormal(card);
+        return AugmentHelper.hasStaticCost(card)
+                && AugmentHelper.isAttackOrSkill(card);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, EFFECT), EFFECT));
+        AbstractCard c = card.makeStatEquivalentCopy();
+        CardModifierManager.removeModifiersById(c, ID, true);
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EveryTurnStartPlayPower(AbstractDungeon.player, c, EFFECT), EFFECT));
     }
 
     @Override
@@ -40,14 +51,14 @@ public class VigorMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new VigorMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ReleaseMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

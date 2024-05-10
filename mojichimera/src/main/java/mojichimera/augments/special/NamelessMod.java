@@ -14,7 +14,7 @@ public class NamelessMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(NamelessMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.50F;
+    private static final float MULTIPLIER = 1.5F;
     private boolean modMagic;
 
     @Override
@@ -48,16 +48,6 @@ public class NamelessMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesVariable(card, 2)
                 && AugmentHelper.isPlayable(card);
-    }
-
-    @Override
-    public boolean canPlayCard(AbstractCard card) {
-        for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            if (c.name.equals(card.name)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override

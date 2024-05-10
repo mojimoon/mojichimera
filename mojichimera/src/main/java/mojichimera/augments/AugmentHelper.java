@@ -87,6 +87,16 @@ public class AugmentHelper {
 
         // ReactiveMod
         CardAugmentsMod.registerCustomBan(ReactiveMod.ID, c -> c instanceof DeusExMachina); // 机械降神
+
+        // RushdownMod
+        CardAugmentsMod.registerCustomBan(RushdownMod.ID, c -> c instanceof Wish); // 许愿
+        CardAugmentsMod.registerCustomBan(RushdownMod.ID, c -> c instanceof Conclude); // 结末
+        CardAugmentsMod.registerCustomBan(RushdownMod.ID, c -> c instanceof FearNoEvil); // 不惧妖邪
+
+        // EmbraceMod
+        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Hemokinesis); // 御血术
+        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Wish); // 许愿
+        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Conclude); // 结末
     }
 
     public static boolean isInCombat() {
@@ -100,7 +110,9 @@ public class AugmentHelper {
                 InfiniteMod.ID,
                 PastMod.ID,
                 SkillizedMod.ID,
-                UnawakenedMod.ID
+                UnawakenedMod.ID,
+                StormMod.ID,
+                EmbraceMod.ID
         };
 
         for (String id : modid) {
@@ -126,7 +138,9 @@ public class AugmentHelper {
                 BundledMod.ID,
                 ExplosiveMod.ID,
                 InfiniteMod.ID,
-                SkillizedMod.ID
+                SkillizedMod.ID,
+                StormMod.ID,
+                EmbraceMod.ID
         };
 
         for (String id : mods) {
@@ -218,5 +232,16 @@ public class AugmentHelper {
 
     public static boolean isNormal(AbstractCard card) {
         return card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL || card.type == AbstractCard.CardType.POWER;
+    }
+
+    public static String removeExhaustInDescription(String rawDescription) {
+        final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(StrangeMod.ID).EXTRA_TEXT;
+        if (rawDescription.contains(CARD_TEXT[3])) {
+            return rawDescription.replace(CARD_TEXT[3], CARD_TEXT[4]);
+        }
+        if (rawDescription.contains(CARD_TEXT[1])) {
+            return rawDescription.replace(CARD_TEXT[1], CARD_TEXT[2]);
+        }
+        return rawDescription;
     }
 }

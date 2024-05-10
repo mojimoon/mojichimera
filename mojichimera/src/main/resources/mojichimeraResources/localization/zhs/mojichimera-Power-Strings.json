@@ -23,7 +23,19 @@
   },
   "mojichimera:SteelProtocolPower": {
     "NAME": "钢铁协议",
-    "DESCRIPTIONS": ["本回合的下 #b%1$s 张数值增加 #b%2$s%% 。"]
+    "DESCRIPTIONS": ["本回合打出的下 #b%1$s 张牌数值增加 #b%2$s%% 。"]
+  },
+  "mojichimera:StormProtocolPower": {
+    "NAME": "雷暴协议",
+    "DESCRIPTIONS": ["每打出一张 能力 牌，打出 #b%1$s 张 %2$s 。"]
+  },
+  "mojichimera:DarkProtocolPower": {
+    "NAME": "黑暗协议",
+    "DESCRIPTIONS": ["每 消耗 一张牌，打出 #b%1$s 张 %2$s 。"]
+  },
+  "mojichimera:RushdownProtocolPower": {
+    "NAME": "猛虎协议",
+    "DESCRIPTIONS": ["每当你进入 愤怒 时，打出 #b%1$s 张 %2$s 。"]
   },
   "mojichimera:FreePower": {
     "NAME": "免费",

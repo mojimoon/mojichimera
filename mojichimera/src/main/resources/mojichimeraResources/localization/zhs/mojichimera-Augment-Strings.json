@@ -39,6 +39,10 @@
         "TEXT": ["腐化", "", "再打出 #b5 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张加入抽牌堆。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 接受腐化之心的诅咒。"]
     },
+    "mojichimera:EmbraceMod": {
+        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
+    },
     "mojichimera:ForesightMod": {
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
         "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
@@ -80,6 +84,14 @@
         "TEXT": ["宁静", "", "#y平静 ：抽 #b2 张牌。"],
         "EXTRA_TEXT": [" NL 平静 ：抽 %d 张牌。"]
     },
+    "mojichimera:ReleaseMod": {
+        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。 NL 源于 #b崩坠 #y铜制机械人偶 的卡牌 #b完全公开 。"],
+        "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
+    },
+    "mojichimera:RushdownMod": {
+        "TEXT": ["猛虎", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每当你进入 #y愤怒 时，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每当你进入 愤怒 时： NL "]
+    },
     "mojichimera:ShareMod": {
         "TEXT": ["共享", "", "造成的伤害和获得的 #y格挡 减少 #b33% 。 NL 打出时使其他手牌的造成的伤害和获得的 #y格挡 增加自身数值。 NL #y消耗 。"],
         "EXTRA_TEXT": [" NL 使其他手牌的伤害和 格挡 增加自身数值。"]
@@ -99,6 +111,10 @@
     "mojichimera:SozuMod": {
         "TEXT": ["添水", "", "本牌耗能减少 #b2 。 NL 每有一瓶 #y药水 ，失去 [E] 。"],
         "EXTRA_TEXT": [" NL 每有一瓶 药水 ，失去 [E] 。"]
+    },
+    "mojichimera:StormMod": {
+        "TEXT": ["雷暴", "", "本牌耗能增加 #b1，变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每打出一张 能力 牌： NL "]
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["奇怪", "", "不再 #y消耗 。 "],
@@ -466,20 +482,8 @@
         "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
         "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"]
     },
-    "mojichimera:ReleaseMod": {
-        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。"],
-        "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
-    },
     "mojichimera:CounterMod": {
-        "TEXT": ["反击", "", "造成的伤害减少 #b50% 。 NL 本牌变为 #y能力 牌。 NL 每受到一次攻击伤害，下回合对伤害来源打出本牌的复制。"],
-        "EXTRA_TEXT": [" NL 每受到一次攻击伤害，下回合对伤害来源打出本牌的复制。"]
-    },
-    "mojichimera:EmbraceMod": {
-        "TEXT": ["", "之拥", "造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 本牌变为 #y能力 牌。 NL 每消耗一张牌，打出本牌的复制。"],
-        "EXTRA_TEXT": [" NL 每消耗一张牌，打出本牌的复制。"]
-    },
-    "mojichimera:StormMod": {
-        "TEXT": ["雷暴", "", "本牌变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出本牌的复制。"],
-        "EXTRA_TEXT": [" NL 每打出一张 能力 牌，打出本牌的复制。"]
+        "TEXT": ["反击", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每受到一次攻击伤害，下回合对伤害来源打出原牌的复制。"],
+        "EXTRA_TEXT": [" NL 每受到一次攻击伤害，下回合对伤害来源： NL "]
     }
 }

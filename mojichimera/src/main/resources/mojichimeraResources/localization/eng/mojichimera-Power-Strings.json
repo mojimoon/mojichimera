@@ -25,6 +25,18 @@
     "NAME": "Steel Protocol",
     "DESCRIPTIONS": ["Increase card values by #b%2$s%% for the next #b%1$s cards played this turn."]
   },
+  "mojichimera:StormProtocolPower": {
+    "NAME": "Storm Protocol",
+    "DESCRIPTIONS": ["Whenever you play a Power, play #b%1$s copies of %2$s."]
+  },
+  "mojichimera:DarkProtocolPower": {
+    "NAME": "Dark Protocol",
+    "DESCRIPTIONS": ["Whenever you Exhausts a card, play #b%1$s copies of %2$s."]
+  },
+  "mojichimera:RushdownProtocolPower": {
+    "NAME": "Rushdown Protocol",
+    "DESCRIPTIONS": ["Whenever you enters Wrath, play #b%1$s copies of %2$s."]
+  },
   "mojichimera:FreePower": {
     "NAME": "Free ",
     "DESCRIPTIONS": ["At the start of your turn, play #b%1$s copies of %2$s."]
