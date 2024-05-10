@@ -213,6 +213,10 @@
         "TEXT": ["山寨", "", "本牌耗能减少 #b1。 NL 无法被升级。"],
         "EXTRA_TEXT": [" NL 无法被升级。"]
     },
+    "mojichimera:OnSaleMod": {
+        "TEXT": ["特价", "", "升级时耗能额外减少 #b1 。"],
+        "EXTRA_TEXT": []
+    },
     "mojichimera:PainfulMod": {
         "TEXT": ["疼痛", "", "卡牌数值增加 #b100% 。 NL 在手牌中每打出一张其他牌时，失去 #b1 点生命。"],
         "EXTRA_TEXT": [" NL 在手牌中每打出一张其他牌时，失去 %d 点生命。"]
@@ -285,6 +289,10 @@
         "TEXT": ["不稳定", "", "打出次数在 #b0 ~ #b3 之间随机。 NL 本牌为 #y消耗 牌时，至少打出 #b1 次。"],
         "EXTRA_TEXT": [" NL 打出次数在 %d ~ %d 之间随机。"]
     },
+    "mojichimera:BankruptMod": {
+        "TEXT": ["破产", "", "若拥有不超过 #b100(150) #y金币 ，本牌耗能减少 [E] 。"],
+        "EXTRA_TEXT": [" NL 若拥有不超过 %d 金币，耗能减少 [E] 。"]
+    },
     "mojichimera:BloodDebtMod": {
         "TEXT": ["血债", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b2 点生命。"],
         "EXTRA_TEXT": [" 失去 %d 点生命。 NL "]
@@ -305,6 +313,14 @@
     "mojichimera:ConcentratedMod": {
         "TEXT": ["全神", "", "本牌耗能减少 #b2 。 NL 丢弃 #b3(2) 张牌。"],
         "EXTRA_TEXT": [" NL 丢弃 %d 张牌。"]
+    },
+    "mojichimera:CreditMod": {
+        "TEXT": ["信贷", "", "若拥有至少 #b300(200) #y金币 ，本牌耗能减少 [E] 。"],
+        "EXTRA_TEXT": [" NL 若拥有至少 %d 金币，耗能减少 [E] 。"]
+    },
+    "mojichimera:EquilibriumMod": {
+        "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
+        "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
     },
     "mojichimera:GoldenMod": {
         "TEXT": ["黄金", "", "打出时获得 #b4 #y金币 。"],
@@ -441,6 +457,14 @@
     "mojichimera:FutureMod": {
         "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
         "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺*言 加入弃牌堆。"]
+    },
+    "mojichimera:RouletteMod": {
+        "TEXT": ["", "轮盘赌", "有 #b1/6 概率可打出。若抽到时不可打出，概率增加 #b1/6 。 NL 再打出 #b3 次。 NL 打出后概率重置。"],
+        "EXTRA_TEXT": [" NL 有 %s/%d 概率可打出 。 再打出 %d 次 。"]
+    },
+    "mojichimera:ContinuousMod": {
+        "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
+        "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"]
     },
     "mojichimera:ReleaseMod": {
         "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。"],

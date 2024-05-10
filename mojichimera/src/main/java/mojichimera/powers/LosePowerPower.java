@@ -72,6 +72,8 @@ public class LosePowerPower extends AbstractPower implements CloneablePowerInter
             try {
                 AbstractPower newPower = powerClass.getConstructor(AbstractCreature.class, int.class).newInstance(this.owner, -this.amount);
                 this.addToBot(new ApplyPowerAction(this.owner, this.owner, newPower, -this.amount));
+                if (newPower.amount == 0)
+                    this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this.basePowerID));
                 this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
             } catch (Exception e) {
                 e.printStackTrace();
