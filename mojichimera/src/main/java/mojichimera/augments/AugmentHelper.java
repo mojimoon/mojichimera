@@ -8,6 +8,8 @@ import CardAugments.cardmods.rare.InfiniteMod;
 import CardAugments.cardmods.rare.InvertedMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
 import mojichimera.augments.common.InspiredMod;
@@ -85,6 +87,10 @@ public class AugmentHelper {
 
         // ReactiveMod
         CardAugmentsMod.registerCustomBan(ReactiveMod.ID, c -> c instanceof DeusExMachina); // 机械降神
+    }
+
+    public static boolean isInCombat() {
+        return AbstractDungeon.player != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
     }
 
     public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {

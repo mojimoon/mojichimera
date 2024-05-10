@@ -19,13 +19,6 @@ public class HalfMod extends AbstractAugment {
     private static final float MULTIPLIER = 1.5F;
     private static final int PERCENT = 50;
     private static final int NUM_CARDS = 3;
-    private boolean modMagic;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-            this.modMagic = true;
-    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -41,29 +34,22 @@ public class HalfMod extends AbstractAugment {
         return block;
     }
 
-    @Override
-    public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (this.modMagic)
-            return magic * getMultiplier(card);
-        return magic;
-    }
-
     private float getMultiplier(AbstractCard card) {
-        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+        if (!AugmentHelper.isInCombat())
             return 1.0F;
-        }
-
-        return lessThanCardsPlayedThisTurn() ? MULTIPLIER : 1.0F;
+        return lessThanCardsPlayedThisTurn(card) ? MULTIPLIER : 1.0F;
     }
 
-    private boolean lessThanCardsPlayedThisTurn() {
-        return AbstractDungeon.actionManager.cardsPlayedThisTurn.size() < HalfMod.NUM_CARDS;
+    private boolean lessThanCardsPlayedThisTurn(AbstractCard card) {
+        int count = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
+        return count < NUM_CARDS
+                || (count == NUM_CARDS && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(count - 1) == card);
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
-                && AugmentHelper.isPlayable(card)
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 2)
                 && AugmentHelper.isNormal(card);
     }
 
@@ -91,7 +77,7 @@ public class HalfMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
-        return lessThanCardsPlayedThisTurn();
+        return lessThanCardsPlayedThisTurn(card);
     }
 
     public CardBorderGlowManager.GlowInfo getGlowInfo() {

@@ -21,9 +21,8 @@ public class PerseverantMod extends AbstractAugment {
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
-        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+        if (!AugmentHelper.isInCombat())
             return block;
-        }
         return block * (MULTIPLIER - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth);
     }
 

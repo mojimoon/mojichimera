@@ -18,7 +18,8 @@ public class BelligerentMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamage(card, 3)
+        return AugmentHelper.reachesDamage(card, 2)
+                && AugmentHelper.isAttack(card)
                 && card.target == AbstractCard.CardTarget.ENEMY
                 && AugmentHelper.isPlayable(card);
     }

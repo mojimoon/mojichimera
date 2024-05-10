@@ -1,30 +1,38 @@
-package mojichimera.augments.common;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardBorderGlowManager;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class PairMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(PairMod.class.getSimpleName());
+@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
+public class TsumoMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(TsumoMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.0F;
-    private static final int PERCENT = 100;
+    private static final float MULTIPLIER = 1.5F;
+    private static final int PERCENT = 50;
+    private static final int PLAYS = 2;
+    public static final SpireField<Integer> lastPlayedTurn = new SpireField<>(() -> 0);
+    private boolean modMagic;
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+            this.modMagic = true;
+    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -40,22 +48,32 @@ public class PairMod extends AbstractAugment {
         return block;
     }
 
+    @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
+        if (this.modMagic)
+            return magic * getMultiplier(card);
+        return magic;
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        lastPlayedTurn.set(card, AbstractDungeon.actionManager.turn);
+    }
+
     private float getMultiplier(AbstractCard card) {
         if (!AugmentHelper.isInCombat())
             return 1.0F;
-        return hasSameNameCard(card, AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
+        return hasPlayedThisTurn(card) ? MULTIPLIER : 1.0F;
     }
 
-    private boolean hasSameNameCard(AbstractCard card, CardGroup group) {
-        return group.group.stream().anyMatch(c -> c != card && c.name.equals(card.name));
+    private boolean hasPlayedThisTurn(AbstractCard card) {
+        return lastPlayedTurn.get(card) == AbstractDungeon.actionManager.turn;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPlayable(card)
-                && AugmentHelper.hasDamageOrBlock(card)
-                && AugmentHelper.isNormal(card)
-                && !card.rarity.equals(AbstractCard.CardRarity.BASIC);
+        return AugmentHelper.isReplayable(card)
+                && AugmentHelper.reachesVariable(card, 2);
     }
 
     @Override
@@ -69,26 +87,25 @@ public class PairMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PERCENT));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PLAYS, PERCENT));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PairMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TsumoMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-
     private boolean shouldGlow(AbstractCard card) {
-        return hasSameNameCard(card, AbstractDungeon.player.hand);
+        return hasPlayedThisTurn(card);
     }
 
     public CardBorderGlowManager.GlowInfo getGlowInfo() {
         return new CardBorderGlowManager.GlowInfo() {
             public boolean test(AbstractCard card) {
-                return PairMod.this.hasThisMod(card) && PairMod.this.shouldGlow(card);
+                return TsumoMod.this.hasThisMod(card) && TsumoMod.this.shouldGlow(card);
             }
 
             public Color getColor(AbstractCard card) {
@@ -96,7 +113,7 @@ public class PairMod extends AbstractAugment {
             }
 
             public String glowID() {
-                return PairMod.ID + "Glow";
+                return TsumoMod.ID + "Glow";
             }
         };
     }

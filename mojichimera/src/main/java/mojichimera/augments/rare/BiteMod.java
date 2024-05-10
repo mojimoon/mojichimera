@@ -44,7 +44,7 @@ public class BiteMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamage(card, 2)
+        return AugmentHelper.isAttack(card)
                 && card.cost > 0;
     }
 

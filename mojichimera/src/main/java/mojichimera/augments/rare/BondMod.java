@@ -20,20 +20,13 @@ public class BondMod extends AbstractAugment {
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
-        return magic + EFFECT * (float) (Math.ceil((float) countPowerByType(AbstractPower.PowerType.BUFF) / (card.upgraded ? UPGRADE_PER : PER)));
+        return magic + EFFECT * (float) (Math.ceil((float) countPlayerBuff() / (card.upgraded ? UPGRADE_PER : PER)));
     }
 
-    private int countPowerByType(AbstractPower.PowerType type) {
-        if (AbstractDungeon.player == null || AbstractDungeon.getCurrRoom() == null || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+    private int countPlayerBuff() {
+        if (!AugmentHelper.isInCombat())
             return 0;
-        }
-        int count = 0;
-        for (AbstractPower power : AbstractDungeon.player.powers) {
-            if (power.type == type) {
-                count++;
-            }
-        }
-        return count;
+        return (int) AbstractDungeon.player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.BUFF).count();
     }
 
     @Override

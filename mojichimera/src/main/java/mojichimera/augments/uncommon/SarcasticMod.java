@@ -21,8 +21,7 @@ public class SarcasticMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isAttack(card)
-                && card.target == AbstractCard.CardTarget.ENEMY;
+        return AugmentHelper.isAttack(card);
     }
 
     @Override
@@ -31,10 +30,8 @@ public class SarcasticMod extends AbstractAugment {
     }
 
     private int count(AbstractCard card, AbstractMonster target) {
-        if (AbstractDungeon.player == null || AbstractDungeon.getCurrRoom() == null || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT || !AbstractDungeon.player.hand.contains(card)) {
+        if (!AugmentHelper.isInCombat())
             return 0;
-        }
-
         return (int) AbstractDungeon.player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.BUFF).count()
                 + (target == null ? 0 : (int) target.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count());
     }

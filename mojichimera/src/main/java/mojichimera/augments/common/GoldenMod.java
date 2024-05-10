@@ -23,12 +23,7 @@ public class GoldenMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new AbstractGameAction() {
-            public void update() {
-                isDone = true;
-                AbstractDungeon.player.gainGold(GOLD);
-            }
-        });
+        AbstractDungeon.player.gainGold(GOLD);
     }
 
     @Override

@@ -32,12 +32,7 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new AbstractGameAction() {
-            public void update() {
-                isDone = true;
-                AbstractDungeon.player.loseGold(GOLD);
-            }
-        });
+        AbstractDungeon.player.loseGold(GOLD);
     }
 
     @Override

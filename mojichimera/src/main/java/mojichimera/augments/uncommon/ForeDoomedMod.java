@@ -51,7 +51,7 @@ public class ForeDoomedMod extends AbstractAugment {
 
     @Override
     public void onUpdate(AbstractCard card) {
-        if (CardCrawlGame.isInARun() && AbstractDungeon.player.hand.contains(card)) {
+        if (AugmentHelper.isInCombat()) {
             int curses = EFFECT;
             Iterator handIterator = AbstractDungeon.player.hand.group.iterator();
 

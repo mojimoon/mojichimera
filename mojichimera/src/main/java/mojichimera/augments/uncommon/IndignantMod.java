@@ -20,7 +20,7 @@ public class IndignantMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
-                && AugmentHelper.reachesDamage(card, 2);
+                && AugmentHelper.isAttack(card);
     }
 
     @Override

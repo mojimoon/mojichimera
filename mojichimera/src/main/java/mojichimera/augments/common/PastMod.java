@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.special.PastHelperMod;
+import mojichimera.augments.special.NamelessMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.powers.NextTurnStartPlayPower;
 
 public class PastMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PastMod.class.getSimpleName());
@@ -37,7 +38,7 @@ public class PastMod extends AbstractAugment {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new PastHelperMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new NamelessMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         card.target = AbstractCard.CardTarget.SELF;
@@ -76,8 +77,8 @@ public class PastMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-//                    Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, copy, TURN, COPY));
-                    Wiz.applyToSelf(new BombPower(AbstractDungeon.player, TURN, COPY, copy));
+                    Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, copy, TURN, COPY));
+//                    Wiz.applyToSelf(new BombPower(AbstractDungeon.player, TURN, COPY, copy));
                 }
                 this.isDone = true;
             }

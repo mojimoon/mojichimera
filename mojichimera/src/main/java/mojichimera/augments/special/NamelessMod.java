@@ -7,12 +7,10 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.common.PastMod;
 import mojichimera.mojichimera;
 
-public class PastHelperMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(PastHelperMod.class.getSimpleName());
+public class NamelessMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(NamelessMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final float MULTIPLIER = 1.50F;
@@ -73,7 +71,7 @@ public class PastHelperMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PastHelperMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new NamelessMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

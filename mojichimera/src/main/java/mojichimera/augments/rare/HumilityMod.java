@@ -31,7 +31,7 @@ public class HumilityMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamage(card, 2);
+        return AugmentHelper.isAttack(card);
     }
 
     @Override

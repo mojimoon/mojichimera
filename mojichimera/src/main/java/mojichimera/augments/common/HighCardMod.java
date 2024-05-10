@@ -25,13 +25,6 @@ public class HighCardMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final float MULTIPLIER = 1.5F;
     private static final int PERCENT = 50;
-    private boolean modMagic;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-            this.modMagic = true;
-    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -47,18 +40,9 @@ public class HighCardMod extends AbstractAugment {
         return block;
     }
 
-    @Override
-    public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (this.modMagic)
-            return magic * getMultiplier(card);
-        return magic;
-    }
-
     private float getMultiplier(AbstractCard card) {
-        if (AbstractDungeon.player == null || !AbstractDungeon.player.hand.contains(card)) {
+        if (!AugmentHelper.isInCombat())
             return 1.0F;
-        }
-
         return allDistinctCards(AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
     }
 
@@ -68,8 +52,8 @@ public class HighCardMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
-                && AugmentHelper.isPlayable(card)
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 2)
                 && AugmentHelper.isNormal(card);
     }
 
