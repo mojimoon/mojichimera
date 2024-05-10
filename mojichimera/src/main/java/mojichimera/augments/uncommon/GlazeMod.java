@@ -1,21 +1,30 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.actions.AutoplayOnRandomEnemyAction;
+import CardAugments.actions.ImmediateExhaustCardAction;
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class RiichiMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(RiichiMod.class.getSimpleName());
+public class GlazeMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(GlazeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.75F;
+    private static final float MULTIPLIER = 1.5F;
+    private static final float CHANCE = 0.25F;
     private boolean modMagic;
 
     @Override
@@ -46,16 +55,17 @@ public class RiichiMod extends AbstractAugment {
     }
 
     @Override
-    public void onDrawn(AbstractCard card) {
-        addToBot(new AutoplayOnRandomEnemyAction(card));
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        if (AbstractDungeon.cardRandomRng.randomBoolean(1))
+            card.exhaust = true;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesVariable(card, 2)
-                && !AutoplayField.autoplay.get(card)
-                && card.cost >= 0
-                && AugmentHelper.isNormal(card);
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card)
+                && cardCheck(card, c -> notExhaust(c));
     }
 
     @Override
@@ -69,14 +79,14 @@ public class RiichiMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RiichiMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new GlazeMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

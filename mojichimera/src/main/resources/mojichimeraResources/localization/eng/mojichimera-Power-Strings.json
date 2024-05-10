@@ -1,10 +1,36 @@
 {
-  "mojichimera:LoseFocusPower": {
-    "NAME": "Focus Down",
-    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
+  "mojichimera:LosePowerPower": {
+    "NAME": " Down",
+    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #y", "."]
   },
-  "mojchimera:LosePowerPower": {
-    "NAME": "Lose ",
-    "DESCRIPTIONS": ["At the end of your turn, lose #b"," ","."]
+  "mojichimera:BiasedPower": {
+    "NAME": "Biased ",
+    "DESCRIPTIONS": ["At the start of each turn, lose #b", " #y", ". Lasts #b", " turn.", " turns."]
+  },
+  "mojichimera:NextTurnStartPlayPower": {
+    "NAME": "Prepared ",
+    "DESCRIPTIONS": [
+      "In #b%1$s turns, play #b%2$s copies of %3$s at the start of your turn.",
+      "At the start of next turn, play #b%1$s copies of %2$s."
+    ]
+  },
+  "mojichimera:NextTurnAddToHandPower": {
+    "NAME": " Mass Production",
+    "DESCRIPTIONS": [
+      "In #b%1$s turns, add #b%2$s copies of %3$s to your hand.",
+      "At the start of next turn, add #b%1$s copies of %2$s to your hand."
+    ]
+  },
+  "mojichimera:SteelProtocolPower": {
+    "NAME": "Steel Protocol",
+    "DESCRIPTIONS": ["Increase card values by #b%2$s%% for the next #b%1$s cards played this turn."]
+  },
+  "mojichimera:FreePower": {
+    "NAME": "Free ",
+    "DESCRIPTIONS": ["At the start of your turn, play #b%1$s copies of %2$s."]
+  },
+  "mojichimera:EveryTurnStartPlayPower": {
+    "NAME": "Free ",
+    "DESCRIPTIONS": ["At the start of your turn, play #b%1$s copies of %2$s."]
   }
 }

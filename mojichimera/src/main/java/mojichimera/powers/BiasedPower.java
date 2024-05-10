@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -16,24 +17,23 @@ import static mojichimera.mojichimera.makePowerPath;
 public class BiasedPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = mojichimera.makeID(BiasedPower.class.getSimpleName());
 
-//    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
-    private static final PowerStrings TEXT = new PowerStrings();
+//    private static final PowerStrings TEXT = new PowerStrings();
     private final String basePowerName;
     private final String basePowerID;
     private int turn;
     private static int idCounter = 0;
 
-    // something has gone wrong with the localization so this is a temporary fix
-    static {
-        if (Settings.language.toString().toLowerCase().equals("zhs")) {
-            TEXT.NAME = "偏差";
-            TEXT.DESCRIPTIONS = new String[] {"在你的回合开始时，失去 #b", " 点 #y", " 。持续 #b", " 回合。", " 回合。"};
-        } else {
-            TEXT.NAME = "Biased ";
-            TEXT.DESCRIPTIONS = new String[] {"At the start of each turn, lose #b", " #y", ". Lasts #b", " turn.", " turns."};
-        }
-    }
+//    static {
+//        if (Settings.language.toString().toLowerCase().equals("zhs")) {
+//            TEXT.NAME = "偏差";
+//            TEXT.DESCRIPTIONS = new String[] {"在你的回合开始时，失去 #b", " 点 #y", " 。持续 #b", " 回合。", " 回合。"};
+//        } else {
+//            TEXT.NAME = "Biased ";
+//            TEXT.DESCRIPTIONS = new String[] {"At the start of each turn, lose #b", " #y", ". Lasts #b", " turn.", " turns."};
+//        }
+//    }
 
     public BiasedPower(AbstractCreature owner, AbstractPower powerToLose, int amount, int turn) {
         this.name = TEXT.NAME + powerToLose.name;

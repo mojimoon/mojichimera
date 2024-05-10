@@ -1,21 +1,23 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.rare;
 
-import CardAugments.actions.AutoplayOnRandomEnemyAction;
 import CardAugments.cardmods.AbstractAugment;
-import basemod.abstracts.AbstractCardModifier;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class RiichiMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(RiichiMod.class.getSimpleName());
+public class AdHocMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(AdHocMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.75F;
+    private static final float MULTIPLIER = 2.0F;
+    private static final float EXTRA_MULTIPLIER = 0.5F;
     private boolean modMagic;
 
     @Override
@@ -27,35 +29,35 @@ public class RiichiMod extends AbstractAugment {
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * MULTIPLIER;
+            return damage * getMultiplier();
         return damage;
     }
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.baseBlock > 0)
-            return block * MULTIPLIER;
+            return block * getMultiplier();
         return block;
     }
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (this.modMagic)
-            return magic * MULTIPLIER;
+            return magic * getMultiplier();
         return magic;
     }
 
-    @Override
-    public void onDrawn(AbstractCard card) {
-        addToBot(new AutoplayOnRandomEnemyAction(card));
+    private float getMultiplier() {
+        if (AbstractDungeon.player == null)
+            return MULTIPLIER;
+        return Math.max(0.5F, MULTIPLIER - EXTRA_MULTIPLIER * (AbstractDungeon.actNum - 1));
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
-                && !AutoplayField.autoplay.get(card)
-                && card.cost >= 0
-                && AugmentHelper.isNormal(card);
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isNormal(card)
+                && ((AbstractDungeon.player == null) || (AbstractDungeon.actNum < 3));
     }
 
     @Override
@@ -68,15 +70,10 @@ public class RiichiMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
-    }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
-
-    @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RiichiMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new AdHocMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

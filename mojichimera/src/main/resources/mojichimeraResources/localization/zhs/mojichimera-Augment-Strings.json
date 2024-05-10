@@ -3,6 +3,10 @@
         "TEXT": ["Prefix", "Suffix", "Description stuff"],
         "EXTRA_TEXT": ["Tooltip"]
     },
+    "mojichimera:AdHocMod": {
+        "TEXT": ["过渡", "", "卡牌数值增加 #b100% 。 NL 每前进一幕，卡牌数值减少基础值的 #b50% 。"],
+        "EXTRA_TEXT": []
+    },
     "mojichimera:AccursedMod": {
         "TEXT": ["咒怨", "", "牌组里每有一张 #y诅咒 ，耗能减少 [E] 。"],
         "EXTRA_TEXT": [" NL 牌组里每有一张 诅咒 ，耗能减少 [E] 。"]
@@ -51,6 +55,10 @@
     "mojichimera:KyrieMod": {
         "TEXT": ["垂怜", "", "目标生命百分比越高，造成的伤害越高，最高 #b200% 。"],
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
+    },
+    "mojichimera:LimitlessMod": {
+        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b2.5% 。"],
+        "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
         "TEXT": ["", "积分卡", "每第 #b2 次手动打出本牌时，再打出 #b1 次。"],
@@ -104,6 +112,10 @@
     "mojichimera:TransfiniteMod": {
         "TEXT": ["超限", "", "能被多次 #y升级 。"],
         "EXTRA_TEXT": [" NL 能被多次 升级 。"]
+    },
+    "mojichimera:TrinityMod": {
+        "TEXT": ["三相", "", "若本回合打出过 #y攻击 、 #y技能 和 #y能力 牌，卡牌数值增加 #b100% 。"],
+        "EXTRA_TEXT": [" NL 若本回合打出过攻击、技能和能力牌，数值增加 %d%% 。"]
     },
     "mojichimera:UnawakenedMod": {
         "TEXT": ["未觉醒", "", "#y虚无 。 NL 被 #y消耗 的 #b2 回合后，将一张 #y觉醒 的复制加入手牌。"],
@@ -161,6 +173,10 @@
             " NL 每当这张牌被 保留 时，将其在本场战斗的耗能减少 %d 。"
         ]
     },
+    "mojichimera:ExploitMod": {
+        "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b25% 。"],
+        "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
+    },
     "mojichimera:FlashOfMod": {
         "TEXT": ["亮剑", "", "造成的伤害减少 #b20% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
         "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，抽 %d 张牌。"]
@@ -184,6 +200,10 @@
     "mojichimera:FuritenMod": {
         "TEXT": ["", "振听", "卡牌数值增加 #b100% 。 NL 每回合只能打出一次。"],
         "EXTRA_TEXT": [" NL 每回合只能打出一次。"]
+    },
+    "mojichimera:GlazeMod": {
+        "TEXT": ["琉璃", "", "卡牌数值增加 #b50% 。 NL 打出时有 #b1/4 概率 #y消耗 。 NL 源于 #bBalatro 的 #y玻璃牌 。"],
+        "EXTRA_TEXT": [" NL 有 1/4 概率 消耗 。"]
     },
     "mojichimera:IndignantMod": {
         "TEXT": ["义愤", "", "#y愤怒 ：造成的伤害增加 #b50% 。"],
@@ -230,12 +250,16 @@
         "EXTRA_TEXT": [" NL 抽到本牌时抽 %d 张牌。"]
     },
     "mojichimera:RiichiMod": {
-        "TEXT": ["", "立直", "卡牌数值增加 #b50% 。 NL #y自动打出 。"],
+        "TEXT": ["", "立直", "卡牌数值增加 #b75% 。 NL #y自动打出 。"],
         "EXTRA_TEXT": ["自动打出。 NL "]
     },
     "mojichimera:SarcasticMod": {
         "TEXT": ["讽刺", "", "敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 %d%% 。"]
+    },
+    "mojichimera:SteelMod": {
+        "TEXT": ["钢铁", "", "抽到本牌时，本回合打出的下 #b1 张牌数值增加 #b50% 。 NL 只适用于数值至少 #b2 点的攻击、技能或能力牌。 NL 源于 #bBalatro 的 #y钢铁牌 。"],
+        "EXTRA_TEXT": [" NL 抽到本牌时，本回合打出的下 %d 张牌数值增加 %d%% 。"]
     },
     "mojichimera:StrategyMod": {
         "TEXT": ["", "战略", "造成的伤害与获得的 #y格挡 减少 #b33% 。 NL 抽 #b2 张牌。"],
@@ -258,8 +282,8 @@
         "EXTRA_TEXT": [" NL 失去所有负面效果 %d 层。"]
     },
     "mojichimera:VolatileMod": {
-        "TEXT": ["不稳定", "", "打出次数在 #b0 至 #b3 之间随机。"],
-        "EXTRA_TEXT": [" NL 打出次数在 %d 至 %d 之间随机。"]
+        "TEXT": ["不稳定", "", "打出次数在 #b0 ~ #b3 之间随机。 NL 本牌为 #y消耗 牌时，至少打出 #b1 次。"],
+        "EXTRA_TEXT": [" NL 打出次数在 %d ~ %d 之间随机。"]
     },
     "mojichimera:BloodDebtMod": {
         "TEXT": ["血债", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b2 点生命。"],
@@ -370,30 +394,6 @@
     "mojichimera:WorshipMod": {
         "TEXT": ["", "崇拜", "再打出一次 。 NL 获得 #b2 层 #y虚弱 。"],
         "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 虚弱 。 "]
-    },
-    "mojichimera:TrinityMod": {
-        "TEXT": ["三相", "", "若本回合打出过 #y攻击 、 #y技能 和 #y能力 牌，卡牌数值增加 #b100% 。"],
-        "EXTRA_TEXT": [" NL 若本回合打出过攻击、技能和能力牌，数值增加 %d%% 。"]
-    },
-    "mojichimera:ExploitMod": {
-        "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b25% 。"],
-        "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
-    },
-    "mojichimera:GlazeMod": {
-        "TEXT": ["琉璃", "", "卡牌数值增加 #b50% 。 NL 打出时有 #b1/4 概率 #y消耗 。 NL 源于 #b小丑牌 的 #y玻璃牌 。"],
-        "EXTRA_TEXT": [" NL 有 1/4 概率 消耗 。"]
-    },
-    "mojichimera:SteelMod": {
-        "TEXT": ["钢铁", "", "抽到本牌时，打出的下 #b1 张牌数值增加 #b50% 。 NL 只适用数值大于 #b1 点的攻击、技能或能力牌。 NL 源于 #b小丑牌 的 #y钢铁牌 。"],
-        "EXTRA_TEXT": [" NL 抽到本牌时，打出的下 %d 张牌数值增加 %d%% 。"]
-    },
-    "mojichimera:AdHocMod": {
-        "TEXT": ["过渡", "", "卡牌数值增加 #b100% 。 NL 每前进一幕，卡牌数值减少基础值的 #b50% ，最低为基础值。"],
-        "EXTRA_TEXT": []
-    },
-    "mojichimera:LimitlessMod": {
-        "TEXT": ["上限", "", "每前进一层，卡牌数值增加 #b2.5% 。"],
-        "EXTRA_TEXT": []
     },
     "mojichimera:AwakenedMod": {
         "TEXT": ["觉醒", "", "卡牌数值增加 #b200% 。"],

@@ -53,7 +53,7 @@ public class ShareMod extends AbstractAugment {
             @Override
             public void update() {
                 for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                    if (c != card && (c.baseDamage > 0 || c.baseBlock > 0)) {
+                    if (c != card && AugmentHelper.hasDamageOrBlock(c)) {
                         if (!CardModifierManager.hasModifier(c, ShareHelperMod.ID)) {
                             CardModifierManager.addModifier(c, new ShareHelperMod());
                             ShareHelperMod.sharedDamage.set(c, Math.max(card.damage, 0));

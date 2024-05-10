@@ -53,6 +53,7 @@ public class FuritenMod extends AbstractAugment {
                 && AugmentHelper.hasVariable(card)
                 && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
     }
+
     @Override
     public boolean canPlayCard(AbstractCard card) {
         for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {

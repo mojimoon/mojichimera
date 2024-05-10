@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -22,26 +23,25 @@ import java.util.ArrayList;
 public class NextTurnStartPlayPower extends AbstractPower implements NonStackablePower {
     public static final String POWER_ID = mojichimera.makeID(NextTurnStartPlayPower.class.getSimpleName());
 
-    //    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
-    private static final PowerStrings TEXT = new PowerStrings();
+//    private static final PowerStrings TEXT = new PowerStrings();
     private final AbstractCard card;
     private final int cards;
     private float flashTimer = -1.0F;
     private final ArrayList<AbstractGameEffect> array;
 
-    // something has gone wrong with the localization so this is a temporary fix
-    static {
-        if (Settings.language.toString().toLowerCase().equals("zhs")) {
-            TEXT.NAME = "准备";
-            TEXT.DESCRIPTIONS = new String[] {"#b%1$s 回合后，在你的回合开始时，打出 #b%2$s 张 %3$s。",
-                    "在下个回合开始时，打出 #b%1$s 张 %2$s。"};
-        } else {
-            TEXT.NAME = "Prepared ";
-            TEXT.DESCRIPTIONS = new String[] {"In #b%1$s turns, play #b%2$s copies of %3$s at the start of your turn.",
-                    "At the start of next turn, play #b%1$s copies of %2$s."};
-        }
-    }
+//    static {
+//        if (Settings.language.toString().toLowerCase().equals("zhs")) {
+//            TEXT.NAME = "准备";
+//            TEXT.DESCRIPTIONS = new String[] {"#b%1$s 回合后，在你的回合开始时，打出 #b%2$s 张 %3$s。",
+//                    "在下个回合开始时，打出 #b%1$s 张 %2$s。"};
+//        } else {
+//            TEXT.NAME = "Prepared ";
+//            TEXT.DESCRIPTIONS = new String[] {"In #b%1$s turns, play #b%2$s copies of %3$s at the start of your turn.",
+//                    "At the start of next turn, play #b%1$s copies of %2$s."};
+//        }
+//    }
 
     public NextTurnStartPlayPower(AbstractCreature owner, AbstractCard card, int amount, int cards) {
         this.name = TEXT.NAME + card.name;

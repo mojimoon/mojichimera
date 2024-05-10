@@ -1,10 +1,36 @@
 {
-  "mojichimera:LoseFocusPower": {
-    "NAME": "集中下降",
-    "DESCRIPTIONS": ["在你的回合结束时，失去 #b", " 点 #y集中 。"]
-  },
   "mojichimera:LosePowerPower": {
     "NAME": "下降",
-    "DESCRIPTIONS": ["回合结束时失去 #b ", " ", ""]
+    "DESCRIPTIONS": ["在你的回合结束时，失去 #b", " 点 #y", " 。"]
+  },
+  "mojichimera:BiasedPower": {
+    "NAME": "偏差",
+    "DESCRIPTIONS": ["在你的回合开始时，失去 #b", " 点 #y", " 。持续 #b", " 回合。", " 回合。"]
+  },
+  "mojichimera:NextTurnStartPlayPower": {
+    "NAME": "准备",
+    "DESCRIPTIONS": [
+      "#b%1$s 回合后，在你的回合开始时，打出 #b%2$s 张 %3$s。",
+      "在下个回合开始时，打出 #b%1$s 张 %2$s。"
+    ]
+  },
+  "mojichimera:NextTurnAddToHandPower": {
+    "NAME": "量产",
+    "DESCRIPTIONS": [
+      "#b%1$s 回合后，将 #b%2$s 张 %3$s 加入手牌。",
+      "在下个回合开始时，将 #b%1$s 张 %2$s 加入手牌。"
+    ]
+  },
+  "mojichimera:SteelProtocolPower": {
+    "NAME": "钢铁协议",
+    "DESCRIPTIONS": ["本回合的下 #b%1$s 张数值增加 #b%2$s%% 。"]
+  },
+  "mojichimera:FreePower": {
+    "NAME": "免费",
+    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s。"]
+  },
+  "mojichimera:EveryTurnStartPlayPower": {
+    "NAME": "免费",
+    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s。"]
   }
 }

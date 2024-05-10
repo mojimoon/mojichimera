@@ -88,7 +88,7 @@ public class mojichimera implements
             getModID() + "Resources/localization/"+loadLocalizationIfAvailable("mojichimera-Augment-Strings.json"));
 
         // Power Strings
-        BaseMod.loadCustomStringsFile(UIStrings.class,
+        BaseMod.loadCustomStringsFile(PowerStrings.class,
             getModID() + "Resources/localization/"+loadLocalizationIfAvailable("mojichimera-Power-Strings.json"));
     }
 

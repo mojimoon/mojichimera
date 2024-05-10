@@ -2,23 +2,19 @@ package mojichimera.powers;
 
 import CardAugments.util.FormatHelper;
 import basemod.ReflectionHacks;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.SilentGainPowerEffect;
-import mojichimera.augments.rare.UnawakenedMod;
-import mojichimera.augments.special.AwakenedMod;
 import mojichimera.mojichimera;
 
 import java.util.ArrayList;
@@ -26,26 +22,25 @@ import java.util.ArrayList;
 public class NextTurnAddToHandPower extends AbstractPower implements NonStackablePower {
     public static final String POWER_ID = mojichimera.makeID(NextTurnAddToHandPower.class.getSimpleName());
 
-    //    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
-    private static final PowerStrings TEXT = new PowerStrings();
+//    private static final PowerStrings TEXT = new PowerStrings();
     private final AbstractCard card;
     private final int cards;
     private float flashTimer = -1.0F;
     private final ArrayList<AbstractGameEffect> array;
 
-    // something has gone wrong with the localization so this is a temporary fix
-    static {
-        if (Settings.language.toString().toLowerCase().equals("zhs")) {
-            TEXT.NAME = "量产";
-            TEXT.DESCRIPTIONS = new String[] {"#b%1$s 回合后，将 #b%2$s 张 %3$s 加入手牌。",
-                    "在下个回合开始时，将 #b%1$s 张 %2$s 加入手牌。"};
-        } else {
-            TEXT.NAME = "Mass Production ";
-            TEXT.DESCRIPTIONS = new String[] {"In #b%1$s turns, add #b%2$s copies of %3$s to your hand.",
-                    "At the start of next turn, add #b%1$s copies of %2$s to your hand."};
-        }
-    }
+//    static {
+//        if (Settings.language.toString().toLowerCase().equals("zhs")) {
+//            TEXT.NAME = "量产";
+//            TEXT.DESCRIPTIONS = new String[] {"#b%1$s 回合后，将 #b%2$s 张 %3$s 加入手牌。",
+//                    "在下个回合开始时，将 #b%1$s 张 %2$s 加入手牌。"};
+//        } else {
+//            TEXT.NAME = " Mass Production";
+//            TEXT.DESCRIPTIONS = new String[] {"In #b%1$s turns, add #b%2$s copies of %3$s to your hand.",
+//                    "At the start of next turn, add #b%1$s copies of %2$s to your hand."};
+//        }
+//    }
 
     public NextTurnAddToHandPower(AbstractCreature owner, AbstractCard card, int amount, int cards) {
         this.name = TEXT.NAME + card.name;

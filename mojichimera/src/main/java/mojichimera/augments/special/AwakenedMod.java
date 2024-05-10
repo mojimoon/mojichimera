@@ -3,6 +3,7 @@ package mojichimera.augments.special;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -38,7 +39,9 @@ public class AwakenedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return true;
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override

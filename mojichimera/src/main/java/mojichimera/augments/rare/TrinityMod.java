@@ -72,8 +72,8 @@ public class TrinityMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isReplayable(card)
-                && AugmentHelper.reachesVariable(card, 2);
+        return AugmentHelper.hasVariable(card)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override
