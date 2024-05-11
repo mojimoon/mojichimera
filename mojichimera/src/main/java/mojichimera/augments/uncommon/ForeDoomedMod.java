@@ -6,7 +6,9 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -18,13 +20,13 @@ import mojichimera.util.MojiHelper;
 
 import java.util.Iterator;
 
-@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
+//@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class ForeDoomedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ForeDoomedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int EFFECT = 2;
-    public static final SpireField<Integer> cursesInHand = new SpireField<>(() -> 0);
+//    public static final SpireField<Integer> cursesInHand = new SpireField<>(() -> 0);
 
     @Override
     public boolean validCard(AbstractCard card) {
@@ -35,40 +37,58 @@ public class ForeDoomedMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new AbstractGameAction() {
+        addToTop(new AbstractGameAction() {
             @Override
             public void update() {
                 if (!card.purgeOnUse) {
                     for (int i = 0; i < EFFECT; i++) {
                         addToTop(new MakeTempCardInHandAction(AbstractDungeon.returnRandomCurse(), 1));
                     }
-                    EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) - cursesInHand.get(card));
-                    cursesInHand.set(card, 0);
+                }
+                this.isDone = true;
+            }
+        });
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (!card.purgeOnUse) {
+//                    EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) - cursesInHand.get(card));
+//                    cursesInHand.set(card, 0);
+                    int curseInHand = (int) AbstractDungeon.player.hand.group.stream().filter(c -> c.type == AbstractCard.CardType.CURSE).count();
+                    for (int i = 0; i < curseInHand; i++) {
+                        AbstractCard copy = card.makeStatEquivalentCopy();
+                        copy.purgeOnUse = true;
+                        if (target != null && target instanceof AbstractMonster && !target.isDeadOrEscaped()) {
+                            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(copy, (AbstractMonster) target, card.energyOnUse, true, true));
+                        } else {
+                            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(copy, true, card.energyOnUse, true, true));
+                        }
+                    }
                 }
                 this.isDone = true;
             }
         });
     }
 
-    @Override
-    public void onUpdate(AbstractCard card) {
-        if (MojiHelper.isInCombat()) {
-            int curses = EFFECT;
-            Iterator handIterator = AbstractDungeon.player.hand.group.iterator();
-
-            while (handIterator.hasNext()) {
-                AbstractCard c = (AbstractCard)handIterator.next();
-                if (c.type == AbstractCard.CardType.CURSE) {
-                    curses++;
-                }
-            }
-
-            if (curses != cursesInHand.get(card)) {
-                EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) - cursesInHand.get(card) + curses);
-                cursesInHand.set(card, curses);
-            }
-        }
-    }
+//    @Override
+//    public void onUpdate(AbstractCard card) {
+//        if (MojiHelper.isInCombat()) {
+//            int curses = EFFECT;
+//            Iterator handIterator = AbstractDungeon.player.hand.group.iterator();
+//
+//            while (handIterator.hasNext()) {
+//                AbstractCard c = (AbstractCard)handIterator.next();
+//                if (c.type == AbstractCard.CardType.CURSE) {
+//                    curses++;
+//                }
+//            }
+//
+//            if (curses != cursesInHand.get(card)) {
+//                EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) - cursesInHand.get(card) + curses);
+//                cursesInHand.set(card, curses);
+//            }
+//        }
+//    }
 
         @Override
     public String getPrefix() { return TEXT[0]; }

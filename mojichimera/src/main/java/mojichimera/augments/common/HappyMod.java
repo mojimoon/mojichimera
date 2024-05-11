@@ -20,7 +20,8 @@ public class HappyMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost > 0;
+        return card.cost > 0
+                && cardCheck(card, c -> notRetain(c) && notExhaust(c));
     }
 
     @Override
