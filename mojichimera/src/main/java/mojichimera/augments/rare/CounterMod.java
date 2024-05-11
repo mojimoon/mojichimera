@@ -3,10 +3,12 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
+import mojichimera.cardmods.DamageBlock50OffMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -18,21 +20,22 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.StormProtocolPower;
+import mojichimera.powers.ThornsProtocolPower;
 
-public class StormMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(StormMod.class.getSimpleName());
+public class CounterMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(CounterMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
     private static final int EFFECT = 1;
+    private static final float MULTIPLIER = 0.5F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.costForTurn = ++card.cost;
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock50OffMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
@@ -41,6 +44,20 @@ public class StormMod extends AbstractAugment {
             card.type = AbstractCard.CardType.POWER;
             PortraitHelper.setMaskedPortrait(card);
         }
+    }
+
+    @Override
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        if (card.baseDamage > 0)
+            return damage * MULTIPLIER;
+        return damage;
+    }
+
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        if (card.baseBlock > 0)
+            return block * MULTIPLIER;
+        return block;
     }
 
     @Override
@@ -66,7 +83,7 @@ public class StormMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StormProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ThornsProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
                 }
                 this.isDone = true;
             }
@@ -75,9 +92,9 @@ public class StormMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isAttackOrSkill(card)
-                && AugmentHelper.hasStaticCost(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, StormMod.ID)
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
+                && card.cost >= 0
+                && !AugmentHelper.hasMultiPreviewModsExcept(card, EmbraceMod.ID)
                 && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
     }
 
@@ -99,7 +116,7 @@ public class StormMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StormMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new CounterMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

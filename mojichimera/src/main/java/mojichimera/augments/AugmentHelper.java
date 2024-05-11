@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
-import mojichimera.augments.common.InspiredMod;
-import mojichimera.augments.uncommon.TranquilMod;
+import mojichimera.augments.uncommon.*;
+import mojichimera.augments.special.*;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.blue.*;
@@ -97,10 +97,27 @@ public class AugmentHelper {
         CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Hemokinesis); // 御血术
         CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Wish); // 许愿
         CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Conclude); // 结末
+
+        // StormMod
+        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Hemokinesis); // 御血术
+        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Wish); // 许愿
+        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Conclude); // 结末
+        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Offering); // 祭品
+
+        // CounterMod
+        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Hemokinesis); // 御血术
+        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Wish); // 许愿
+        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Conclude); // 结末
+
+        // FireBreathingMod
+        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Hemokinesis); // 御血术
+        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Wish); // 许愿
+        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Conclude); // 结末
+        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Offering); // 祭品
     }
 
     public static boolean isInCombat() {
-        return AbstractDungeon.player != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
+        return AbstractDungeon.player != null && AbstractDungeon.getCurrMapNode() != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
     }
 
     public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {

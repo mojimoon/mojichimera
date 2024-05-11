@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.mojichimera;
-import mojichimera.powers.SteelProtocolPower;
+import mojichimera.powers.SteelizePower;
 
 public class SteelMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SteelMod.class.getSimpleName());
@@ -18,7 +18,7 @@ public class SteelMod extends AbstractAugment {
 
     @Override
     public void onDrawn(AbstractCard card) {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SteelProtocolPower(AbstractDungeon.player, EFFECT), EFFECT));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SteelizePower(AbstractDungeon.player, EFFECT), EFFECT));
     }
 
     @Override

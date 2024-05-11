@@ -3,7 +3,6 @@ package mojichimera.powers;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,8 +13,8 @@ import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.special.NamelessMod;
 import mojichimera.mojichimera;
 
-public class SteelProtocolPower extends AbstractPower implements CloneablePowerInterface {
-    public static final String POWER_ID = mojichimera.makeID(SteelProtocolPower.class.getSimpleName());
+public class SteelizePower extends AbstractPower implements CloneablePowerInterface {
+    public static final String POWER_ID = mojichimera.makeID(SteelizePower.class.getSimpleName());
 
     private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -32,7 +31,7 @@ public class SteelProtocolPower extends AbstractPower implements CloneablePowerI
 //        }
 //    }
 
-    public SteelProtocolPower(AbstractCreature owner, int amount) {
+    public SteelizePower(AbstractCreature owner, int amount) {
         this.name = TEXT.NAME;
         this.ID = POWER_ID;
         this.amount = amount;
@@ -46,8 +45,8 @@ public class SteelProtocolPower extends AbstractPower implements CloneablePowerI
     public void updateDescription() {
         this.description = String.format(TEXT.DESCRIPTIONS[0], this.amount, PERCENT);
 
-        if (this.amount == 1 && this.description.contains("cards")) {
-            this.description = this.description.replace("cards", "card");
+        if (this.description.contains("cardreplace")) {
+            this.description = this.description.replace("cardreplace", (amount == 1 ? "card" : "cards"));
         }
     }
 
@@ -70,6 +69,6 @@ public class SteelProtocolPower extends AbstractPower implements CloneablePowerI
 
     @Override
     public AbstractPower makeCopy() {
-        return new SteelProtocolPower(owner, amount);
+        return new SteelizePower(owner, amount);
     }
 }

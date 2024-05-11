@@ -15,8 +15,8 @@ public class CreditMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(CreditMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int GOLD = 300;
-    private static final int UPGRADE_GOLD = 200;
+    private static final int GOLD = 250;
+    private static final int UPGRADE_GOLD = 150;
 
     @Override
     public boolean atBattleStartPreDraw(AbstractCard card) {

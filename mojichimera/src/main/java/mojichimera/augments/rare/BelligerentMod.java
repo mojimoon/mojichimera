@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -47,7 +47,7 @@ public class BelligerentMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new BelligerentMod(); }

@@ -23,7 +23,7 @@ public class AccursedMod extends AbstractAugment {
 
     @Override
     public boolean atBattleStartPreDraw(AbstractCard card) {
-        if (AbstractDungeon.getCurrRoom() == null || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+        if (!AugmentHelper.isInCombat()) {
             return false;
         }
 

@@ -63,9 +63,7 @@ public class GlazeMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesVariable(card, 2)
-                && AugmentHelper.isPlayable(card)
-                && AugmentHelper.isNormal(card)
-                && cardCheck(card, c -> notExhaust(c));
+                && AugmentHelper.isReplayable(card);
     }
 
     @Override

@@ -74,8 +74,8 @@ public class NextTurnAddToHandPower extends AbstractPower implements NonStackabl
             this.description = String.format(TEXT.DESCRIPTIONS[0], this.amount, this.cards, FormatHelper.prefixWords(this.card.name, "#y"));
         }
 
-        if (this.cards == 1 && this.description.contains("copies of")) {
-            this.description = this.description.replace("copies of", "copy of");
+        if (this.description.contains("copyreplace")) {
+            this.description = this.description.replace("copyreplace", (cards == 1) ? "copy" : "copies");
         }
     }
 

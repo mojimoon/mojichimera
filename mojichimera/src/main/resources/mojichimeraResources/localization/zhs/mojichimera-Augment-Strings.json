@@ -15,6 +15,10 @@
         "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 的下回合，打出本牌的复制。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
         "EXTRA_TEXT": [" NL 被 消耗 的下回合，打出本牌的复制。"]
     },
+    "mojichimera:BelligerentMod": {
+        "TEXT": ["好战", "", "若目标敌人意图攻击，造成的伤害增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，造成的伤害增加 %d%% 。"]
+    },
     "mojichimera:BiasedMod": {
         "TEXT": ["偏差", "", "本牌数值增加 #b200% 。 NL 下 #b3 回合开始时，失去 #b33% 的效果。"],
         "EXTRA_TEXT": [" NL 下 %d 回合开始时，失去 %d%% 的效果。"]
@@ -39,8 +43,12 @@
         "TEXT": ["腐化", "", "再打出 #b5 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张加入抽牌堆。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 接受腐化之心的诅咒。"]
     },
+    "mojichimera:CounterMod": {
+        "TEXT": ["反击", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每次受到攻击伤害时，对伤害来源打出原牌的复制。"],
+        "EXTRA_TEXT": ["每次受到攻击伤害时： NL "]
+    },
     "mojichimera:EmbraceMod": {
-        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。"],
+        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。 NL 由该效果打出的牌不会触发效果。"],
         "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
     },
     "mojichimera:ForesightMod": {
@@ -85,7 +93,7 @@
         "EXTRA_TEXT": [" NL 平静 ：抽 %d 张牌。"]
     },
     "mojichimera:ReleaseMod": {
-        "TEXT": ["公开", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。 NL 源于 #b崩坠 #y铜制机械人偶 的卡牌 #b完全公开 。"],
+        "TEXT": ["发布", "", "本牌耗能增加 #b1 。 NL 回合开始时，再次打出本牌。 NL #y消耗 。 NL 源于 #b崩坠 #y铜制机械人偶 的卡牌 #b完全公开 。"],
         "EXTRA_TEXT": [" NL 回合开始时，再次打出本牌。"]
     },
     "mojichimera:RushdownMod": {
@@ -113,7 +121,7 @@
         "EXTRA_TEXT": [" NL 每有一瓶 药水 ，失去 [E] 。"]
     },
     "mojichimera:StormMod": {
-        "TEXT": ["雷暴", "", "本牌耗能增加 #b1，变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出原牌的复制。"],
+        "TEXT": ["雷暴", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出原牌的复制。"],
         "EXTRA_TEXT": ["每打出一张 能力 牌： NL "]
     },
     "mojichimera:StrangeMod": {
@@ -149,9 +157,9 @@
         "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
         "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
-    "mojichimera:BelligerentMod": {
-        "TEXT": ["好战", "", "若目标敌人意图攻击，造成的伤害增加 #b50% 。"],
-        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，造成的伤害增加 %d%% 。"]
+    "mojichimera:BleedingMod": {
+        "TEXT": ["流血", "", "造成的伤害增加 #b75% 。 NL 每造成一次未被格挡的伤害，失去 #b1 点生命。"],
+        "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，失去 %d 点生命。"]
     },
     "mojichimera:BuriedMod": {
         "TEXT": ["埋藏", "", "#y墓地。 NL 卡牌数值增加 #b50% 。"],
@@ -192,6 +200,10 @@
     "mojichimera:ExploitMod": {
         "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b25% 。"],
         "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
+    },
+    "mojichimera:FireBreathingMod": {
+        "TEXT": ["", "吐息", "本牌变为 #y能力 牌。 NL 每当你抽到一张 #y状态牌 或 #y诅咒 牌 时，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每当你抽到一张 状态牌 或 诅咒 牌 时： NL "]
     },
     "mojichimera:FlashOfMod": {
         "TEXT": ["亮剑", "", "造成的伤害减少 #b20% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
@@ -322,8 +334,8 @@
         "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"]
     },
     "mojichimera:CleansingMod": {
-        "TEXT": ["清理", "", "随机 #y消耗 抽牌堆、弃牌堆和手牌中的 #b1(+1) 张 #y诅咒 或 #y状态牌 。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
-        "EXTRA_TEXT": [" NL 随机 消耗 拥有的 %s 张 诅咒 或 状态牌 。", " NL 随机 消耗 拥有的 %s 张 诅咒 或 状态牌 。"],
+        "TEXT": ["清理", "", "随机 #y消耗 抽牌堆、弃牌堆和手牌中的 #b1(+1) 张 #y状态牌 或 #y诅咒 牌 。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
+        "EXTRA_TEXT": [" NL 随机 消耗 拥有的 %s 张 状态牌 或 诅咒 牌 。", " NL 随机 消耗 拥有的 %s 张 状态牌 或 诅咒 牌 。"],
         "NOTES": ["bronze:WildBeam"]
     },
     "mojichimera:ConcentratedMod": {
@@ -331,7 +343,7 @@
         "EXTRA_TEXT": [" NL 丢弃 %d 张牌。"]
     },
     "mojichimera:CreditMod": {
-        "TEXT": ["信贷", "", "若拥有至少 #b300(200) #y金币 ，本牌耗能减少 [E] 。"],
+        "TEXT": ["信贷", "", "若拥有至少 #b250(150) #y金币 ，本牌耗能减少 [E] 。"],
         "EXTRA_TEXT": [" NL 若拥有至少 %d 金币，耗能减少 [E] 。"]
     },
     "mojichimera:EquilibriumMod": {
@@ -482,8 +494,8 @@
         "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
         "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"]
     },
-    "mojichimera:CounterMod": {
-        "TEXT": ["反击", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每受到一次攻击伤害，下回合对伤害来源打出原牌的复制。"],
-        "EXTRA_TEXT": [" NL 每受到一次攻击伤害，下回合对伤害来源： NL "]
+    "mojichimera:SadisticMod": {
+        "TEXT": ["残虐", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每当你对一名敌人造成 #y负面状态 时，打出原牌的复制。 NL 由该效果打出的牌不会触发效果。"],
+        "EXTRA_TEXT": ["每当你对一名敌人造成负面状态时： NL "]
     }
 }

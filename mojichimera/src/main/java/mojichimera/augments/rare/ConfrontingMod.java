@@ -84,7 +84,7 @@ public class ConfrontingMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldActivate() {
-        if (AbstractDungeon.getCurrRoom() == null || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+        if (!AugmentHelper.isInCombat()) {
             return false;
         }
         boolean activated = AbstractDungeon.getCurrRoom().eliteTrigger;

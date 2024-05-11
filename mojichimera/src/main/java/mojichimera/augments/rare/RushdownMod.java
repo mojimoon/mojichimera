@@ -3,19 +3,13 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.unique.BlockPerNonAttackAction;
-import com.megacrit.cardcrawl.actions.unique.ExhaustAllNonAttackAction;
-import com.megacrit.cardcrawl.actions.unique.FiendFireAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.cardmods.EmbraceHelperCardMod;
-import mojichimera.cardmods.RushdownHelperCardMod;
+import mojichimera.cardmods.DamageBlock50OffMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -27,7 +21,6 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.DarkProtocolPower;
 import mojichimera.powers.RushdownProtocolPower;
 
 public class RushdownMod extends AbstractAugment {
@@ -43,7 +36,7 @@ public class RushdownMod extends AbstractAugment {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new RushdownHelperCardMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock50OffMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);

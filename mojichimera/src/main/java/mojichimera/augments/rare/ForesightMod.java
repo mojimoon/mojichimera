@@ -29,35 +29,35 @@ public class ForesightMod extends AbstractAugment {
         card.costForTurn = ++card.cost;
     }
 
-    private boolean isInWhitelist(AbstractCard card) {
-        return card instanceof CalculatedGamble; // 计算下注
+//    private boolean isInWhitelist(AbstractCard card) {
+//        return card instanceof CalculatedGamble // 计算下注
 //            || card instanceof Violence; // 暴力
-    }
+//    }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return (AugmentHelper.hasStaticCost(card)
                 && AugmentHelper.reachesMagic(card, 3)
                 && drawsCards(card)
-                && !usesAction(card, EmptyDeckShuffleAction.class))
-                || isInWhitelist(card);
+                && !usesAction(card, EmptyDeckShuffleAction.class));
+//                || isInWhitelist(card);
     }
 
-    @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (AbstractDungeon.player.hasPower("No Draw")) {
-            return;
-        }
-        if (card instanceof Expertise) {
-            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber + 1 - AbstractDungeon.player.hand.size(), AbstractDungeon.player.hand.size(), EFFECT));
-        } else if (card instanceof CalculatedGamble) {
-            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(AbstractDungeon.player.hand.size() - 1, AbstractDungeon.player.hand.size(), EFFECT));
-//        } else if (card instanceof Violence) {
-//            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
-        } else if (InnerPeaceCheck(card) && ImpatienceCheck(card)) {
-            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT));
-        }
-    }
+//    @Override
+//    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+//        if (AbstractDungeon.player.hasPower("No Draw")) {
+//            return;
+//        }
+//        if (card instanceof Expertise) {
+//            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber + 1 - AbstractDungeon.player.hand.size(), AbstractDungeon.player.hand.size(), EFFECT));
+//        } else if (card instanceof CalculatedGamble) {
+//            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(AbstractDungeon.player.hand.size() - 1, AbstractDungeon.player.hand.size(), EFFECT));
+////        } else if (card instanceof Violence) {
+////            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT, AbstractCard.CardType.ATTACK));
+//        } else if (InnerPeaceCheck(card) && ImpatienceCheck(card)) {
+//            addToBot((AbstractGameAction) new ReduceDrawnCardsCostAction(card.magicNumber, AbstractDungeon.player.hand.size(), EFFECT));
+//        }
+//    }
 
     @Override
     public String getPrefix() { return TEXT[0]; }

@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.mojichimera;
 
-public class RushdownHelperCardMod extends AbstractCardModifier {
-    public static final String ID = mojichimera.makeID(RushdownHelperCardMod.class.getSimpleName());
+public class DamageBlock50OffMod extends AbstractCardModifier {
+    public static final String ID = mojichimera.makeID(DamageBlock50OffMod.class.getSimpleName());
     private static final float MULTIPLIER = 0.5F;
 
     @Override
@@ -25,7 +25,7 @@ public class RushdownHelperCardMod extends AbstractCardModifier {
     }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RushdownHelperCardMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new DamageBlock50OffMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

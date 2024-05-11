@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.cardmods.EmbraceHelperCardMod;
+import mojichimera.cardmods.DamageBlock67OffMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -39,7 +39,7 @@ public class EmbraceMod extends AbstractAugment {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new EmbraceHelperCardMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock67OffMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);

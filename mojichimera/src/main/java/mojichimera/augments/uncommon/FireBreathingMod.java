@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -18,10 +18,10 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.StormProtocolPower;
+import mojichimera.powers.FireBreathingProtocolPower;
 
-public class StormMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(StormMod.class.getSimpleName());
+public class FireBreathingMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(FireBreathingMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
@@ -29,7 +29,6 @@ public class StormMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.costForTurn = ++card.cost;
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
@@ -66,7 +65,7 @@ public class StormMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StormProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FireBreathingProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
                 }
                 this.isDone = true;
             }
@@ -76,8 +75,8 @@ public class StormMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isAttackOrSkill(card)
-                && AugmentHelper.hasStaticCost(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, StormMod.ID)
+                && card.cost >= 0
+                && !AugmentHelper.hasMultiPreviewModsExcept(card, FireBreathingMod.ID)
                 && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
     }
 
@@ -96,10 +95,10 @@ public class StormMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StormMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FireBreathingMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

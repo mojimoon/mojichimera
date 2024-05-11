@@ -34,8 +34,9 @@ public class StormProtocolPower extends AbstractPower implements NonStackablePow
 
     public void updateDescription() {
         this.description = String.format(TEXT.DESCRIPTIONS[0], this.amount, FormatHelper.prefixWords(this.card.name, "#y"));
-        if (this.amount == 1 && this.description.contains("copies")) {
-            this.description = this.description.replace("copies", "copy");
+
+        if (this.description.contains("copyreplace")) {
+            this.description = this.description.replace("copyreplace", (amount == 1) ? "copy" : "copies");
         }
     }
 
