@@ -51,7 +51,7 @@ public class XXMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override

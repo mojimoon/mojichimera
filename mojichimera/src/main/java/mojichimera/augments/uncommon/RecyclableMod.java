@@ -24,7 +24,7 @@ public class RecyclableMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (!card.isEthereal)
+//        if (!card.isEthereal)
             CardModifierManager.addModifier(card, new EtherealMod());
     }
 

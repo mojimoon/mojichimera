@@ -1,12 +1,12 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.util.Wiz;
+import basemod.cardmods.ExhaustMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
+import mojichimera.augments.special.NamelessMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -18,15 +18,15 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.SadisticProtocolPower;
-import mojichimera.util.MojiHelper;
+import mojichimera.powers.NextTurnStartPlayPower;
 
-public class SadisticMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(SadisticMod.class.getSimpleName());
+public class DelayedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(DelayedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
-    private static final int EFFECT = 1;
+    private static final int TURN = 1;
+    private static final int COPY = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -35,13 +35,20 @@ public class SadisticMod extends AbstractAugment {
         this.inherentHack = false;
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
+        card.target = AbstractCard.CardTarget.SELF;
+        if (preview.type == AbstractCard.CardType.POWER) {
+            CardModifierManager.addModifier(card, new ExhaustMod());
+        }
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
-        card.target = AbstractCard.CardTarget.NONE;
-        if (card.type != AbstractCard.CardType.POWER) {
-            card.type = AbstractCard.CardType.POWER;
+        if (card.type != AbstractCard.CardType.SKILL) {
+            card.type = AbstractCard.CardType.SKILL;
             PortraitHelper.setMaskedPortrait(card);
         }
-        card.costForTurn = ++card.cost;
+        card.cost--;
+        if (card.cost < 0) {
+            card.cost = 0;
+        }
+        card.costForTurn = card.cost;
     }
 
     @Override
@@ -67,7 +74,8 @@ public class SadisticMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SadisticProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
+                    Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, copy, TURN, COPY));
+//                    Wiz.applyToSelf(new BombPower(AbstractDungeon.player, TURN, COPY, copy));
                 }
                 this.isDone = true;
             }
@@ -76,10 +84,11 @@ public class SadisticMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isAttackOrSkill(card)
-                && AugmentHelper.hasStaticCost(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, SadisticMod.ID)
-                && AugmentHelper.isPowerizeValid(card);
+        return AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card)
+                && AugmentHelper.hasStaticCost(card, 1)
+                && noShenanigans(card)
+                && !AugmentHelper.hasMultiPreviewModsExcept(card, DelayedMod.ID);
     }
 
     @Override
@@ -93,14 +102,14 @@ public class SadisticMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(MojiHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
+        return insertBeforeText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SadisticMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new DelayedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

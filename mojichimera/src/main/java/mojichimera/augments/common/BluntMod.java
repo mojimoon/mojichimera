@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.red.*;
 import com.megacrit.cardcrawl.cards.green.*;
 import com.megacrit.cardcrawl.cards.blue.*;
 import com.megacrit.cardcrawl.cards.purple.*;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -44,7 +45,7 @@ public class BluntMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0)
+        return AugmentHelper.hasStaticCost(card, 1)
                 && (card.baseBlock > 0)
                 && (card.baseDamage > 0 || card.baseMagicNumber > 0 || isInWhitelist(card));
     }

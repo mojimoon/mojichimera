@@ -142,7 +142,8 @@ public class AugmentHelper {
                 RushdownMod.ID,
                 CounterMod.ID,
                 FireBreathingMod.ID,
-                SadisticMod.ID
+                SadisticMod.ID,
+                GluttonousMod.ID
         };
 
 //        for (String id : modid) {
@@ -273,7 +274,8 @@ public class AugmentHelper {
                 && !usesAction(card, PressEndTurnButtonAction.class)
                 && !usesAction(card, ChooseOneAction.class)
                 && !usesClass(card, EndTurnDeathPower.class)
-                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
+//                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
+                && noShenanigans(card);
     }
 
 }

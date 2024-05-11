@@ -1,6 +1,7 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -29,7 +30,7 @@ public class PeacefulMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.cost > 0)
+        return AugmentHelper.hasStaticCost(card, 1)
                 && (card.baseDamage > 0)
                 && (card.baseBlock > 0 || card.baseMagicNumber > 0);
     }

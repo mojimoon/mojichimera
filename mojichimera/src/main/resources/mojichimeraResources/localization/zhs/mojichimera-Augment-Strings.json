@@ -55,6 +55,10 @@
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
         "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
     },
+    "mojichimera:GluttonousMod": {
+        "TEXT": ["暴食", "", "首次打出时 #b随机 #y消耗 一张牌，每次打出本牌时将其一并打出。 NL 只适用于可打出的攻击或技能牌。"],
+        "EXTRA_TEXT": [" NL 首次打出时随机 消耗 一张牌，每次打出本牌时将其一并打出。", " NL 打出 %s 。"]
+    },
     "mojichimera:HumilityMod": {
         "TEXT": ["辱没", "", "造成的伤害减少 #b33% 。 NL 获得与所造成的未被格挡的伤害相等的 #y活力 。"],
         "EXTRA_TEXT": [" NL 获得与所造成的未被格挡的伤害相等的 活力 。"]
@@ -101,7 +105,7 @@
         "EXTRA_TEXT": ["每当你进入 愤怒 时： NL "]
     },
     "mojichimera:ShareMod": {
-        "TEXT": ["共享", "", "造成的伤害和获得的 #y格挡 减少 #b33% 。 NL 打出时使其他手牌的造成的伤害和获得的 #y格挡 增加自身数值。 NL #y消耗 。"],
+        "TEXT": ["共享", "", "造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 打出时使其他手牌的造成的伤害和获得的 #y格挡 增加自身数值。 NL #y消耗 。"],
         "EXTRA_TEXT": [" NL 使其他手牌的伤害和 格挡 增加自身数值。"]
     },
     "mojichimera:SkillizedMod": {
@@ -117,7 +121,7 @@
         "EXTRA_TEXT": [" NL 手牌中每有一张同类型牌，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:SozuMod": {
-        "TEXT": ["添水", "", "本牌耗能减少 #b2 。 NL 每有一瓶 #y药水 ，失去 [E] 。"],
+        "TEXT": ["添水", "", "本牌耗能至多减少 #b2 。 NL 每有一瓶 #y药水 ，失去 [E] 。"],
         "EXTRA_TEXT": [" NL 每有一瓶 药水 ，失去 [E] 。"]
     },
     "mojichimera:StormMod": {
@@ -151,7 +155,7 @@
     },
     "mojichimera:XXMod": {
         "TEXT": ["", " XX", "本牌生效X次。"],
-        "EXTRA_TEXT": ["生效X次： NL "]
+        "EXTRA_TEXT": [" NL 生效X次。"]
     },
     "mojichimera:AdaptiveMod": {
         "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
@@ -274,8 +278,8 @@
         "EXTRA_TEXT": [" NL stslib:回馈 %d 。"]
     },
     "mojichimera:RegretfulMod": {
-        "TEXT": ["悔恨", "", "卡牌数值增加 #b100% 。 NL 回合结束时，若在手牌中，失去相当于手牌数量的生命。"],
-        "EXTRA_TEXT": [" NL 回合结束时，若在手牌中，失去相当于手牌数量的生命。"]
+        "TEXT": ["悔恨", "", "卡牌数值增加 #b100% 。 NL 在你的回合结束时，若本牌在手牌中，失去相当于手牌数量的生命。"],
+        "EXTRA_TEXT": [" NL 在你的回合结束时，若本牌在手牌中，失去相当于手牌数量的生命。"]
     },
     "mojichimera:ReplenishMod": {
         "TEXT": ["装填", "", "抽到本牌时抽 #b1 张牌。 NL 源于 #b欺诈之地 的同名关键词。"],
@@ -321,6 +325,10 @@
         "TEXT": ["不稳定", "", "打出次数在 #b0 ~ #b3 之间随机。 NL 本牌为 #y消耗 牌时，至少打出 #b1 次。"],
         "EXTRA_TEXT": [" NL 打出次数在 %d ~ %d 之间随机。"]
     },
+    "mojichimera:ArtOfMod": {
+        "TEXT": ["", "兵法", "在你的回合结束时，若本牌在手牌中，下回合多抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 在你的回合结束时，若本牌在手牌中，下回合多抽 %d 张牌。"]
+    },
     "mojichimera:BankruptMod": {
         "TEXT": ["破产", "", "若拥有不超过 #b100(150) #y金币 ，本牌耗能减少 [E] 。"],
         "EXTRA_TEXT": [" NL 若拥有不超过 %d 金币，耗能减少 [E] 。"]
@@ -350,6 +358,10 @@
         "TEXT": ["信贷", "", "若拥有至少 #b250(150) #y金币 ，本牌耗能减少 [E] 。"],
         "EXTRA_TEXT": [" NL 若拥有至少 %d 金币，耗能减少 [E] 。"]
     },
+    "mojichimera:DelayedMod": {
+        "TEXT": ["延迟", "", "本牌耗能减少 #b1 。 NL 下回合开始时打出。"],
+        "EXTRA_TEXT": ["下回合开始时： NL "]
+    },
     "mojichimera:EquilibriumMod": {
         "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
         "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
@@ -372,7 +384,7 @@
         "NOTES": ["champ:ShieldThrow"]
     },
     "mojichimera:HighCardMod": {
-        "TEXT": ["高牌", "", "若手牌中所有牌均不同名，造成的伤害和获得的 #y格挡 增加 #b50% 。"],
+        "TEXT": ["高牌", "", "若手牌中所有牌均不同名，造成的伤害和获得的 #y格挡 增加 #b33% 。"],
         "EXTRA_TEXT": [" NL 若手牌中所有牌均不同名，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:HorrorMod": {

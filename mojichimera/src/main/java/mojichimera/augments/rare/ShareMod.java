@@ -20,7 +20,7 @@ public class ShareMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ShareMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.6666667F;
+    private static final float MULTIPLIER = 0.5F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {

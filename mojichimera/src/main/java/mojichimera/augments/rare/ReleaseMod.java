@@ -30,7 +30,8 @@ public class ReleaseMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasStaticCost(card)
-                && AugmentHelper.isAttackOrSkill(card);
+                && AugmentHelper.isAttackOrSkill(card)
+                && AugmentHelper.isPowerizeValid(card);
     }
 
     @Override

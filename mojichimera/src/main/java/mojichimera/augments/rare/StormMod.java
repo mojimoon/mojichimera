@@ -30,7 +30,6 @@ public class StormMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.costForTurn = ++card.cost;
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
@@ -42,6 +41,7 @@ public class StormMod extends AbstractAugment {
             card.type = AbstractCard.CardType.POWER;
             PortraitHelper.setMaskedPortrait(card);
         }
+        card.costForTurn = ++card.cost;
     }
 
     @Override

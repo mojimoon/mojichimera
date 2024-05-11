@@ -110,6 +110,7 @@ public class PastMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesVariable(card, 2)
                 && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isNormal(card)
                 && noShenanigans(card)
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, PastMod.ID);
     }

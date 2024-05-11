@@ -33,9 +33,8 @@ public class UnawakenedMod extends AbstractAugment {
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new AwakenedMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
-        if (!card.isEthereal) {
+//        if (!card.isEthereal)
             CardModifierManager.addModifier(card, new EtherealMod());
-        }
     }
 
     @Override
