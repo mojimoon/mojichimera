@@ -46,7 +46,7 @@ public class BleedingMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], HP_LOSS));
     }
 
     @Override

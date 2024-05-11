@@ -73,7 +73,7 @@
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:LimitlessMod": {
-        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b3% 。"],
+        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b2.5% 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
@@ -366,6 +366,10 @@
         "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
         "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
     },
+    "mojichimera:ExpansionMod": {
+        "TEXT": ["扩展", "", "牌组中的牌每比 #b25 张多 #b1 张，卡牌数值增加 #b4% 。"],
+        "EXTRA_TEXT": []
+    },
     "mojichimera:GoldenMod": {
         "TEXT": ["黄金", "", "打出时获得 #b4 #y金币 。"],
         "EXTRA_TEXT": [" NL 获得 %d 金币 。"]
@@ -402,6 +406,10 @@
     "mojichimera:LanternMod": {
         "TEXT": ["", "灯笼", "首次抽到时，获得 [E] 。"],
         "EXTRA_TEXT": [" NL 首次抽到时，获得 [E] 。"]
+    },
+    "mojichimera:MinimalMod": {
+        "TEXT": ["极简", "", "牌组中的牌每比 #b15 张少 #b1 张，卡牌数值增加 #b10% 。"],
+        "EXTRA_TEXT": []
     },
     "mojichimera:PairMod": {
         "TEXT": ["对子", "", "若手牌中有本牌的同名牌，造成的伤害和获得的 #y格挡 增加 #b100% 。"],
@@ -446,6 +454,10 @@
     "mojichimera:RentalMod": {
         "TEXT": ["租赁", "", "本牌耗能减少 #b1 。 NL 打出时失去 #b6 #y金币 。"],
         "EXTRA_TEXT": [" NL 失去 %d 金币。"]
+    },
+    "mojichimera:SelfTaughtMod": {
+        "TEXT": ["自学", "", "打出后在本场战斗中 #y升级。"],
+        "EXTRA_TEXT": [" NL 在本场战斗中 升级。"]
     },
     "mojichimera:VigorMod": {
         "TEXT": ["活力", "", "获得 #b4 层 #y活力 。"],

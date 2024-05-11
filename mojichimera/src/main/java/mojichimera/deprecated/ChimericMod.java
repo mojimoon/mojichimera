@@ -1,4 +1,4 @@
-package mojichimera.augments.common;
+package mojichimera.deprecated;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.ExhaustMod;

@@ -1,8 +1,6 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import basemod.cardmods.EtherealMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
@@ -12,11 +10,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class LimitlessMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(LimitlessMod.class.getSimpleName());
+public class ExpansionMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ExpansionMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float EXTRA_MULTIPLIER = 0.025F;
+    private static final float EXTRA_MULTIPLIER = 0.04F;
+    private static final int MIN_CARDS = 25;
+    private static final int BASELINE_CARDS = 20;
     private boolean modMagic;
 
     @Override
@@ -49,14 +49,14 @@ public class LimitlessMod extends AbstractAugment {
     private float getMultiplier() {
         if (AbstractDungeon.player == null)
             return 1.0F;
-        return 1.0F + AbstractDungeon.floorNum * EXTRA_MULTIPLIER;
+        return 1.0F + Math.max(AbstractDungeon.player.masterDeck.size() - MIN_CARDS, 0) * EXTRA_MULTIPLIER;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasVariable(card)
                 && AugmentHelper.isNormal(card)
-                && ((AbstractDungeon.player == null) || (AbstractDungeon.actNum < 3));
+                && (AbstractDungeon.player == null || AbstractDungeon.player.masterDeck.size() > BASELINE_CARDS);
     }
 
     @Override
@@ -69,10 +69,10 @@ public class LimitlessMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new LimitlessMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ExpansionMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

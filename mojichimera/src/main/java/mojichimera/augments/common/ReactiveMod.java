@@ -3,19 +3,27 @@ package mojichimera.augments.common;
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
-import mojichimera.actions.ModifyMagicAction;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
+@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class ReactiveMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ReactiveMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int EFFECT = 1;
+    public static final SpireField<Integer> bonusMagic = new SpireField<>(() -> 0);
+
+    @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
+        return magic + bonusMagic.get(card);
+    }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -32,7 +40,8 @@ public class ReactiveMod extends AbstractAugment {
 
     @Override
     public void onRetained(AbstractCard card) {
-        addToBot((AbstractGameAction) new ModifyMagicAction(card.uuid, EFFECT));
+//        card.magicNumber += EFFECT;
+        bonusMagic.set(card, bonusMagic.get(card) + EFFECT);
     }
 
     @Override
