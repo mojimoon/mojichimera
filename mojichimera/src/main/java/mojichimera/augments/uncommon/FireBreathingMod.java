@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.powers.FireBreathingProtocolPower;
+import mojichimera.util.MojiHelper;
 
 public class FireBreathingMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(FireBreathingMod.class.getSimpleName());
@@ -77,7 +78,7 @@ public class FireBreathingMod extends AbstractAugment {
         return AugmentHelper.isAttackOrSkill(card)
                 && card.cost >= 0
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, FireBreathingMod.ID)
-                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
+                && AugmentHelper.isPowerizeValid(card);
     }
 
     @Override
@@ -91,7 +92,7 @@ public class FireBreathingMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(AugmentHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
+        return insertBeforeText(MojiHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
     }
 
     @Override

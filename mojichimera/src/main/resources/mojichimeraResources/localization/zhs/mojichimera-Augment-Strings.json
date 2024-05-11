@@ -40,7 +40,7 @@
         "EXTRA_TEXT": [" NL 在首领与精英战中数值增加 %d%% 。"]
     },
     "mojichimera:CorruptedMod": {
-        "TEXT": ["腐化", "", "再打出 #b5 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张加入抽牌堆。"],
+        "TEXT": ["腐化", "", "再打出 #b4 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张加入抽牌堆。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 接受腐化之心的诅咒。"]
     },
     "mojichimera:CounterMod": {
@@ -48,7 +48,7 @@
         "EXTRA_TEXT": ["每次受到攻击伤害时： NL "]
     },
     "mojichimera:EmbraceMod": {
-        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。 NL 由该效果打出的牌不会触发效果。"],
+        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。"],
         "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
     },
     "mojichimera:ForesightMod": {
@@ -69,7 +69,7 @@
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:LimitlessMod": {
-        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b2.5% 。"],
+        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b3% 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
@@ -158,7 +158,7 @@
         "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["流血", "", "造成的伤害增加 #b75% 。 NL 每造成一次未被格挡的伤害，失去 #b1 点生命。"],
+        "TEXT": ["流血", "", "造成的伤害增加 #b75% 。 NL 每造成一次未被格挡的伤害，失去 #b2 点生命。"],
         "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，失去 %d 点生命。"]
     },
     "mojichimera:BuriedMod": {
@@ -284,6 +284,10 @@
     "mojichimera:RiichiMod": {
         "TEXT": ["", "立直", "卡牌数值增加 #b75% 。 NL #y自动打出 。"],
         "EXTRA_TEXT": ["自动打出。 NL "]
+    },
+    "mojichimera:SadisticMod": {
+        "TEXT": ["残虐", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每当你对一名敌人造成 #y负面状态 时，打出原牌的复制。 NL 由该效果打出的牌不会触发效果。"],
+        "EXTRA_TEXT": ["每当你对一名敌人造成负面状态时： NL "]
     },
     "mojichimera:SarcasticMod": {
         "TEXT": ["讽刺", "", "敌人每有一种负面效果或你每有一种正面效果，造成的伤害增加 #b20% 。"],
@@ -493,9 +497,5 @@
     "mojichimera:ContinuousMod": {
         "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
         "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"]
-    },
-    "mojichimera:SadisticMod": {
-        "TEXT": ["残虐", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每当你对一名敌人造成 #y负面状态 时，打出原牌的复制。 NL 由该效果打出的牌不会触发效果。"],
-        "EXTRA_TEXT": ["每当你对一名敌人造成负面状态时： NL "]
     }
 }

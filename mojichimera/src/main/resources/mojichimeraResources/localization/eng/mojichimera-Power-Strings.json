@@ -31,7 +31,7 @@
   },
   "mojichimera:DarkProtocolPower": {
     "NAME": "Dark Protocol",
-    "DESCRIPTIONS": ["Whenever you Exhausts a card, play #b%1$s copyreplace of %2$s. Cannot be triggered recursively."]
+    "DESCRIPTIONS": ["Whenever you Exhausts a card, play #b%1$s copyreplace of %2$s."]
   },
   "mojichimera:RushdownProtocolPower": {
     "NAME": "Rushdown Protocol",

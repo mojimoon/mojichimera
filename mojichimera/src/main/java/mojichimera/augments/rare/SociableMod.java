@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.util.MojiHelper;
 
 public class SociableMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SociableMod.class.getSimpleName());
@@ -46,7 +47,7 @@ public class SociableMod extends AbstractAugment {
 //    }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 1.0F;
         float multiplier = 1.0F;
         for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {

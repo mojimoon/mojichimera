@@ -21,7 +21,7 @@ public class CorruptedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(CorruptedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int ECHOES = 5;
+    private static final int ECHOES = 4;
     private static final int EFFECT = 2;
     private static final int STATUS = 1;
 

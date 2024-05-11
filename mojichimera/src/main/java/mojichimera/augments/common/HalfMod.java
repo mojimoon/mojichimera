@@ -11,6 +11,7 @@ import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 public class HalfMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(HalfMod.class.getSimpleName());
@@ -35,7 +36,7 @@ public class HalfMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 1.0F;
         return lessThanCardsPlayedThisTurn(card) ? MULTIPLIER : 1.0F;
     }

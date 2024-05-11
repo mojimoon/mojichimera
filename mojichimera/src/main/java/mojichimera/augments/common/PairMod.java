@@ -2,11 +2,7 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardBorderGlowManager;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,10 +10,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 public class PairMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PairMod.class.getSimpleName());
@@ -41,7 +36,7 @@ public class PairMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 1.0F;
         return hasSameNameCard(card, AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
     }

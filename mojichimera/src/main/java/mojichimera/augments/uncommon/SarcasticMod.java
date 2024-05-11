@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
 public class SarcasticMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SarcasticMod.class.getSimpleName());
@@ -30,7 +30,7 @@ public class SarcasticMod extends AbstractAugment {
     }
 
     private int count(AbstractCard card, AbstractMonster target) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 0;
         return (int) AbstractDungeon.player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.BUFF).count()
                 + (target == null ? 0 : (int) target.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count());

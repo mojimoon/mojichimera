@@ -1,18 +1,15 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.unique.BlockPerNonAttackAction;
-import com.megacrit.cardcrawl.actions.unique.ExhaustAllNonAttackAction;
-import com.megacrit.cardcrawl.actions.unique.FiendFireAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.cardmods.DamageBlock67OffMod;
+import mojichimera.augments.rare.EmbraceMod;
+import mojichimera.cardmods.DamageBlock50OffMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -24,23 +21,23 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.DarkProtocolPower;
+import mojichimera.powers.ThornsProtocolPower;
 import mojichimera.util.MojiHelper;
 
-public class EmbraceMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(EmbraceMod.class.getSimpleName());
+public class CounterMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(CounterMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
     private static final int EFFECT = 1;
-    private static final float MULTIPLIER = 0.3333334F;
+    private static final float MULTIPLIER = 0.5F;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock67OffMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock50OffMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
@@ -88,26 +85,18 @@ public class EmbraceMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DarkProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ThornsProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
                 }
                 this.isDone = true;
             }
         });
     }
 
-    private boolean isInBlacklist(AbstractCard card) {
-        return usesAction(card, ExhaustAction.class)
-                || usesAction(card, ExhaustAllNonAttackAction.class)
-                || usesAction(card, BlockPerNonAttackAction.class)
-                || usesAction(card, FiendFireAction.class);
-    }
-
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamageOrBlock(card, 3)
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
                 && card.cost >= 0
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, EmbraceMod.ID)
-                && !isInBlacklist(card)
                 && AugmentHelper.isPowerizeValid(card);
     }
 
@@ -126,10 +115,10 @@ public class EmbraceMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new EmbraceMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new CounterMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

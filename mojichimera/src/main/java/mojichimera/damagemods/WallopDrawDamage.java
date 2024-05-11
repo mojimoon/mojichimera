@@ -7,12 +7,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class WallopDrawDamage extends AbstractDamageModifier {
-    public WallopDrawDamage() {
+    private int draw;
+    public WallopDrawDamage(int draw) {
+        this.draw = draw;
     }
 
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
         if (lastDamageTaken > 0) {
-            addToBot(new DrawCardAction(AbstractDungeon.player, 1));
+            addToBot(new DrawCardAction(AbstractDungeon.player, this.draw));
         }
 
     }
@@ -22,6 +24,6 @@ public class WallopDrawDamage extends AbstractDamageModifier {
     }
 
     public AbstractDamageModifier makeCopy() {
-        return new WallopDrawDamage();
+        return new WallopDrawDamage(this.draw);
     }
 }

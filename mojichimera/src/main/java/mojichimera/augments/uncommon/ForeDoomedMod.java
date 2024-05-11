@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 import java.util.Iterator;
 
@@ -51,7 +52,7 @@ public class ForeDoomedMod extends AbstractAugment {
 
     @Override
     public void onUpdate(AbstractCard card) {
-        if (AugmentHelper.isInCombat()) {
+        if (MojiHelper.isInCombat()) {
             int curses = EFFECT;
             Iterator handIterator = AbstractDungeon.player.hand.group.iterator();
 

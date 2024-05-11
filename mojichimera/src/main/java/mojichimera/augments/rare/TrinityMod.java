@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
 import java.util.HashMap;
 
@@ -50,7 +51,7 @@ public class TrinityMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 1.0F;
         return hasPlayedAllTypes(card) ? MULTIPLIER : 1.0F;
     }

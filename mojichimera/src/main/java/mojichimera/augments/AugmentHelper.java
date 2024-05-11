@@ -7,13 +7,16 @@ import CardAugments.cardmods.rare.ExplosiveMod;
 import CardAugments.cardmods.rare.InfiniteMod;
 import CardAugments.cardmods.rare.InvertedMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
+import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
 import mojichimera.augments.uncommon.*;
-import mojichimera.augments.special.*;
 import mojichimera.mojichimera;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.blue.*;
@@ -94,30 +97,36 @@ public class AugmentHelper {
         CardAugmentsMod.registerCustomBan(RushdownMod.ID, c -> c instanceof FearNoEvil); // 不惧妖邪
 
         // EmbraceMod
-        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Hemokinesis); // 御血术
-        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Wish); // 许愿
-        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Conclude); // 结末
+//        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Hemokinesis); // 御血术
+//        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Wish); // 许愿
+//        CardAugmentsMod.registerCustomBan(EmbraceMod.ID, c -> c instanceof Conclude); // 结末
 
         // StormMod
-        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Hemokinesis); // 御血术
-        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Wish); // 许愿
-        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Conclude); // 结末
-        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Offering); // 祭品
+//        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Hemokinesis); // 御血术
+//        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Wish); // 许愿
+//        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Conclude); // 结末
+//        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Offering); // 祭品
+//        CardAugmentsMod.registerCustomBan(StormMod.ID, c -> c instanceof Blasphemy); // 渎神
 
         // CounterMod
-        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Hemokinesis); // 御血术
-        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Wish); // 许愿
-        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Conclude); // 结末
+//        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Hemokinesis); // 御血术
+//        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Wish); // 许愿
+//        CardAugmentsMod.registerCustomBan(CounterMod.ID, c -> c instanceof Conclude); // 结末
 
         // FireBreathingMod
-        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Hemokinesis); // 御血术
-        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Wish); // 许愿
-        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Conclude); // 结末
-        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Offering); // 祭品
-    }
+//        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Hemokinesis); // 御血术
+//        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Wish); // 许愿
+//        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Conclude); // 结末
+//        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Offering); // 祭品
+//        CardAugmentsMod.registerCustomBan(FireBreathingMod.ID, c -> c instanceof Blasphemy); // 渎神
 
-    public static boolean isInCombat() {
-        return AbstractDungeon.player != null && AbstractDungeon.getCurrMapNode() != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
+        // SadisticMod
+//        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof Hemokinesis); // 御血术
+//        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof Wish); // 许愿
+//        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof Conclude); // 结末
+//        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof Offering); // 祭品
+//        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof Blasphemy); // 渎神
+        CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof WaveOfTheHand); // 摆手
     }
 
     public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {
@@ -129,17 +138,21 @@ public class AugmentHelper {
                 SkillizedMod.ID,
                 UnawakenedMod.ID,
                 StormMod.ID,
-                EmbraceMod.ID
+                EmbraceMod.ID,
+                RushdownMod.ID,
+                CounterMod.ID,
+                FireBreathingMod.ID,
+                SadisticMod.ID
         };
 
-        for (String id : modid) {
-            for (int i = 0; i < mods.length; i++) {
-                if (mods[i] != null && mods[i].equals(id)) {
-                    mods[i] = null;
-                    break;
-                }
-            }
-        }
+//        for (String id : modid) {
+//            for (int i = 0; i < mods.length; i++) {
+//                if (mods[i] != null && mods[i].equals(id)) {
+//                    mods[i] = null;
+//                    break;
+//                }
+//            }
+//        }
 
         for (String id : mods) {
             if (CardModifierManager.hasModifier(card, id))
@@ -157,7 +170,11 @@ public class AugmentHelper {
                 InfiniteMod.ID,
                 SkillizedMod.ID,
                 StormMod.ID,
-                EmbraceMod.ID
+                EmbraceMod.ID,
+                RushdownMod.ID,
+                CounterMod.ID,
+                FireBreathingMod.ID,
+                SadisticMod.ID
         };
 
         for (String id : mods) {
@@ -251,14 +268,12 @@ public class AugmentHelper {
         return card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL || card.type == AbstractCard.CardType.POWER;
     }
 
-    public static String removeExhaustInDescription(String rawDescription) {
-        final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(StrangeMod.ID).EXTRA_TEXT;
-        if (rawDescription.contains(CARD_TEXT[3])) {
-            return rawDescription.replace(CARD_TEXT[3], CARD_TEXT[4]);
-        }
-        if (rawDescription.contains(CARD_TEXT[1])) {
-            return rawDescription.replace(CARD_TEXT[1], CARD_TEXT[2]);
-        }
-        return rawDescription;
+    public static boolean isPowerizeValid(AbstractCard card) {
+        return !usesAction(card, LoseHPAction.class)
+                && !usesAction(card, PressEndTurnButtonAction.class)
+                && !usesAction(card, ChooseOneAction.class)
+                && !usesClass(card, EndTurnDeathPower.class)
+                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
     }
+
 }

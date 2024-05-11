@@ -7,11 +7,11 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import com.megacrit.cardcrawl.random.Random;
+import mojichimera.util.MojiHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class ChaoticMod extends AbstractAugment {
@@ -96,7 +96,7 @@ public class ChaoticMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!AugmentHelper.isInCombat()) {
+        if (!MojiHelper.isInCombat()) {
             String tmp = rawDescription.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseDamage.get(card) * MULTIPLIER_MAX)));
             tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseBlock.get(card) * MULTIPLIER_MAX)));
             tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseMagic.get(card) * MULTIPLIER_MAX)));

@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
 public class BondMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BondMod.class.getSimpleName());
@@ -24,7 +24,7 @@ public class BondMod extends AbstractAugment {
     }
 
     private int countPlayerBuff() {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 0;
         return (int) AbstractDungeon.player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.BUFF).count();
     }

@@ -31,7 +31,7 @@
   },
   "mojichimera:DarkProtocolPower": {
     "NAME": "黑暗协议",
-    "DESCRIPTIONS": ["每 消耗 一张牌，打出 #b%1$s 张 %2$s 。由该效果打出的牌不会触发效果。"]
+    "DESCRIPTIONS": ["每 消耗 一张牌，打出 #b%1$s 张 %2$s 。"]
   },
   "mojichimera:RushdownProtocolPower": {
     "NAME": "猛虎协议",

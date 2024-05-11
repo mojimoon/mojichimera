@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.MantraPower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.cardmods.DamageBlock50OffMod;
 import mojichimera.mojichimera;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.powers.RushdownProtocolPower;
+import mojichimera.util.MojiHelper;
 
 public class RushdownMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(RushdownMod.class.getSimpleName());
@@ -91,14 +93,18 @@ public class RushdownMod extends AbstractAugment {
         });
     }
 
+    private boolean isInBlacklist(AbstractCard card) {
+        return usesAction(card, ChangeStanceAction.class) || usesClass(card, MantraPower.class);
+    }
+
     @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
                 && AugmentHelper.reachesDamageOrBlock(card, 2)
                 && card.cost >= 0
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, RushdownMod.ID)
-                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class})
-                && !usesAction(card, ChangeStanceAction.class);
+                && !isInBlacklist(card)
+                && AugmentHelper.isPowerizeValid(card);
     }
 
     @Override
@@ -112,7 +118,7 @@ public class RushdownMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(AugmentHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
+        return insertBeforeText(MojiHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
     }
 
     @Override

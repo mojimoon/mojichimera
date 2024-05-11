@@ -20,7 +20,7 @@ public class FlashOfMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        DamageModifierManager.addModifier(card, new WallopDrawDamage());
+        DamageModifierManager.addModifier(card, new WallopDrawDamage(DRAW));
     }
 
     @Override

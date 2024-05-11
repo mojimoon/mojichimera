@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.powers.StormProtocolPower;
+import mojichimera.util.MojiHelper;
 
 public class StormMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(StormMod.class.getSimpleName());
@@ -78,7 +79,7 @@ public class StormMod extends AbstractAugment {
         return AugmentHelper.isAttackOrSkill(card)
                 && AugmentHelper.hasStaticCost(card)
                 && !AugmentHelper.hasMultiPreviewModsExcept(card, StormMod.ID)
-                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
+                && AugmentHelper.isPowerizeValid(card);
     }
 
     @Override
@@ -92,7 +93,7 @@ public class StormMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertBeforeText(AugmentHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
+        return insertBeforeText(MojiHelper.removeExhaustInDescription(rawDescription), CARD_TEXT[0]);
     }
 
     @Override

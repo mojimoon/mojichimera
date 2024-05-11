@@ -6,7 +6,6 @@ import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class TsumoMod extends AbstractAugment {
@@ -61,7 +61,7 @@ public class TsumoMod extends AbstractAugment {
     }
 
     private float getMultiplier(AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return 1.0F;
         return hasPlayedThisTurn(card) ? MULTIPLIER : 1.0F;
     }

@@ -14,16 +14,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
-//@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
-public class DarkProtocolPower extends AbstractPower implements NonStackablePower {
-    public static final String POWER_ID = mojichimera.makeID(DarkProtocolPower.class.getSimpleName());
+@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
+public class SadisticProtocolPower extends AbstractPower implements NonStackablePower {
+    public static final String POWER_ID = mojichimera.makeID(SadisticProtocolPower.class.getSimpleName());
 
     private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     private final AbstractCard card;
-//    public static final SpireField<Boolean> isDarkProtocol = new SpireField<>(() -> false);
+    public static final SpireField<Boolean> isSadisticProtocol = new SpireField<>(() -> false);
 
-    public DarkProtocolPower(AbstractCreature owner, AbstractCard card, int amount) {
+    public SadisticProtocolPower(AbstractCreature owner, AbstractCard card, int amount) {
         this.name = TEXT.NAME;
         this.ID = POWER_ID;
         this.amount = amount;
@@ -31,7 +32,7 @@ public class DarkProtocolPower extends AbstractPower implements NonStackablePowe
         this.type = PowerType.BUFF;
         this.card = card;
         this.isTurnBased = false;
-        this.loadRegion("darkembrace");
+        this.loadRegion("sadistic");
         this.updateDescription();
     }
 
@@ -44,22 +45,22 @@ public class DarkProtocolPower extends AbstractPower implements NonStackablePowe
     }
 
     @Override
-    public void onExhaust(AbstractCard _card) {
-//        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && !isDarkProtocol.get(_card)) {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        AbstractCard card = MojiHelper.getLastCardPlayedThisTurn();
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && (card != null && !isSadisticProtocol.get(card))) {
             this.flash();
             this.addToBot(new AbstractGameAction() {
                 public void update() {
-                    for (int i = 0; i < DarkProtocolPower.this.amount; ++i) {
-                        AbstractCard tmp = DarkProtocolPower.this.card.makeSameInstanceOf();
+                    for (int i = 0; i < SadisticProtocolPower.this.amount; ++i) {
+                        AbstractCard tmp = SadisticProtocolPower.this.card.makeSameInstanceOf();
                         AbstractDungeon.player.limbo.addToBottom(tmp);
-                        tmp.current_x = DarkProtocolPower.this.card.current_x;
-                        tmp.current_y = DarkProtocolPower.this.card.current_y;
+                        tmp.current_x = SadisticProtocolPower.this.card.current_x;
+                        tmp.current_y = SadisticProtocolPower.this.card.current_y;
                         tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
                         tmp.target_y = (float) Settings.HEIGHT / 2.0F;
                         tmp.purgeOnUse = true;
-//                        isDarkProtocol.set(tmp, true);
-                        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, DarkProtocolPower.this.card.energyOnUse, true, true), true);
+                        isSadisticProtocol.set(tmp, true);
+                        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, SadisticProtocolPower.this.card.energyOnUse, true, true), true);
                     }
 
                     this.isDone = true;

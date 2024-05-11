@@ -1,15 +1,13 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.util.MojiHelper;
 
 public class CreditMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(CreditMod.class.getSimpleName());
@@ -37,7 +35,7 @@ public class CreditMod extends AbstractAugment {
     }
 
     private boolean shouldActivate(AbstractCard card) {
-        if (!AugmentHelper.isInCombat()) {
+        if (!MojiHelper.isInCombat()) {
             return false;
         }
         return AbstractDungeon.player.gold >= (card.upgraded ? UPGRADE_GOLD : GOLD);

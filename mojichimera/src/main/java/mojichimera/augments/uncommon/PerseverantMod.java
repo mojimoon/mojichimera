@@ -7,6 +7,7 @@ import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 public class PerseverantMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PerseverantMod.class.getSimpleName());
@@ -21,7 +22,7 @@ public class PerseverantMod extends AbstractAugment {
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
-        if (!AugmentHelper.isInCombat())
+        if (!MojiHelper.isInCombat())
             return block;
         return block * (MULTIPLIER - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth);
     }

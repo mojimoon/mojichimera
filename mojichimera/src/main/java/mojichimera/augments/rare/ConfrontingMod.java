@@ -2,13 +2,13 @@ package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.util.MojiHelper;
 
 import java.util.Iterator;
 
@@ -84,7 +84,7 @@ public class ConfrontingMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldActivate() {
-        if (!AugmentHelper.isInCombat()) {
+        if (!MojiHelper.isInCombat()) {
             return false;
         }
         boolean activated = AbstractDungeon.getCurrRoom().eliteTrigger;
