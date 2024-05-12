@@ -2,32 +2,40 @@ package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.damagemods.WallopSelfHPLossDamage;
 import mojichimera.mojichimera;
+import mojichimera.util.MojiHelper;
 
+@SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class BleedingMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BleedingMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.75F;
-    private static final int HP_LOSS = 2;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        DamageModifierManager.addModifier(card, new WallopSelfHPLossDamage(HP_LOSS));
-    }
+    private static final float EXTRA_MULTIPLIER = 0.2F;
+    private static final int PERCENT = 20;
+    private static int damagedTimes = 0;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * MULTIPLIER;
+            return damage * getMultiplier();
         return damage;
+    }
+
+    @Override
+    public void onDamaged(AbstractCard c) {
+        damagedTimes++;
+    }
+
+    private float getMultiplier() {
+        if (!MojiHelper.isInCombat())
+            return 1.0F;
+        return 1.0F + (EXTRA_MULTIPLIER * damagedTimes);
     }
 
     @Override
@@ -46,7 +54,7 @@ public class BleedingMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], HP_LOSS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PERCENT));
     }
 
     @Override

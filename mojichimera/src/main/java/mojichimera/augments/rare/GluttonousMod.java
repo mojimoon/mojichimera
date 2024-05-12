@@ -79,7 +79,7 @@ public class GluttonousMod extends AbstractAugment {
     }
 
     private boolean isEdible(AbstractCard card) {
-        return AugmentHelper.isReplayable(card)
+        return AugmentHelper.isPlayable(card)
                 && AugmentHelper.isAttackOrSkill(card)
                 && noShenanigans(card);
     }

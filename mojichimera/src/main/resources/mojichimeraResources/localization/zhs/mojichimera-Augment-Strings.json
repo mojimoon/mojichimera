@@ -162,8 +162,8 @@
         "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["流血", "", "造成的伤害增加 #b75% 。 NL 每造成一次未被格挡的伤害，失去 #b2 点生命。"],
-        "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，失去 %d 点生命。"]
+        "TEXT": ["流血", "", "你每次受到伤害，造成的伤害增加 #b20% 。"],
+        "EXTRA_TEXT": [" NL 你每次受到伤害，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:BuriedMod": {
         "TEXT": ["埋藏", "", "#y墓地。 NL 卡牌数值增加 #b50% 。"],
@@ -202,7 +202,7 @@
         ]
     },
     "mojichimera:ExploitMod": {
-        "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b25% 。"],
+        "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:FireBreathingMod": {
