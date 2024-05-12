@@ -83,6 +83,9 @@ public class BiasedPower extends AbstractPower implements CloneablePowerInterfac
                 if (this.turn <= 0) {
                     this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
                 }
+                if (powerToLose.amount - this.amount == 0) {
+                    this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this.basePowerID));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
