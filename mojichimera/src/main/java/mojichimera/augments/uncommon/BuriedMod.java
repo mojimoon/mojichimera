@@ -20,7 +20,7 @@ public class BuriedMod extends AbstractAugment {
     @Override
     public void onInitialApplication(AbstractCard card) {
         GraveField.grave.set(card, Boolean.TRUE);
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber >= 2)))
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
     }
 
