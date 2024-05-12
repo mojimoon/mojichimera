@@ -56,7 +56,7 @@ public class GlazeMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (AbstractDungeon.cardRandomRng.randomBoolean(1))
+        if (AbstractDungeon.cardRandomRng.randomBoolean(CHANCE))
             card.exhaust = true;
     }
 

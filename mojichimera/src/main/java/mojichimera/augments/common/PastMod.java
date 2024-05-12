@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.special.NamelessMod;
+import mojichimera.cardmods.Value50UpMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -38,7 +38,7 @@ public class PastMod extends AbstractAugment {
         this.inherentHack = true;
         AbstractCard preview = card.makeStatEquivalentCopy();
         this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new NamelessMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new Value50UpMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         card.target = AbstractCard.CardTarget.SELF;

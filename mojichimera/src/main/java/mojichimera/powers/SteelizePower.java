@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.special.NamelessMod;
+import mojichimera.cardmods.Value50UpMod;
 import mojichimera.mojichimera;
 
 public class SteelizePower extends AbstractPower implements CloneablePowerInterface {
@@ -54,7 +55,7 @@ public class SteelizePower extends AbstractPower implements CloneablePowerInterf
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         if (AugmentHelper.reachesVariable(card, 2) && AugmentHelper.isNormal(card)) {
             this.amount--;
-            CardModifierManager.addModifier(card, new NamelessMod());
+            CardModifierManager.addModifier(card, new Value50UpMod());
             this.updateDescription();
         }
 

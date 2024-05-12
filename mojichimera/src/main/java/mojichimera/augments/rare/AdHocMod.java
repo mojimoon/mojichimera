@@ -29,21 +29,21 @@ public class AdHocMod extends AbstractAugment {
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
-            return damage * getMultiplier();
+            return (float) Math.ceil(damage * getMultiplier());
         return damage;
     }
 
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
         if (card.baseBlock > 0)
-            return block * getMultiplier();
+            return (float) Math.ceil(block * getMultiplier());
         return block;
     }
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (this.modMagic)
-            return magic * getMultiplier();
+            return (float) Math.ceil(magic * getMultiplier());
         return magic;
     }
 
