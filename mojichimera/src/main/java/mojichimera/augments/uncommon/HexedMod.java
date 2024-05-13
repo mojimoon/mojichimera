@@ -1,7 +1,8 @@
-package mojichimera.augments.common;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.status.Dazed;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
@@ -9,13 +10,12 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class RentalMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(RentalMod.class.getSimpleName());
+public class HexedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(HexedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int GOLD = 6;
+    private static final int DAZED = 1;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -32,13 +32,7 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                AbstractDungeon.player.loseGold(GOLD);
-                isDone = true;
-            }
-        });
+        addToBot(new MakeTempCardInDrawPileAction(new Dazed(), DAZED, true, true));
     }
 
     @Override
@@ -52,14 +46,14 @@ public class RentalMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], GOLD));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DAZED));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new RentalMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HexedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

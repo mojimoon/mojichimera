@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
+import mojichimera.util.MojiHelper;
 
 public class PeaceMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PeaceMod.class.getSimpleName());
@@ -62,6 +63,7 @@ public class PeaceMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
+        if (!MojiHelper.isInCombat()) return false;
         return AbstractDungeon.player.stance.ID.equals("Calm");
     }
 

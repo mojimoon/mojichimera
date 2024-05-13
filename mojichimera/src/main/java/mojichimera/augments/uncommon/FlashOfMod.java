@@ -15,7 +15,7 @@ public class FlashOfMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(FlashOfMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.8F;
+    private static final float MULTIPLIER = 0.6666667F;
     private static final int DRAW = 1;
 
     @Override

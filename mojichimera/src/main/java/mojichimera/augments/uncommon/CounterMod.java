@@ -4,7 +4,6 @@ import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
@@ -96,7 +95,7 @@ public class CounterMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesDamageOrBlock(card, 2)
                 && card.cost >= 0
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, EmbraceMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, EmbraceMod.ID)
                 && AugmentHelper.isPowerizeValid(card);
     }
 

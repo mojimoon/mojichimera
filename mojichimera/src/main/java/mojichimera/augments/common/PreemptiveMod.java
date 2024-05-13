@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class PreemptiveMod extends AbstractAugment {
@@ -111,6 +112,7 @@ public class PreemptiveMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
+        if (!MojiHelper.isInCombat()) return false;
         return !otherCardsPlayed.get(card);
     }
 

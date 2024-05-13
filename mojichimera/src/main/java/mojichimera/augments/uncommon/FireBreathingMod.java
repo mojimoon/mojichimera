@@ -3,9 +3,7 @@ package mojichimera.augments.uncommon;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
@@ -77,7 +75,7 @@ public class FireBreathingMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isAttackOrSkill(card)
                 && card.cost >= 0
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, FireBreathingMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, FireBreathingMod.ID)
                 && AugmentHelper.isPowerizeValid(card);
     }
 

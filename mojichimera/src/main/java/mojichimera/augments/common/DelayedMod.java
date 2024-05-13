@@ -6,7 +6,6 @@ import basemod.cardmods.ExhaustMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.special.NamelessMod;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
@@ -88,7 +87,7 @@ public class DelayedMod extends AbstractAugment {
                 && AugmentHelper.isNormal(card)
                 && AugmentHelper.hasStaticCost(card, 1)
                 && noShenanigans(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, DelayedMod.ID);
+                && !AugmentHelper.hasMultiPreviewMod(card, DelayedMod.ID);
     }
 
     @Override

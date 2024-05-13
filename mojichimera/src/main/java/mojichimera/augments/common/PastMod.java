@@ -1,7 +1,6 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.powers.BombPower;
 import CardAugments.util.Wiz;
 import basemod.cardmods.ExhaustMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -112,7 +111,7 @@ public class PastMod extends AbstractAugment {
                 && AugmentHelper.isPlayable(card)
                 && AugmentHelper.isNormal(card)
                 && noShenanigans(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, PastMod.ID);
+                && !AugmentHelper.hasMultiPreviewMod(card, PastMod.ID);
     }
 
     @Override

@@ -18,8 +18,8 @@ public class ChaoticMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ChaoticMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER_MIN = 0.5F;
-    private static final float MULTIPLIER_MAX = 2.0F;
+    private static final float MIN_MULTIPLIER = 0.5F;
+    private static final float MAX_MULTIPLIER = 2.0F;
     private static final Random rng = new Random();
     public static final SpireField<Integer> baseDamage = new SpireField<>(() -> 0);
     public static final SpireField<Integer> baseBlock = new SpireField<>(() -> 0);
@@ -58,15 +58,15 @@ public class ChaoticMod extends AbstractAugment {
         try {
             if (card.baseDamage > 0) {
                 baseDamage.set(card, card.baseDamage);
-                damageMap.set(card, (int) Math.ceil(card.baseDamage * (rng.random(MULTIPLIER_MIN, MULTIPLIER_MAX))));
+                damageMap.set(card, (int) Math.ceil(card.baseDamage * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
             }
             if (card.baseBlock > 0) {
                 baseBlock.set(card, card.baseBlock);
-                blockMap.set(card, (int) Math.ceil(card.baseBlock * (rng.random(MULTIPLIER_MIN, MULTIPLIER_MAX))));
+                blockMap.set(card, (int) Math.ceil(card.baseBlock * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
             }
             if (card.baseMagicNumber > 0) {
                 baseMagic.set(card, card.baseMagicNumber);
-                magicMap.set(card, (int) Math.ceil(card.baseMagicNumber * (rng.random(MULTIPLIER_MIN, MULTIPLIER_MAX))));
+                magicMap.set(card, (int) Math.ceil(card.baseMagicNumber * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +76,8 @@ public class ChaoticMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasVariable(card, true)
-                && AugmentHelper.isNormal(card);
+                && AugmentHelper.isNormal(card)
+                && !AugmentHelper.overrideDBMMods(card);
     }
 
     @Override
@@ -97,9 +98,9 @@ public class ChaoticMod extends AbstractAugment {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!MojiHelper.isInCombat()) {
-            String tmp = rawDescription.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseDamage.get(card) * MULTIPLIER_MAX)));
-            tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseBlock.get(card) * MULTIPLIER_MAX)));
-            tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MULTIPLIER_MIN), (int)Math.ceil(baseMagic.get(card) * MULTIPLIER_MAX)));
+            String tmp = rawDescription.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
             return tmp;
         }
         return rawDescription;

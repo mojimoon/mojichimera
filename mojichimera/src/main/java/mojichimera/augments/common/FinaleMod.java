@@ -3,8 +3,11 @@ package mojichimera.augments.common;
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
@@ -14,12 +17,20 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.util.MojiHelper;
 
-public class HighCardMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(HighCardMod.class.getSimpleName());
+public class FinaleMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(FinaleMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.3333334F;
-    private static final int PERCENT = 33;
+    private static final float MULTIPLIER = 2.0F;
+    private static final int PERCENT = 100;
+    private static final int DRAW = 1;
+    private boolean modMagic;
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+            this.modMagic = true;
+    }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -35,20 +46,34 @@ public class HighCardMod extends AbstractAugment {
         return block;
     }
 
+    @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
+        if (this.modMagic)
+            return magic * MULTIPLIER;
+        return magic;
+    }
+
     private float getMultiplier(AbstractCard card) {
         if (!MojiHelper.isInCombat())
             return 1.0F;
-        return allDistinctCards(AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
+        return noOtherCardInHand(card) ? MULTIPLIER : 1.0F;
     }
 
-    private boolean allDistinctCards(CardGroup group) {
-        return group.group.stream().map(c -> c.cardID).distinct().count() == group.size();
+    private boolean noOtherCardInHand(AbstractCard card) {
+        return (AbstractDungeon.player.hand.group.size() == 1 && AbstractDungeon.player.hand.getTopCard().equals(card))
+                || (AbstractDungeon.player.hand.group.size() == 0);
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        if (noOtherCardInHand(card))
+            addToBot(new DrawCardAction(DRAW));
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
-                && AugmentHelper.reachesDamageOrBlock(card, 3)
+                && AugmentHelper.hasVariable(card)
                 && AugmentHelper.isNormal(card);
     }
 
@@ -63,26 +88,27 @@ public class HighCardMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PERCENT));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PERCENT, DRAW));
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HighCardMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FinaleMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
-        return allDistinctCards(AbstractDungeon.player.hand);
+        if (!MojiHelper.isInCombat()) return false;
+        return noOtherCardInHand(card);
     }
 
     public CardBorderGlowManager.GlowInfo getGlowInfo() {
         return new CardBorderGlowManager.GlowInfo() {
             public boolean test(AbstractCard card) {
-                return HighCardMod.this.hasThisMod(card) && HighCardMod.this.shouldGlow(card);
+                return FinaleMod.this.hasThisMod(card) && FinaleMod.this.shouldGlow(card);
             }
 
             public Color getColor(AbstractCard card) {
@@ -90,7 +116,7 @@ public class HighCardMod extends AbstractAugment {
             }
 
             public String glowID() {
-                return HighCardMod.ID + "Glow";
+                return FinaleMod.ID + "Glow";
             }
         };
     }

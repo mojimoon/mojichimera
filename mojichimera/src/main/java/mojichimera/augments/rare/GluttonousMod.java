@@ -8,8 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
-import CardAugments.patches.InterruptUseCardFieldPatches;
-import CardAugments.util.PortraitHelper;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
@@ -20,8 +18,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.util.MojiHelper;
 
 import java.util.ArrayList;
-
-import static CardAugments.cardmods.AbstractAugment.noShenanigans;
 
 public class GluttonousMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(GluttonousMod.class.getSimpleName());
@@ -96,7 +92,7 @@ public class GluttonousMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isReplayable(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, GluttonousMod.ID);
+                && !AugmentHelper.hasMultiPreviewMod(card, GluttonousMod.ID);
     }
 
     @Override

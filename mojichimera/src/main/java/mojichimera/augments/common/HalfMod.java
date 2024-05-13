@@ -78,6 +78,7 @@ public class HalfMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
+        if (!MojiHelper.isInCombat()) return false;
         return lessThanCardsPlayedThisTurn(card);
     }
 

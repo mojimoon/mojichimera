@@ -3,9 +3,7 @@ package mojichimera.augments.uncommon;
 import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import CardAugments.cardmods.util.PreviewedMod;
@@ -78,7 +76,7 @@ public class SadisticMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isAttackOrSkill(card)
                 && AugmentHelper.hasStaticCost(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, SadisticMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, SadisticMod.ID)
                 && AugmentHelper.isPowerizeValid(card);
     }
 

@@ -54,7 +54,7 @@ public class UnawakenedMod extends AbstractAugment {
                 && AugmentHelper.isPlayable(card)
                 && AugmentHelper.isEtherealValid(card)
                 && AugmentHelper.isNormal(card)
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, ID);
+                && !AugmentHelper.hasMultiPreviewMod(card, ID);
     }
 
     @Override

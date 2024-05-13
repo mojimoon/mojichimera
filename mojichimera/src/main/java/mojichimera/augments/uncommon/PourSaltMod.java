@@ -16,6 +16,7 @@ import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.util.MojiHelper;
 
 import java.util.Iterator;
 
@@ -82,7 +83,7 @@ public class PourSaltMod extends AbstractAugment {
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
-
+        if (!MojiHelper.isInCombat()) return false;
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while(var1.hasNext()) {
             AbstractMonster m = (AbstractMonster)var1.next();

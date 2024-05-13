@@ -16,7 +16,8 @@ public class LimitlessMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(LimitlessMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float EXTRA_MULTIPLIER = 0.025F;
+    private static final float MULTIPLIER = 0.5F;
+    private static final float EXTRA_MULTIPLIER = 0.03F;
     private boolean modMagic;
 
     @Override
@@ -42,21 +43,21 @@ public class LimitlessMod extends AbstractAugment {
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
         if (this.modMagic)
-            return magic * getMultiplier();
+            return Math.max(magic * getMultiplier(), 1);
         return magic;
     }
 
     private float getMultiplier() {
         if (AbstractDungeon.player == null)
-            return 1.0F;
-        return 1.0F + AbstractDungeon.floorNum * EXTRA_MULTIPLIER;
+            return MULTIPLIER;
+        return MULTIPLIER + AbstractDungeon.floorNum * EXTRA_MULTIPLIER;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasVariable(card)
                 && AugmentHelper.isNormal(card)
-                && ((AbstractDungeon.player == null) || (AbstractDungeon.actNum < 3));
+                && ((AbstractDungeon.player == null) || (AbstractDungeon.actNum > 1 && AbstractDungeon.actNum < 4));
     }
 
     @Override

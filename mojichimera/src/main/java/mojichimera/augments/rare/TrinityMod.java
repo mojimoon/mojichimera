@@ -99,7 +99,9 @@ public class TrinityMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
+
     private boolean shouldGlow(AbstractCard card) {
+        if (!MojiHelper.isInCombat()) return false;
         return hasPlayedAllTypes(card);
     }
 

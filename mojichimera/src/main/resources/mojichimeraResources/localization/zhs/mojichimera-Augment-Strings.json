@@ -40,7 +40,7 @@
         "EXTRA_TEXT": [" NL 在首领与精英战中数值增加 %d%% 。"]
     },
     "mojichimera:CorruptedMod": {
-        "TEXT": ["腐化", "", "再打出 #b4 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张加入抽牌堆。"],
+        "TEXT": ["腐化", "", "再打出 #b4 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张放入抽牌堆。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 接受腐化之心的诅咒。"]
     },
     "mojichimera:CounterMod": {
@@ -54,6 +54,10 @@
     "mojichimera:ForesightMod": {
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
         "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
+    },
+    "mojichimera:FutureMod": {
+        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 放入弃牌堆。 NL 源于 #b时间行者 mod 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺言 放入弃牌堆。"]
     },
     "mojichimera:GluttonousMod": {
         "TEXT": ["暴食", "", "首次打出时 #b随机 #y消耗 一张牌，每次打出本牌时将其一并打出。 NL 只适用于可打出的攻击或技能牌。"],
@@ -73,7 +77,7 @@
         "EXTRA_TEXT": [" NL 目标生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:LimitlessMod": {
-        "TEXT": ["上限", "", "每前进一层，卡牌数值增加基础值的 #b2.5% 。"],
+        "TEXT": ["上限", "", "卡牌数值减少 #b50% 。 NL 每前进一层，卡牌数值增加基础值的 #b3% 。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
@@ -146,8 +150,8 @@
         "EXTRA_TEXT": [" NL 若本回合打出过攻击、技能和能力牌，数值增加 %d%% 。"]
     },
     "mojichimera:UnawakenedMod": {
-        "TEXT": ["未觉醒", "", "#y虚无 。 NL 被 #y消耗 的 #b2 回合后，将一张 #y觉醒 的复制加入手牌。"],
-        "EXTRA_TEXT": [" NL 被 消耗 的 %d 回合后，将一张 觉醒 的复制加入手牌。"]
+        "TEXT": ["未觉醒", "", "#y虚无 。 NL 被 #y消耗 的 #b2 回合后，将一张 #y觉醒 的复制放入手牌。"],
+        "EXTRA_TEXT": [" NL 被 消耗 的 %d 回合后，将一张 觉醒 的复制放入手牌。"]
     },
     "mojichimera:UnsociableMod": {
         "TEXT": ["孤僻", "", "本牌的造成的伤害和获得的 #y格挡 增加 #b100% 。 NL 手牌中每有一张同类型牌，减少基础值的 #b20% 。"],
@@ -161,6 +165,10 @@
         "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
         "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
+    "mojichimera:BarrageMod": {
+        "TEXT": ["", "齐射", "丢弃手牌中所有 #y状态牌，抽等量的牌。 NL 源于 #b崩坠 #y铜制机械人偶 的卡牌 #b错误齐射 。"],
+        "EXTRA_TEXT": [" NL 丢弃手牌中所有 状态牌 ，抽等量的牌。"]
+    },
     "mojichimera:BleedingMod": {
         "TEXT": ["流血", "", "你每次受到伤害，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 你每次受到伤害，造成的伤害增加 %d%% 。"]
@@ -170,7 +178,7 @@
         "EXTRA_TEXT": [" 墓地 。 NL "]
     },
     "mojichimera:ChaoticMod": {
-        "TEXT": ["混沌", "", "每场战斗开始时，卡牌数值在基础值的 #b50% （向上取整） 和 #b200% 之间随机。"],
+        "TEXT": ["混沌", "", "每场战斗开始时，卡牌数值在基础值的 #b50% （向上取整）与 #b200% 之间随机。"],
         "EXTRA_TEXT": []
     },
     "mojichimera:CompileMod": {
@@ -201,6 +209,14 @@
             " NL 每当这张牌被 保留 时，将其在本场战斗的耗能减少 %d 。"
         ]
     },
+    "mojichimera:ExpansionMod": {
+        "TEXT": ["扩展", "", "牌组中的牌每比 #b25 张多 #b1 张，卡牌数值增加 #b4% 。"],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:ExperimentalMod": {
+        "TEXT": ["实验性", "", "将 #b3 张随机 #y状态牌 随机放入抽牌堆、弃牌堆或手牌。 NL 卡牌数值在基础值的 #b100% 与 #b300% 之间随机。"],
+        "EXTRA_TEXT": [" NL 随机添加 %d 张 状态牌 到抽牌堆、弃牌堆或手牌。"]
+    },
     "mojichimera:ExploitMod": {
         "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
@@ -210,7 +226,7 @@
         "EXTRA_TEXT": ["每当你抽到一张 状态牌 或 诅咒 牌 时： NL "]
     },
     "mojichimera:FlashOfMod": {
-        "TEXT": ["亮剑", "", "造成的伤害减少 #b20% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
+        "TEXT": ["亮剑", "", "造成的伤害减少 #b33% 。 NL 每造成一次未被格挡的伤害，抽 #b1 张牌。"],
         "EXTRA_TEXT": [" NL 每造成一次未被格挡的伤害，抽 %d 张牌。"]
     },
     "mojichimera:FocusedMod": {
@@ -237,6 +253,10 @@
         "TEXT": ["琉璃", "", "卡牌数值增加 #b50% 。 NL 打出时有 #b1/4 概率 #y消耗 。 NL 源于 #bBalatro 的 #y玻璃牌 。"],
         "EXTRA_TEXT": [" NL 有 1/4 概率 消耗 。"]
     },
+    "mojichimera:HighCardMod": {
+        "TEXT": ["高牌", "", "若手牌中所有牌均不同名，造成的伤害和获得的 #y格挡 增加 #b33% 。"],
+        "EXTRA_TEXT": [" NL 若手牌中所有牌均不同名，伤害和 格挡 增加 %d%% 。"]
+    },
     "mojichimera:IndignantMod": {
         "TEXT": ["义愤", "", "#y愤怒 ：造成的伤害增加 #b50% 。"],
         "EXTRA_TEXT": [" NL 愤怒 ：造成的伤害增加 %d%% 。"]
@@ -244,6 +264,10 @@
     "mojichimera:KnockoffMod": {
         "TEXT": ["山寨", "", "本牌耗能减少 #b1。 NL 无法被升级。"],
         "EXTRA_TEXT": [" NL 无法被升级。"]
+    },
+    "mojichimera:MinimalMod": {
+        "TEXT": ["极简", "", "牌组中的牌每比 #b15 张少 #b1 张，卡牌数值增加 #b10% 。"],
+        "EXTRA_TEXT": []
     },
     "mojichimera:OnSaleMod": {
         "TEXT": ["特价", "", "升级时耗能额外减少 #b1 。"],
@@ -362,13 +386,17 @@
         "TEXT": ["延迟", "", "本牌耗能减少 #b1 。 NL 下回合开始时打出。"],
         "EXTRA_TEXT": ["下回合开始时： NL "]
     },
+    "mojichimera:EmptiedMod": {
+        "TEXT": ["空无", "", "再打出一次 。 NL 将 #b1 张 #y虚空 放入抽牌堆。"],
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 *虚空 放入抽牌堆。"]
+    },
     "mojichimera:EquilibriumMod": {
         "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
         "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
     },
-    "mojichimera:ExpansionMod": {
-        "TEXT": ["扩展", "", "牌组中的牌每比 #b25 张多 #b1 张，卡牌数值增加 #b4% 。"],
-        "EXTRA_TEXT": []
+    "mojichimera:FinaleMod": {
+        "TEXT": ["", "终曲", "若手牌中没有其他牌，卡牌数值增加 #b100% ，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 若手牌中没有其他牌，数值增加 %d%% ，抽 %d 张牌。"]
     },
     "mojichimera:GoldenMod": {
         "TEXT": ["黄金", "", "打出时获得 #b4 #y金币 。"],
@@ -383,13 +411,13 @@
         "EXTRA_TEXT": [" NL 每抽到 %d 次，耗能减少 [E] 。"]
     },
     "mojichimera:HeavyThrowMod": {
-        "TEXT": ["", "猛掷", "再打出一次 。 NL 获得 #b2 层 #y脆弱 。 NL 源于 #b崩坠 #y第一勇士 的卡牌 #b护甲猛掷。"],
+        "TEXT": ["", "猛掷", "再打出一次 。 NL 获得 #b2 层 #y脆弱 。 NL 源于 #b崩坠 #y第一勇士 的卡牌 #b护甲猛掷 。"],
         "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 脆弱 。 "],
         "NOTES": ["champ:ShieldThrow"]
     },
-    "mojichimera:HighCardMod": {
-        "TEXT": ["高牌", "", "若手牌中所有牌均不同名，造成的伤害和获得的 #y格挡 增加 #b33% 。"],
-        "EXTRA_TEXT": [" NL 若手牌中所有牌均不同名，伤害和 格挡 增加 %d%% 。"]
+    "mojichimera:HexedMod": {
+        "TEXT": ["邪咒", "", "本牌耗能减少 #b1 。 NL 将 #b1 张 #y晕眩 放入抽牌堆。"],
+        "EXTRA_TEXT": [" NL 将 %d 张 晕眩 放入抽牌堆。"]
     },
     "mojichimera:HorrorMod": {
         "TEXT": ["", "恐怖", "再打出一次 。 NL 获得 #b1 层 #y易伤 。"],
@@ -407,16 +435,12 @@
         "TEXT": ["", "灯笼", "首次抽到时，获得 [E] 。"],
         "EXTRA_TEXT": [" NL 首次抽到时，获得 [E] 。"]
     },
-    "mojichimera:MinimalMod": {
-        "TEXT": ["极简", "", "牌组中的牌每比 #b15 张少 #b1 张，卡牌数值增加 #b10% 。"],
-        "EXTRA_TEXT": []
-    },
     "mojichimera:PairMod": {
         "TEXT": ["对子", "", "若手牌中有本牌的同名牌，造成的伤害和获得的 #y格挡 增加 #b100% 。"],
         "EXTRA_TEXT": [" NL 若手牌中有本牌的同名牌，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:PastMod": {
-        "TEXT": ["过去", "", "卡牌数值增加 #b50% 。 NL 下回合开始时打出。 NL 源于 #b时间行者 的同名关键词。"],
+        "TEXT": ["过去", "", "卡牌数值增加 #b50% 。 NL 下回合开始时打出。 NL 源于 #b时间行者 mod 的同名关键词。"],
         "EXTRA_TEXT": ["下回合开始时： NL "]
     },
     "mojichimera:PeacefulMod": {
@@ -431,9 +455,13 @@
         "TEXT": ["便携", "", "本牌耗能减少 #b1 。 NL 失去 [E] 。"],
         "EXTRA_TEXT": [" NL 失去 [E] 。"]
     },
+    "mojichimera:PowerThroughMod": {
+        "TEXT": ["硬撑", "", "造成的伤害和获得的 #y格挡 增加 #b100% 。 NL 将 #b2 张 #y伤口 放入手牌。"],
+        "EXTRA_TEXT": [" NL 将 %d 张 伤口 放入手牌。"]
+    },
     "mojichimera:PreemptiveMod": {
         "TEXT": ["先发", "", "在手牌中未打出非 #y先发 牌时，造成的伤害和获得的 #y格挡 增加 #b50% 。"],
-        "EXTRA_TEXT": [" NL 在手牌中未打出非先发牌时，伤害和 格挡 增加 %d%% 。"]
+        "EXTRA_TEXT": [" NL 在手牌中未打出非 *先发* 牌时，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:ReactiveMod": {
         "TEXT": ["活性", "", "#y保留 。 NL 每当这张牌被 #y保留 时，将其在本场战斗的魔法数字增加 #b1 。"],
@@ -446,6 +474,10 @@
     "mojichimera:RebateMod": {
         "TEXT": ["返现", "", "#y虚无 。 NL 若被 #y消耗 ，获得 #b8(+4) #y金币 。"],
         "EXTRA_TEXT": [" 虚无 。 NL ", " NL 若被 消耗 ，获得 %s 金币 。"]
+    },
+    "mojichimera:RecklessMod": {
+        "TEXT": ["无谋", "", "造成的伤害和获得的 #y格挡 增加 #b50% 。 NL 将 #b1 张 #y晕眩 放入抽牌堆。"],
+        "EXTRA_TEXT": [" NL 将 %d 张 晕眩 放入抽牌堆。"]
     },
     "mojichimera:ReinforcedMod": {
         "TEXT": ["硬化", "", "升级时获得的 #y格挡 额外增加 #b4 。"],
@@ -463,6 +495,10 @@
         "TEXT": ["活力", "", "获得 #b4 层 #y活力 。"],
         "EXTRA_TEXT": [" NL 获得 %d 层 活力 。"]
     },
+    "mojichimera:WildMod": {
+        "TEXT": ["狂野", "", "造成的伤害和获得的 #y格挡 增加 #b75% 。 NL 将 #b1 张 #y伤口 放入抽牌堆。"],
+        "EXTRA_TEXT": [" NL 将 %d 张 伤口 放入抽牌堆。"]
+    },
     "mojichimera:WorshipMod": {
         "TEXT": ["", "崇拜", "再打出一次 。 NL 获得 #b2 层 #y虚弱 。"],
         "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 虚弱 。 "]
@@ -478,6 +514,10 @@
     "mojichimera:ShareHelperMod": {
         "TEXT": ["分享", "", "感恩 #y共享 。"],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:PromiseMod": {
+        "TEXT": ["诺言", "", "被 #y消耗 时抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 被 消耗 时抽 %d 张牌。"]
     },
     "mojichimera:packmaster_VirusMod": {
         "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],
@@ -509,10 +549,6 @@
         "TEXT": ["", "分形", "打出时获得本牌的 #b2 张 #y消耗 #y虚无 复制，其数值减少 #b33% ，耗能减少 [E] 。"],
         "EXTRA_TEXT": [" NL 获得 %d 张 anniv5:回响 ，其数值减少 %d%%，耗能减少 [E] 。"],
         "NOTES": ["DEPRECATED"]
-    },
-    "mojichimera:FutureMod": {
-        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 加入弃牌堆。"],
-        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺*言 加入弃牌堆。"]
     },
     "mojichimera:RouletteMod": {
         "TEXT": ["", "轮盘赌", "有 #b1/6 概率可打出。若抽到时不可打出，概率增加 #b1/6 。 NL 再打出 #b3 次。 NL 打出后概率重置。"],

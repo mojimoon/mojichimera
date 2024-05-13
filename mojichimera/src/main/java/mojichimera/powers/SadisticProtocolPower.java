@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
@@ -50,6 +51,7 @@ public class SadisticProtocolPower extends AbstractPower implements NonStackable
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()
                 && (power.type == PowerType.DEBUFF && !power.ID.equals("Shackled") && source == this.owner && target != this.owner && !target.hasPower("Artifact"))
                 && (card != null && !isSadisticProtocol.get(card))) {
+            AbstractMonster m = (target instanceof AbstractMonster) ? (AbstractMonster) target : null;
             this.flash();
             this.addToBot(new AbstractGameAction() {
                 public void update() {
@@ -62,7 +64,10 @@ public class SadisticProtocolPower extends AbstractPower implements NonStackable
                         tmp.target_y = (float) Settings.HEIGHT / 2.0F;
                         tmp.purgeOnUse = true;
                         isSadisticProtocol.set(tmp, true);
-                        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, SadisticProtocolPower.this.card.energyOnUse, true, true), true);
+                        if (tmp.target == AbstractCard.CardTarget.ENEMY && m != null && !m.isDeadOrEscaped())
+                            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, SadisticProtocolPower.this.card.energyOnUse, true, true), true);
+                        else
+                            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, SadisticProtocolPower.this.card.energyOnUse, true, true), true);
                     }
 
                     this.isDone = true;

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.unique.BlockPerNonAttackAction;
 import com.megacrit.cardcrawl.actions.unique.ExhaustAllNonAttackAction;
 import com.megacrit.cardcrawl.actions.unique.FiendFireAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
@@ -106,7 +105,7 @@ public class EmbraceMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.reachesDamageOrBlock(card, 3)
                 && card.cost >= 0
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, EmbraceMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, EmbraceMod.ID)
                 && !isInBlacklist(card)
                 && AugmentHelper.isPowerizeValid(card);
     }

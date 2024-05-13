@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
@@ -129,7 +127,7 @@ public class AugmentHelper {
         CardAugmentsMod.registerCustomBan(SadisticMod.ID, c -> c instanceof WaveOfTheHand); // 摆手
     }
 
-    public static boolean hasMultiPreviewModsExcept(AbstractCard card, String ...modid) {
+    public static boolean hasMultiPreviewMod(AbstractCard card, String ...modid) {
         String[] mods = new String[] {
                 BundledMod.ID,
                 ExplosiveMod.ID,
@@ -143,7 +141,8 @@ public class AugmentHelper {
                 CounterMod.ID,
                 FireBreathingMod.ID,
                 SadisticMod.ID,
-                GluttonousMod.ID
+                GluttonousMod.ID,
+                FutureMod.ID
         };
 
 //        for (String id : modid) {
@@ -176,6 +175,20 @@ public class AugmentHelper {
                 CounterMod.ID,
                 FireBreathingMod.ID,
                 SadisticMod.ID
+        };
+
+        for (String id : mods) {
+            if (CardModifierManager.hasModifier(card, id))
+                return true;
+        }
+
+        return false;
+    }
+
+    public static boolean overrideDBMMods(AbstractCard card) {
+        String[] mods = new String[] {
+                ChaoticMod.ID,
+                ExperimentalMod.ID,
         };
 
         for (String id : mods) {

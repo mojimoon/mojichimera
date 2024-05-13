@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
@@ -102,7 +101,7 @@ public class RushdownMod extends AbstractAugment {
         return card.color == AbstractCard.CardColor.PURPLE
                 && AugmentHelper.reachesDamageOrBlock(card, 2)
                 && card.cost >= 0
-                && !AugmentHelper.hasMultiPreviewModsExcept(card, RushdownMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, RushdownMod.ID)
                 && !isInBlacklist(card)
                 && AugmentHelper.isPowerizeValid(card);
     }

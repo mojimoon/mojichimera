@@ -1,4 +1,4 @@
-package mojichimera.augments.common;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardBorderGlowManager;
@@ -14,12 +14,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.util.MojiHelper;
 
-public class PairMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(PairMod.class.getSimpleName());
+public class HighCardMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(HighCardMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.0F;
-    private static final int PERCENT = 100;
+    private static final float MULTIPLIER = 1.3333334F;
+    private static final int PERCENT = 33;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -38,17 +38,17 @@ public class PairMod extends AbstractAugment {
     private float getMultiplier(AbstractCard card) {
         if (!MojiHelper.isInCombat())
             return 1.0F;
-        return hasSameNameCard(card, AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
+        return allDistinctCards(AbstractDungeon.player.hand) ? MULTIPLIER : 1.0F;
     }
 
-    private boolean hasSameNameCard(AbstractCard card, CardGroup group) {
-        return group.group.stream().anyMatch(c -> c != card && c.name.equals(card.name));
+    private boolean allDistinctCards(CardGroup group) {
+        return group.group.stream().map(c -> c.cardID).distinct().count() == group.size();
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
-                && AugmentHelper.hasDamageOrBlock(card)
+                && AugmentHelper.reachesDamageOrBlock(card, 3)
                 && AugmentHelper.isNormal(card)
                 && !card.rarity.equals(AbstractCard.CardRarity.BASIC);
     }
@@ -68,23 +68,22 @@ public class PairMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PairMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HighCardMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
 
     private boolean shouldGlow(AbstractCard card) {
-        if (!MojiHelper.isInCombat()) return false;
-        return hasSameNameCard(card, AbstractDungeon.player.hand);
+        return allDistinctCards(AbstractDungeon.player.hand);
     }
 
     public CardBorderGlowManager.GlowInfo getGlowInfo() {
         return new CardBorderGlowManager.GlowInfo() {
             public boolean test(AbstractCard card) {
-                return PairMod.this.hasThisMod(card) && PairMod.this.shouldGlow(card);
+                return HighCardMod.this.hasThisMod(card) && HighCardMod.this.shouldGlow(card);
             }
 
             public Color getColor(AbstractCard card) {
@@ -92,7 +91,7 @@ public class PairMod extends AbstractAugment {
             }
 
             public String glowID() {
-                return PairMod.ID + "Glow";
+                return HighCardMod.ID + "Glow";
             }
         };
     }
