@@ -12,8 +12,8 @@
         "EXTRA_TEXT": [" NL 牌组里每有一张 诅咒 ，耗能减少 [E] 。"]
     },
     "mojichimera:AfterlifeMod": {
-        "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 的下回合，打出本牌的复制。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
-        "EXTRA_TEXT": [" NL 被 消耗 的下回合，打出本牌的复制。"]
+        "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 时视为打出。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"]
     },
     "mojichimera:BelligerentMod": {
         "TEXT": ["好战", "", "若目标敌人意图攻击，造成的伤害增加 #b50% 。"],

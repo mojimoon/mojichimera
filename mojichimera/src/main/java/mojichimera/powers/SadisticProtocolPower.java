@@ -47,7 +47,9 @@ public class SadisticProtocolPower extends AbstractPower implements NonStackable
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         AbstractCard card = MojiHelper.getLastCardPlayedThisTurn();
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && (card != null && !isSadisticProtocol.get(card))) {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()
+                && (power.type == PowerType.DEBUFF && !power.ID.equals("Shackled") && source == this.owner && target != this.owner && !target.hasPower("Artifact"))
+                && (card != null && !isSadisticProtocol.get(card))) {
             this.flash();
             this.addToBot(new AbstractGameAction() {
                 public void update() {

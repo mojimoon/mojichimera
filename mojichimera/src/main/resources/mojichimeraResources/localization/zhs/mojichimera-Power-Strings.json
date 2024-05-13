@@ -10,8 +10,8 @@
   "mojichimera:NextTurnStartPlayPower": {
     "NAME": "准备",
     "DESCRIPTIONS": [
-      "#b%1$s 回合后，在你的回合开始时，打出 #b%2$s 张 %3$s。",
-      "在下个回合开始时，打出 #b%1$s 张 %2$s。"
+      "#b%1$s 回合后，在你的回合开始时，打出 #b%2$s 张 %3$s 。",
+      "在下个回合开始时，打出 #b%1$s 张 %2$s 。"
     ]
   },
   "mojichimera:NextTurnAddToHandPower": {
@@ -51,10 +51,10 @@
   },
   "mojichimera:FreePower": {
     "NAME": "免费",
-    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s。"]
+    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s 。"]
   },
   "mojichimera:EveryTurnStartPlayPower": {
     "NAME": "免费",
-    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s。"]
+    "DESCRIPTIONS": ["在你的回合开始时，打出 #b%1$s 张 %2$s 。"]
   }
 }

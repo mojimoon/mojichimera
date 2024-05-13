@@ -35,7 +35,12 @@ public class AfterlifeMod extends AbstractAugment {
     @Override
     public void onExhausted(AbstractCard card) {
         card.flash(Color.RED.cpy());
-        Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, card, TURN, COPY));
+//        Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, card, TURN, COPY));
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            card.use(AbstractDungeon.player, AbstractDungeon.getRandomMonster());
+        } else {
+            Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, card, TURN, COPY));
+        }
     }
 
     @Override
