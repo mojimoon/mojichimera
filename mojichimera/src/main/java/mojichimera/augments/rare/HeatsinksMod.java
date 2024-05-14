@@ -16,11 +16,11 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import mojichimera.powers.StormProtocolPower;
+import mojichimera.powers.HeatsinksProtocolPower;
 import mojichimera.util.MojiHelper;
 
-public class StormMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(StormMod.class.getSimpleName());
+public class HeatsinksMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(HeatsinksMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean inherentHack = true;
@@ -65,7 +65,7 @@ public class StormMod extends AbstractAugment {
                 }
                 if (preview != null) {
                     AbstractCard copy = preview.makeStatEquivalentCopy();
-                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StormProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new HeatsinksProtocolPower(AbstractDungeon.player, copy, EFFECT), EFFECT));
                 }
                 this.isDone = true;
             }
@@ -76,7 +76,7 @@ public class StormMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isAttackOrSkill(card)
                 && AugmentHelper.hasStaticCost(card)
-                && !AugmentHelper.hasMultiPreviewMod(card, StormMod.ID)
+                && !AugmentHelper.hasMultiPreviewMod(card, HeatsinksMod.ID)
                 && AugmentHelper.isPowerizeValid(card);
     }
 
@@ -98,7 +98,7 @@ public class StormMod extends AbstractAugment {
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StormMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new HeatsinksMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

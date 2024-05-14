@@ -56,12 +56,16 @@
         "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
     },
     "mojichimera:FutureMod": {
-        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 放入弃牌堆。 NL 源于 #b时间行者 mod 的同名关键词。"],
-        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺言 放入弃牌堆。"]
+        "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 放入抽牌堆。 NL 源于 #b时间行者 mod 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 将一张耗能为 %d 的 *诺言 放入抽牌堆。"]
     },
     "mojichimera:GluttonousMod": {
         "TEXT": ["暴食", "", "首次打出时 #b随机 #y消耗 一张牌，每次打出本牌时将其一并打出。 NL 只适用于可打出的攻击或技能牌。"],
         "EXTRA_TEXT": [" NL 首次打出时随机 消耗 一张牌，每次打出本牌时将其一并打出。", " NL 打出 %s 。"]
+    },
+    "mojichimera:HeatsinksMod": {
+        "TEXT": ["散热", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每打出一张 能力 牌： NL "]
     },
     "mojichimera:HumilityMod": {
         "TEXT": ["辱没", "", "造成的伤害减少 #b33% 。 NL 获得与所造成的未被格挡的伤害相等的 #y活力 。"],
@@ -127,10 +131,6 @@
     "mojichimera:SozuMod": {
         "TEXT": ["添水", "", "本牌耗能至多减少 #b2 。 NL 每有一瓶 #y药水 ，失去 [E] 。"],
         "EXTRA_TEXT": [" NL 每有一瓶 药水 ，失去 [E] 。"]
-    },
-    "mojichimera:StormMod": {
-        "TEXT": ["雷暴", "", "本牌耗能增加 #b1 ，变为 #y能力 牌。 NL 每打出一张 #y能力 牌，打出原牌的复制。"],
-        "EXTRA_TEXT": ["每打出一张 能力 牌： NL "]
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["奇怪", "", "不再 #y消耗 。 "],
@@ -214,7 +214,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:ExperimentalMod": {
-        "TEXT": ["实验性", "", "将 #b3 张随机 #y状态牌 随机放入抽牌堆、弃牌堆或手牌。 NL 卡牌数值在基础值的 #b100% 与 #b300% 之间随机。"],
+        "TEXT": ["实验性", "", "将 #b3 张随机 #y状态牌 随机放入抽牌堆、弃牌堆或手牌。 NL 卡牌数值在基础值的 #b133% 与 #b300% 之间随机。"],
         "EXTRA_TEXT": [" NL 随机添加 %d 张 状态牌 到抽牌堆、弃牌堆或手牌。"]
     },
     "mojichimera:ExploitMod": {
@@ -461,7 +461,7 @@
     },
     "mojichimera:PreemptiveMod": {
         "TEXT": ["先发", "", "在手牌中未打出非 #y先发 牌时，造成的伤害和获得的 #y格挡 增加 #b50% 。"],
-        "EXTRA_TEXT": [" NL 在手牌中未打出非 *先发* 牌时，伤害和 格挡 增加 %d%% 。"]
+        "EXTRA_TEXT": [" NL 在手牌中未打出非 *先发 牌时，伤害和 格挡 增加 %d%% 。"]
     },
     "mojichimera:ReactiveMod": {
         "TEXT": ["活性", "", "#y保留 。 NL 每当这张牌被 #y保留 时，将其在本场战斗的魔法数字增加 #b1 。"],

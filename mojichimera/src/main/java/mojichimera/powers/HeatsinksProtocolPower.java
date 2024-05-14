@@ -14,13 +14,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.mojichimera;
 
-public class StormProtocolPower extends AbstractPower implements NonStackablePower {
-    public static final String POWER_ID = mojichimera.makeID(StormProtocolPower.class.getSimpleName());
+public class HeatsinksProtocolPower extends AbstractPower implements NonStackablePower {
+    public static final String POWER_ID = mojichimera.makeID(HeatsinksProtocolPower.class.getSimpleName());
 
     private static final PowerStrings TEXT = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     private final AbstractCard card;
 
-    public StormProtocolPower(AbstractCreature owner, AbstractCard card, int amount) {
+    public HeatsinksProtocolPower(AbstractCreature owner, AbstractCard card, int amount) {
         this.name = TEXT.NAME;
         this.ID = POWER_ID;
         this.amount = amount;
@@ -28,7 +28,7 @@ public class StormProtocolPower extends AbstractPower implements NonStackablePow
         this.type = PowerType.BUFF;
         this.card = card;
         this.isTurnBased = false;
-        this.loadRegion("storm");
+        this.loadRegion("heatsink");
         this.updateDescription();
     }
 
@@ -46,15 +46,15 @@ public class StormProtocolPower extends AbstractPower implements NonStackablePow
             this.flash();
             this.addToBot(new AbstractGameAction() {
                 public void update() {
-                    for (int i = 0; i < StormProtocolPower.this.amount; ++i) {
-                        AbstractCard tmp = StormProtocolPower.this.card.makeSameInstanceOf();
+                    for (int i = 0; i < HeatsinksProtocolPower.this.amount; ++i) {
+                        AbstractCard tmp = HeatsinksProtocolPower.this.card.makeSameInstanceOf();
                         AbstractDungeon.player.limbo.addToBottom(tmp);
-                        tmp.current_x = StormProtocolPower.this.card.current_x;
-                        tmp.current_y = StormProtocolPower.this.card.current_y;
+                        tmp.current_x = HeatsinksProtocolPower.this.card.current_x;
+                        tmp.current_y = HeatsinksProtocolPower.this.card.current_y;
                         tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
                         tmp.target_y = (float) Settings.HEIGHT / 2.0F;
                         tmp.purgeOnUse = true;
-                        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, StormProtocolPower.this.card.energyOnUse, true, true), true);
+                        AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, HeatsinksProtocolPower.this.card.energyOnUse, true, true), true);
                     }
 
                     this.isDone = true;

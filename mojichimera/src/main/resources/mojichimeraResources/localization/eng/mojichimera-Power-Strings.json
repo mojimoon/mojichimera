@@ -25,8 +25,8 @@
     "NAME": "Steelize",
     "DESCRIPTIONS": ["Increase card values by #b%2$s%% for the next #b%1$s cardreplace played this turn."]
   },
-  "mojichimera:StormProtocolPower": {
-    "NAME": "Storm Protocol",
+  "mojichimera:HeatsinksProtocolPower": {
+    "NAME": "Heatsinks Protocol",
     "DESCRIPTIONS": ["Whenever you play a Power, play #b%1$s copyreplace of %2$s."]
   },
   "mojichimera:DarkProtocolPower": {

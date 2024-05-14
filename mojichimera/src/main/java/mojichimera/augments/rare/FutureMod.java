@@ -55,8 +55,8 @@ public class FutureMod extends AbstractAugment {
                 promise = c;
         }
         if (promise != null) {
-//            addToBot(new MakeTempCardInDrawPileAction(promise, 1, true, true));
-            addToBot(new MakeTempCardInDiscardAction(promise, 1));
+            addToBot(new MakeTempCardInDrawPileAction(promise, 1, true, true));
+//            addToBot(new MakeTempCardInDiscardAction(promise, 1));
         }
     }
 

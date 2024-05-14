@@ -25,8 +25,8 @@
     "NAME": "钢铁化",
     "DESCRIPTIONS": ["本回合打出的下 #b%1$s 张牌数值增加 #b%2$s%% 。"]
   },
-  "mojichimera:StormProtocolPower": {
-    "NAME": "雷暴协议",
+  "mojichimera:HeatsinksProtocolPower": {
+    "NAME": "散热协议",
     "DESCRIPTIONS": ["每打出一张 能力 牌，打出 #b%1$s 张 %2$s 。"]
   },
   "mojichimera:DarkProtocolPower": {

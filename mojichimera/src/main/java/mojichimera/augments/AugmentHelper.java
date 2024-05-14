@@ -135,7 +135,7 @@ public class AugmentHelper {
                 PastMod.ID,
                 SkillizedMod.ID,
                 UnawakenedMod.ID,
-                StormMod.ID,
+                HeatsinksMod.ID,
                 EmbraceMod.ID,
                 RushdownMod.ID,
                 CounterMod.ID,
@@ -169,7 +169,7 @@ public class AugmentHelper {
                 ExplosiveMod.ID,
                 InfiniteMod.ID,
                 SkillizedMod.ID,
-                StormMod.ID,
+                HeatsinksMod.ID,
                 EmbraceMod.ID,
                 RushdownMod.ID,
                 CounterMod.ID,
@@ -288,7 +288,8 @@ public class AugmentHelper {
                 && !usesAction(card, ChooseOneAction.class)
                 && !usesClass(card, EndTurnDeathPower.class)
 //                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
-                && noShenanigans(card);
+                && noShenanigans(card)
+                && !card.rarity.equals(AbstractCard.CardRarity.BASIC);
     }
 
 }
