@@ -42,7 +42,8 @@ public class HighCardMod extends AbstractAugment {
     }
 
     private boolean allDistinctCards(CardGroup group) {
-        return group.group.stream().map(c -> c.cardID).distinct().count() == group.size();
+//        return group.group.stream().map(c -> c.cardID).distinct().count() == group.size();
+        return group.group.stream().map(c -> c.name).distinct().count() == group.size();
     }
 
     @Override

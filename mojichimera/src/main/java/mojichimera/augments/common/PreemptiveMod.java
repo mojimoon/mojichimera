@@ -66,7 +66,7 @@ public class PreemptiveMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
+        return AugmentHelper.reachesDamageOrBlock(card, 2)
                 && AugmentHelper.isPlayable(card)
                 && AugmentHelper.isNormal(card);
     }

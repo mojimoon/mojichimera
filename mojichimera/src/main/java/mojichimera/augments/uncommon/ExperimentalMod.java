@@ -26,7 +26,7 @@ public class ExperimentalMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int STATUS = 3;
-    private static final float MIN_MULTIPLIER = 1.3333334F;
+    private static final float MIN_MULTIPLIER = 1.33F;
     private static final float MAX_MULTIPLIER = 3.0F;
 //    private static final float EXTRA_MULTIPLIER = 0.25F;
     private static final Random rng = new Random();
@@ -34,45 +34,50 @@ public class ExperimentalMod extends AbstractAugment {
     public static final SpireField<Integer> baseDamage = new SpireField<>(() -> 0);
     public static final SpireField<Integer> baseBlock = new SpireField<>(() -> 0);
     public static final SpireField<Integer> baseMagic = new SpireField<>(() -> 0);
-    private boolean modMagic;
+    public static final SpireField<Integer> damageMap = new SpireField<>(() -> 0);
+    public static final SpireField<Integer> blockMap = new SpireField<>(() -> 0);
+    public static final SpireField<Integer> magicMap = new SpireField<>(() -> 0);
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-            this.modMagic = true;
         updateValues(card);
     }
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (damage > 0)
-            return damage * getMultiplier(card);
+        if (damageMap.get(card) > 0)
+            return (float) damageMap.get(card) / baseDamage.get(card) * damage;
         return damage;
     }
 
-
     @Override
     public float modifyBaseBlock(float block, AbstractCard card) {
-        if (block > 0)
-            return block * getMultiplier(card);
+        if (blockMap.get(card) > 0)
+            return (float) blockMap.get(card) / baseBlock.get(card) * block;
         return block;
     }
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (this.modMagic)
-            return magic * getMultiplier(card);
+        if (magicMap.get(card) > 0)
+            return (float) magicMap.get(card) / baseMagic.get(card) * magic;
         return magic;
     }
 
     private void updateValues(AbstractCard card) {
         try {
-            if (card.baseDamage > 0)
+            if (card.baseDamage > 0) {
                 baseDamage.set(card, card.baseDamage);
-            if (card.baseBlock > 0)
+                damageMap.set(card, (int) Math.ceil(card.baseDamage * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
+            }
+            if (card.baseBlock > 0) {
                 baseBlock.set(card, card.baseBlock);
-            if (this.modMagic)
+                blockMap.set(card, (int) Math.ceil(card.baseBlock * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
+            }
+            if (card.baseMagicNumber > 0) {
                 baseMagic.set(card, card.baseMagicNumber);
+                magicMap.set(card, (int) Math.ceil(card.baseMagicNumber * (rng.random(MIN_MULTIPLIER, MAX_MULTIPLIER))));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -154,6 +159,14 @@ public class ExperimentalMod extends AbstractAugment {
 //                isDone = true;
 //            }
 //        });
+
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                updateValues(card);
+                isDone = true;
+            }
+        });
     }
 
     @Override
@@ -174,11 +187,12 @@ public class ExperimentalMod extends AbstractAugment {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String tmp = insertAfterText(rawDescription, String.format(CARD_TEXT[0], STATUS));
-//        if (bonus.get(card) == 0) {
-            tmp = tmp.replace("!D!", String.format("%d~%d", (int) Math.floor(baseDamage.get(card) * MIN_MULTIPLIER), (int) Math.floor(baseDamage.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!B!", String.format("%d~%d", (int) Math.floor(baseBlock.get(card) * MIN_MULTIPLIER), (int) Math.floor(baseBlock.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!M!", String.format("%d~%d", (int) Math.floor(baseMagic.get(card) * MIN_MULTIPLIER), (int) Math.floor(baseMagic.get(card) * MAX_MULTIPLIER)));
-//        }
+        if (!MojiHelper.isInCombat()) {
+            tmp = tmp.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
+            return tmp;
+        }
         return tmp;
     }
 
