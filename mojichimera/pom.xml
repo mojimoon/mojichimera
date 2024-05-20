@@ -6,7 +6,7 @@
     <groupId>mojimoon</groupId>
     <artifactId>mojichimera</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>Mojimoon Chimera</name>
-    <version>0.6.1</version>
+    <version>0.6.2</version>
     <description>Chimera expansion by Mojimoon. Now crossover with The Packmaster! (Can run without The Packmaster; to enable the crossover, you need to load Packmaster before this mod.)</description>
 
     <properties>

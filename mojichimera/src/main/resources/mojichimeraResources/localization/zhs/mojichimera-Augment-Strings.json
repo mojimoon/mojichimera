@@ -234,7 +234,7 @@
         "EXTRA_TEXT": [" NL 获得 %d 点 临时 集中 。"]
     },
     "mojichimera:ForeDoomedMod": {
-        "TEXT": ["灾厄", "", "随机获得 #b2 张 #y诅咒 。 NL 手牌中每有一张 #y诅咒 ， 再打出一次 。 NL 源于 #b奇美拉 的弃用词条 #y诅咒 。"],
+        "TEXT": ["灾厄", "", "随机获得 #b2 张 #y诅咒 （不包括 #y凡庸 ）。 NL 手牌中每有一张 #y诅咒 ， 再打出一次 。 NL 源于 #b奇美拉 的弃用词条 #y诅咒 。"],
         "EXTRA_TEXT": [" NL 随机获得 %d 张 诅咒 。 NL 手牌中每有一张 诅咒 ， 再打出一次 。"]
     },
     "mojichimera:FuelFlameMod": {

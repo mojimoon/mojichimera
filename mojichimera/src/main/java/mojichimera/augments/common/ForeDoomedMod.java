@@ -4,6 +4,7 @@ import CardAugments.cardmods.AbstractAugment;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.cards.curses.Normality;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
@@ -36,7 +37,11 @@ public class ForeDoomedMod extends AbstractAugment {
             public void update() {
                 if (!card.purgeOnUse) {
                     for (int i = 0; i < EFFECT; i++) {
-                        addToTop(new MakeTempCardInHandAction(AbstractDungeon.returnRandomCurse(), 1));
+                        AbstractCard c;
+                        do {
+                            c = AbstractDungeon.returnRandomCurse();
+                        } while (c instanceof Normality);
+                        addToTop(new MakeTempCardInHandAction(c, 1));
                     }
                 }
                 this.isDone = true;

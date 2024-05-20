@@ -52,15 +52,25 @@ public class ShareMod extends AbstractAugment {
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
+                boolean hasDamage = card.baseDamage > 0;
+                boolean hasBlock = card.baseBlock > 0;
                 for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                    if (c != card && AugmentHelper.hasDamageOrBlock(c)) {
-                        if (!CardModifierManager.hasModifier(c, ShareHelperMod.ID)) {
-                            CardModifierManager.addModifier(c, new ShareHelperMod());
-                            ShareHelperMod.sharedDamage.set(c, Math.max(card.damage, 0));
-                            ShareHelperMod.sharedBlock.set(c, Math.max(card.block, 0));
-                        } else {
-                            ShareHelperMod.sharedDamage.set(c, ShareHelperMod.sharedDamage.get(c) + Math.max(card.damage, 0));
-                            ShareHelperMod.sharedBlock.set(c, ShareHelperMod.sharedBlock.get(c) + Math.max(card.block, 0));
+                    if (c != card) {
+                        if (hasDamage && c.baseDamage > 0) {
+                            if (CardModifierManager.hasModifier(c, ShareHelperMod.ID)) {
+                                ShareHelperMod.sharedBlock.set(c, ShareHelperMod.sharedBlock.get(c) + card.damage);
+                            } else {
+                                CardModifierManager.addModifier(c, new ShareHelperMod());
+                                ShareHelperMod.sharedBlock.set(c, card.damage);
+                            }
+                        }
+                        if (hasBlock && c.baseBlock > 0) {
+                            if (CardModifierManager.hasModifier(c, ShareHelperMod.ID)) {
+                                ShareHelperMod.sharedBlock.set(c, ShareHelperMod.sharedBlock.get(c) + card.block);
+                            } else {
+                                CardModifierManager.addModifier(c, new ShareHelperMod());
+                                ShareHelperMod.sharedBlock.set(c, card.block);
+                            }
                         }
                     }
                 }

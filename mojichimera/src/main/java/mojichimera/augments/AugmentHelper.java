@@ -142,7 +142,8 @@ public class AugmentHelper {
                 FireBreathingMod.ID,
                 SadisticMod.ID,
                 GluttonousMod.ID,
-                FutureMod.ID
+                FutureMod.ID,
+                DelayedMod.ID
         };
 
 //        for (String id : modid) {

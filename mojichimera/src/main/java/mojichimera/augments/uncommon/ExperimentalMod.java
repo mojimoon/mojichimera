@@ -26,7 +26,7 @@ public class ExperimentalMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int STATUS = 3;
-    private static final float MIN_MULTIPLIER = 1.33F;
+    private static final float MIN_MULTIPLIER = 1.3333334F;
     private static final float MAX_MULTIPLIER = 3.0F;
 //    private static final float EXTRA_MULTIPLIER = 0.25F;
     private static final Random rng = new Random();
