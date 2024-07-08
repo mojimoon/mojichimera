@@ -1,4 +1,4 @@
-package mojichimera.deprecated;
+package mojichimera.augments.special;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.cardmods.ExhaustMod;
@@ -67,7 +67,7 @@ public class ChimericMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ChimericMod(); }

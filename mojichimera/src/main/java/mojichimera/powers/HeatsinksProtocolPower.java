@@ -42,7 +42,7 @@ public class HeatsinksProtocolPower extends AbstractPower implements NonStackabl
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if (card.type == AbstractCard.CardType.POWER && this.amount > 0) {
+        if (card.type == AbstractCard.CardType.POWER && !card.purgeOnUse && this.amount > 0) {
             this.flash();
             this.addToBot(new AbstractGameAction() {
                 public void update() {

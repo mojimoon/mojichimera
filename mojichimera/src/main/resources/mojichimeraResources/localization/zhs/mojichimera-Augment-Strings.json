@@ -40,16 +40,12 @@
         "EXTRA_TEXT": [" NL 在首领与精英战中数值增加 %d%% 。"]
     },
     "mojichimera:CorruptedMod": {
-        "TEXT": ["腐化", "", "再打出 #b4 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张放入抽牌堆。"],
+        "TEXT": ["腐化", "", "再打出 #b4 次 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #y晕眩 、 #y黏液 、 #y伤口 、 #y灼伤 和 #y虚空 各一张放入抽牌堆。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 接受腐化之心的诅咒。"]
     },
     "mojichimera:CounterMod": {
         "TEXT": ["反击", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每次受到攻击伤害时，对伤害来源打出原牌的复制。"],
         "EXTRA_TEXT": ["每次受到攻击伤害时： NL "]
-    },
-    "mojichimera:EmbraceMod": {
-        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。"],
-        "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
     },
     "mojichimera:ForesightMod": {
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
@@ -160,10 +156,6 @@
     "mojichimera:XXMod": {
         "TEXT": ["", " XX", "本牌生效X次。"],
         "EXTRA_TEXT": [" NL 生效X次。"]
-    },
-    "mojichimera:AdaptiveMod": {
-        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
-        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"]
     },
     "mojichimera:BarrageMod": {
         "TEXT": ["", "齐射", "丢弃手牌中所有 #y状态牌，抽等量的牌。 NL 源于 #b崩坠 #y铜制机械人偶 的卡牌 #b错误齐射 。"],
@@ -365,10 +357,6 @@
         "TEXT": ["直率", "", "本牌耗能变为 #b0 。 NL 获得的 #y格挡 减少 #b100% 。"],
         "EXTRA_TEXT": []
     },
-    "mojichimera:ChimericMod": {
-        "TEXT": ["奇美拉", "", "打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
-        "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"]
-    },
     "mojichimera:CleansingMod": {
         "TEXT": ["清理", "", "随机 #y消耗 抽牌堆、弃牌堆和手牌中的 #b1(+1) 张 #y状态牌 或 #y诅咒 牌 。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
         "EXTRA_TEXT": [" NL 随机 消耗 拥有的 %s 张 状态牌 或 诅咒 牌 。", " NL 随机 消耗 拥有的 %s 张 状态牌 或 诅咒 牌 。"],
@@ -552,10 +540,22 @@
     },
     "mojichimera:RouletteMod": {
         "TEXT": ["", "轮盘赌", "有 #b1/6 概率可打出。若抽到时不可打出，概率增加 #b1/6 。 NL 再打出 #b3 次。 NL 打出后概率重置。"],
-        "EXTRA_TEXT": [" NL 有 %s/%d 概率可打出 。 再打出 %d 次 。"]
+        "EXTRA_TEXT": [" NL 有 %s/%d 概率可打出 。 再打出 %d 次 。"],
+        "NOTES": ["UNIMPLEMENTED"]
+    },
+    "mojichimera:AdaptiveMod": {
+        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
+        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"],
+        "NOTES": ["DEPRECATED"]
+    },
+    "mojichimera:ChimericMod": {
+        "TEXT": ["奇美拉", "", "打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
+        "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"],
+        "NOTES": ["DEPRECATED"]
     },
     "mojichimera:ContinuousMod": {
         "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
-        "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"]
+        "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"],
+        "NOTES": ["UNIMPLEMENTED"]
     }
 }
