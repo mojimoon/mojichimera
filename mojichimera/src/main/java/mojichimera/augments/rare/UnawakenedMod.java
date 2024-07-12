@@ -3,17 +3,17 @@ package mojichimera.augments.rare;
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.util.Wiz;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.special.AwakenedMod;
 import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.powers.NextTurnAddToHandPower;
 
 public class UnawakenedMod extends AbstractAugment {

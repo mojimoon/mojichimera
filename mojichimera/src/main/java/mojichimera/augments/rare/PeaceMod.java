@@ -1,11 +1,9 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -15,6 +13,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
 public class PeaceMod extends AbstractAugment {

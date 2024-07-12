@@ -1,14 +1,14 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.mojichimera;
 
 public class GoldenMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(GoldenMod.class.getSimpleName());

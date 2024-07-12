@@ -1,8 +1,6 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -11,6 +9,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.watcher.MantraPower;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class TranquilMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(TranquilMod.class.getSimpleName());

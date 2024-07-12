@@ -2,16 +2,16 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class RebateMod extends AbstractAugment implements DynvarCarrier {
     public static final String ID = mojichimera.makeID(RebateMod.class.getSimpleName());

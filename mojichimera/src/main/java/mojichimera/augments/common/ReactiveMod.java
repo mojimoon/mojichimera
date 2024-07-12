@@ -1,16 +1,15 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class ReactiveMod extends AbstractAugment {

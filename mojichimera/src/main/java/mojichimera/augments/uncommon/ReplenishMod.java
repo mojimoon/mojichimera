@@ -1,12 +1,12 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import mojichimera.mojichimera;
 
 public class ReplenishMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ReplenishMod.class.getSimpleName());

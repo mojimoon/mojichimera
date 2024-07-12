@@ -1,12 +1,12 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.mojichimera;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class HappyMod extends AbstractAugment {

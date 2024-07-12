@@ -1,14 +1,14 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class BuriedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BuriedMod.class.getSimpleName());

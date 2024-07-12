@@ -2,12 +2,11 @@ package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.rare.SearingMod;
-import CardAugments.patches.InfiniteUpgradesPatches;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class TransfiniteMod extends SearingMod {
     public static final String ID = mojichimera.makeID(TransfiniteMod.class.getSimpleName());

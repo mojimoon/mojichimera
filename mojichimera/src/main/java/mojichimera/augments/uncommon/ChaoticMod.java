@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.random.Random;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
-import com.megacrit.cardcrawl.random.Random;
 import mojichimera.util.MojiHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)

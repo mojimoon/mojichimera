@@ -1,10 +1,10 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.mojichimera;
 
 public class ReinforcedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ReinforcedMod.class.getSimpleName());

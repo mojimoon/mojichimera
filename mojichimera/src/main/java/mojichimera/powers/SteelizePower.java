@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.augments.AugmentHelper;
-import mojichimera.augments.special.NamelessMod;
 import mojichimera.cardmods.Value50UpMod;
 import mojichimera.mojichimera;
 

@@ -13,8 +13,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import mojichimera.mojichimera;
 
-import java.util.ArrayList;
-
 public class EveryTurnStartPlayPower extends AbstractPower implements CloneablePowerInterface {
     public static final String POWER_ID = mojichimera.makeID(EveryTurnStartPlayPower.class.getSimpleName());
 

@@ -1,12 +1,12 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
 import java.util.Iterator;

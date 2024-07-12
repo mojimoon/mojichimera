@@ -1,12 +1,12 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
 public class CreditMod extends AbstractAugment {

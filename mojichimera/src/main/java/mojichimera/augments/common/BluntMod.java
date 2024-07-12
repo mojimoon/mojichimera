@@ -1,15 +1,21 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
-import com.megacrit.cardcrawl.cards.red.*;
-import com.megacrit.cardcrawl.cards.green.*;
-import com.megacrit.cardcrawl.cards.blue.*;
-import com.megacrit.cardcrawl.cards.purple.*;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.ConserveBattery;
+import com.megacrit.cardcrawl.cards.blue.Hologram;
+import com.megacrit.cardcrawl.cards.green.Backflip;
+import com.megacrit.cardcrawl.cards.green.Blur;
+import com.megacrit.cardcrawl.cards.purple.DeceiveReality;
+import com.megacrit.cardcrawl.cards.purple.EmptyBody;
+import com.megacrit.cardcrawl.cards.purple.Evaluate;
+import com.megacrit.cardcrawl.cards.purple.Swivel;
+import com.megacrit.cardcrawl.cards.red.Armaments;
+import com.megacrit.cardcrawl.cards.red.SecondWind;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class BluntMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BluntMod.class.getSimpleName());

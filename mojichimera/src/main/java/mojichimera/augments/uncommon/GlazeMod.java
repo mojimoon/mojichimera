@@ -1,14 +1,7 @@
 package mojichimera.augments.uncommon;
 
-import CardAugments.actions.AutoplayOnRandomEnemyAction;
-import CardAugments.actions.ImmediateExhaustCardAction;
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
