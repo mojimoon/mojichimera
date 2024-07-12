@@ -379,11 +379,11 @@
         "EXTRA_TEXT": ["下回合开始时： NL "]
     },
     "mojichimera:EmptiedMod": {
-        "TEXT": ["空无", "", "再打出一次 。 NL 将 #b1 张 #y虚空 放入抽牌堆。"],
-        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 *虚空 放入抽牌堆。"]
+        "TEXT": ["空无", "", "再打出 #b2 次 。 NL 将 #b1 张 #y虚空 添加到抽牌堆顶。"],
+        "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 将 %d 张 *虚空 添加到抽牌堆顶。"]
     },
     "mojichimera:EquilibriumMod": {
-        "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
+        "TEXT": ["均衡", "", "本回合可 #y保留 #b2(+1) 张手牌。"],
         "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
     },
     "mojichimera:FinaleMod": {
@@ -520,12 +520,12 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:packmaster_EchoMod": {
-        "TEXT": ["回响", "", "打出时获得本牌的 #y消耗 #y虚无 复制。"],
+        "TEXT": ["回响", "", "打出时将本牌的 #y消耗 #y虚无 复制加入手牌。"],
         "EXTRA_TEXT": [" NL anniv5:回响 。"]
     },
     "mojichimera:packmaster_PrismaticMod": {
-        "TEXT": ["", "棱镜", "随机获得 #b1 张 #y虚无 #y异色 牌。"],
-        "EXTRA_TEXT": [" NL 随机获得 %d 张 虚无 anniv5:异色 牌。"]
+        "TEXT": ["", "棱镜", "将 #b1 张随机 #y虚无 #y异色 牌加入手牌。"],
+        "EXTRA_TEXT": [" NL 将 %d 张随机 虚无 anniv5:异色 牌加入手牌。"]
     },
     "mojichimera:VirusMod": {
         "TEXT": ["", "病毒", "#y虚无 。 NL 打出时将所有手牌变为本牌的复制。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],

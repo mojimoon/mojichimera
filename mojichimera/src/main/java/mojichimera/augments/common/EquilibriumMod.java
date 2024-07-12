@@ -19,7 +19,7 @@ public class EquilibriumMod extends AbstractAugment implements DynvarCarrier {
     public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
+    private static final int EFFECT = 2;
     private static final int UPGRADE_EFFECT = 1;
     public boolean modified;
     public boolean upgraded;

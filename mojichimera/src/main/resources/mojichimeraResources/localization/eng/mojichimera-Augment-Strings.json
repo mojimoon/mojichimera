@@ -349,64 +349,192 @@
         "TEXT": ["Volatile", "", "Plays for a random number of times between #0 and #3 . NL Plays at least #b1 time when this card #yExhausts."],
         "EXTRA_TEXT": [" NL Plays for a random number of times between %d and %d ."]
     },
-    "mojichimera:RentalMod": {
-        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b6 #yGold when played."],
-        "EXTRA_TEXT": [" NL Lose %d Gold."]
+    "mojichimera:ArtOfMod": {
+        "TEXT": ["Art of", "", "If this card is in your hand at the end of your turn, draw #b1 card next turn."],
+        "EXTRA_TEXT": [" NL If this card is in your hand at the end of your turn, draw %d card next turn."]
     },
-    "mojichimera:PeacefulMod": {
-        "TEXT": ["Peaceful", "", "Sets cost to #b0. NL Reduces damage by #b100%."],
+    "mojichimera:BankruptMod": {
+        "TEXT": ["Bankrupted", "", "If you have no more than #b100(150) #yGold, reduces cost by [E] ."],
+        "EXTRA_TEXT": [" NL If you have no more than %d Gold, reduces cost by [E] ."]
+    },
+    "mojichimera:BloodDebtMod": {
+        "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b2 HP when played."],
+        "EXTRA_TEXT": ["Lose %d HP. NL "]
+    },
+    "mojichimera:BluntMod": {
+        "TEXT": ["Blunt", "", "Sets cost to #b0. NL Reduces #yBlock by #b100%."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:CleansingMod": {
+        "TEXT": ["Cleansing", "", "#yExhausts #b1(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
+        "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card you own.", " NL Exhaust %s random Status or Curse cards you own."]
+    },
+    "mojichimera:ConcentratedMod": {
+        "TEXT": ["Concentrated", "", "Reduces cost by #b2. NL Discards #b3(2) cards."],
+        "EXTRA_TEXT": [" NL Discard %d cards."]
+    },
+    "mojichimera:CreditMod": {
+        "TEXT": ["Creditable", "", "If you have at least #b250(150) #yGold, reduces cost by [E] ."],
+        "EXTRA_TEXT": [" NL If you have at least %d Gold, reduces cost by [E] ."]
+    },
+    "mojichimera:DelayedMod": {
+        "TEXT": ["Delayed", "", "Reduces cost by #b1. NL Effects trigger at the start of the next turn."],
+        "EXTRA_TEXT": ["At the start of the next turn: NL "]
+    },
+    "mojichimera:EmptiedMod": {
+        "TEXT": ["Emptied", "", "Plays #b2 more times. NL Adds #b1 #yVoid on top of your draw pile."],
+        "EXTRA_TEXT": [" NL Plays %d more times. NL Adds %d *Void on top of your draw pile."]
+    },
+    "mojichimera:EquilibriumMod": {
+        "TEXT": ["Equilibrium", "", "#yRetain up to #b2(+1) cards this turn."],
+        "EXTRA_TEXT": [" NL #yRetain up to %s cards this turn.", " NL #yRetain up to %s cards this turn."]
+    },
+    "mojichimera:FinaleMod": {
+        "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
+        "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d% and draws %d card."]
+    },
+    "mojichimera:GoldenMod": {
+        "TEXT": ["Golden", "", "Gains #b3 #yGold when played."],
+        "EXTRA_TEXT": [" NL Gain %d Gold."]
+    },
+    "mojichimera:HalfMod": {
+        "TEXT": ["Half", "", "If you have played no more than #b3 cards this turn, increases damage and #yBlock by #b50%."],
+        "EXTRA_TEXT": [" NL If you have played no more than %d cards this turn, increases damage and Block by %d%%."]
+    },
+    "mojichimera:HappyMod": {
+        "TEXT": ["Happy", "", "Reduces cost by [E] for every #b3(2) times drawn."],
+        "EXTRA_TEXT": [" NL Reduces cost by [E] for every %d times drawn."]
+    },
+    "mojichimera:HeavyThrowMod": {
+        "TEXT": ["", "Heavy Throw", "Plays twice. NL Gains #b2 #yFrail."],
+        "EXTRA_TEXT": [" NL Plays twice. NL Gain %d Frail."]
+    },
+    "mojichimera:HexedMod": {
+        "TEXT": ["Hexed", "", "Reduces cost by #b1. NL Shuffles #b1 #yDazed into your draw pile."],
+        "EXTRA_TEXT": [" NL Shuffles %d #yDazed into your draw pile."]
+    },
+    "mojichimera:HorrorMod": {
+        "TEXT": ["", "Horror", "Plays twice. NL Gains #b1 #yVulnerable."],
+        "EXTRA_TEXT": [" NL Plays twice. NL Gain %d Vulnerable."]
+    },
+    "mojichimera:InfusedMod": {
+        "TEXT": ["Infused", "", "Increases damage by an additional #b5 when upgraded."],
         "EXTRA_TEXT": []
     },
     "mojichimera:InspiredMod": {
         "TEXT": ["Inspired", "", "Increases magic number by an additional #b1 when upgraded."],
         "EXTRA_TEXT": []
     },
-    "mojichimera:InfusedMod": {
-        "TEXT": ["Infused", "", "Increases damage by an additional #b5 when upgraded."],
-        "EXTRA_TEXT": []
+    "mojichimera:LanternMod": {
+        "TEXT": ["", "Lantern", "When first drawn, gains [E] ."],
+        "EXTRA_TEXT": [" NL When first drawn, gains [E] ."]
     },
-    "mojichimera:ReinforcedMod": {
-        "TEXT": ["Reinforced", "", "Increases #yBlock by an additional #b4 when upgraded."],
-        "EXTRA_TEXT": []
+    "mojichimera:PairMod": {
+        "TEXT": ["Pair", "", "If there is another card of the same name in your hand, increases damage and #yBlock by #b100%."],
+        "EXTRA_TEXT": [" NL If there is another card of the same name in your hand, increases damage and Block by %d%%."]
     },
-    "mojichimera:BluntMod": {
-        "TEXT": ["Blunt", "", "Sets cost to #b0. NL Reduces #yBlock by #b100%."],
+    "mojichimera:PastMod": {
+        "TEXT": ["Past", "", "Increases card values by #b50%. NL Effects trigger at the start of the next turn."],
+        "EXTRA_TEXT": ["At the start of the next turn: NL "]
+    },
+    "mojichimera:PeacefulMod": {
+        "TEXT": ["Peaceful", "", "Sets cost to #b0. NL Reduces damage by #b100%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:PocketMod": {
-        "TEXT": ["Pocket", "", "Sets cost to #b1. NL Proportionally reduces card values (rounded up)."],
+        "TEXT": ["Pocket", "", "Sets cost to #b0. NL Proportionally reduces card values (rounded up)."],
         "EXTRA_TEXT": []
     },
-    "mojichimera:BloodDebtMod": {
-        "TEXT": ["", "Blood Debt", "Reduces cost by #b1. NL Loses #b2 HP when played."],
-        "EXTRA_TEXT": ["Lose %d HP. NL "]
+    "mojichimera:PortableMod": {
+        "TEXT": ["Portable", "", "Reduces cost by #b1. NL Loses [E] when played."],
+        "EXTRA_TEXT": [" NL Lose [E] when played."]
+    },
+    "mojichimera:PowerThroughMod": {
+        "TEXT": ["Power Through", "", "Increases damage and #yBlock by #b100%. NL Adds #b2 #yWounds to your hand."],
+        "EXTRA_TEXT": [" NL Adds %d #yWounds to your hand."]
+    },
+    "mojichimera:PreemptiveMod": {
+        "TEXT": ["Preemptive", "", "If no #ynon-Preemptive cards are played while in your hand, increases damage and #yBlock by #b50%."],
+        "EXTRA_TEXT": [" NL If no non-Preemptive cards are played while in your hand, increases damage and Block by %d%%."]
     },
     "mojichimera:ReactiveMod": {
         "TEXT": ["Reactive", "", "#yRetain. NL When #yRetained, increases magic number by #b1 this combat."],
         "EXTRA_TEXT": [
             "Retain. NL ",
-            " NL When Retained, increase magic number by %d.",
+            " NL When Retained, increase magic number by %d this combat.",
             " NL When Retained, increase magic number by %d this combat."
         ]
     },
-    "mojichimera:CleansingMod": {
-        "TEXT": ["Cleansing", "", "#yExhausts #b1(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
-        "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card you own.", " NL Exhaust %s random Status or Curse cards you own."]
+    "mojichimera:RebateMod": {
+        "TEXT": ["Rebate", "", "#yEthereal. NL When #yExhausted, gives #b8(+4) #yGold."],
+        "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %s Gold."]
     },
-    "mojichimera:HeavyThrowMod": {
-        "TEXT": ["", "Heavy Throw", "Plays twice. NL Gains #b2 #yFrail."],
-        "EXTRA_TEXT": [" NL Plays twice. NL Gain %d Frail."]
+    "mojichimera:RecklessMod": {
+        "TEXT": ["Reckless", "", "Increases damage and #yBlock by #b50%. NL Shuffles #b1 #yDazed into your draw pile."],
+        "EXTRA_TEXT": [" NL Shuffles %d #yDazed into your draw pile."]
     },
-    "mojichimera:GoldenMod": {
-        "TEXT": ["Golden", "", "Gains #b3 #yGold when played."],
-        "EXTRA_TEXT": [" NL Gain %d Gold."]
+    "mojichimera:ReinforcedMod": {
+        "TEXT": ["Reinforced", "", "Increases #yBlock by an additional #b4 when upgraded."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:RentalMod": {
+        "TEXT": ["Rental", "", "Reduces cost by #b1. NL Loses #b6 #yGold when played."],
+        "EXTRA_TEXT": [" NL Lose %d Gold."]
+    },
+    "mojichimera:SelfTaughtMod": {
+        "TEXT": ["Self-Taught", "", "#yUpgrades in this combat when played."],
+        "EXTRA_TEXT": [" NL Upgrades in this combat."]
+    },
+    "mojichimera:VigorMod": {
+        "TEXT": ["Vigor", "", "Gains #b4 #yVigor."],
+        "EXTRA_TEXT": [" NL Gains %d #yVigor."]
+    },
+    "mojichimera:WildMod": {
+        "TEXT": ["Wild", "", "Increases damage and #yBlock by #b75%. NL Shuffles #b1 #yWound to your draw pile."],
+        "EXTRA_TEXT": [" NL Shuffles %d #yWound to your draw pile."]
+    },
+    "mojichimera:WorshipMod": {
+        "TEXT": ["", "Worship", "Plays twice. NL Gains #b2 #yWeak."],
+        "EXTRA_TEXT": [" NL Plays twice. NL Gains %d Weak."]
+    },
+    "mojichimera:AwakenedMod": {
+        "TEXT": ["Awakened", "", "Increases card values by #b200%."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:NamelessMod": {
+        "TEXT": ["Nameless", "", "Increases card values by #b50%."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:ShareHelperMod": {
+        "TEXT": ["Shared", "", "Expresses gratitude for #ySharing."],
+        "EXTRA_TEXT": []
+    },
+    "mojichimera:PromiseMod": {
+        "TEXT": ["Promise", "", "When #yExhausted, draw #b1 card."],
+        "EXTRA_TEXT": [" NL When exhausted, draw %d card."]
+    },
+    "mojichimera:packmaster_VirusMod": {
+        "TEXT": ["", "Virus", "When played, turns all cards in your hand into #yExhaust and #yEthereal copies of this card. NL Copies do not have #yVirus."],
+        "EXTRA_TEXT": [" NL Turns all cards in your hand into anniv5:Echo copies of this card."]
+    },
+    "mojichimera:packmaster_InscribedMod": {
+        "TEXT": ["Inscribed", "", "When played, activate the passive of your next Orb, then of all #yFull and #yCrescent #yMoon Orbs."],
+        "EXTRA_TEXT": [" NL Activate the passive of your next Orb, then of all Full and Crescent Moon Orbs."]
+    },
+    "mojichimera:packmaster_EchoMod": {
+        "TEXT": ["Echo", "", "When played, adds an #yExhaust and #yEthereal copy of this card to your hand."],
+        "EXTRA_TEXT": [" NL anniv5:Echo ."]
+    },
+    "mojichimera:packmaster_PrismaticMod": {
+        "TEXT": ["Prismatic", "", "Adds #b1 random #yEthereal #Different #Color card to your hand."],
+        "EXTRA_TEXT": [" NL Adds %d random Ethereal anniv5:different\u00a0color card to your hand."]
+    },
+    "mojichimera:AdaptiveMod": {
+        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the target enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
+        "EXTRA_TEXT": [" NL If the target enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
     },
     "mojichimera:ChimericMod": {
         "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
         "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
-    },
-    "mojichimera:RebateMod": {
-        "TEXT": ["Rebate", "", "#yEthereal. NL When #yExhausted, gives #b6(+3) #yGold."],
-        "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %s Gold."]
     }
 }
