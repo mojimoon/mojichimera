@@ -288,6 +288,10 @@
             " NL If the enemy has Weak, NL gain [G] and NL draw 1 card."
         ]
     },
+    "mojichimera:ProudfulMod": {
+        "TEXT": ["Proudful", "", "Increases damage by #b20% for each type of #yBuff you have."],
+        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Buff you have."]
+    },
     "mojichimera:RecyclableMod": {
         "TEXT": ["Recyclable", "", "#yEthereal. NL When #yExhausted, gives [E] next turn."],
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain [E] next turn."]
@@ -313,8 +317,8 @@
         "EXTRA_TEXT": ["Whenever you apply Debuffs to an enemy: NL "]
     },
     "mojichimera:SarcasticMod": {
-        "TEXT": ["Sarcastic", "", "Increases damage by #b20% for each #yDebuff the target enemy has, or each #yBuff you have."],
-        "EXTRA_TEXT": [" NL Increases damage by %d%% for each Debuff the target enemy has, or each Buff you have."]
+        "TEXT": ["Sarcastic", "", "Increases damage by #b20% for each type of #yDebuff the target enemy has."],
+        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Debuff the target enemy has."]
     },
     "mojichimera:SteelMod": {
         "TEXT": ["Steel", "", "Increases card values by #b50% for the next #b1 card played this turn when drawn. NL The target cards must be an Attack, Skill, or Power card with values of at least #b2."],

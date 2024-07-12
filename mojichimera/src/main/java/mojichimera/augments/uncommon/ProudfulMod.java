@@ -12,8 +12,8 @@ import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
-public class SarcasticMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(SarcasticMod.class.getSimpleName());
+public class ProudfulMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ProudfulMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 20;
@@ -32,7 +32,7 @@ public class SarcasticMod extends AbstractAugment {
     private int count(AbstractCard card, AbstractMonster target) {
         if (!MojiHelper.isInCombat())
             return 0;
-        return (target == null ? 0 : (int) target.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count());
+        return (int) AbstractDungeon.player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.BUFF).count();
     }
 
     @Override
@@ -50,10 +50,10 @@ public class SarcasticMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AugmentRarity getModRarity() { return AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SarcasticMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ProudfulMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
