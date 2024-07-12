@@ -16,8 +16,8 @@
         "EXTRA_TEXT": [" NL When exhausted, treat as played."]
     },
     "mojichimera:BelligerentMod": {
-        "TEXT": ["Belligerent", "", "If the target enemy intends to attack, increases damage by #b50%."],
-        "EXTRA_TEXT": [" NL If the target enemy intends to attack, increases damage by %d%%."]
+        "TEXT": ["Belligerent", "", "If the enemy intends to attack, increases damage by #b50%."],
+        "EXTRA_TEXT": [" NL If the enemy intends to attack, increases damage by %d%%."]
     },
     "mojichimera:BiasedMod": {
         "TEXT": ["Biased", "", "Increases card values by #b200%. Loses #b33% of the effect at the start of next #b3 turns."],
@@ -76,8 +76,8 @@
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %d Strength and Dexterity."]
     },
     "mojichimera:KyrieMod": {
-        "TEXT": ["Kyrie", "", "The higher the target enemy's current HP percentage, the more damage you deal, up to #b200%."],
-        "EXTRA_TEXT": [" NL The higher the target enemy's current HP percentage, the more damage you deal."]
+        "TEXT": ["Kyrie", "", "The higher the enemy's current HP percentage, the more damage you deal, up to #b200%."],
+        "EXTRA_TEXT": [" NL The higher the enemy's current HP percentage, the more damage you deal."]
     },
     "mojichimera:LimitlessMod": {
         "TEXT": ["Limitless", "", "Reduces card values by #b50%. NL Increases by #b3% of base values each floor."],
@@ -168,6 +168,10 @@
         "TEXT": ["Bleeding", "", "Increases damage by #b20% for each time you lose HP in combat."],
         "EXTRA_TEXT": [" NL Increases damage by %d%% for each time you lose HP in combat."]
     },
+    "mojichimera:BootingMod": {
+        "TEXT": ["Booting", "", "Increases card values by #b100% for the first time played each combat."],
+        "EXTRA_TEXT": [" NL Increases card values by %d% for the first time played each combat."]
+    },
     "mojichimera:BuriedMod": {
         "TEXT": ["Buried", "", "#yGrave. NL Increases card values by #b50%."],
         "EXTRA_TEXT": ["Grave. NL "]
@@ -213,8 +217,8 @@
         "EXTRA_TEXT": [" NL Adds %d random Status cards to the draw pile, discard pile, or hand."]
     },
     "mojichimera:ExploitMod": {
-        "TEXT": ["", "Exploit", "Increases damage by #b20% for each #yVulnerable the target enemy has."],
-        "EXTRA_TEXT": [" NL Increases damage by %d%% for each Vulnerable the target enemy has."]
+        "TEXT": ["", "Exploit", "Increases damage by #b20% for each #yVulnerable the enemy has."],
+        "EXTRA_TEXT": [" NL Increases damage by %d%% for each Vulnerable the enemy has."]
     },
     "mojichimera:FireBreathingMod": {
         "TEXT": ["Fire Breathing", "", "Becomes a #yPower. NL Whenever you draw a #yStatus or #yCurse card, plays a copy of the original card."],
@@ -317,8 +321,8 @@
         "EXTRA_TEXT": ["Whenever you apply Debuffs to an enemy: NL "]
     },
     "mojichimera:SarcasticMod": {
-        "TEXT": ["Sarcastic", "", "Increases damage by #b20% for each type of #yDebuff the target enemy has."],
-        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Debuff the target enemy has."]
+        "TEXT": ["Sarcastic", "", "Increases damage by #b20% for each type of #yDebuff the enemy has."],
+        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Debuff the enemy has."]
     },
     "mojichimera:SteelMod": {
         "TEXT": ["Steel", "", "Increases card values by #b50% for the next #b1 card played this turn when drawn. NL The target cards must be an Attack, Skill, or Power card with values of at least #b2."],
@@ -530,8 +534,8 @@
         "EXTRA_TEXT": [" NL Adds %d random Ethereal anniv5:different\u00a0color card to your hand."]
     },
     "mojichimera:AdaptiveMod": {
-        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the target enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
-        "EXTRA_TEXT": [" NL If the target enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
+        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
+        "EXTRA_TEXT": [" NL If the enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
     },
     "mojichimera:ChimericMod": {
         "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],

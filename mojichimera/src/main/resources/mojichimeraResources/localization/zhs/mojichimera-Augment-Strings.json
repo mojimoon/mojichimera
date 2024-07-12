@@ -16,11 +16,11 @@
         "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"]
     },
     "mojichimera:BelligerentMod": {
-        "TEXT": ["好战", "", "若目标敌人意图攻击，造成的伤害增加 #b50% 。"],
-        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，造成的伤害增加 %d%% 。"]
+        "TEXT": ["好战", "", "若敌人意图攻击，造成的伤害增加 #b50% 。"],
+        "EXTRA_TEXT": [" NL 若敌人意图攻击，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:BiasedMod": {
-        "TEXT": ["偏差", "", "本牌数值增加 #b200% 。 NL 下 #b3 回合开始时，失去 #b33% 的效果。"],
+        "TEXT": ["偏差", "", "卡牌数值增加 #b200% 。 NL 下 #b3 回合开始时，失去 #b33% 的效果。"],
         "EXTRA_TEXT": [" NL 下 %d 回合开始时，失去 %d%% 的效果。"]
     },
     "mojichimera:BiteMod": {
@@ -46,6 +46,10 @@
     "mojichimera:CounterMod": {
         "TEXT": ["反击", "", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b50% 。 NL 每次受到攻击伤害时，对伤害来源打出原牌的复制。"],
         "EXTRA_TEXT": ["每次受到攻击伤害时： NL "]
+    },
+    "mojichimera:EmbraceMod": {
+        "TEXT": ["", "之拥", "本牌变为 #y能力 牌。 NL 造成的伤害和获得的 #y格挡 减少 #b67% 。 NL 每 #y消耗 一张牌，打出原牌的复制。"],
+        "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
     },
     "mojichimera:ForesightMod": {
         "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
@@ -73,8 +77,8 @@
         "NOTES": ["hexamod:BurningQuestion"]
     },
     "mojichimera:KyrieMod": {
-        "TEXT": ["垂怜", "", "目标敌人生命百分比越高，造成的伤害越高，最高 #b200% 。"],
-        "EXTRA_TEXT": [" NL 目标敌人生命百分比越高，造成的伤害越高 。"]
+        "TEXT": ["垂怜", "", "敌人生命百分比越高，造成的伤害越高，最高 #b200% 。"],
+        "EXTRA_TEXT": [" NL 敌人生命百分比越高，造成的伤害越高 。"]
     },
     "mojichimera:LimitlessMod": {
         "TEXT": ["上限", "", "卡牌数值减少 #b50% 。 NL 每前进一层，卡牌数值增加基础值的 #b3% 。"],
@@ -162,8 +166,12 @@
         "EXTRA_TEXT": [" NL 丢弃手牌中所有 状态牌 ，抽等量的牌。"]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["流血", "", "你每在战斗中失去生命一次，造成的伤害增加 #b20% 。"],
+        "TEXT": ["带血", "", "你每在战斗中失去生命一次，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 你每在战斗中失去生命一次，造成的伤害增加 %d%% 。"]
+    },
+    "mojichimera:BootingMod": {
+        "TEXT": ["启动", "", "每场战斗首次打出时，卡牌数值增加 #b100% 。"],
+        "EXTRA_TEXT": [" NL 首次打出时，数值增加 %d%% 。"]
     },
     "mojichimera:BuriedMod": {
         "TEXT": ["埋藏", "", "#y墓地。 NL 卡牌数值增加 #b50% 。"],
@@ -210,8 +218,8 @@
         "EXTRA_TEXT": [" NL 随机添加 %d 张 状态牌 到抽牌堆、弃牌堆或手牌。"]
     },
     "mojichimera:ExploitMod": {
-        "TEXT": ["", "利用", "目标敌人每有一层 #y易伤 ，造成的伤害增加 #b20% 。"],
-        "EXTRA_TEXT": [" NL 目标敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
+        "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b20% 。"],
+        "EXTRA_TEXT": [" NL 敌人每有一层 易伤 ，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:FireBreathingMod": {
         "TEXT": ["", "吐息", "本牌变为 #y能力 牌。 NL 每当你抽到一张 #y状态牌 或 #y诅咒 牌 时，打出原牌的复制。"],
@@ -314,8 +322,8 @@
         "EXTRA_TEXT": ["每当你对一名敌人造成负面状态时： NL "]
     },
     "mojichimera:SarcasticMod": {
-        "TEXT": ["讽刺", "", "目标敌人每有一种负面效果，造成的伤害增加 #b20% 。"],
-        "EXTRA_TEXT": [" NL 目标敌人每有一种负面效果，造成的伤害增加 %d%% 。"]
+        "TEXT": ["讽刺", "", "敌人每有一种负面效果，造成的伤害增加 #b20% 。"],
+        "EXTRA_TEXT": [" NL 敌人每有一种负面效果，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:SteelMod": {
         "TEXT": ["钢铁", "", "抽到本牌时，本回合打出的下 #b1 张牌数值增加 #b50% 。 NL 目标只能是数值至少 #b2 点的攻击、技能或能力牌。 NL 源于 #bBalatro 的 #y钢铁牌 。"],
@@ -424,7 +432,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:LanternMod": {
-        "TEXT": ["", "灯笼", "首次抽到时，获得 [E] 。"],
+        "TEXT": ["", "灯笼", "每场战斗首次抽到时，获得 [E] 。"],
         "EXTRA_TEXT": [" NL 首次抽到时，获得 [E] 。"]
     },
     "mojichimera:PairMod": {
@@ -548,8 +556,8 @@
         "NOTES": ["UNIMPLEMENTED"]
     },
     "mojichimera:AdaptiveMod": {
-        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
-        "EXTRA_TEXT": [" NL 若目标敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"],
+        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
+        "EXTRA_TEXT": [" NL 若敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"],
         "NOTES": ["DEPRECATED"]
     },
     "mojichimera:ChimericMod": {
