@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.special;
 
 import CardAugments.cardmods.AbstractAugment;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
@@ -100,7 +100,7 @@ public class OverchargedMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new OverchargedMod(); }
