@@ -391,7 +391,7 @@
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 将 %d 张 *虚空 添加到抽牌堆顶。"]
     },
     "mojichimera:EquilibriumMod": {
-        "TEXT": ["均衡", "", "本回合可 #y保留 #b2(+1) 张手牌。"],
+        "TEXT": ["均衡", "", "本回合可 #y保留 #b1(+1) 张手牌。"],
         "EXTRA_TEXT": [" NL 本回合可 保留 %s 张手牌。", " NL 本回合可 保留 %s 张手牌。"]
     },
     "mojichimera:FinaleMod": {

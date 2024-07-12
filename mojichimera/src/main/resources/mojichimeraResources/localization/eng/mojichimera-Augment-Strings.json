@@ -390,8 +390,8 @@
         "EXTRA_TEXT": [" NL Plays %d more times. NL Adds %d *Void on top of your draw pile."]
     },
     "mojichimera:EquilibriumMod": {
-        "TEXT": ["Equilibrium", "", "#yRetain up to #b2(+1) cards this turn."],
-        "EXTRA_TEXT": [" NL #yRetain up to %s cards this turn.", " NL #yRetain up to %s cards this turn."]
+        "TEXT": ["Equilibrium", "", "#yRetain up to #b1(+1) cards this turn."],
+        "EXTRA_TEXT": [" NL #yRetain up to %s card this turn.", " NL #yRetain up to %s cards this turn."]
     },
     "mojichimera:FinaleMod": {
         "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
