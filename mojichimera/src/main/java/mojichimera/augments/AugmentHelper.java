@@ -6,22 +6,24 @@ import CardAugments.cardmods.rare.BundledMod;
 import CardAugments.cardmods.rare.ExplosiveMod;
 import CardAugments.cardmods.rare.InfiniteMod;
 import CardAugments.cardmods.rare.InvertedMod;
+import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.*;
+import com.megacrit.cardcrawl.cards.colorless.HandOfGreed;
+import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
+import com.megacrit.cardcrawl.cards.purple.*;
+import com.megacrit.cardcrawl.cards.red.Feed;
+import com.megacrit.cardcrawl.cards.red.Hemokinesis;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 import mojichimera.augments.common.*;
 import mojichimera.augments.rare.*;
 import mojichimera.augments.uncommon.*;
 import mojichimera.mojichimera;
-import basemod.AutoAdd;
-import com.megacrit.cardcrawl.cards.blue.*;
-import com.megacrit.cardcrawl.cards.red.*;
-import com.megacrit.cardcrawl.cards.purple.*;
-import com.megacrit.cardcrawl.cards.colorless.*;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 import static CardAugments.cardmods.AbstractAugment.*;
 import static mojichimera.mojichimera.makeID;
@@ -133,7 +135,7 @@ public class AugmentHelper {
                 ExplosiveMod.ID,
                 InfiniteMod.ID,
                 PastMod.ID,
-                SkillizedMod.ID,
+//                SkillizedMod.ID,
                 UnawakenedMod.ID,
                 HeatsinksMod.ID,
                 EmbraceMod.ID,

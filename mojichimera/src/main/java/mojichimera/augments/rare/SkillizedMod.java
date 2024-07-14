@@ -1,12 +1,9 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.cardmods.util.PreviewedMod;
 import CardAugments.patches.InterruptUseCardFieldPatches;
 import CardAugments.util.PortraitHelper;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,15 +18,9 @@ public class SkillizedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SkillizedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private boolean inherentHack = true;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        this.inherentHack = true;
-        AbstractCard preview = card.makeStatEquivalentCopy();
-        this.inherentHack = false;
-        CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
-        MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
         card.target = AbstractCard.CardTarget.NONE;
         if (card.type != AbstractCard.CardType.SKILL) {
@@ -39,44 +30,19 @@ public class SkillizedMod extends AbstractAugment {
     }
 
     @Override
-    public void onUpgradeCheck(AbstractCard card) {
-        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
-            if (CardModifierManager.hasModifier(c, PreviewedMod.ID)) {
-                c.upgrade();
-                c.initializeDescription();
-            }
-        }
-        card.initializeDescription();
-    }
-
-    @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         addToTop(new AbstractGameAction() {
             @Override
             public void update() {
-                AbstractCard preview = null;
-                for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
-                    if (CardModifierManager.hasModifier(c, PreviewedMod.ID))
-                        preview = c;
-                }
-                if (preview != null) {
-                    AbstractCard copy = preview.makeStatEquivalentCopy();
-//                    CardModifierManager.copyModifiers(card, copy, false, true, true);
-                    if (copy.magicNumber != card.magicNumber)
-                        copy.magicNumber = card.magicNumber;
-                    if (copy.baseMagicNumber != card.baseMagicNumber)
-                        copy.baseMagicNumber = card.baseMagicNumber;
-                    copy.use(AbstractDungeon.player, (AbstractMonster) target);
-                }
-                this.isDone = true;
+                card.use(AbstractDungeon.player, target instanceof AbstractMonster ? (AbstractMonster)target : null);
+                isDone = true;
             }
         });
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPower(card) && card.baseMagicNumber > 0
-                && !AugmentHelper.hasMultiPreviewMod(card, SkillizedMod.ID);
+        return AugmentHelper.isPower(card) && card.baseMagicNumber > 0;
     }
 
     @Override
@@ -96,8 +62,4 @@ public class SkillizedMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-
-    public boolean isInherent(AbstractCard card) {
-        return this.inherentHack;
-    }
 }

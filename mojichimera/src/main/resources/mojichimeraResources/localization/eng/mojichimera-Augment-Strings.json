@@ -57,7 +57,7 @@
     },
     "mojichimera:GluttonousMod": {
         "TEXT": ["Gluttonous", "", "When first played, #bRandomly #yExhausts a card. NL Plays the exhausted card upon each play including the first. NL Can only choose playable Attack or Skill cards as the target."],
-        "EXTRA_TEXT": [" NL When first played, randomly exhausts a card, and plays it upon each play.", " NL Plays %s."]
+        "EXTRA_TEXT": [" NL When first played, randomly exhausts a card, and plays it upon each play.", " NL Plays *%s ."]
     },
     "mojichimera:HeatsinksMod": {
         "TEXT": ["", "Heatsinks", "Increases cost by #b1. NL Becomes a #yPower. NL Whenever you play a #yPower card, plays a copy of the original card."],
@@ -521,8 +521,24 @@
         "TEXT": ["Promise", "", "When #yExhausted, draw #b1 card."],
         "EXTRA_TEXT": [" NL When exhausted, draw %d card."]
     },
+    "mojichimera:VirusMod": {
+        "TEXT": ["", "Virus", "When played, turns all cards in your hand into #yExhaust and #yEthereal copies of this card. NL #yVirus does not apply to copies."],
+        "EXTRA_TEXT": [" NL Turns all cards in your hand into Exhaust and Ethereal copies of this card."]
+    },
+    "mojichimera:InscribedMod": {
+        "TEXT": ["Inscribed", "", "When played, activate the passive of your next Orb."],
+        "EXTRA_TEXT": [" NL Activate the passive of your next Orb."]
+    },
+    "mojichimera:EchoMod": {
+        "TEXT": ["Echo", "", "When played, adds an #yExhaust and #yEthereal copy of this card to your hand."],
+        "EXTRA_TEXT": [" NL Add an Exhaust and Ethereal copy of this card to your hand."]
+    },
+    "mojichimera:PrismaticMod": {
+        "TEXT": ["Prismatic", "", "Adds #b1 random #yEthereal #Different #Color card to your hand."],
+        "EXTRA_TEXT": [" NL Add %d random Ethereal *Different *Color card to your hand."]
+    },
     "mojichimera:packmaster_VirusMod": {
-        "TEXT": ["", "Virus", "When played, turns all cards in your hand into #yExhaust and #yEthereal copies of this card. NL Copies do not have #yVirus."],
+        "TEXT": ["", "Virus", "When played, turns all cards in your hand into #yExhaust and #yEthereal copies of this card. NL #yVirus does not apply to copies."],
         "EXTRA_TEXT": [" NL Turns all cards in your hand into anniv5:Echo copies of this card."]
     },
     "mojichimera:packmaster_InscribedMod": {
@@ -535,7 +551,7 @@
     },
     "mojichimera:packmaster_PrismaticMod": {
         "TEXT": ["Prismatic", "", "Adds #b1 random #yEthereal #Different #Color card to your hand."],
-        "EXTRA_TEXT": [" NL Adds %d random Ethereal anniv5:different\u00a0color card to your hand."]
+        "EXTRA_TEXT": [" NL Add %d random Ethereal anniv5:different\u00a0color card to your hand."]
     },
     "mojichimera:FinaleMod": {
         "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],

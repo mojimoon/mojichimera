@@ -1,15 +1,14 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
-import com.megacrit.cardcrawl.cards.purple.Meditate;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class EstablishedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(EstablishedMod.class.getSimpleName());

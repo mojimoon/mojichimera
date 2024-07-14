@@ -1,20 +1,20 @@
 package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
-import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public class RecyclableMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(RecyclableMod.class.getSimpleName());

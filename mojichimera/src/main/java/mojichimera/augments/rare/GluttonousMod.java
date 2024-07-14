@@ -1,10 +1,7 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.cardmods.util.PreviewedMod;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,16 +21,9 @@ public class GluttonousMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int CARDS = 1;
-//    private boolean inherentHack = true;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-//        this.inherentHack = true;
-//        AbstractCard preview = card.makeStatEquivalentCopy();
-//        this.inherentHack = false;
-//        CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
-//        MultiCardPreview.add(card, new AbstractCard[] { preview });
-//        InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
     }
 
     @Override
@@ -53,8 +43,9 @@ public class GluttonousMod extends AbstractAugment {
                         if (!edible.isEmpty()) {
                             AbstractCard c = edible.get(AbstractDungeon.cardRandomRng.random(edible.size() - 1));
                             AbstractDungeon.player.hand.moveToExhaustPile(c);
-                            CardModifierManager.addModifier(c, (AbstractCardModifier)new PreviewedMod());
-                            MultiCardPreview.add(card, new AbstractCard[] { c });
+//                            CardModifierManager.addModifier(c, (AbstractCardModifier)new PreviewedMod());
+//                            MultiCardPreview.add(card, new AbstractCard[] { c });
+                            card.cardsToPreview = c;
                             preview = c;
                             card.initializeDescription();
                         }
@@ -82,11 +73,12 @@ public class GluttonousMod extends AbstractAugment {
 
     private AbstractCard getPreview(AbstractCard card) {
         if (!MojiHelper.isInCombat()) return null;
-        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
-            if (CardModifierManager.hasModifier(c, PreviewedMod.ID))
-                return c;
-        }
-        return null;
+//        for (AbstractCard c : MultiCardPreview.multiCardPreview.get(card)) {
+//            if (CardModifierManager.hasModifier(c, PreviewedMod.ID))
+//                return c;
+//        }
+//        return null;
+        return card.cardsToPreview;
     }
 
     @Override
