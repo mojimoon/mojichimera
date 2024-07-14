@@ -17,34 +17,21 @@ public class SociableMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 20;
     private static final float EXTRA_MULTIPLIER = 0.2F;
-//    private boolean modMagic;
-
-//    @Override
-//    public void onInitialApplication(AbstractCard card) {
-//        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
-//            this.modMagic = true;
-//    }
 
     @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+    public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
             return damage * getMultiplier(card);
         return damage;
     }
 
     @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
+    public float modifyBlockFinal(float block, AbstractCard card) {
         if (card.baseBlock > 0)
             return block * getMultiplier(card);
         return block;
     }
 
-//    @Override
-//    public float modifyBaseMagic(float magic, AbstractCard card) {
-//        if (this.modMagic)
-//            return magic * getMultiplier(card);
-//        return magic;
-//    }
 
     private float getMultiplier(AbstractCard card) {
         if (!MojiHelper.isInCombat())

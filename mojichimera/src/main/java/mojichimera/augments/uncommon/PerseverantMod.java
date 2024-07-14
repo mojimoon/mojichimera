@@ -21,7 +21,7 @@ public class PerseverantMod extends AbstractAugment {
     }
 
     @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
+    public float modifyBlockFinal(float block, AbstractCard card) {
         if (!MojiHelper.isInCombat())
             return block;
         return block * (MULTIPLIER - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth);

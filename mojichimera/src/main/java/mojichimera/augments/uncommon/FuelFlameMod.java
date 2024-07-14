@@ -23,7 +23,7 @@ public class FuelFlameMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final int EFFECT = 1;
-    private static final float MULTIPLIER = 0.8F;
+    private static final float MULTIPLIER = 0.6666667F;
     private static final Class<?> VULNERABLE_POWER = com.megacrit.cardcrawl.powers.VulnerablePower.class;
 
     @Override

@@ -1,8 +1,10 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.patches.InterruptUseCardFieldPatches;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.defect.CompileDriverAction;
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -11,22 +13,32 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class CompileMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(CompileMod.class.getSimpleName());
+public class VanityMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(VanityMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
 
     @Override
-    public boolean validCard(AbstractCard card) {
-        return allowOrbMods()
-                && AugmentHelper.isPlayable(card)
-                && AugmentHelper.isNormal(card);
+    public void onInitialApplication(AbstractCard card) {
+        InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
+        CardModifierManager.addModifier(card, new EtherealMod());
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new CompileDriverAction(AbstractDungeon.player, EFFECT));
+        // do nothing
+    }
+
+    @Override
+    public void onDrawn(AbstractCard card) {
+        card.use(AbstractDungeon.player, null);
+    }
+
+    @Override
+    public boolean validCard(AbstractCard card) {
+        return AugmentHelper.isReplayable(card)
+//                && cardCheck(card, c -> notEthereal(c))
+                && doesntOverride(card, "triggerWhenDrawn", new Class[]{});
     }
 
     @Override
@@ -40,18 +52,14 @@ public class CompileMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (rawDescription.contains(CARD_TEXT[2])) {
-            return rawDescription.replace(CARD_TEXT[2], String.format(CARD_TEXT[1], EFFECT + 1));
-        } else {
-            return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
-        }
+        return insertBeforeText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AugmentRarity getModRarity() { return AugmentRarity.RARE; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new CompileMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new VanityMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

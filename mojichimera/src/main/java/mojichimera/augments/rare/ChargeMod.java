@@ -21,8 +21,8 @@ public class ChargeMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ChargeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.5F;
-    private static final int PERCENT = 50;
+    private static final float MULTIPLIER = 0.25F;
+    private static final int PERCENT = 25;
     public static final SpireField<Integer> otherCardsPlayed = new SpireField<>(() -> 0);
     private boolean modMagic;
 
@@ -33,14 +33,14 @@ public class ChargeMod extends AbstractAugment {
     }
 
     @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+    public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
             return damage * (1.0F + otherCardsPlayed.get(card) * MULTIPLIER);
         return damage;
     }
 
     @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
+    public float modifyBlockFinal(float block, AbstractCard card) {
         if (card.baseBlock > 0)
             return block * (1.0F + otherCardsPlayed.get(card) * MULTIPLIER);
         return block;
@@ -88,7 +88,10 @@ public class ChargeMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], PERCENT));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0],
+                (card.type == AbstractCard.CardType.ATTACK) ? CARD_TEXT[1] : CARD_TEXT[2],
+                PERCENT)
+        );
     }
 
     @Override

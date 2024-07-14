@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -11,13 +11,17 @@ import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
-public class UnsociableMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(UnsociableMod.class.getSimpleName());
+public class SlowMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(SlowMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 20;
-    private static final float MULTIPLIER = 2.0F;
-    private static final float EXTRA_MULTIPLIER = 0.2F;
+    public static final float EXTRA_MULTIPLIER = 0.1F;
+    public static final int PERCENT = 10;
+
+    @Override
+    public boolean validCard(AbstractCard card) {
+        return AugmentHelper.isAttack(card);
+    }
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -26,28 +30,14 @@ public class UnsociableMod extends AbstractAugment {
         return damage;
     }
 
-    @Override
-    public float modifyBlockFinal(float block, AbstractCard card) {
-        if (card.baseBlock > 0)
-            return block * getMultiplier(card);
-        return block;
-    }
-
     private float getMultiplier(AbstractCard card) {
         if (!MojiHelper.isInCombat())
-            return MULTIPLIER;
-        float multiplier = MULTIPLIER;
-        for (AbstractCard otherCard : AbstractDungeon.player.hand.group) {
-            if (otherCard != card && otherCard.type == card.type) {
-                multiplier -= EXTRA_MULTIPLIER;
-            }
+            return 1.0F;
+        int count = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
+        if (count > 0 && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(count - 1) == card) {
+            count--;
         }
-        return Math.max(multiplier, 0.0F);
-    }
-
-    @Override
-    public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasDamageOrBlock(card);
+        return 1.0F + (count * EXTRA_MULTIPLIER);
     }
 
     @Override
@@ -65,12 +55,11 @@ public class UnsociableMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AugmentRarity getModRarity() { return AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new UnsociableMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SlowMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
 }
-

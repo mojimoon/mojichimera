@@ -16,8 +16,8 @@
         "EXTRA_TEXT": [" NL When exhausted, treat as played."]
     },
     "mojichimera:BelligerentMod": {
-        "TEXT": ["Belligerent", "", "If the enemy intends to attack, increases damage by #b50%."],
-        "EXTRA_TEXT": [" NL If the enemy intends to attack, increases damage by %d%%."]
+        "TEXT": ["Belligerent", "", "If the target intends to attack, increases damage by #b50%."],
+        "EXTRA_TEXT": [" NL If the target intends to attack, increases damage by %d%%."]
     },
     "mojichimera:BiasedMod": {
         "TEXT": ["Biased", "", "Increases card values by #b200%. Loses #b33% of the effect at the start of next #b3 turns."],
@@ -32,8 +32,20 @@
         "EXTRA_TEXT": [" NL For every %d unique buffs you have, increases magic number by %d."]
     },
     "mojichimera:ChargeMod": {
-        "TEXT": ["Chargeable", "", "While in hand, increases card values by #b50% for each card of the same type played. Resets after each play."],
-        "EXTRA_TEXT": [" NL Increases card values by %d%% for each card of the same type played. Resets after each play."]
+        "TEXT": ["Chargeable", "", "Increases card values by #b25% for each card of the same type played while in hand. Resets after each play."],
+        "EXTRA_TEXT": [
+            " NL Increases card values by %d%% for each %s card played while in hand. Resets after each play.",
+            "Attack",
+            "Skill"
+        ]
+    },
+    "mojichimera:CompileMod": {
+        "TEXT": ["Compiling", "", "Draw #b1 card for each unique Orb you have."],
+        "EXTRA_TEXT": [
+            " NL Draw %d card for each unique Orb you have.",
+            " NL Draw %d cards for each unique Orb you have.",
+            " NL Draw !M! card for each unique Orb you have."
+        ]
     },
     "mojichimera:ConfrontingMod": {
         "TEXT": ["Confronting", "", "Increases card values by #b100% in Boss and elite combats."],
@@ -104,7 +116,7 @@
         "EXTRA_TEXT": ["Whenever you enter Wrath: NL "]
     },
     "mojichimera:ShareMod": {
-        "TEXT": ["Sharing", "", "Reduces damage and #yBlock by #b50%. NL When played, increases damage and #yBlock of other cards in your hand by values on this card. NL #yExhausts."],
+        "TEXT": ["Sharing", "", "Reduces damage and #yBlock by #b33%. NL When played, increases damage and #yBlock of other cards in your hand by values on this card. NL #yExhausts."],
         "EXTRA_TEXT": [" NL Increases damage and Block of other cards in your hand by values on this card."]
     },
     "mojichimera:SkillizedMod": {
@@ -172,14 +184,6 @@
         "TEXT": ["Chaotic", "", "At the start of each combat, card values are randomized between #b50% (rounded up) and #b200% of their base values."],
         "EXTRA_TEXT": []
     },
-    "mojichimera:CompileMod": {
-        "TEXT": ["Compiling", "", "Draw #b1 card for each unique Orb you have."],
-        "EXTRA_TEXT": [
-            " NL Draw %d card for each unique Orb you have.",
-            " NL Draw %d cards for each unique Orb you have.",
-            " NL Draw !M! card for each unique Orb you have."
-        ]
-    },
     "mojichimera:ConcludeMod": {
         "TEXT": ["Concluding", "", "Increases damage and #yBlock by #b75%. NL Ends your turn."],
         "EXTRA_TEXT": [" NL Ends your turn."]
@@ -237,7 +241,7 @@
         "EXTRA_TEXT": [" NL Adds %d random Curse cards to your hand. NL For each Curse in your hand, plays this card again."]
     },
     "mojichimera:FuelFlameMod": {
-        "TEXT": ["Fuel Adding", "", "Reduces damage and #yBlock by #b20%. If the enemy has #yVulnerable, NL gain [E] and draw #b1 card."],
+        "TEXT": ["Fuel Adding", "", "Reduces damage and #yBlock by #b33%. If the enemy has #yVulnerable, NL gain [E] and draw #b1 card."],
         "EXTRA_TEXT": [
             " NL If the enemy has Vulnerable, NL gain [E] and draw %d card.",
             " NL If the enemy has Vulnerable, NL gain [E] [E] and draw %d cards.",
@@ -285,7 +289,7 @@
         "EXTRA_TEXT": [" NL The lower your current HP percentage, the more Block you gain."]
     },
     "mojichimera:PourSaltMod": {
-        "TEXT": ["Salt Pouring", "", "Reduces damage and #yBlock by #b20%. If the enemy has #yWeak, NL gain [E] and draw #b1 card."],
+        "TEXT": ["Salt Pouring", "", "Reduces damage and #yBlock by #b33%. If the enemy has #yWeak, NL gain [E] and draw #b1 card."],
         "EXTRA_TEXT": [
             " NL If the enemy has Weak, NL gain [E] and draw %d card.",
             " NL If the enemy has Weak, NL gain [E] [E] and draw %d cards.",
