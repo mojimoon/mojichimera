@@ -1,20 +1,22 @@
 package mojichimera;
 
-import basemod.*;
-import basemod.interfaces.*;
+import basemod.BaseMod;
+import basemod.ModPanel;
+import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.PostInitializeSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.optional.packmaster.PackmasterOptionalAugmentHelper;
-import packmasteraugments.augments.PackmasterAugmentHelper;
+import mojichimera.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import mojichimera.util.TextureLoader;
-import mojichimera.augments.AugmentHelper;
+import packmasteraugments.augments.PackmasterAugmentHelper;
 
 @SpireInitializer
 public class mojichimera implements 

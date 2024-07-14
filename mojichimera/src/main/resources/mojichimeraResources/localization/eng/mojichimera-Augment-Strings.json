@@ -366,7 +366,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:CleansingMod": {
-        "TEXT": ["Cleansing", "", "#yExhausts #b1(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
+        "TEXT": ["Cleansing", "", "#yExhausts #b2(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
         "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card from any card piles.", " NL Exhaust %s random Status or Curse cards from any card piles."]
     },
     "mojichimera:ConcentratedMod": {

@@ -18,7 +18,7 @@ public class CleansingMod extends AbstractAugment implements DynvarCarrier {
     public static final String DESCRIPTION_KEY = "!" + ID + "!";
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 1;
+    private static final int EFFECT = 2;
     private static final int UPGRADE_EFFECT = 1;
     public boolean modified;
     public boolean upgraded;
@@ -59,7 +59,7 @@ public class CleansingMod extends AbstractAugment implements DynvarCarrier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(card.upgraded ? CARD_TEXT[1] : CARD_TEXT[0], new Object[] { DESCRIPTION_KEY }));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[1], new Object[] { DESCRIPTION_KEY }));
     }
 
     @Override

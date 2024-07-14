@@ -81,6 +81,10 @@
         "TEXT": ["", "积分卡", "每第 #b2 次手动打出本牌时，再打出 #b1 次。"],
         "EXTRA_TEXT": [" NL 每第 %d 次手动打出本牌时，再打出 %d 次。"]
     },
+    "mojichimera:OverlookingMod": {
+        "TEXT": ["俯视", "", "造成的伤害减少 #b33% 。 NL 敌人每有一种负面效果，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 敌人每有一种负面效果，抽 %d 张牌。"]
+    },
     "mojichimera:OverpoweredMod": {
         "TEXT": ["强力", "", "本牌耗能增加 #b1 。 NL #y虚无。 NL 卡牌数值增加 #b150% 。"],
         "EXTRA_TEXT": [" 虚无 。 NL "]
@@ -146,6 +150,10 @@
         "TEXT": ["孤僻", "", "本牌的造成的伤害和获得的 #y格挡 增加 #b100% 。 NL 手牌中每有一张同类型牌，减少基础值的 #b20% 。"],
         "EXTRA_TEXT": [" NL 手牌中每有一张同类型牌，伤害和 格挡 减少 %d%% 。"]
     },
+    "mojichimera:VanityMod": {
+        "TEXT": ["虚饰", "", "#y虚无 。 NL 打出效果改为在抽到本牌时触发。 NL 源于 #b卡包大师 的卡包 #y星相 。"],
+        "EXTRA_TEXT": ["抽到本牌时： NL "]
+    },
     "mojichimera:XXMod": {
         "TEXT": ["倍增", "", "本牌生效X次。"],
         "EXTRA_TEXT": [" NL 生效X次。"]
@@ -155,12 +163,16 @@
         "EXTRA_TEXT": [" NL 丢弃手牌中所有 状态牌 ，抽等量的牌。"],
         "NOTES": ["Uncommon"]
     },
+    "mojichimera:BeholdingMod": {
+        "TEXT": ["仰望", "", "造成的伤害减少 #b33% 。 NL 敌人每有一种正面效果，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 敌人每有一种正面效果，抽 %d 张牌。"]
+    },
     "mojichimera:BleedingMod": {
         "TEXT": ["带血", "", "你每在战斗中失去生命一次，造成的伤害增加 #b20% 。"],
         "EXTRA_TEXT": [" NL 你每在战斗中失去生命一次，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:BootingMod": {
-        "TEXT": ["启动", "", "每场战斗首次打出时，卡牌数值增加 #b100% 。"],
+        "TEXT": ["始动", "", "每场战斗首次打出时，卡牌数值增加 #b100% 。"],
         "EXTRA_TEXT": [" NL 首次打出时，数值增加 %d%% 。"]
     },
     "mojichimera:BuriedMod": {
@@ -389,6 +401,10 @@
         "TEXT": ["黄金", "", "打出时获得 #b4 #y金币 。"],
         "EXTRA_TEXT": [" NL 获得 %d 金币 。"]
     },
+    "mojichimera:GooMod": {
+        "TEXT": ["粘粘", "", "再打出一次 。 NL 将 #b1 张 #y黏液 放入弃牌堆。"],
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 *黏液 放入弃牌堆。"]
+    },
     "mojichimera:HalfMod": {
         "TEXT": ["半张", "", "若本回合已出牌不超过 #b3 张，造成的伤害和获得的 #y格挡 增加 #b50% 。"],
         "EXTRA_TEXT": [" NL 若本回合已出牌不超过 %d 张，伤害和 格挡 增加 %d%% 。"]
@@ -421,6 +437,10 @@
     "mojichimera:LanternMod": {
         "TEXT": ["", "灯笼", "每场战斗首次抽到时，获得 [E] 。"],
         "EXTRA_TEXT": [" NL 首次抽到时，获得 [E] 。"]
+    },
+    "mojichimera:MisfireMod": {
+        "TEXT": ["走火", "", "再打出一次 。 NL 将 #b1 张 #y灼伤 放入弃牌堆。"],
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 灼伤 放入弃牌堆。"]
     },
     "mojichimera:PairMod": {
         "TEXT": ["对子", "", "若手牌中有本牌的同名牌，造成的伤害和获得的 #y格挡 增加 #b100% 。"],
@@ -571,6 +591,16 @@
     "mojichimera:packmaster_PrismaticMod": {
         "TEXT": ["棱镜", "", "将 #b1 张带有 #y虚无 的随机 #y异色 牌放入手牌。"],
         "EXTRA_TEXT": [" NL 将 %d 张带有 虚无 的随机 anniv5:异色 牌放入手牌。"]
+    },
+    "mojichimera:ComboMod": {
+        "TEXT": ["连击", "", "造成的伤害减少 #b33% 。 NL 如果本场战斗中打出的上一张牌是攻击牌，再打出一次。"],
+        "EXTRA_TEXT": [" NL 如果本场战斗中打出的上一张牌是攻击牌，再打出一次。"],
+        "NOTES": ["Deprecated"]
+    },
+    "mojichimera:RetreatingMod": {
+        "TEXT": ["回撤", "", "如果本场战斗中打出的上一张牌是攻击牌，本牌打出后回到手牌。"],
+        "EXTRA_TEXT": [" NL 如果本场战斗中打出的上一张牌是攻击牌，本牌打出后回到手牌。"],
+        "NOTES": ["Deprecated"]
     },
     "mojichimera:FailureMod": {
         "TEXT": ["失败作", "", "再打出 #b7 次 。 NL 失去 #b3 点生命和 #b15 #y金币 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],
