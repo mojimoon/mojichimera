@@ -3,13 +3,13 @@
         "TEXT": ["Prefix", "Suffix", "Description stuff"],
         "EXTRA_TEXT": ["Tooltip"]
     },
-    "mojichimera:AdHocMod": {
-        "TEXT": ["Ad Hoc", "", "Increases card values by #b100%. NL Decreases by #b50% of base values each act."],
-        "EXTRA_TEXT": []
-    },
     "mojichimera:AccursedMod": {
         "TEXT": ["Accursed", "", "Reduces cost by [E] for each Curse in your deck."],
         "EXTRA_TEXT": [" NL Reduces cost by [E] for each Curse in your deck."]
+    },
+    "mojichimera:AdHocMod": {
+        "TEXT": ["Ad Hoc", "", "Increases card values by #b100%. NL Decreases by #b50% of base values each act."],
+        "EXTRA_TEXT": []
     },
     "mojichimera:AfterlifeMod": {
         "TEXT": ["Afterlife", "", "#yEthereal. NL When #yExhausted, treat as played."],
@@ -42,10 +42,6 @@
     "mojichimera:CorruptedMod": {
         "TEXT": ["Corrupted", "", "Plays #b4 more times. NL Gains #b2 #yVulnerable, #yWeak, and #yFrail. NL Shuffles #b1 #yDazed, #ySlimed, #yWound, #yBurn, and #yVoid into your draw pile."],
         "EXTRA_TEXT": [" NL Plays %d more times. NL Curse of the Corrupted Heart awaits."]
-    },
-    "mojichimera:CounterMod": {
-        "TEXT": ["Counter", "", "Becomes a #yPower. NL Reduces damage and #yBlock by #b50%. NL Whenever you are attacked, plays a copy of the original card to the attacker."],
-        "EXTRA_TEXT": [" NL Whenever you are attacked: NL "]
     },
     "mojichimera:EmbraceMod": {
         "TEXT": ["", "Embrace", "Becomes a #yPower. NL Reduces damage and #yBlock by #b67%. NL Whenever you #yExhaust a card, plays a copy of the original card."],
@@ -86,10 +82,6 @@
     "mojichimera:LoyaltyMod": {
         "TEXT": ["", "Loyalty Card", "Every #b2nd time this card is manually played, plays #b1 more time."],
         "EXTRA_TEXT": [" NL Every %dnd time this card is manually played, plays %d more time."]
-    },
-    "mojichimera:OverchargedMod": {
-        "TEXT": ["Overcharged", "", "Multiplies card values by #b233%. NL Increases cost by #b1."],
-        "EXTRA_TEXT": [" NL Multiplies card values by %d%%. NL Increases cost by %d."]
     },
     "mojichimera:OverpoweredMod": {
         "TEXT": ["Overpowered", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b150%."],
@@ -133,7 +125,7 @@
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["Strange", "", "No longer #yExhausts."],
-        "EXTRA_TEXT": ["No longer Exhausts.",
+        "EXTRA_TEXT": ["NL No longer Exhausts.",
             "Exhausts.",
             "",
             "Exhausts. NL Exhausts.",
@@ -192,6 +184,10 @@
         "TEXT": ["Concluding", "", "Increases damage and #yBlock by #b75%. NL Ends your turn."],
         "EXTRA_TEXT": [" NL Ends your turn."]
     },
+    "mojichimera:CounterMod": {
+        "TEXT": ["Counter", "", "Becomes a #yPower. NL Reduces damage and #yBlock by #b50%. NL Whenever you are attacked, plays a copy of the original card to the attacker."],
+        "EXTRA_TEXT": [" NL Whenever you are attacked: NL "]
+    },
     "mojichimera:DeadOnMod": {
         "TEXT": ["Dead On", "", "Increases damage and #yBlock by #b75% when played from the middle of your hand. NL When the hand size is even, both cards in the middle qualify."],
         "EXTRA_TEXT": [" NL Increases damage and Block by %d%% when played from the middle of your hand."]
@@ -227,6 +223,10 @@
     "mojichimera:FlashOfMod": {
         "TEXT": ["Flash Of", "", "Reduces damage by #b33%. NL Whenever you deal unblocked damage, draw #b1 card."],
         "EXTRA_TEXT": [" NL Whenever you deal unblocked damage, draw %d card."]
+    },
+    "mojichimera:FlauntingMod": {
+        "TEXT": ["Flaunting", "", "Increases damage by #b20% for each type of #yBuff you have."],
+        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Buff you have."]
     },
     "mojichimera:FocusedMod": {
         "TEXT": ["Focused", "", "Gains #b2 #yFocus this turn."],
@@ -291,10 +291,6 @@
             " NL If the enemy has Weak, NL gain [E] [E] and draw %d cards.",
             " NL If the enemy has Weak, NL gain [G] and NL draw 1 card."
         ]
-    },
-    "mojichimera:ProudfulMod": {
-        "TEXT": ["Proudful", "", "Increases damage by #b20% for each type of #yBuff you have."],
-        "EXTRA_TEXT": [" NL Increases damage by %d%% for each type of Buff you have."]
     },
     "mojichimera:RecyclableMod": {
         "TEXT": ["Recyclable", "", "#yEthereal. NL When #yExhausted, gives [E] next turn."],
@@ -371,10 +367,10 @@
     },
     "mojichimera:CleansingMod": {
         "TEXT": ["Cleansing", "", "#yExhausts #b1(+1) random #yStatus or #yCurse card in your draw pile, discard pile, or hand."],
-        "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card you own.", " NL Exhaust %s random Status or Curse cards you own."]
+        "EXTRA_TEXT": [" NL Exhaust %s random Status or Curse card from any card piles.", " NL Exhaust %s random Status or Curse cards from any card piles."]
     },
     "mojichimera:ConcentratedMod": {
-        "TEXT": ["Concentrated", "", "Reduces cost by #b2. NL Discards #b3(2) cards."],
+        "TEXT": ["Concentrated", "", "Reduces cost by #b2. NL Discards #b2 cards."],
         "EXTRA_TEXT": [" NL Discard %d cards."]
     },
     "mojichimera:CreditMod": {
@@ -385,17 +381,9 @@
         "TEXT": ["Delayed", "", "Reduces cost by #b1. NL Effects trigger at the start of the next turn."],
         "EXTRA_TEXT": ["At the start of the next turn: NL "]
     },
-    "mojichimera:EmptiedMod": {
-        "TEXT": ["Emptied", "", "Plays #b2 more times. NL Adds #b1 #yVoid on top of your draw pile."],
-        "EXTRA_TEXT": [" NL Plays %d more times. NL Adds %d *Void on top of your draw pile."]
-    },
     "mojichimera:EquilibriumMod": {
-        "TEXT": ["Equilibrium", "", "#yRetain up to #b1(+1) cards this turn."],
+        "TEXT": ["", "Equilibrium", "#yRetain up to #b1(+1) cards this turn."],
         "EXTRA_TEXT": [" NL #yRetain up to %s card this turn.", " NL #yRetain up to %s cards this turn."]
-    },
-    "mojichimera:FinaleMod": {
-        "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
-        "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d% and draws %d card."]
     },
     "mojichimera:GoldenMod": {
         "TEXT": ["Golden", "", "Gains #b3 #yGold when played."],
@@ -501,13 +489,29 @@
         "TEXT": ["", "Worship", "Plays twice. NL Gains #b2 #yWeak."],
         "EXTRA_TEXT": [" NL Plays twice. NL Gains %d Weak."]
     },
+    "mojichimera:AdaptiveMod": {
+        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
+        "EXTRA_TEXT": [" NL If the enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
+    },
     "mojichimera:AwakenedMod": {
         "TEXT": ["Awakened", "", "Increases card values by #b200%."],
         "EXTRA_TEXT": []
     },
+    "mojichimera:ChimericMod": {
+        "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
+        "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
+    },
+    "mojichimera:EmptiedMod": {
+        "TEXT": ["Emptied", "", "Plays #b2 more times. NL Adds #b1 #yVoid on top of your draw pile."],
+        "EXTRA_TEXT": [" NL Plays %d more times. NL Adds %d *Void on top of your draw pile."]
+    },
     "mojichimera:NamelessMod": {
         "TEXT": ["Nameless", "", "Increases card values by #b50%."],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:OverchargedMod": {
+        "TEXT": ["Overcharged", "", "Multiplies card values by #b233%. NL Increases cost by #b1."],
+        "EXTRA_TEXT": [" NL Multiplies card values by %d%%. NL Increases cost by %d."]
     },
     "mojichimera:ShareHelperMod": {
         "TEXT": ["Shared", "", "Expresses gratitude for #ySharing."],
@@ -533,12 +537,8 @@
         "TEXT": ["Prismatic", "", "Adds #b1 random #yEthereal #Different #Color card to your hand."],
         "EXTRA_TEXT": [" NL Adds %d random Ethereal anniv5:different\u00a0color card to your hand."]
     },
-    "mojichimera:AdaptiveMod": {
-        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
-        "EXTRA_TEXT": [" NL If the enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
-    },
-    "mojichimera:ChimericMod": {
-        "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
-        "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
+    "mojichimera:FinaleMod": {
+        "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
+        "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d% and draws %d card."]
     }
 }

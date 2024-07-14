@@ -12,8 +12,8 @@ import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
-public class ProudfulMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(ProudfulMod.class.getSimpleName());
+public class FlauntingMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(FlauntingMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int PERCENT = 20;
@@ -53,7 +53,7 @@ public class ProudfulMod extends AbstractAugment {
     public AugmentRarity getModRarity() { return AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ProudfulMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FlauntingMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

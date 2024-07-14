@@ -15,8 +15,7 @@ public class ConcentratedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ConcentratedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int CARDS = 3;
-    private static final int UPGRADE_CARDS = 2;
+    private static final int CARDS = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -38,7 +37,7 @@ public class ConcentratedMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, card.upgraded ? UPGRADE_CARDS : CARDS, false));
+        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, CARDS, false));
     }
 
     @Override
@@ -52,7 +51,7 @@ public class ConcentratedMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], card.upgraded ? UPGRADE_CARDS : CARDS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], CARDS));
     }
 
     @Override

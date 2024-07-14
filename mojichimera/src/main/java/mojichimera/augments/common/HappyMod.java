@@ -28,7 +28,7 @@ public class HappyMod extends AbstractAugment {
     public void onDrawn(AbstractCard card) {
         drawnTimes.set(card, drawnTimes.get(card) + 1);
         if (drawnTimes.get(card) % (card.upgraded ? UPGRADE_PER : PER) == 0) {
-            card.updateCost(-EFFECT);
+            card.freeToPlayOnce = true;
         }
     }
 
