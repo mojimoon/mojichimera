@@ -1,4 +1,4 @@
-package packmasteraugments.augments;
+package mojichimera.optional.packmaster;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -12,12 +12,12 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.PrismaticUtil;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class PrismaticMod extends AbstractAugment {
-    public static final String ID = mojichimera.makePackmasterID(PrismaticMod.class.getSimpleName());
+    public static final String ID = mojichimera.makeID(PrismaticMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int EFFECT = 1;
@@ -30,25 +30,15 @@ public class PrismaticMod extends AbstractAugment {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         this.addToBot(new AbstractGameAction() {
+            @Override
             public void update() {
-                try {
-//                    List<?> cards = thePackmaster.cards.prismaticpack.PrismaticUtil.getRandomDifferentColorCardInCombat((AbstractCard.CardType)null, (AbstractCard.CardRarity)null, EFFECT);
-                    Class<?> prismaticUtil = Class.forName("thePackmaster.cards.prismaticpack.PrismaticUtil");
-                    List<?> cards = (List<?>)prismaticUtil.getMethod("getRandomDifferentColorCardInCombat", AbstractCard.CardType.class, AbstractCard.CardRarity.class, int.class).invoke(null, null, null, EFFECT);
-                    Iterator<?> var2 = (cards).iterator();
-
-                    while(var2.hasNext()) {
-                        AbstractCard c = (AbstractCard)var2.next();
-                        if (!c.isEthereal)
-                            CardModifierManager.addModifier(c, new EtherealMod());
-                        this.addToTop(new MakeTempCardInHandAction(c));
-                    }
-
-                    this.isDone = true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    this.isDone = true;
+                List<AbstractCard> cards = PrismaticUtil.getRandomDifferentColorCardInCombat(null, null, EFFECT);
+                for (int i = 0; i < EFFECT; i++) {
+                    AbstractCard c = cards.get(i);
+                    CardModifierManager.addModifier(c, new EtherealMod());
+                    addToTop(new MakeTempCardInHandAction(c));
                 }
+                this.isDone = true;
             }
         });
     }
@@ -80,5 +70,4 @@ public class PrismaticMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
-
 }

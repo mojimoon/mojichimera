@@ -394,8 +394,8 @@
         "EXTRA_TEXT": [" NL If you have played no more than %d cards this turn, increases damage and Block by %d%%."]
     },
     "mojichimera:HappyMod": {
-        "TEXT": ["Happy", "", "Reduces cost by [E] for every #b3(2) times drawn."],
-        "EXTRA_TEXT": [" NL Reduces cost by [E] for every %d times drawn."]
+        "TEXT": ["Happy", "", "Every #b3(2) times this card is drawn, costs #b0 next time it is played."],
+        "EXTRA_TEXT": [" NL Every %d times this card is drawn, costs 0 next time it is played."]
     },
     "mojichimera:HeavyThrowMod": {
         "TEXT": ["", "Heavy Throw", "Plays twice. NL Gains #b2 #yFrail."],

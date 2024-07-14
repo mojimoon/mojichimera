@@ -1,12 +1,12 @@
 package packmasteraugments.augments;
 
 import CardAugments.cardmods.AbstractAugment;
-import basemod.helpers.CardModifierManager;
-import mojichimera.augments.AugmentHelper;
-import mojichimera.mojichimera;
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
+import mojichimera.mojichimera;
 
 public class InscribedMod extends AbstractAugment {
     public static final String ID = mojichimera.makePackmasterID(InscribedMod.class.getSimpleName());

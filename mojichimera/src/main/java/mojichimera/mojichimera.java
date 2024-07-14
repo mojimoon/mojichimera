@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
+import mojichimera.optional.packmaster.PackmasterOptionalAugmentHelper;
 import packmasteraugments.augments.PackmasterAugmentHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -60,6 +61,8 @@ public class mojichimera implements
 
             if (Loader.isModLoaded("anniv5")) {
                 PackmasterAugmentHelper.register();
+            } else {
+                PackmasterOptionalAugmentHelper.register();
             }
         }
     }

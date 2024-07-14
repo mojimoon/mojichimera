@@ -2,6 +2,8 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -59,4 +61,25 @@ public class HappyMod extends AbstractAugment {
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
+
+
+    private boolean shouldGlow(AbstractCard card) {
+        return drawnTimes.get(card) > 0 && drawnTimes.get(card) % (card.upgraded ? UPGRADE_PER : PER) == 0;
+    }
+
+    public CardBorderGlowManager.GlowInfo getGlowInfo() {
+        return new CardBorderGlowManager.GlowInfo() {
+            public boolean test(AbstractCard card) {
+                return HappyMod.this.hasThisMod(card) && HappyMod.this.shouldGlow(card);
+            }
+
+            public Color getColor(AbstractCard card) {
+                return Color.GOLD.cpy();
+            }
+
+            public String glowID() {
+                return HappyMod.ID + "Glow";
+            }
+        };
+    }
 }

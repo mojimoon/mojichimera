@@ -213,7 +213,7 @@
     },
     "mojichimera:ExperimentalMod": {
         "TEXT": ["实验性", "", "将 #b3 张随机 #y状态牌 随机放入抽牌堆、弃牌堆或手牌。 NL 卡牌数值在基础值的 #b133% 与 #b300% 之间随机。"],
-        "EXTRA_TEXT": [" NL 随机添加 %d 张 状态牌 到抽牌堆、弃牌堆或手牌。"]
+        "EXTRA_TEXT": [" NL 将 %d 张随机 状态牌 随机放入抽牌堆、弃牌堆或手牌。"]
     },
     "mojichimera:ExploitMod": {
         "TEXT": ["", "利用", "敌人每有一层 #y易伤 ，造成的伤害增加 #b20% 。"],
@@ -534,6 +534,10 @@
         "EXTRA_TEXT": [" NL 被 消耗 时抽 %d 张牌。"],
         "NOTES": ["CardModifier"]
     },
+    "mojichimera:PrismaticMod": {
+        "TEXT": ["棱镜", "", "将 #b1 张带有 #y虚无 的随机 #y异色 牌放入手牌。"],
+        "EXTRA_TEXT": [" NL 将 %d 张带有 虚无 的随机 *异色 牌放入手牌。"]
+    },
     "mojichimera:packmaster_VirusMod": {
         "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],
         "EXTRA_TEXT": [" NL 将所有手牌变为本牌的 anniv5:回响 。"]
@@ -543,12 +547,12 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:packmaster_EchoMod": {
-        "TEXT": ["回响", "", "打出时将本牌的 #y消耗 #y虚无 复制加入手牌。"],
+        "TEXT": ["回响", "", "打出时将本牌的 #y消耗 #y虚无 复制放入手牌。"],
         "EXTRA_TEXT": [" NL anniv5:回响 。"]
     },
     "mojichimera:packmaster_PrismaticMod": {
-        "TEXT": ["", "棱镜", "将 #b1 张随机 #y虚无 #y异色 牌加入手牌。"],
-        "EXTRA_TEXT": [" NL 将 %d 张随机 虚无 anniv5:异色 牌加入手牌。"]
+        "TEXT": ["棱镜", "", "将 #b1 张带有 #y虚无 的随机 #y异色 牌放入手牌。"],
+        "EXTRA_TEXT": [" NL 将 %d 张带有 虚无 的随机 anniv5:异色 牌放入手牌。"]
     },
     "mojichimera:VirusMod": {
         "TEXT": ["", "病毒", "#y虚无 。 NL 打出时将所有手牌变为本牌的复制。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
