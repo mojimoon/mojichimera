@@ -1,4 +1,4 @@
-package mojichimera.deprecated;
+package mojichimera.augments.special;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.helpers.CardBorderGlowManager;
@@ -60,7 +60,7 @@ public class FinaleMod extends AbstractAugment {
 
     private boolean noOtherCardInHand(AbstractCard card) {
         return (AbstractDungeon.player.hand.group.size() == 1 && AbstractDungeon.player.hand.getTopCard().equals(card))
-                || (AbstractDungeon.player.hand.group.size() == 0);
+                || (AbstractDungeon.player.hand.group.isEmpty());
     }
 
     @Override
@@ -91,7 +91,7 @@ public class FinaleMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FinaleMod(); }

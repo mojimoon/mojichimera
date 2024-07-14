@@ -12,10 +12,6 @@
         "TEXT": ["过渡", "", "卡牌数值增加 #b100% 。 NL 每前进一幕，卡牌数值减少基础值的 #b50% 。"],
         "EXTRA_TEXT": []
     },
-    "mojichimera:AfterlifeMod": {
-        "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 时视为打出。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
-        "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"]
-    },
     "mojichimera:BelligerentMod": {
         "TEXT": ["好战", "", "若敌人意图攻击，造成的伤害增加 #b50% 。"],
         "EXTRA_TEXT": [" NL 若敌人意图攻击，造成的伤害增加 %d%% 。"]
@@ -495,37 +491,47 @@
         "EXTRA_TEXT": [" NL 再打出一次 。 NL 获得 %d 层 虚弱 。 "]
     },
     "mojichimera:AdaptiveMod": {
-        "TEXT": ["自适应", "", "本牌耗能增加 #b1 。 NL 若敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
+        "TEXT": ["自适应", "", "#r已废弃 。 NL 本牌耗能增加 #b1 。 NL 若敌人意图攻击，获得与所造成的未被格挡的伤害相等的 #y格挡 ； 否则，造成的伤害增加 #b100% 。"],
         "EXTRA_TEXT": [" NL 若敌人意图攻击，获得与所造成的未被格挡的伤害相等的 格挡 ，否则伤害增加。"],
         "NOTES": ["Special", "Deprecated"]
     },
+    "mojichimera:AfterlifeMod": {
+        "TEXT": ["阴世", "", "#r已废弃 。 NL #y虚无 。 NL 被 #y消耗 时视为打出。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"],
+        "NOTES": ["Special", "Deprecated"]
+    },
     "mojichimera:AwakenedMod": {
-        "TEXT": ["觉醒", "", "卡牌数值增加 #b200% 。"],
+        "TEXT": ["觉醒", "", "#r衍生 。 NL 卡牌数值增加 #b200% 。"],
         "EXTRA_TEXT": [],
         "NOTES": ["Special"]
     },
     "mojichimera:ChimericMod": {
-        "TEXT": ["奇美拉", "", "打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
+        "TEXT": ["奇美拉", "", "#r已废弃 。 NL 打出时为所有手牌添加随机 #y词条 。 NL #y消耗 。"],
         "EXTRA_TEXT": [" NL 为所有手牌添加随机词条 。 NL 消耗 。", " NL 为所有手牌添加随机词条 。"],
         "NOTES": ["Special", "Deprecated"]
     },
     "mojichimera:EmptiedMod": {
-        "TEXT": ["空无", "", "再打出 #b2 次 。 NL 将 #b1 张 #y虚空 添加到抽牌堆顶。"],
+        "TEXT": ["空无", "", "#r已废弃 。 NL 再打出 #b2 次 。 NL 将 #b1 张 #y虚空 添加到抽牌堆顶。"],
         "EXTRA_TEXT": [" NL 再打出 %d 次 。 NL 将 %d 张 *虚空 添加到抽牌堆顶。"],
         "NOTES": ["Special", "Deprecated"]
     },
-    "mojichimera:NamelessMod": {
-        "TEXT": ["无名", "", "卡牌数值增加 #b50% 。"],
-        "EXTRA_TEXT": [],
+    "mojichimera:FinaleMod": {
+        "TEXT": ["", "终曲", "#r已废弃 。 NL 若手牌中没有其他牌，卡牌数值增加 #b100% ，抽 #b1 张牌。"],
+        "EXTRA_TEXT": [" NL 若手牌中没有其他牌，数值增加 %d%% ，抽 %d 张牌。"],
         "NOTES": ["Special", "Deprecated"]
     },
+    "mojichimera:NamelessMod": {
+        "TEXT": ["无名", "", "#r衍生 。 NL 卡牌数值增加 #b50% 。"],
+        "EXTRA_TEXT": [],
+        "NOTES": ["Special"]
+    },
     "mojichimera:OverchargedMod": {
-        "TEXT": ["过载", "", "每次打出后，卡牌数值乘以 #b233% ，耗能增加 #b1 。"],
+        "TEXT": ["过载", "", "#r已废弃 。 NL 每次打出后，卡牌数值乘以 #b233% ，耗能增加 #b1 。"],
         "EXTRA_TEXT": [" NL 卡牌数值乘以 %d%% ，耗能增加 %d 。"],
         "NOTES": ["Special", "Deprecated"]
     },
     "mojichimera:ShareHelperMod": {
-        "TEXT": ["分享", "", "感恩 #y共享 。"],
+        "TEXT": ["分享", "", "#r衍生 。 NL 感恩 #y共享 。"],
         "EXTRA_TEXT": [],
         "NOTES": ["Special"]
     },
@@ -584,11 +590,6 @@
     "mojichimera:ContinuousMod": {
         "TEXT": ["连续", "", "打出时可选择丢弃 #b1 张牌，使本牌回到手牌。"],
         "EXTRA_TEXT": [" NL 可选择丢弃 %d 张牌，使本牌回到手牌。"],
-        "NOTES": ["Deprecated"]
-    },
-    "mojichimera:FinaleMod": {
-        "TEXT": ["", "终曲", "若手牌中没有其他牌，卡牌数值增加 #b100% ，抽 #b1 张牌。"],
-        "EXTRA_TEXT": [" NL 若手牌中没有其他牌，数值增加 %d%% ，抽 %d 张牌。"],
         "NOTES": ["Deprecated"]
     }
 }

@@ -16,6 +16,7 @@ public boolean hasEnoughEnergy() {
 }
  */
 
+@Deprecated
 public class EndTurnPlayPatch {
 
     @SpirePatch(clz = AbstractCard.class, method = "hasEnoughEnergy")

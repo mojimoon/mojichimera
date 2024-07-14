@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+@Deprecated
 public class ReduceDrawnCardsCostAction extends AbstractGameAction {
     private final int CARDS;
     private final int EFFECT;

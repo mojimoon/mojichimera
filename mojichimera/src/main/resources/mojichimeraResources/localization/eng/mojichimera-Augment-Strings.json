@@ -490,31 +490,35 @@
         "EXTRA_TEXT": [" NL Plays twice. NL Gains %d Weak."]
     },
     "mojichimera:AdaptiveMod": {
-        "TEXT": ["Adaptive", "", "Increases cost by #b1. NL If the enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
+        "TEXT": ["Adaptive", "", "#rDeprecated. NL Increases cost by #b1. NL If the enemy intends to attack, gain #yBlock equal to the unblocked damage dealt; otherwise, deal #b100% more damage."],
         "EXTRA_TEXT": [" NL If the enemy intends to attack, gain Block equal to the unblocked damage dealt; otherwise, deal more damage."]
     },
     "mojichimera:AwakenedMod": {
-        "TEXT": ["Awakened", "", "Increases card values by #b200%."],
+        "TEXT": ["Awakened", "", "#rDerived. NL Increases card values by #b200%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:ChimericMod": {
-        "TEXT": ["Chimeric", "", "Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
+        "TEXT": ["Chimeric", "", "#rDeprecated. NL Adds a random #yAugment to all cards in your hand when played. NL #yExhausts."],
         "EXTRA_TEXT": [" NL Add a random Augment to all cards in your hand. NL Exhaust.", " NL Add a random Augment to all cards in your hand."]
     },
     "mojichimera:EmptiedMod": {
-        "TEXT": ["Emptied", "", "Plays #b2 more times. NL Adds #b1 #yVoid on top of your draw pile."],
+        "TEXT": ["Emptied", "", "#rDeprecated. NL Plays #b2 more times. NL Adds #b1 #yVoid on top of your draw pile."],
         "EXTRA_TEXT": [" NL Plays %d more times. NL Adds %d *Void on top of your draw pile."]
     },
+    "mojichimera:FinaleMod": {
+        "TEXT": ["", "Finale", "#rDeprecated. NL If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
+        "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d% and draws %d card."]
+    },
     "mojichimera:NamelessMod": {
-        "TEXT": ["Nameless", "", "Increases card values by #b50%."],
+        "TEXT": ["Nameless", "", "#rDerived. NL Increases card values by #b50%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:OverchargedMod": {
-        "TEXT": ["Overcharged", "", "Multiplies card values by #b233%. NL Increases cost by #b1."],
+        "TEXT": ["Overcharged", "", "#rDeprecated. NL Multiplies card values by #b233%. NL Increases cost by #b1."],
         "EXTRA_TEXT": [" NL Multiplies card values by %d%%. NL Increases cost by %d."]
     },
     "mojichimera:ShareHelperMod": {
-        "TEXT": ["Shared", "", "Expresses gratitude for #ySharing."],
+        "TEXT": ["Shared", "", "#rDerived. NL Expresses gratitude for #ySharing."],
         "EXTRA_TEXT": []
     },
     "mojichimera:PromiseMod": {
@@ -552,9 +556,5 @@
     "mojichimera:packmaster_PrismaticMod": {
         "TEXT": ["Prismatic", "", "Adds #b1 random #yEthereal #Different #Color card to your hand."],
         "EXTRA_TEXT": [" NL Add %d random Ethereal anniv5:different\u00a0color card to your hand."]
-    },
-    "mojichimera:FinaleMod": {
-        "TEXT": ["", "Finale", "If there are no other cards in your hand, increases card values by #b100% and draws #b1 card when played."],
-        "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d% and draws %d card."]
     }
 }
