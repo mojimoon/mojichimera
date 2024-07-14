@@ -28,7 +28,8 @@ public class LoyaltyMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasVariable(card, true)
-                && AugmentHelper.isReplayable(card);
+                && AugmentHelper.isReplayable(card)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

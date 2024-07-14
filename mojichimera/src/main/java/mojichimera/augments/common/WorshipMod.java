@@ -29,7 +29,8 @@ public class WorshipMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isSkill(card)
-                && AugmentHelper.isPlayable(card);
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

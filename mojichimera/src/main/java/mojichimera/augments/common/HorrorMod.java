@@ -29,7 +29,8 @@ public class HorrorMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPower(card)
-                && AugmentHelper.isPlayable(card);
+                && AugmentHelper.isPlayable(card)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

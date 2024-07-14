@@ -32,7 +32,8 @@ public class CorruptedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return (card.baseMagicNumber > 0 && (card.baseDamage > 0 || card.baseBlock > 0 || card.type == AbstractCard.CardType.POWER))
+        return AugmentHelper.isEchoValid(card)
+                && card.magicNumber > 0
                 && AugmentHelper.isPlayable(card)
                 && AugmentHelper.isNormal(card);
     }

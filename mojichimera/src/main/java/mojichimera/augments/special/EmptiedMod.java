@@ -26,7 +26,8 @@ public class EmptiedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasVariable(card, true);
+        return AugmentHelper.hasVariable(card, true)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

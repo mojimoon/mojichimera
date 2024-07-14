@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
 public class EchoMod extends AbstractAugment {
@@ -47,7 +48,8 @@ public class EchoMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost > 0
-                && !CardModifierManager.hasModifier(card, ECHO_MODID);
+                && !CardModifierManager.hasModifier(card, ECHO_MODID)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

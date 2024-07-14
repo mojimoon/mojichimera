@@ -21,7 +21,8 @@ public class TwinMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasStaticCost(card);
+        return AugmentHelper.hasStaticCost(card)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

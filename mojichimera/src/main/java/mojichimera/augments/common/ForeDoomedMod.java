@@ -27,7 +27,8 @@ public class ForeDoomedMod extends AbstractAugment {
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
                 && AugmentHelper.hasVariable(card, true)
-                && AugmentHelper.isNormal(card);
+                && AugmentHelper.isNormal(card)
+                && AugmentHelper.isEchoValid(card);
     }
 
     @Override

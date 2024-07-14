@@ -295,4 +295,9 @@ public class AugmentHelper {
                 && !card.rarity.equals(AbstractCard.CardRarity.BASIC);
     }
 
+    public static boolean isEchoValid(AbstractCard card) {
+        return !usesAction(card, PressEndTurnButtonAction.class)
+                && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL
+                || (card.type == AbstractCard.CardType.POWER && card.magicNumber > 0));
+    }
 }
