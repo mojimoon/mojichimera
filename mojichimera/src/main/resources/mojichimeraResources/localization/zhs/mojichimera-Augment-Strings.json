@@ -127,7 +127,7 @@
     },
     "mojichimera:StrangeMod": {
         "TEXT": ["奇怪", "", "不再 #y消耗 。 "],
-        "EXTRA_TEXT": ["NL 不再 消耗 。",
+        "EXTRA_TEXT": [" NL 不再 消耗 。",
             "消耗 。",
             "",
             "消耗 。 NL 消耗 。",
@@ -534,12 +534,24 @@
         "EXTRA_TEXT": [" NL 被 消耗 时抽 %d 张牌。"],
         "NOTES": ["CardModifier"]
     },
+    "mojichimera:VirusMod": {
+        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 复制不带有 #y病毒 。  NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
+        "EXTRA_TEXT": [" NL 将所有手牌变为本牌的 消耗 虚无 复制。"]
+    },
+    "mojichimera:InscribedMod": {
+        "TEXT": ["铭印", "", "打出时触发最右侧充能球的被动效果。"],
+        "EXTRA_TEXT": [" NL 触发最右侧充能球的被动效果。"]
+    },
+    "mojichimera:EchoMod": {
+        "TEXT": ["回响", "", "打出时将本牌的 #y消耗 #y虚无 复制放入手牌。"],
+        "EXTRA_TEXT": [" NL 将本牌的 消耗 虚无 复制放入手牌。"]
+    },
     "mojichimera:PrismaticMod": {
         "TEXT": ["棱镜", "", "将 #b1 张带有 #y虚无 的随机 #y异色 牌放入手牌。"],
         "EXTRA_TEXT": [" NL 将 %d 张带有 虚无 的随机 *异色 牌放入手牌。"]
     },
     "mojichimera:packmaster_VirusMod": {
-        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 移除复制牌的 #y病毒 。"],
+        "TEXT": ["", "病毒", "打出时将所有手牌变为本牌的 #y消耗 #y虚无 复制。 NL 复制不带有 #y病毒 。  NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
         "EXTRA_TEXT": [" NL 将所有手牌变为本牌的 anniv5:回响 。"]
     },
     "mojichimera:packmaster_InscribedMod": {
@@ -553,11 +565,6 @@
     "mojichimera:packmaster_PrismaticMod": {
         "TEXT": ["棱镜", "", "将 #b1 张带有 #y虚无 的随机 #y异色 牌放入手牌。"],
         "EXTRA_TEXT": [" NL 将 %d 张带有 虚无 的随机 anniv5:异色 牌放入手牌。"]
-    },
-    "mojichimera:VirusMod": {
-        "TEXT": ["", "病毒", "#y虚无 。 NL 打出时将所有手牌变为本牌的复制。 NL 源于 #b崩坠 #y铜制机械人偶 的同名卡牌。"],
-        "EXTRA_TEXT": [" 虚无 。 NL ", " NL 将所有手牌变为本牌的复制。"],
-        "NOTES": ["Deprecated"]
     },
     "mojichimera:FailureMod": {
         "TEXT": ["失败作", "", "再打出 #b7 次 。 NL 失去 #b3 点生命和 #b15 #y金币 。 NL 获得 #b2 层 #y易伤 、 #y虚弱 和 #y脆弱 。 NL 将 #b1 张 #y虚空 洗入抽牌堆 。"],

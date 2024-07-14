@@ -54,11 +54,6 @@ public class PrismaticMod extends AbstractAugment {
     }
 
     @Override
-    public void onUpgradeCheck(AbstractCard card) {
-        card.initializeDescription();
-    }
-
-    @Override
     public String getPrefix() { return TEXT[0]; }
 
     @Override
