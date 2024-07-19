@@ -532,9 +532,8 @@
         "NOTES": ["Special", "Deprecated"]
     },
     "mojichimera:AfterlifeMod": {
-        "TEXT": ["阴世", "", "#r已废弃 。 NL #y虚无 。 NL 被 #y消耗 时视为打出。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
-        "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"],
-        "NOTES": ["Special", "Deprecated"]
+        "TEXT": ["阴世", "", "#y虚无 。 NL 被 #y消耗 时视为打出。 NL 源于 #b崩坠 #y六火亡魂 的同名关键词。"],
+        "EXTRA_TEXT": [" NL 被 消耗 时视为打出。"]
     },
     "mojichimera:AwakenedMod": {
         "TEXT": ["觉醒", "", "#r衍生 。 NL 卡牌数值增加 #b200% 。"],

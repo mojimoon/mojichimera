@@ -1,5 +1,6 @@
 package mojichimera.patches;
 
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -16,14 +17,13 @@ public boolean hasEnoughEnergy() {
 }
  */
 
-@Deprecated
 public class EndTurnPlayPatch {
 
     @SpirePatch(clz = AbstractCard.class, method = "hasEnoughEnergy")
     public static class EndTurnPlayPatch1 {
         @SpirePrefixPatch
         public static SpireReturn<Boolean> Prefix(AbstractCard __instance) {
-            if (AbstractDungeon.actionManager.turnHasEnded) {
+            if (AbstractDungeon.actionManager.turnHasEnded && CardModifierManager.hasModifier(__instance, "mojichimera:AfterlifeMod")) {
                 return SpireReturn.Return(true);
             } else {
                 return SpireReturn.Continue();

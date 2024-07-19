@@ -1,4 +1,4 @@
-package mojichimera.augments.special;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.util.Wiz;
@@ -58,7 +58,7 @@ public class AfterlifeMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new AfterlifeMod(); }
