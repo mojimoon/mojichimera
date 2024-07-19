@@ -19,6 +19,12 @@ public class FuritenMod extends AbstractAugment {
     private boolean modMagic;
 
     @Override
+    public void onInitialApplication(AbstractCard card) {
+        if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
+            this.modMagic = true;
+    }
+
+    @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (card.baseDamage > 0)
             return damage * MULTIPLIER;

@@ -432,7 +432,7 @@
     },
     "mojichimera:HexedMod": {
         "TEXT": ["邪咒", "", "本牌耗能减少 #b1 。 NL 将 #b1 张 #y晕眩 放入抽牌堆。"],
-        "EXTRA_TEXT": [" NL 将 %d 张 晕眩 放入抽牌堆。"]
+        "EXTRA_TEXT": [" NL 将 %d 张 *晕眩 放入抽牌堆。"]
     },
     "mojichimera:HorrorMod": {
         "TEXT": ["", "恐怖", "再打出一次 。 NL 获得 #b1 层 #y易伤 。"],
@@ -452,7 +452,7 @@
     },
     "mojichimera:MisfireMod": {
         "TEXT": ["走火", "", "再打出一次 。 NL 将 #b1 张 #y灼伤 放入弃牌堆。"],
-        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 灼伤 放入弃牌堆。"]
+        "EXTRA_TEXT": [" NL 再打出一次 。 NL 将 %d 张 *灼伤 放入弃牌堆。"]
     },
     "mojichimera:PairMod": {
         "TEXT": ["对子", "", "若手牌中有本牌的同名牌，造成的伤害和获得的 #y格挡 增加 #b100% 。"],
@@ -476,7 +476,7 @@
     },
     "mojichimera:PowerThroughMod": {
         "TEXT": ["硬撑", "", "造成的伤害和获得的 #y格挡 增加 #b100% 。 NL 将 #b2 张 #y伤口 放入手牌。"],
-        "EXTRA_TEXT": [" NL 将 %d 张 伤口 放入手牌。"]
+        "EXTRA_TEXT": [" NL 将 %d 张 *伤口 放入手牌。"]
     },
     "mojichimera:PreemptiveMod": {
         "TEXT": ["先发", "", "在手牌中未打出非 #y先发 牌时，造成的伤害和获得的 #y格挡 增加 #b50% 。"],
@@ -496,7 +496,7 @@
     },
     "mojichimera:RecklessMod": {
         "TEXT": ["无谋", "", "造成的伤害和获得的 #y格挡 增加 #b50% 。 NL 将 #b1 张 #y晕眩 放入抽牌堆。"],
-        "EXTRA_TEXT": [" NL 将 %d 张 晕眩 放入抽牌堆。"]
+        "EXTRA_TEXT": [" NL 将 %d 张 *晕眩 放入抽牌堆。"]
     },
     "mojichimera:ReinforcedMod": {
         "TEXT": ["硬化", "", "升级时获得的 #y格挡 额外增加 #b4 。"],
@@ -520,7 +520,7 @@
     },
     "mojichimera:WildMod": {
         "TEXT": ["狂野", "", "造成的伤害和获得的 #y格挡 增加 #b75% 。 NL 将 #b1 张 #y伤口 放入抽牌堆。"],
-        "EXTRA_TEXT": [" NL 将 %d 张 伤口 放入抽牌堆。"]
+        "EXTRA_TEXT": [" NL 将 %d 张 *伤口 放入抽牌堆。"]
     },
     "mojichimera:WorshipMod": {
         "TEXT": ["", "崇拜", "再打出一次 。 NL 获得 #b2 层 #y虚弱 。"],

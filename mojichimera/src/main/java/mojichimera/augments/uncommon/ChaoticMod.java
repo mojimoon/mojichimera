@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import mojichimera.augments.AugmentHelper;
@@ -98,9 +99,10 @@ public class ChaoticMod extends AbstractAugment {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!MojiHelper.isInCombat()) {
-            String tmp = rawDescription.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
+            char c = (Settings.language.toString().toLowerCase().equals("zhs")) ? '~' : '-';
+            String tmp = rawDescription.replace("!D!", String.format("%d%c%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!B!", String.format("%d%c%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!M!", String.format("%d%c%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
             return tmp;
         }
         return rawDescription;
