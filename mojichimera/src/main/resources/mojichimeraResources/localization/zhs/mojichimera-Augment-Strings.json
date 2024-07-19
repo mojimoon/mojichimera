@@ -61,8 +61,8 @@
         "EXTRA_TEXT": ["每 消耗 一张牌： NL "]
     },
     "mojichimera:ForesightMod": {
-        "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌耗能减少 #b1 。"],
-        "EXTRA_TEXT": [" NL 抽到的牌耗能减少 %d 。"]
+        "TEXT": ["先见", "", "本牌耗能增加 #b1 。 NL 抽到的牌本回合耗能减少 #b1 。"],
+        "EXTRA_TEXT": [" NL 抽到的牌本回合耗能减少 %d 。"]
     },
     "mojichimera:FutureMod": {
         "TEXT": ["未来", "", "本牌耗能变为 #b0 。 NL 将一张耗能为原耗能的 #y诺言 放入抽牌堆。 NL 源于 #b时间行者 mod 的同名关键词。"],
@@ -184,7 +184,7 @@
         "EXTRA_TEXT": [" NL 敌人每有一种正面效果，抽 %d 张牌。"]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["带血", "", "你每在战斗中失去生命一次，造成的伤害增加 #b20% 。"],
+        "TEXT": ["带血", "", "你每在战斗中失去生命一次，造成的伤害增加 #b25% 。"],
         "EXTRA_TEXT": [" NL 你每在战斗中失去生命一次，造成的伤害增加 %d%% 。"]
     },
     "mojichimera:BootingMod": {

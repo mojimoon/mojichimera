@@ -16,8 +16,8 @@ public class BleedingMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BleedingMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float EXTRA_MULTIPLIER = 0.2F;
-    private static final int PERCENT = 20;
+    private static final float EXTRA_MULTIPLIER = 0.25F;
+    private static final int PERCENT = 25;
     private static int damagedTimes = 0;
 
     @Override

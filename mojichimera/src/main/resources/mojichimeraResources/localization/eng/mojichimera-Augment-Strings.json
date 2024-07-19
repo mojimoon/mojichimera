@@ -60,11 +60,11 @@
         "EXTRA_TEXT": ["Whenever you Exhaust a card: NL "]
     },
     "mojichimera:ForesightMod": {
-        "TEXT": ["Foresight ", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1 this combat."],
-        "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d this combat."]
+        "TEXT": ["Foresight ", "", "Increases cost by #b1. NL Reduces cost of drawn cards by #b1 this turn."],
+        "EXTRA_TEXT": [" NL Reduce cost of drawn cards by %d this turn."]
     },
     "mojichimera:FutureMod": {
-        "TEXT": ["Future ", "", "Sets cost to #b0. NL Shuffles a *Promise with the original cost into your draw pile."],
+        "TEXT": ["Future ", "", "Sets cost to #b0. NL Shuffles a #yPromise with the original cost into your draw pile."],
         "EXTRA_TEXT": [" NL Shuffles a *Promise with cost %d into your draw pile."]
     },
     "mojichimera:GluttonousMod": {
@@ -181,7 +181,7 @@
         "EXTRA_TEXT": [" NL Draw %d card for each type of Buff the enemy has."]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["Bleeding ", "", "Increases damage by #b20% for each time you lose HP in combat."],
+        "TEXT": ["Bleeding ", "", "Increases damage by #b25% for each time you lose HP in combat."],
         "EXTRA_TEXT": [" NL Increases damage by %d%% for each time you lose HP in combat."]
     },
     "mojichimera:BootingMod": {

@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import mojichimera.augments.rare.ForesightMod;
 import mojichimera.util.MojiHelper;
 
 /* original code
@@ -22,9 +23,9 @@ public class ForesightDrawCardPatch {
         @SpirePrefixPatch
         public static void Prefix(DrawCardAction __instance) {
             AbstractCard card = MojiHelper.getLastCardPlayedThisTurn();
-            if (card != null && CardModifierManager.hasModifier(card, "mojichimera:ForesightMod")) {
+            if (card != null && CardModifierManager.hasModifier(card, ForesightMod.ID)) {
                 for (final AbstractCard c : __instance.drawnCards) {
-                    c.updateCost(-1);
+                    c.setCostForTurn(Math.max(0, c.costForTurn - 1));
                 }
             }
         }
