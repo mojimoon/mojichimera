@@ -9,8 +9,6 @@ import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.util.MojiHelper;
 
-import java.util.Iterator;
-
 public class AccursedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(AccursedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
@@ -27,16 +25,16 @@ public class AccursedMod extends AbstractAugment {
             return false;
         }
 
-        Iterator cardIterator = AbstractDungeon.player.masterDeck.group.iterator();
-        int curses = 0;
+        boolean hasCurse = false;
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
             if (c.type == AbstractCard.CardType.CURSE) {
-                curses++;
+                hasCurse = true;
+                break;
             }
         }
 
-        if (curses > 0) {
-            card.cost -= COST * curses;
+        if (hasCurse) {
+            card.cost -= COST;
             if (card.cost < 0) {
                 card.cost = 0;
             }
@@ -44,7 +42,7 @@ public class AccursedMod extends AbstractAugment {
             card.isCostModified = true;
         }
 
-        return curses > 0;
+        return hasCurse;
     }
 
     @Override

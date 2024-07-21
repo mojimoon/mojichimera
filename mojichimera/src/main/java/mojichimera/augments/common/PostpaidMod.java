@@ -2,37 +2,40 @@ package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import com.megacrit.cardcrawl.powers.RetainCardPower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.powers.LosePowerPower;
 
-public class ConcentratedMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(ConcentratedMod.class.getSimpleName());
+public class PostpaidMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(PostpaidMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int CARDS = 2;
+    private static final int DISCARD = 1;
+    private static final int RETAIN = 2;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.cost -= 2;
-        if (card.cost < 0)
-            card.cost = 0;
-        card.costForTurn = card.cost;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasStaticCost(card, 2);
+        return AugmentHelper.isPlayable(card);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, CARDS, false));
+        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, DISCARD, false));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RetainCardPower(AbstractDungeon.player, RETAIN), RETAIN));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new LosePowerPower(AbstractDungeon.player, new RetainCardPower(AbstractDungeon.player, RETAIN), RETAIN), RETAIN));
     }
 
     @Override
@@ -46,14 +49,14 @@ public class ConcentratedMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], CARDS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], DISCARD, RETAIN));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AugmentRarity getModRarity() { return AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ConcentratedMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new PostpaidMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

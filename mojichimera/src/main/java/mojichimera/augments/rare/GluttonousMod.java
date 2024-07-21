@@ -22,6 +22,10 @@ public class GluttonousMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int CARDS = 1;
 
+    public GluttonousMod() {
+        this.priority = -1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
     }

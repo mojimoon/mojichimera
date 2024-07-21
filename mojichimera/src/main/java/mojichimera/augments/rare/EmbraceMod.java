@@ -34,6 +34,10 @@ public class EmbraceMod extends AbstractAugment {
     private static final int EFFECT = 1;
     private static final float MULTIPLIER = 0.3333334F;
 
+    public EmbraceMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;

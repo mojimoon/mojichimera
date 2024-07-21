@@ -32,6 +32,10 @@ public class PastMod extends AbstractAugment {
     private static final int TURN = 1;
     private static final int COPY = 1;
 
+    public PastMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;

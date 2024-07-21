@@ -6,8 +6,8 @@
     <groupId>mojimoon</groupId>
     <artifactId>mojichimera</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>Mojimoon Chimera</name>
-    <version>0.7.1</version>
-    <description>Chimera expansion by Mojimoon. 130+ new modifiers. Optional crossover contents with the Packmaster.</description>
+    <version>0.7.2</version>
+    <description>Chimera expansion by Mojimoon. 140+ new modifiers. Optional crossover contents with the Packmaster.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

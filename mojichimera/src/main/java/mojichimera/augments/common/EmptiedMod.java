@@ -1,31 +1,39 @@
 package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.patches.EchoFieldPatches;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class VigorMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(VigorMod.class.getSimpleName());
+public class EmptiedMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(EmptiedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 3;
+    private static final int VOID = 1;
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        EchoFieldPatches.EchoFields.echo.set(card, (Integer) EchoFieldPatches.EchoFields.echo.get(card) + 1);
+    }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPlayable(card);
+        return AugmentHelper.hasVariable(card, true)
+                && card.cost >= 2;
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, EFFECT), EFFECT));
+        if (!card.purgeOnUse) {
+            addToBot(new MakeTempCardInDiscardAction(new VoidCard(), VOID));
+        }
     }
 
     @Override
@@ -39,14 +47,14 @@ public class VigorMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], VOID));
     }
 
     @Override
     public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new VigorMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new EmptiedMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

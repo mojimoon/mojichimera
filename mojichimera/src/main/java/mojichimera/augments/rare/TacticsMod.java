@@ -1,8 +1,8 @@
 package mojichimera.augments.rare;
 
+import CardAugments.actions.ImmediateExhaustCardAction;
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.patches.InterruptUseCardFieldPatches;
-import CardAugments.util.PortraitHelper;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -13,40 +13,38 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
+import mojichimera.util.OnManualDiscardSubscriber;
 
-public class SkillizedMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(SkillizedMod.class.getSimpleName());
+public class TacticsMod extends AbstractAugment implements OnManualDiscardSubscriber {
+    public static final String ID = mojichimera.makeID(TacticsMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-
-    public SkillizedMod() {
-        this.priority = -1000;
-    }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
-        card.target = AbstractCard.CardTarget.NONE;
-        if (card.type != AbstractCard.CardType.SKILL) {
-            card.type = AbstractCard.CardType.SKILL;
-            PortraitHelper.setMaskedPortrait(card);
-        }
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        card.use(AbstractDungeon.player, target instanceof AbstractMonster ? (AbstractMonster)target : null);
+    }
+
+    @Override
+    public void onManualDiscard(AbstractCard card) {
         addToTop(new AbstractGameAction() {
             @Override
             public void update() {
-                card.use(AbstractDungeon.player, target instanceof AbstractMonster ? (AbstractMonster)target : null);
+                card.use(AbstractDungeon.player, null);
                 isDone = true;
             }
         });
+        addToBot(new ImmediateExhaustCardAction(card));
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPower(card) && card.baseMagicNumber > 0;
+        return AugmentHelper.isPlayable(card);
     }
 
     @Override
@@ -59,10 +57,15 @@ public class SkillizedMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
+    }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SkillizedMod(); }
+    public AugmentRarity getModRarity() { return AugmentRarity.RARE; }
+
+    @Override
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TacticsMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

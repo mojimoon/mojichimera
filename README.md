@@ -2,7 +2,7 @@
 
 ## English
 
-Adds 130+ new card modifiers to the Chimera (Card Augments) mod, and is still being updated. 
+Adds roughly 150 new card modifiers to the Chimera (Card Augments) mod, and is still being updated. 
 
 These modifiers are based on many different sources, such as the vanilla game, other mods, and even memes. 
 
@@ -18,7 +18,7 @@ English and Simplified Chinese are supported. However, the quality of English lo
 
 ## 简体中文
 
-为奇美拉 (Card Augments) mod 添加了 130+ 个新的卡牌修改，并且这个数字还在不断增加。
+为奇美拉 (Card Augments) mod 添加了约 150 个新的卡牌修改，并且这个数字还在不断增加。
 
 这些词条基于许多不同的来源，包括但不限于原版游戏、其他 mod 以及一些梗。
 

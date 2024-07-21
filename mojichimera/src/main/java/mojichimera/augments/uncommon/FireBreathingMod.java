@@ -26,6 +26,10 @@ public class FireBreathingMod extends AbstractAugment {
     private boolean inherentHack = true;
     private static final int EFFECT = 1;
 
+    public FireBreathingMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;

@@ -24,6 +24,10 @@ public class FutureMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private int baseCost = 1;
 
+    public FutureMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         baseCost = card.cost;

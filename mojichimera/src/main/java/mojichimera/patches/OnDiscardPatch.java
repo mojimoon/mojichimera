@@ -6,10 +6,9 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import mojichimera.util.OnManualDiscardSubscriber;
-import mojichimera.util.OnMoveToDiscardSubscriber;
 
 public class OnDiscardPatch {
-    @SpirePatch(clz = AbstractCard.class, method = "OnManualDiscard")
+    @SpirePatch(clz = AbstractCard.class, method = "triggerOnManualDiscard")
     public static class OnManualDiscardPatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractCard __instance) {
@@ -21,15 +20,15 @@ public class OnDiscardPatch {
         }
     }
 
-    @SpirePatch(clz = AbstractCard.class, method = "onMoveToDiscard")
-    public static class OnMoveToDiscardPatch {
-        @SpirePostfixPatch
-        public static void Postfix(AbstractCard __instance) {
-            for (AbstractCardModifier mod : CardModifierManager.modifiers(__instance)) {
-                if (mod instanceof OnMoveToDiscardSubscriber) {
-                    ((OnMoveToDiscardSubscriber) mod).onMoveToDiscard(__instance);
-                }
-            }
-        }
-    }
+//    @SpirePatch(clz = AbstractCard.class, method = "onMoveToDiscard")
+//    public static class OnMoveToDiscardPatch {
+//        @SpirePostfixPatch
+//        public static void Postfix(AbstractCard __instance) {
+//            for (AbstractCardModifier mod : CardModifierManager.modifiers(__instance)) {
+//                if (mod instanceof OnMoveToDiscardSubscriber) {
+//                    ((OnMoveToDiscardSubscriber) mod).onMoveToDiscard(__instance);
+//                }
+//            }
+//        }
+//    }
 }

@@ -24,6 +24,10 @@ public class UnawakenedMod extends AbstractAugment {
     private static final int COPY = 1;
     private boolean inherentHack;
 
+    public UnawakenedMod() {
+        this.priority = -1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;

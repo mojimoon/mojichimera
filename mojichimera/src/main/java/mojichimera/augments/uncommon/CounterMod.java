@@ -31,6 +31,10 @@ public class CounterMod extends AbstractAugment {
     private static final int EFFECT = 1;
     private static final float MULTIPLIER = 0.5F;
 
+    public CounterMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.inherentHack = true;

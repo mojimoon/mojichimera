@@ -1,7 +1,7 @@
 {
   "mojichimera:LosePowerPower": {
     "NAME": "下降",
-    "DESCRIPTIONS": ["在你的回合结束时，失去 #b", " 点 #y", " 。"]
+    "DESCRIPTIONS": ["在你的回合结束时，失去 #b", " 层 #y", " 。"]
   },
   "mojichimera:BiasedPower": {
     "NAME": "偏差",

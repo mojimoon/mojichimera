@@ -1,21 +1,24 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class FuritenMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(FuritenMod.class.getSimpleName());
+public class StrenuousMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(StrenuousMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.6666667F;
+    private static final float MULTIPLIER = 1.25F;
+    private static final int EFFECT = 1;
     private boolean modMagic;
 
     @Override
@@ -45,21 +48,16 @@ public class FuritenMod extends AbstractAugment {
         return magic;
     }
 
+
     @Override
-    public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isReplayable(card)
-                && AugmentHelper.reachesVariable(card, 2)
-                && doesntOverride(card, "canUse", new Class[]{AbstractPlayer.class, AbstractMonster.class});
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, EFFECT, false));
     }
 
     @Override
-    public boolean canPlayCard(AbstractCard card) {
-        for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            if (c.uuid.equals(card.uuid)) {
-                return false;
-            }
-        }
-        return true;
+    public boolean validCard(AbstractCard card) {
+        return AugmentHelper.reachesVariable(card, 4)
+                && AugmentHelper.isNormal(card);
     }
 
     @Override
@@ -73,14 +71,14 @@ public class FuritenMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AugmentRarity getModRarity() { return AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new FuritenMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new StrenuousMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

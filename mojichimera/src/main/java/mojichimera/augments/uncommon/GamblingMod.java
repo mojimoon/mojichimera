@@ -1,31 +1,29 @@
-package mojichimera.augments.common;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.unique.CalculatedGambleAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class VigorMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(VigorMod.class.getSimpleName());
+public class GamblingMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(GamblingMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int EFFECT = 3;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isPlayable(card);
+        return AugmentHelper.isPlayable(card)
+                && !usesAction(card, CalculatedGambleAction.class);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, EFFECT), EFFECT));
+        addToBot(new CalculatedGambleAction(false));
     }
 
     @Override
@@ -39,14 +37,14 @@ public class VigorMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
+        return insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
+    public AugmentRarity getModRarity() { return AugmentRarity.UNCOMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new VigorMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier) new GamblingMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }
