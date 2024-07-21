@@ -1,29 +1,28 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.EtherealMod;
-import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class OverpoweredMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(OverpoweredMod.class.getSimpleName());
+public class SlimyMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(SlimyMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.3333334F;
+    private static final float MULTIPLIER = 1.5F;
+    private static final int EFFECT = 1;
     private boolean modMagic;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CardModifierManager.addModifier(card, new EtherealMod());
         if (cardCheck(card, c -> (doesntDowngradeMagic() && c.baseMagicNumber > 0)))
             this.modMagic = true;
-        card.costForTurn = ++card.cost;
     }
 
     @Override
@@ -48,10 +47,13 @@ public class OverpoweredMod extends AbstractAugment {
     }
 
     @Override
+    public void onDrawn(AbstractCard card) {
+        addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, EFFECT, true));
+    }
+
+    @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasVariable(card)
-                && AugmentHelper.hasStaticCost(card)
-                && cardCheck(card, c -> notRetain(card))
+        return AugmentHelper.reachesVariable(card, 3)
                 && AugmentHelper.isNormal(card);
     }
 
@@ -64,16 +66,16 @@ public class OverpoweredMod extends AbstractAugment {
     @Override
     public String getAugmentDescription() { return TEXT[2]; }
 
-//    @Override
-//    public String modifyDescription(String rawDescription, AbstractCard card) {
-//        return insertBeforeText(rawDescription, CARD_TEXT[0]);
-//    }
+    @Override
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT));
+    }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AugmentRarity getModRarity() { return AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new OverpoweredMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SlimyMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

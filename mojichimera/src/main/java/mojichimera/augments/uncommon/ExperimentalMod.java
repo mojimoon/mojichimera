@@ -39,6 +39,10 @@ public class ExperimentalMod extends AbstractAugment {
     public static final SpireField<Integer> blockMap = new SpireField<>(() -> 0);
     public static final SpireField<Integer> magicMap = new SpireField<>(() -> 0);
 
+    public ExperimentalMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         updateValues(card);
@@ -193,9 +197,8 @@ public class ExperimentalMod extends AbstractAugment {
             tmp = tmp.replace("!D!", String.format("%d%c%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
             tmp = tmp.replace("!B!", String.format("%d%c%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
             tmp = tmp.replace("!M!", String.format("%d%c%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
-            return tmp;
         }
-        return rawDescription;
+        return tmp;
     }
 
     @Override

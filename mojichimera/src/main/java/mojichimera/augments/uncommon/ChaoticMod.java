@@ -29,6 +29,10 @@ public class ChaoticMod extends AbstractAugment {
     public static final SpireField<Integer> blockMap = new SpireField<>(() -> 0);
     public static final SpireField<Integer> magicMap = new SpireField<>(() -> 0);
 
+    public ChaoticMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onInitialApplication(AbstractCard card) {
         updateValues(card);

@@ -1,51 +1,47 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
-import CardAugments.actions.ImmediateExhaustCardAction;
 import CardAugments.cardmods.AbstractAugment;
-import CardAugments.patches.InterruptUseCardFieldPatches;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
-import mojichimera.util.OnManualDiscardSubscriber;
 
-public class TacticsMod extends AbstractAugment implements OnManualDiscardSubscriber {
-    public static final String ID = mojichimera.makeID(TacticsMod.class.getSimpleName());
+public class AfterAngerMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(AfterAngerMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
-    }
-
-    @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        card.use(AbstractDungeon.player, target instanceof AbstractMonster ? (AbstractMonster)target : null);
-    }
-
-    @Override
-    public void onManualDiscard(AbstractCard card) {
-        addToTop(new AbstractGameAction() {
-            @Override
-            public void update() {
-                card.use(AbstractDungeon.player, null);
-                isDone = true;
-            }
-        });
-        addToBot(new ImmediateExhaustCardAction(card));
-    }
+    private static final int EFFECT = 1;
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
-                && doesntOverride(card, "triggerOnManualDiscard", new Class[]{});
+                && AugmentHelper.isNormal(card);
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        addToTop(new MakeTempCardInHandAction(card.makeStatEquivalentCopy()));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                int handSize = AbstractDungeon.player.hand.size();
+                for (int i = handSize - 1; i >= 0; i--) {
+                    AbstractCard c = AbstractDungeon.player.hand.group.get(i);
+                    if (c.cardID.equals(card.cardID)) {
+                        addToBot(new DiscardSpecificCardAction(c));
+                        break;
+                    }
+                }
+                isDone = true;
+            }
+        });
     }
 
     @Override
@@ -59,14 +55,14 @@ public class TacticsMod extends AbstractAugment implements OnManualDiscardSubscr
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, CARD_TEXT[0]);
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], EFFECT, EFFECT));
     }
 
     @Override
-    public AugmentRarity getModRarity() { return AugmentRarity.RARE; }
+    public AugmentRarity getModRarity() { return AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new TacticsMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new AfterAngerMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

@@ -6,6 +6,7 @@ import CardAugments.cardmods.rare.BundledMod;
 import CardAugments.cardmods.rare.ExplosiveMod;
 import CardAugments.cardmods.rare.InfiniteMod;
 import CardAugments.cardmods.rare.InvertedMod;
+import CardAugments.cardmods.uncommon.AbsoluteMod;
 import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
@@ -299,5 +300,20 @@ public class AugmentHelper {
         return !usesAction(card, PressEndTurnButtonAction.class)
                 && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL
                 || (card.type == AbstractCard.CardType.POWER && card.magicNumber > 0));
+    }
+
+    public static boolean isPriority(AbstractCard card) {
+        String[] mods = {
+                AbsoluteMod.ID,
+                PreemptiveMod.ID,
+                ReservedMod.ID
+        };
+
+        for (String id : mods) {
+            if (CardModifierManager.hasModifier(card, id))
+                return true;
+        }
+
+        return false;
     }
 }

@@ -42,7 +42,7 @@ public class UnsociableMod extends AbstractAugment {
                 multiplier -= EXTRA_MULTIPLIER;
             }
         }
-        return Math.max(multiplier, EXTRA_MULTIPLIER);
+        return Math.max(multiplier, 1.0F);
     }
 
     @Override
