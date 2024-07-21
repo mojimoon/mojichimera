@@ -1,14 +1,19 @@
 package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
+import CardAugments.patches.InterruptUseCardFieldPatches;
 import CardAugments.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 import mojichimera.powers.NextTurnStartPlayPower;
@@ -35,7 +40,6 @@ public class AfterlifeMod extends AbstractAugment {
     @Override
     public void onExhausted(AbstractCard card) {
         card.flash(Color.RED.cpy());
-//        Wiz.applyToSelf(new NextTurnStartPlayPower(AbstractDungeon.player, card, TURN, COPY));
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             card.use(AbstractDungeon.player, AbstractDungeon.getRandomMonster());
         } else {

@@ -99,7 +99,7 @@ public class ChaoticMod extends AbstractAugment {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!MojiHelper.isInCombat()) {
-            char c = (Settings.language.toString().toLowerCase().equals("zhs")) ? '~' : '-';
+            char c = (Settings.language.toString().equalsIgnoreCase("zhs")) ? '~' : '-';
             String tmp = rawDescription.replace("!D!", String.format("%d%c%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
             tmp = tmp.replace("!B!", String.format("%d%c%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
             tmp = tmp.replace("!M!", String.format("%d%c%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));

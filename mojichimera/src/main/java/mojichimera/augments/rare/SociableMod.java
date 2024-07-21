@@ -15,8 +15,8 @@ public class SociableMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(SociableMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 20;
-    private static final float EXTRA_MULTIPLIER = 0.2F;
+    private static final int PERCENT = 15;
+    private static final float EXTRA_MULTIPLIER = 0.15F;
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {

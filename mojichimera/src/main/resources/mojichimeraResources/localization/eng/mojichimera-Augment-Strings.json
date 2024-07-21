@@ -12,7 +12,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:BelligerentMod": {
-        "TEXT": ["Belligerent ", "", "If the target intends to attack, increases damage by #b50%."],
+        "TEXT": ["Belligerent ", "", "If the target intends to attack, increases damage by #b25%."],
         "EXTRA_TEXT": [" NL If the target intends to attack, increases damage by %d%%."]
     },
     "mojichimera:BiasedMod": {
@@ -32,7 +32,7 @@
         "EXTRA_TEXT": [" NL Multiplies all enemies' Poison by %d%%."]
     },
     "mojichimera:ChargeMod": {
-        "TEXT": ["Chargeable ", "", "Increases card values by #b25% for each card of the same type played while in hand. Resets after each play."],
+        "TEXT": ["Chargeable ", "", "Increases card values by #b20% for each card of the same type played while in hand. Resets after each play."],
         "EXTRA_TEXT": [
             " NL While in hand, for each %s card played, increases card values by %d%%. Resets after each play.",
             "Attack",
@@ -48,7 +48,7 @@
         ]
     },
     "mojichimera:ConfrontingMod": {
-        "TEXT": ["Confronting ", "", "Increases card values by #b100% in Boss and elite combats."],
+        "TEXT": ["Confronting ", "", "Increases card values by #b50% in Boss and elite combats."],
         "EXTRA_TEXT": [" NL Increases card values by %d%% in Boss and elite combats."]
     },
     "mojichimera:CorruptedMod": {
@@ -84,7 +84,7 @@
         "EXTRA_TEXT": ["Ethereal. NL ", " NL When exhausted, gain %d Strength and Dexterity."]
     },
     "mojichimera:KyrieMod": {
-        "TEXT": ["Kyrie ", "", "The higher the enemy's current HP percentage, the more damage you deal, up to #b200%."],
+        "TEXT": ["Kyrie ", "", "The higher the enemy's current HP percentage, the more damage you deal, up to #b175%."],
         "EXTRA_TEXT": [" NL The higher the enemy's current HP percentage, the more damage you deal."]
     },
     "mojichimera:LimitlessMod": {
@@ -100,7 +100,7 @@
         "EXTRA_TEXT": [" NL Draw %d card for each type of Debuff the target has."]
     },
     "mojichimera:OverpoweredMod": {
-        "TEXT": ["Overpowered ", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b150%."],
+        "TEXT": ["Overpowered ", "", "Increases cost by #b1. NL Ethereal. Increases card values by #b100%."],
         "EXTRA_TEXT": ["Ethereal. NL "]
     },
     "mojichimera:OvershootMod": {
@@ -127,12 +127,8 @@
         "TEXT": ["Skillized ", "", "Becomes a #ySkill."],
         "EXTRA_TEXT": []
     },
-    "mojichimera:SkimMod": {
-        "TEXT": ["", " Skim", "Draw #b1(+1) cards."],
-        "EXTRA_TEXT": [" NL Draw %s card.", " NL Draw %s cards."]
-    },
     "mojichimera:SociableMod": {
-        "TEXT": ["Sociable ", "", "Increases damage and #yBlock by #b20% for each card of the same type in your hand."],
+        "TEXT": ["Sociable ", "", "Increases damage and #yBlock by #b15% for each card of the same type in your hand."],
         "EXTRA_TEXT": [" NL Increases damage and Block by %d%% for each card of the same type in your hand."]
     },
     "mojichimera:SozuMod": {
@@ -153,7 +149,7 @@
         "EXTRA_TEXT": [" NL Can be Upgraded any number of times."]
     },
     "mojichimera:TrinityMod": {
-        "TEXT": ["Trinity ", "", "If you have played an #yAttack, #ySkill, and #yPower card this turn, increases card values by #b100%."],
+        "TEXT": ["Trinity ", "", "If you have played an #yAttack, #ySkill, and #yPower card this turn, increases card values by #b67%."],
         "EXTRA_TEXT": [" NL If you have played an Attack, Skill, and Power card this turn, increases card values by %d%%."]
     },
     "mojichimera:UnawakenedMod": {
@@ -161,7 +157,7 @@
         "EXTRA_TEXT": [" NL At the start of the %dnd turn after Exhausted, adds an Awakened copy to your hand."]
     },
     "mojichimera:UnsociableMod": {
-        "TEXT": ["Unsociable ", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b20% of base values for each card of the same type in your hand."],
+        "TEXT": ["Unsociable ", "", "Increases damage and #yBlock by #b100%. NL Decreases by #b25% of base values for each card of the same type in your hand."],
         "EXTRA_TEXT": [" NL Decreases damage and Block by %d%% for each card of the same type in your hand."]
     },
     "mojichimera:VanityMod": {
@@ -181,15 +177,15 @@
         "EXTRA_TEXT": [" NL Draw %d card for each type of Buff the enemy has."]
     },
     "mojichimera:BleedingMod": {
-        "TEXT": ["Bleeding ", "", "Increases damage by #b25% for each time you lose HP in combat."],
+        "TEXT": ["Bleeding ", "", "Increases damage by #b20% for each time you lose HP in combat."],
         "EXTRA_TEXT": [" NL Increases damage by %d%% for each time you lose HP in combat."]
     },
     "mojichimera:BootingMod": {
-        "TEXT": ["Booting ", "", "Increases card values by #b100% for the first time played each combat."],
+        "TEXT": ["Booting ", "", "Increases card values by #b67% for the first time played each combat."],
         "EXTRA_TEXT": [" NL Increases card values by %d%% for the first time played each combat."]
     },
     "mojichimera:BuriedMod": {
-        "TEXT": ["Buried ", "", "#yGrave. NL Increases card values by #b50%."],
+        "TEXT": ["Buried ", "", "#yGrave. NL Increases card values by #b33%."],
         "EXTRA_TEXT": ["Grave. NL "]
     },
     "mojichimera:ChaoticMod": {
@@ -205,7 +201,7 @@
         "EXTRA_TEXT": [" NL Whenever you are attacked: NL "]
     },
     "mojichimera:DeadOnMod": {
-        "TEXT": ["Dead On ", "", "Increases damage and #yBlock by #b75% when played from the middle of your hand. NL When the hand size is even, both cards in the middle qualify."],
+        "TEXT": ["Dead On ", "", "Increases damage and #yBlock by #b33% when played from the middle of your hand. NL When the hand size is even, both cards in the middle qualify."],
         "EXTRA_TEXT": [" NL Increases damage and Block by %d%% when played from the middle of your hand."]
     },
     "mojichimera:DodgeMod": {
@@ -225,7 +221,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:ExperimentalMod": {
-        "TEXT": ["Experimental ", "", "Adds #b3 random #yStatus cards to the draw pile, discard pile, or hand. NL Card values are randomized between #b133% and #b300% of their base values."],
+        "TEXT": ["Experimental ", "", "Adds #b3 random #yStatus cards to the draw pile, discard pile, or hand. NL Card values are randomized between #b100% and #b250% of their base values."],
         "EXTRA_TEXT": [" NL Adds %d random Status cards to the draw pile, discard pile, or hand."]
     },
     "mojichimera:ExploitMod": {
@@ -261,15 +257,15 @@
         "EXTRA_TEXT": [" NL Can only be played once per turn."]
     },
     "mojichimera:GlazeMod": {
-        "TEXT": ["Glaze ", "", "Increases card values by #b50%. NL Has a #b1/4 chance to #yExhaust when played."],
+        "TEXT": ["Glaze ", "", "Increases card values by #b33%. NL Has a #b1/4 chance to #yExhaust when played."],
         "EXTRA_TEXT": [" NL Has a 1/4 chance to Exhaust."]
     },
     "mojichimera:HighCardMod": {
-        "TEXT": ["High Card ", "", "If all cards in your hand are unique, increases damage and #yBlock by #b33%."],
+        "TEXT": ["High Card ", "", "If all cards in your hand are unique, increases damage and #yBlock by #b20%."],
         "EXTRA_TEXT": [" NL If all cards in your hand are unique, increases damage and Block by %d%%."]
     },
     "mojichimera:IndignantMod": {
-        "TEXT": ["Indignant ", "", "Deals #b50% more damage when you are in #yWrath."],
+        "TEXT": ["Indignant ", "", "Deals #b33% more damage when you are in #yWrath."],
         "EXTRA_TEXT": [" NL Wrath: Deals %d%% more damage."]
     },
     "mojichimera:KnockoffMod": {
@@ -293,7 +289,7 @@
         "EXTRA_TEXT": [" NL Randomly removes %s of your Debuffs.", " NL Randomly removes %s of your Debuffs."]
     },
     "mojichimera:PerseverantMod": {
-        "TEXT": ["Perseverant ", "", "The lower your current HP percentage, the more #yBlock you gain, up to #b200%."],
+        "TEXT": ["Perseverant ", "", "The lower your current HP percentage, the more #yBlock you gain, up to #b150%."],
         "EXTRA_TEXT": [" NL The lower your current HP percentage, the more Block you gain."]
     },
     "mojichimera:PourSaltMod": {
@@ -414,7 +410,7 @@
         "EXTRA_TEXT": [" NL Plays twice. NL Shuffle %d *Slimed into your discard pile."]
     },
     "mojichimera:HalfMod": {
-        "TEXT": ["Half ", "", "If you have played no more than #b3 cards this turn, increases damage and #yBlock by #b50%."],
+        "TEXT": ["Half ", "", "If you have played no more than #b3 cards this turn, increases damage and #yBlock by #b33%."],
         "EXTRA_TEXT": [" NL If you have played no more than %d cards this turn, increases damage and Block by %d%%."]
     },
     "mojichimera:HappyMod": {
@@ -450,7 +446,7 @@
         "EXTRA_TEXT": [" NL Plays twice. NL Shuffle %d *Burn into your discard pile."]
     },
     "mojichimera:PairMod": {
-        "TEXT": ["Pair ", "", "If there is another card of the same name in your hand, increases damage and #yBlock by #b100%."],
+        "TEXT": ["Pair ", "", "If there is another card of the same name in your hand, increases damage and #yBlock by #b67%."],
         "EXTRA_TEXT": [" NL If there is another card of the same name in your hand, increases damage and Block by %d%%."]
     },
     "mojichimera:PastMod": {
@@ -470,11 +466,11 @@
         "EXTRA_TEXT": [" NL Lose [E] when played."]
     },
     "mojichimera:PowerThroughMod": {
-        "TEXT": ["Power Through ", "", "Increases damage and #yBlock by #b100%. NL Adds #b2 #yWound to your hand."],
+        "TEXT": ["Power Through ", "", "Increases damage and #yBlock by #b75%. NL Adds #b2 #yWound to your hand."],
         "EXTRA_TEXT": [" NL Adds %d *Wound to your hand."]
     },
     "mojichimera:PreemptiveMod": {
-        "TEXT": ["Preemptive ", "", "If no #ynon-Preemptive cards are played while in your hand, increases damage and #yBlock by #b50%."],
+        "TEXT": ["Preemptive ", "", "If no #ynon-Preemptive cards are played while in your hand, increases damage and #yBlock by #b33%."],
         "EXTRA_TEXT": [" NL If no non-Preemptive cards are played while in your hand, increases damage and Block by %d%%."]
     },
     "mojichimera:ReactiveMod": {
@@ -514,7 +510,7 @@
         "EXTRA_TEXT": [" NL Gains %s *Vigor."]
     },
     "mojichimera:WildMod": {
-        "TEXT": ["Wild ", "", "Increases damage and #yBlock by #b75%. NL Shuffles #b1 #yWound to your draw pile."],
+        "TEXT": ["Wild ", "", "Increases damage and #yBlock by #b67%. NL Shuffles #b1 #yWound to your draw pile."],
         "EXTRA_TEXT": [" NL Shuffles %d #yWound to your draw pile."]
     },
     "mojichimera:WorshipMod": {
@@ -530,7 +526,7 @@
         "EXTRA_TEXT": [" NL When exhausted, treat as played."]
     },
     "mojichimera:AwakenedMod": {
-        "TEXT": ["Awakened ", "", "#rDerived. NL Increases card values by #b200%."],
+        "TEXT": ["Awakened ", "", "#rCard #reffects. NL Increases card values by #b200%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:ChimericMod": {
@@ -546,7 +542,7 @@
         "EXTRA_TEXT": [" NL If there are no other cards in your hand, increases card values by %d%% and draws %d card."]
     },
     "mojichimera:NamelessMod": {
-        "TEXT": ["Nameless ", "", "#rDerived. NL Increases card values by #b50%."],
+        "TEXT": ["Nameless ", "", "#rCard #reffects. NL Increases card values by #b50%."],
         "EXTRA_TEXT": []
     },
     "mojichimera:OverchargedMod": {
@@ -554,8 +550,12 @@
         "EXTRA_TEXT": [" NL Multiplies card values by %d%%. NL Increases cost by %d."]
     },
     "mojichimera:ShareHelperMod": {
-        "TEXT": ["Shared ", "", "#rDerived. NL Expresses gratitude for #ySharing."],
+        "TEXT": ["Shared ", "", "#rCard #reffects. NL Expresses gratitude for #ySharing."],
         "EXTRA_TEXT": []
+    },
+    "mojichimera:SkimMod": {
+        "TEXT": ["", " Skim", "#rDeprecated. NL Draw #b1(+1) cards."],
+        "EXTRA_TEXT": [" NL Draw %s card.", " NL Draw %s cards."]
     },
     "mojichimera:PromiseMod": {
         "TEXT": ["Promise", "", "When #yExhausted, draw #b1 card."],

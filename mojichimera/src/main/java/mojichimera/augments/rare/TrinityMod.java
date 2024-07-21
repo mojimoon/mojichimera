@@ -19,8 +19,8 @@ public class TrinityMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(TrinityMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.0F;
-    private static final int PERCENT = 100;
+    private static final float MULTIPLIER = 1.6666667F;
+    private static final int PERCENT = 67;
     private boolean modMagic;
 
     @Override
@@ -73,7 +73,7 @@ public class TrinityMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.hasVariable(card)
+        return AugmentHelper.reachesVariable(card, 2)
                 && AugmentHelper.isNormal(card);
     }
 

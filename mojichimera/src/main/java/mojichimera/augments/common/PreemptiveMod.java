@@ -25,8 +25,8 @@ public class PreemptiveMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PreemptiveMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.5F;
-    private static final int PERCENT = 50;
+    private static final float MULTIPLIER = 1.3333334F;
+    private static final int PERCENT = 33;
     public static final SpireField<Boolean> otherCardsPlayed = new SpireField<>(() -> false);
     private boolean modMagic;
 

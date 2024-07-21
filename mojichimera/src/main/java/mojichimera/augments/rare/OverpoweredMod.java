@@ -15,7 +15,7 @@ public class OverpoweredMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(OverpoweredMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 2.5F;
+    private static final float MULTIPLIER = 2.0F;
     private boolean modMagic;
 
     @Override

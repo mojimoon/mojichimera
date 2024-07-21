@@ -16,7 +16,7 @@ public class GlazeMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(GlazeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.5F;
+    private static final float MULTIPLIER = 1.3333334F;
     private static final float CHANCE = 0.25F;
     private boolean modMagic;
 
@@ -55,7 +55,7 @@ public class GlazeMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
+        return AugmentHelper.reachesVariable(card, 3)
                 && AugmentHelper.isReplayable(card);
     }
 

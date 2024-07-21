@@ -13,12 +13,12 @@ public class BelligerentMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BelligerentMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 50;
-    private static final float MULTIPLIER = 1.5F;
+    private static final int PERCENT = 25;
+    private static final float MULTIPLIER = 1.25F;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamage(card, 2)
+        return AugmentHelper.reachesDamage(card, 4)
                 && AugmentHelper.isAttack(card)
                 && card.target == AbstractCard.CardTarget.ENEMY
                 && AugmentHelper.isPlayable(card);

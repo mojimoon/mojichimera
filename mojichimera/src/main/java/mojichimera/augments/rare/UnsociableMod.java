@@ -15,9 +15,9 @@ public class UnsociableMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(UnsociableMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 20;
+    private static final int PERCENT = 25;
     private static final float MULTIPLIER = 2.0F;
-    private static final float EXTRA_MULTIPLIER = 0.2F;
+    private static final float EXTRA_MULTIPLIER = 0.25F;
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -42,7 +42,7 @@ public class UnsociableMod extends AbstractAugment {
                 multiplier -= EXTRA_MULTIPLIER;
             }
         }
-        return Math.max(multiplier, 0.0F);
+        return Math.max(multiplier, EXTRA_MULTIPLIER);
     }
 
     @Override

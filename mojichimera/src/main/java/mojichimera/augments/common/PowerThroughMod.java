@@ -18,7 +18,7 @@ public class PowerThroughMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int WOUNDS = 2;
-    private static final float MULTIPLIER = 2.0F;
+    private static final float MULTIPLIER = 1.75F;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -38,7 +38,7 @@ public class PowerThroughMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
-                && AugmentHelper.hasDamageOrBlock(card);
+                && AugmentHelper.reachesDamageOrBlock(card, 2);
     }
 
     @Override

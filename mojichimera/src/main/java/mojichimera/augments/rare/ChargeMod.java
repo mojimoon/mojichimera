@@ -21,8 +21,8 @@ public class ChargeMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(ChargeMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 0.25F;
-    private static final int PERCENT = 25;
+    private static final float MULTIPLIER = 0.2F;
+    private static final int PERCENT = 20;
     public static final SpireField<Integer> otherCardsPlayed = new SpireField<>(() -> 0);
     private boolean modMagic;
 

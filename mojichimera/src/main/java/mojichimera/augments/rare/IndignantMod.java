@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.rare;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -14,13 +14,14 @@ public class IndignantMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(IndignantMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 50;
-    private static final float MULTIPLIER = 1.5F;
+    private static final int PERCENT = 33;
+    private static final float MULTIPLIER = 1.3333334F;
 
     @Override
     public boolean validCard(AbstractCard card) {
         return card.color == AbstractCard.CardColor.PURPLE
-                && AugmentHelper.isAttack(card);
+                && AugmentHelper.isAttack(card)
+                && AugmentHelper.reachesDamage(card, 3);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class IndignantMod extends AbstractAugment {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new IndignantMod(); }

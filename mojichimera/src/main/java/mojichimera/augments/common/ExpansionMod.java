@@ -1,4 +1,4 @@
-package mojichimera.augments.uncommon;
+package mojichimera.augments.common;
 
 import CardAugments.cardmods.AbstractAugment;
 import basemod.abstracts.AbstractCardModifier;
@@ -10,12 +10,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.mojichimera;
 
-public class MinimalMod extends AbstractAugment {
-    public static final String ID = mojichimera.makeID(MinimalMod.class.getSimpleName());
+public class ExpansionMod extends AbstractAugment {
+    public static final String ID = mojichimera.makeID(ExpansionMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float EXTRA_MULTIPLIER = 0.1F;
-    private static final int MAX_CARDS = 15;
+    private static final float EXTRA_MULTIPLIER = 0.04F;
+    private static final int MIN_CARDS = 25;
     private static final int BASELINE_CARDS = 20;
     private boolean modMagic;
 
@@ -49,14 +49,14 @@ public class MinimalMod extends AbstractAugment {
     private float getMultiplier() {
         if (AbstractDungeon.player == null)
             return 1.0F;
-        return 1.0F + Math.max(MAX_CARDS - AbstractDungeon.player.masterDeck.size(), 0) * EXTRA_MULTIPLIER;
+        return 1.0F + Math.max(AbstractDungeon.player.masterDeck.size() - MIN_CARDS, 0) * EXTRA_MULTIPLIER;
     }
 
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.hasVariable(card)
                 && AugmentHelper.isNormal(card)
-                && (AbstractDungeon.player == null || AbstractDungeon.player.masterDeck.size() <= BASELINE_CARDS);
+                && (AbstractDungeon.player == null || AbstractDungeon.player.masterDeck.size() > BASELINE_CARDS);
     }
 
     @Override
@@ -69,10 +69,10 @@ public class MinimalMod extends AbstractAugment {
     public String getAugmentDescription() { return TEXT[2]; }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.COMMON; }
 
     @Override
-    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new MinimalMod(); }
+    public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new ExpansionMod(); }
 
     @Override
     public String identifier(AbstractCard card) { return ID; }

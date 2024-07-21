@@ -18,8 +18,8 @@ public class HighCardMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(HighCardMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.3333334F;
-    private static final int PERCENT = 33;
+    private static final float MULTIPLIER = 1.2F;
+    private static final int PERCENT = 20;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -49,7 +49,7 @@ public class HighCardMod extends AbstractAugment {
     @Override
     public boolean validCard(AbstractCard card) {
         return AugmentHelper.isPlayable(card)
-                && AugmentHelper.reachesDamageOrBlock(card, 3)
+                && AugmentHelper.reachesDamageOrBlock(card, 5)
                 && AugmentHelper.isNormal(card)
                 && !card.rarity.equals(AbstractCard.CardRarity.BASIC);
     }

@@ -13,7 +13,7 @@ public class PerseverantMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(PerseverantMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final float MULTIPLIER = 2.0F;
+    public static final float EXTRA_MULTIPLIER = 0.5F;
 
     @Override
     public boolean validCard(AbstractCard card) {
@@ -24,7 +24,7 @@ public class PerseverantMod extends AbstractAugment {
     public float modifyBlockFinal(float block, AbstractCard card) {
         if (!MojiHelper.isInCombat())
             return block;
-        return block * (MULTIPLIER - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth);
+        return block * ((1 - (float)AbstractDungeon.player.currentHealth / (float)AbstractDungeon.player.maxHealth) * EXTRA_MULTIPLIER + 1);
     }
 
     @Override

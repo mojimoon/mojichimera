@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.special;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.cardmods.DynvarCarrier;
@@ -61,7 +61,7 @@ public class SkimMod extends AbstractAugment implements DynvarCarrier {
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.SPECIAL; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new SkimMod(); }

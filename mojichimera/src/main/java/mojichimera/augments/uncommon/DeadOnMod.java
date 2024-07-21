@@ -16,8 +16,8 @@ public class DeadOnMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(DeadOnMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final int PERCENT = 75;
-    private static final float MULTIPLIER = 1.75F;
+    private static final int PERCENT = 33;
+    private static final float MULTIPLIER = 1.3333334F;
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -45,7 +45,7 @@ public class DeadOnMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesDamageOrBlock(card, 2)
+        return AugmentHelper.reachesDamageOrBlock(card, 3)
                 && AugmentHelper.isPlayable(card);
     }
 

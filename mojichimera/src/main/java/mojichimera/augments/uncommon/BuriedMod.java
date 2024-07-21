@@ -14,7 +14,7 @@ public class BuriedMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(BuriedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.5F;
+    private static final float MULTIPLIER = 1.3333334F;
     private boolean modMagic;
 
     @Override
@@ -47,7 +47,7 @@ public class BuriedMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.reachesVariable(card, 2)
+        return AugmentHelper.reachesVariable(card, 3)
                 && !(Boolean) GraveField.grave.get(card)
                 && cardCheck(card, c -> notInnate(c) && doesntUpgradeInnate())
                 && AugmentHelper.isNormal(card);

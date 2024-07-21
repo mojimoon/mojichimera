@@ -13,17 +13,18 @@ public class KyrieMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(KyrieMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final float MULTIPLIER = 1.0F;
+    public static final float MULTIPLIER = 0.75F;
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return AugmentHelper.isAttack(card);
+        return AugmentHelper.isAttack(card)
+                && AugmentHelper.reachesDamage(card, 2);
     }
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if (target != null && target.maxHealth > 0) {
-            return damage * (1.0F + (float)target.currentHealth / (float)target.maxHealth);
+            return damage * (1.0F + (float)target.currentHealth / (float)target.maxHealth * MULTIPLIER);
         }
         return damage;
     }

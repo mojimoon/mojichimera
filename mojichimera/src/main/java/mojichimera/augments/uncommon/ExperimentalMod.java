@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import mojichimera.augments.AugmentHelper;
@@ -26,8 +27,8 @@ public class ExperimentalMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final int STATUS = 3;
-    private static final float MIN_MULTIPLIER = 1.3333334F;
-    private static final float MAX_MULTIPLIER = 3.0F;
+    private static final float MIN_MULTIPLIER = 1.0F;
+    private static final float MAX_MULTIPLIER = 2.5F;
 //    private static final float EXTRA_MULTIPLIER = 0.25F;
     private static final Random rng = new Random();
 //    public static final SpireField<Integer> bonus = new SpireField<>(() -> 0);
@@ -188,12 +189,13 @@ public class ExperimentalMod extends AbstractAugment {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String tmp = insertAfterText(rawDescription, String.format(CARD_TEXT[0], STATUS));
         if (!MojiHelper.isInCombat()) {
-            tmp = tmp.replace("!D!", String.format("%d~%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!B!", String.format("%d~%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
-            tmp = tmp.replace("!M!", String.format("%d~%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
+            char c = (Settings.language.toString().equalsIgnoreCase("zhs")) ? '~' : '-';
+            tmp = tmp.replace("!D!", String.format("%d%c%d", (int)Math.ceil(baseDamage.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseDamage.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!B!", String.format("%d%c%d", (int)Math.ceil(baseBlock.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseBlock.get(card) * MAX_MULTIPLIER)));
+            tmp = tmp.replace("!M!", String.format("%d%c%d", (int)Math.ceil(baseMagic.get(card) * MIN_MULTIPLIER), c, (int)Math.ceil(baseMagic.get(card) * MAX_MULTIPLIER)));
             return tmp;
         }
-        return tmp;
+        return rawDescription;
     }
 
     @Override

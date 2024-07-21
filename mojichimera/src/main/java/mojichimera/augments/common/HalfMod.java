@@ -17,8 +17,8 @@ public class HalfMod extends AbstractAugment {
     public static final String ID = mojichimera.makeID(HalfMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    private static final float MULTIPLIER = 1.5F;
-    private static final int PERCENT = 50;
+    private static final float MULTIPLIER = 1.3333334F;
+    private static final int PERCENT = 33;
     private static final int NUM_CARDS = 3;
 
     @Override
