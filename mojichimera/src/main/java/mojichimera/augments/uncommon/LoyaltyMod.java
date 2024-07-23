@@ -1,4 +1,4 @@
-package mojichimera.augments.rare;
+package mojichimera.augments.uncommon;
 
 import CardAugments.cardmods.AbstractAugment;
 import CardAugments.patches.EchoFieldPatches;
@@ -39,11 +39,11 @@ public class LoyaltyMod extends AbstractAugment {
             public void update() {
                 if (!card.purgeOnUse) {
                     playedTimes.set(card, playedTimes.get(card) + 1);
-                    if (playedTimes.get(card) % 2 == 1) {
+                    if (playedTimes.get(card) % 3 == 2) {
                         for (AbstractCard c : GetAllInBattleInstances.get(card.uuid)) {
                             EchoFieldPatches.EchoFields.echo.set(c, (Integer) EchoFieldPatches.EchoFields.echo.get(c) + ECHOS);
                         }
-                    } else {
+                    } else if (playedTimes.get(card) % 3 == 0) {
                         for (AbstractCard c : GetAllInBattleInstances.get(card.uuid)) {
                             EchoFieldPatches.EchoFields.echo.set(c, (Integer) EchoFieldPatches.EchoFields.echo.get(c) - ECHOS);
                         }
@@ -65,11 +65,11 @@ public class LoyaltyMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], 2, ECHOS));
+        return insertAfterText(rawDescription, String.format(CARD_TEXT[0], 3, ECHOS));
     }
 
     @Override
-    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.RARE; }
+    public AbstractAugment.AugmentRarity getModRarity() { return AbstractAugment.AugmentRarity.UNCOMMON; }
 
     @Override
     public AbstractCardModifier makeCopy() { return (AbstractCardModifier)new LoyaltyMod(); }
@@ -79,7 +79,7 @@ public class LoyaltyMod extends AbstractAugment {
 
     private boolean shouldGlow(AbstractCard card) {
         if (!MojiHelper.isInCombat()) return false;
-        return playedTimes.get(card) % 2 == 1;
+        return playedTimes.get(card) % 3 == 2;
     }
 
     public CardBorderGlowManager.GlowInfo getGlowInfo() {

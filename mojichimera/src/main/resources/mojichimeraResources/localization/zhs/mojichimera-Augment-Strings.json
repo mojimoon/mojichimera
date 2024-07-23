@@ -98,7 +98,7 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
-        "TEXT": ["", "积分卡", "每第 #b2 次手动打出本牌时，再打出 #b1 次。"],
+        "TEXT": ["", "积分卡", "每第 #b3 次手动打出本牌时，再打出 #b1 次。"],
         "EXTRA_TEXT": [" NL 每第 %d 次手动打出本牌时，再打出 %d 次。"]
     },
     "mojichimera:OverlookingMod": {

@@ -96,8 +96,8 @@
         "EXTRA_TEXT": []
     },
     "mojichimera:LoyaltyMod": {
-        "TEXT": ["", " Loyalty Card", "Every #b2nd time this card is manually played, plays #b1 more time."],
-        "EXTRA_TEXT": [" NL Every %dnd time this card is manually played, plays %d more time."]
+        "TEXT": ["", " Loyalty Card", "Every #b3rd time this card is manually played, plays #b1 more time."],
+        "EXTRA_TEXT": [" NL Every %drd time this card is manually played, plays %d more time."]
     },
     "mojichimera:OverlookingMod": {
         "TEXT": ["Overlooking ", "", "Reduces damage by #b33%. NL Draws #b1 card for each type of #yDebuff the target has."],
