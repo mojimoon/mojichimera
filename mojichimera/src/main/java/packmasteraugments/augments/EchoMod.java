@@ -18,6 +18,10 @@ public class EchoMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final String ECHO_MODID = "anniv5:EchoMod";
 
+    public EchoMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractCard selfCopy = card.makeStatEquivalentCopy();

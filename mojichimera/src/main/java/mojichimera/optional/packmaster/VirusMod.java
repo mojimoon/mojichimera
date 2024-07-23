@@ -22,6 +22,10 @@ public class VirusMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
+    public VirusMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost >= 0

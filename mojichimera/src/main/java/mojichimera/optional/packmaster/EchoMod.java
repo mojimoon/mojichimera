@@ -21,6 +21,10 @@ public class EchoMod extends AbstractAugment {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final String ECHO_MODID = "anniv5:EchoMod";
 
+    public EchoMod() {
+        this.priority = 1000;
+    }
+
     @Override
     public boolean validCard(AbstractCard card) {
         return card.cost > 0
