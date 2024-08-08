@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import mojichimera.augments.AugmentHelper;
 import mojichimera.augments.rare.EmbraceMod;
+import mojichimera.cardmods.CounterHelperMod;
 import mojichimera.cardmods.DamageBlock50OffMod;
 import mojichimera.mojichimera;
 import mojichimera.powers.ThornsProtocolPower;
@@ -42,6 +43,7 @@ public class CounterMod extends AbstractAugment {
         this.inherentHack = false;
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new DamageBlock50OffMod());
         CardModifierManager.addModifier(preview, (AbstractCardModifier)new PreviewedMod());
+        CardModifierManager.addModifier(preview, (AbstractCardModifier)new CounterHelperMod());
         MultiCardPreview.add(card, new AbstractCard[] { preview });
         InterruptUseCardFieldPatches.InterceptUseField.interceptUse.set(card, true);
         card.target = AbstractCard.CardTarget.NONE;
