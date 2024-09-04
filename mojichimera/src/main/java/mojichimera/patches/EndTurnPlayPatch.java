@@ -15,8 +15,13 @@ public class EndTurnPlayPatch {
     public static class EndTurnPlayPatch1 {
         @SpirePrefixPatch
         public static SpireReturn<Boolean> Prefix(AbstractCard __instance) {
-            if (AbstractDungeon.actionManager.turnHasEnded &&
-                    (CardModifierManager.hasModifier(__instance, AfterlifeMod.ID) || CardModifierManager.hasModifier(__instance, CounterHelperMod.ID))) {
+//            if (AbstractDungeon.actionManager.turnHasEnded &&
+//                    (CardModifierManager.hasModifier(__instance, AfterlifeMod.ID) || CardModifierManager.hasModifier(__instance, CounterHelperMod.ID))) {
+//                return SpireReturn.Return(true);
+//            } else {
+//                return SpireReturn.Continue();
+//            }
+            if (AbstractDungeon.actionManager.turnHasEnded) {
                 return SpireReturn.Return(true);
             } else {
                 return SpireReturn.Continue();
